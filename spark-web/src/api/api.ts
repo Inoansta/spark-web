@@ -26,7 +26,9 @@ class ApiService {
     }
 
     //When Token is expired
+
     private async clearData(){
+        console.log('hello')
         console.log('토큰이 만료됐습니다. 다 로그인을 시도해 주세요.')
     }
 
