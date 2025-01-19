@@ -1,10 +1,5 @@
-import {
-	QueryClient,
-	QueryClientProvider,
-	QueryErrorResetBoundary,
-} from "@tanstack/react-query";
-import { ErrorBoundary } from "react-error-boundary";
-import { PropsWithChildren, useEffect, useState, Suspense } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { PropsWithChildren, useEffect, useState } from "react";
 
 export const Provider = ({ children }: PropsWithChildren) => {
 	const [queryClient] = useState(
@@ -22,14 +17,6 @@ export const Provider = ({ children }: PropsWithChildren) => {
 	);
 
 	return (
-		<QueryClientProvider client={queryClient}>
-			<QueryErrorResetBoundary>
-				{({ reset }) => (
-					<ErrorBoundary onReset={reset} fallbackRender={undefined}>
-						<Suspense>{children}</Suspense>
-					</ErrorBoundary>
-				)}
-			</QueryErrorResetBoundary>
-		</QueryClientProvider>
+		<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 	);
 };

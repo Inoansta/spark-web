@@ -1,4 +1,4 @@
-export const colors = {
+export const COLORS = {
     // Gray Scale
     black: "#1C1C1E", // Black
     highEmphasis: "#333333", // High Emphasis Gray

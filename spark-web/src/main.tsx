@@ -4,13 +4,17 @@ import "./index.css";
 
 import { GlobalLayout } from "./shared/GlobalLayout.tsx";
 import { Provider } from "./provider.tsx";
+import { Loading } from "./loading.tsx";
+
 import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<GlobalLayout>
 			<Provider>
-				<App />
+				<Loading>
+					<App />
+				</Loading>
 			</Provider>
 		</GlobalLayout>
 	</StrictMode>,
