@@ -1,21 +1,18 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
+import './index.css';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { Provider, QuerySuspenseBoundary } from './app/provider/index.ts';
+import { RouterApp } from './app/router/index.ts';
+import { GlobalLayout } from './shared/ui/index.ts';
 
-import { GlobalLayout } from "./shared/GlobalLayout.tsx";
-import { Provider } from "./provider.tsx";
-import { Loading } from "./loading.tsx";
-
-import App from "./App.tsx";
-
-createRoot(document.getElementById("root")!).render(
-	<StrictMode>
-		<GlobalLayout>
-			<Provider>
-				<Loading>
-					<App />
-				</Loading>
-			</Provider>
-		</GlobalLayout>
-	</StrictMode>,
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <GlobalLayout>
+      <Provider>
+        <QuerySuspenseBoundary>
+          <RouterApp />
+        </QuerySuspenseBoundary>
+      </Provider>
+    </GlobalLayout>
+  </StrictMode>,
 );
