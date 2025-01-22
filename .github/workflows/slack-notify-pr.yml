@@ -1,0 +1,20 @@
+name: Notify Slack on Pull Request
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  slack-notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Slack
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          message: |
+            :bell: A new PR has been created:
+            *Title*: ${{ github.event.pull_request.title }}
+            *Author*: ${{ github.event.pull_request.user.login }}
+            *Link*: ${{ github.event.pull_request.html_url }}
