@@ -23,6 +23,10 @@ export default tseslint.config(
         version: 'detect',
       },
       'import/resolver': {
+        alias: {
+          map: [['@', './src']],
+          extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+        },
         typescript: true,
       },
     },
