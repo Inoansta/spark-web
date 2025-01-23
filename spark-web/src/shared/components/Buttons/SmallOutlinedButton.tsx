@@ -5,11 +5,11 @@ interface SmallOutlinedButton {
 
 function SmallOutlinedButton({ text, onClick }: SmallOutlinedButton) {
 	return (
-		<div className={"flex justify-center"}>
+		<div className={"inline-block flex justify-center"}>
 			<button
 				onClick={() => onClick()}
 				className={
-					"inline-block px-[20px] w-full max-w-[70px] h-[40px] text-primary5 border border-primary5  rounded-md active:bg-primary1"
+					"px-[20px] w-full max-w-[70px] h-[40px] text-primary5 border border-primary5  rounded-md active:bg-primary1"
 				}
 			>
 				{text}
