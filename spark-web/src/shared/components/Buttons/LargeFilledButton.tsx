@@ -1,9 +1,9 @@
-interface LargePrimaryFilledButton {
+interface LargeFilledButton {
 	text: string;
 	onClick: () => void;
 }
 
-function LargePrimaryFilledButton({ text, onClick }: LargePrimaryFilledButton) {
+function LargeFilledButton({ text, onClick }: LargeFilledButton) {
 	return (
 		<div className={"flex justify-center"}>
 			<button
@@ -18,4 +18,4 @@ function LargePrimaryFilledButton({ text, onClick }: LargePrimaryFilledButton) {
 	);
 }
 
-export default LargePrimaryFilledButton;
+export default LargeFilledButton;
