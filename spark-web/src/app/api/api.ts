@@ -15,7 +15,7 @@ const headers: RawAxiosRequestHeaders = {
 class ApiService {
   private static instance: ApiService;
   private client: AxiosInstance;
-  private isRefreshing = false;
+  // private isRefreshing = false;
 
   private constructor() {
     this.client = axios.create({
@@ -34,19 +34,19 @@ class ApiService {
 
   //When Token is expired
 
-  private async clearData() {
-    console.log('hello');
-    console.log('토큰이 만료됐습니다. 다 로그인을 시도해 주세요.');
-  }
+  // private async clearData() {
+  //   console.log('hello');
+  //   console.log('토큰이 만료됐습니다. 다 로그인을 시도해 주세요.');
+  // }
 
   //Set up intercepters
   private setupInterceptors(): void {}
 
   //set Token
-  private async setToken(token) {}
+  // private async setToken(token) {}
 
   //get Token
-  private async getToken() {}
+  // private async getToken() {}
 
   public async request<T, D = any>(
     method: Method,

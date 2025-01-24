@@ -7,9 +7,9 @@ export default function QueryProvider({ children }: PropsWithChildren) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            throwOnError: true,
+            useErrorBoundary: true,
             staleTime: 1000 * 60 * 5,
-            gcTime: 1000 * 60 * 10,
+            cacheTime: 1000 * 60 * 10,
             retry: 0,
           },
         },
