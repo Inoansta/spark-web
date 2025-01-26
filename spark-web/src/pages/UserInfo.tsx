@@ -1,3 +1,9 @@
+import UserInformation from '@/domains/UserInformation/UserInformation';
+
 export default function UserInfo() {
-  return <div>UserInfo</div>;
+  return (
+    <div>
+      <UserInformation />
+    </div>
+  );
 }
