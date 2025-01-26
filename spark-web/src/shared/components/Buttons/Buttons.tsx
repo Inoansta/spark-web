@@ -18,7 +18,7 @@ const style = {
 
 function Buttons({ text, onClick, buttonType }: Buttons) {
 	return (
-		<div className={"inline-block flex justify-center"}>
+		<div className={"flex justify-center"}>
 			<button onClick={() => onClick()} className={style[buttonType]}>
 				{text}
 			</button>
