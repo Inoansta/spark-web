@@ -4,9 +4,8 @@ interface Questionbox {
 }
 
 const style = {
-  first:
-    'bg-primary1 text-black px-[20px] py-[10px] rounded-medium inline-block',
-  last: 'bg-primary1 text-black px-[20px] py-[10px] rounded-b-medium rounded-tr-medium inline-block',
+  first: 'rounded-medium',
+  last: 'rounded-b-medium rounded-tr-medium',
 };
 
 function Questionbox({ questions, questionType }: Questionbox) {
@@ -14,7 +13,11 @@ function Questionbox({ questions, questionType }: Questionbox) {
     <div
       className={`text-left mt-[5px] ${questionType === 'last' ? 'mb-[5px]' : null}`}
     >
-      <div className={style[questionType]}>{questions}</div>
+      <div
+        className={`bg-primary1 text-black inline-block px-[20px] py-[10px] ${style[questionType]}`}
+      >
+        {questions}
+      </div>
     </div>
   );
 }
