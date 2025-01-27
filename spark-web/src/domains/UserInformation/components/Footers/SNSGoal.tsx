@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import Buttons from '@/shared/components/Buttons/Buttons';
 
 interface SNSGoal {
