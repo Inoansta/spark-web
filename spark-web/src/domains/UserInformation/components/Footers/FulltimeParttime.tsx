@@ -6,6 +6,8 @@ interface FulltimeParttime {
   setSteps: () => void;
 }
 
+const TIME: string[] = ['전업', '부업'];
+
 function FulltimeParttime({ onClick, setSteps }: FulltimeParttime) {
   const [clicked, setClicked] = useState<boolean>(true);
 
@@ -17,16 +19,16 @@ function FulltimeParttime({ onClick, setSteps }: FulltimeParttime) {
         setSteps();
       }}
     >
-      <Buttons
-        text={'전업'}
-        onClick={() => onClick('전업')}
-        buttonType={'large-outlined-button'}
-      />
-      <Buttons
-        text={'부업'}
-        onClick={() => onClick('부업')}
-        buttonType={'large-outlined-button'}
-      />
+      {TIME.map((item) => {
+        return (
+          <Buttons
+            text={item}
+            onClick={() => onClick(item)}
+            buttonType={'large-outlined-button'}
+            key={item}
+          />
+        );
+      })}
     </div>
   );
 }
