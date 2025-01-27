@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Buttons from '@/shared/components/Buttons/Buttons';
+import Button from '@/shared/components/Buttons/Button';
 
 interface SNSGoal {
   onClick: (goal: string) => void;
   setIsTyped: () => void;
 }
 
-const list: string[] = [
+const list = [
   '개인 브랜딩 및 전문성 강화',
   '수익화 및 경제적 이익',
   '개인적인 취미 및 즐거움',
@@ -31,7 +31,7 @@ function SNSGoal({ onClick, setIsTyped }: SNSGoal) {
       >
         {list.map((item) => {
           return (
-            <Buttons
+            <Button
               text={item}
               onClick={() => {
                 if (item !== '직접입력') {

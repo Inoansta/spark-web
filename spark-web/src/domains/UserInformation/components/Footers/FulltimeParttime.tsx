@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import Buttons from '@/shared/components/Buttons/Buttons';
+import Button from '@/shared/components/Buttons/Button';
 
 interface FulltimeParttime {
   onClick: (fulltime: string) => void;
   setSteps: () => void;
 }
 
-const TIME: string[] = ['전업', '부업'];
+const TIME = ['전업', '부업'];
 
 function FulltimeParttime({ onClick, setSteps }: FulltimeParttime) {
   const [clicked, setClicked] = useState<boolean>(true);
@@ -21,7 +21,7 @@ function FulltimeParttime({ onClick, setSteps }: FulltimeParttime) {
     >
       {TIME.map((item) => {
         return (
-          <Buttons
+          <Button
             text={item}
             onClick={() => onClick(item)}
             buttonType={'large-outlined-button'}
