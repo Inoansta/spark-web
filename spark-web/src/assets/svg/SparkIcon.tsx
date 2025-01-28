@@ -1,4 +1,4 @@
-import { SvgProps } from './Setting';
+import { SvgProps } from './SettingIcon';
 
 export const SparkIcon = ({ className, ...props }: SvgProps) => {
   return (
