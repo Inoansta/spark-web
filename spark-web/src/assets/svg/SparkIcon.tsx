@@ -1,8 +1,14 @@
 import { SvgProps } from './SettingIcon';
 
-export const SparkIcon = ({ className, ...props }: SvgProps) => {
+export const SparkIcon = ({ className }: SvgProps) => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="48"
+      height="48"
+      fill="none"
+      className={className}
+    >
       <rect width="48" height="48" fill="url(#a)" rx="24" />
       <defs>
         <pattern
