@@ -1,17 +1,18 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
-import Analysis from '@/pages/Analysis.tsx';
-import Detail from '@/pages/Detail.tsx';
-import GrowthPrediction from '@/pages/GrowthPrediction.tsx';
-import Home from '@/pages/Home.tsx';
-import OnBoarding from '@/pages/OnBoarding.tsx';
-import Popular from '@/pages/Popular.tsx';
-import Result from '@/pages/Result.tsx';
-import Strategy from '@/pages/Strategy.tsx';
-import StrengthWeakness from '@/pages/StrengthWeakness.tsx';
-import UserInfo from '@/pages/UserInfo.tsx';
-import BottomNavigationLayout from './BottomNavigationLayout.tsx';
-import PageLayout from './PageLayout.tsx';
-import ProtectedRoute from './ProtectedRoute.tsx';
+import Analysis from '@/pages/Analysis';
+import Detail from '@/pages/Detail';
+import GrowthPrediction from '@/pages/GrowthPrediction';
+import Home from '@/pages/Home';
+import OnBoarding from '@/pages/OnBoarding';
+import Popular from '@/pages/Popular';
+import Result from '@/pages/Result';
+import Setting from '@/pages/Setting';
+import Strategy from '@/pages/Strategy';
+import StrengthWeakness from '@/pages/StrengthWeakness';
+import UserInfo from '@/pages/UserInfo';
+import BottomNavigationLayout from './BottomNavigationLayout';
+import PageLayout from './PageLayout';
+import ProtectedRoute from './ProtectedRoute';
 
 export default function RouterApp() {
   return (
@@ -19,6 +20,7 @@ export default function RouterApp() {
       <Routes>
         <Route element={<BottomNavigationLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/setting" element={<Setting />} />
         </Route>
         <Route element={<PageLayout />}>
           <Route path="/onboarding" element={<OnBoarding />} />

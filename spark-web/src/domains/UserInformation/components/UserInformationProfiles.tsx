@@ -1,9 +1,9 @@
-import SparkIcon from '@/assets/svg/sparkIcon.svg?react';
+import { SparkIcon } from '@/assets/svg/SparkIcon';
 
 function UserInformationProfiles() {
   return (
     <div className={'flex flex-row mt-[20px] items-center'}>
-      <SparkIcon style={{ width: '48px', height: '48px' }} />
+      <SparkIcon className={'w-12 h-12'} />
       <div className={'text-body-m text-black	ml-[10px]'}>스파크</div>
     </div>
   );

@@ -6,7 +6,7 @@ import axios, {
   RawAxiosRequestHeaders,
   isAxiosError,
 } from 'axios';
-import { API_STATUS_CODE, ApiResponse } from './type.ts';
+import { API_STATUS_CODE, ApiResponse } from './type';
 
 const headers: RawAxiosRequestHeaders = {
   'Content-Type': 'application/json',

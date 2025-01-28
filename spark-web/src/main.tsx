@@ -1,9 +1,9 @@
 import './index.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Provider, QuerySuspenseBoundary } from './app/provider/index.ts';
-import { RouterApp } from './app/router/index.ts';
-import { GlobalLayout } from './shared/ui/index.ts';
+import { Provider, QuerySuspenseBoundary } from './app/provider';
+import { RouterApp } from './app/router';
+import { GlobalLayout } from './shared/ui';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
