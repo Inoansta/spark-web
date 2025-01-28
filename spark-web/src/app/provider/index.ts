@@ -1,2 +1,2 @@
-export { default as Provider } from './Provider.tsx';
-export { default as QuerySuspenseBoundary } from './QuerySuspenseBoundary.tsx';
+export { default as Provider } from './Provider';
+export { default as QuerySuspenseBoundary } from './QuerySuspenseBoundary';

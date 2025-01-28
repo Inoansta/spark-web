@@ -1,1 +1,1 @@
-export { default as GlobalLayout } from './GlobalLayout.tsx';
+export { default as GlobalLayout } from './GlobalLayout';

@@ -27,23 +27,17 @@ pre-push:
   commands:
     lint:
       run: |
-        if [[ "$PWD" =~ /spark-web$ ]]; then
-          npm lint
-        fi
+        cd spark-web && npm run lint
       stage_fixed: true
 
     build:
       run: |
-        if [[ "$PWD" =~ /spark-web$ ]]; then
-          npm build
-        fi
+        cd spark-web && npm run build
       stage_fixed: true
 
 pre-commit:
   commands:
     lint:
       run: |
-        if [[ "$PWD" =~ /spark-web$ ]]; then
-          npm lint
-        fi
+        cd spark-web && npm run lint
       stage_fixed: true
