@@ -1,15 +1,13 @@
-import { useState, useEffect, useRef, RefObject } from 'react';
-
-import BottomSheetModal from '@/shared/components/BottomSheetModal/BottomSheetModal';
-import Button from '@/shared/components/Buttons/Button';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import FulltimeParttime from '@/domains/UserInformation/components/Footers/FulltimeParttime';
 import SNSGoal from '@/domains/UserInformation/components/Footers/SNSGoal';
 import Questionbox from '@/domains/UserInformation/components/Questionbox';
 import SheetContents from '@/domains/UserInformation/components/SheetContent';
 import UserDialogbox from '@/domains/UserInformation/components/UserDialogbox';
 import UserInformationProfiles from '@/domains/UserInformation/components/UserInformationProfiles';
-
 import { QUESTIONS } from '@/domains/UserInformation/questions';
+import BottomSheetModal from '@/shared/components/BottomSheetModal/BottomSheetModal';
+import Button from '@/shared/components/Buttons/Button';
 
 export interface userAnswer {
   CONTENTS: string;

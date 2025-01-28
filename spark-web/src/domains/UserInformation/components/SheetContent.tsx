@@ -1,7 +1,6 @@
+import { userAnswer } from '@/pages/UserInfo';
 import Button from '@/shared/components/Buttons/Button';
 import PrimaryChips from '@/shared/components/Chips/PrimaryChips';
-
-import { userAnswer } from '@/pages/UserInfo';
 
 interface SheetContents {
   setOnlyClicked: (onlyClick: string) => void;

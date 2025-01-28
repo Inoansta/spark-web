@@ -1,4 +1,4 @@
-import LargeClose from '@/assets/svg/LargeClose.svg?react';
+import { LargeClose } from '@/assets/svg/LargeClose';
 
 interface CustomHeader {
   title: string;

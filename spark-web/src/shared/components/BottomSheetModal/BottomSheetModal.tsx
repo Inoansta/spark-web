@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { Sheet } from 'react-modal-sheet';
-
 import CustomHeader from './items/CustomHeader';
 
 interface BottomSheetModal {
