@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
-import { type RouteInfo, useMoveLocation } from '@/shared/hooks';
+import { type RouteInfo } from '@/shared/hooks';
+import RouteMove from '../RouteMove';
 
 interface LeftContentProps extends RouteInfo {
   className?: string;
@@ -18,22 +19,18 @@ function Root({ className, children }: Omit<LeftContentProps, 'location'>) {
 }
 
 function LeftContent({ location, className, children }: LeftContentProps) {
-  const handleMoveLocation = useMoveLocation(location);
-
   return (
-    <div onClick={handleMoveLocation} className={clsx(className)}>
+    <RouteMove location={location} className={clsx(className)}>
       {children}
-    </div>
+    </RouteMove>
   );
 }
 
 function RightContent({ location, className, children }: LeftContentProps) {
-  const handleMoveLocation = useMoveLocation(location);
-
   return (
-    <div onClick={handleMoveLocation} className={clsx(className)}>
+    <RouteMove location={location} className={clsx(className)}>
       {children}
-    </div>
+    </RouteMove>
   );
 }
 
