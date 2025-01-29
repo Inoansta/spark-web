@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '@/shared/components/Buttons/Button';
+import { Button } from '@/shared/components';
 
 interface SNSGoal {
   onClick: (goal: string) => void;
