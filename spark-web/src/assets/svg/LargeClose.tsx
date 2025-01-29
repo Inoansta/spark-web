@@ -1,4 +1,4 @@
-import { SvgProps } from './SettingIcon';
+import { SvgProps } from '../nav/SettingIcon';
 
 export const LargeClose = ({ color, className, ...props }: SvgProps) => {
   return (
