@@ -1,23 +1,8 @@
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
-import { useNavigate } from 'react-router';
+import { type RouteInfo, useMoveLocation } from '@/shared/hooks';
 
-const routeMap = {
-  home: '/',
-  setting: '/setting',
-  onboarding: '/onboarding',
-  detail: '/detail',
-  userInfo: '/user-info',
-  analysis: '/analysis',
-  result: '/result',
-  popular: '/result/popular',
-  strengthWeakness: '/result/strength-weakness',
-  growthPrediction: '/result/growth-prediction',
-  strategy: '/result/strategy',
-} as const;
-
-interface LeftContentProps {
-  location: (typeof routeMap)[keyof typeof routeMap] | 'back';
+interface LeftContentProps extends RouteInfo {
   className?: string;
   children: ReactNode;
 }
@@ -33,32 +18,20 @@ function Root({ className, children }: Omit<LeftContentProps, 'location'>) {
 }
 
 function LeftContent({ location, className, children }: LeftContentProps) {
-  const navigate = useNavigate();
-
-  const handleMoveLocate = () => {
-    if (location === 'back') {
-      navigate(-1);
-    } else {
-      navigate(location);
-    }
-  };
+  const handleMoveLocation = useMoveLocation(location);
 
   return (
-    <div onClick={handleMoveLocate} className={clsx(className)}>
+    <div onClick={handleMoveLocation} className={clsx(className)}>
       {children}
     </div>
   );
 }
 
 function RightContent({ location, className, children }: LeftContentProps) {
-  const navigate = useNavigate();
-
-  const handleMoveLocate = () => {
-    navigate(location);
-  };
+  const handleMoveLocation = useMoveLocation(location);
 
   return (
-    <div onClick={handleMoveLocate} className={clsx(className)}>
+    <div onClick={handleMoveLocation} className={clsx(className)}>
       {children}
     </div>
   );
