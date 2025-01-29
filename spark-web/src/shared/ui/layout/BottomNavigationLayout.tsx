@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from 'react-router';
-import { HomeIcon } from '@/assets/svg/HomeIcon';
-import { SettingIcon } from '@/assets/svg/SettingIcon';
+import { HomeIcon } from '@/assets/nav/HomeIcon';
+import { SettingIcon } from '@/assets/nav/SettingIcon';
 
 interface NavLinkProps {
   path: string;
