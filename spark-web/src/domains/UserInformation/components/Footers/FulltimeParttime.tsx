@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from '@/shared/components/Buttons/Button';
+import { Button } from '@/shared/components';
 
 interface FulltimeParttime {
   onClick: (fulltime: string) => void;

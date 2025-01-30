@@ -10,9 +10,11 @@ import Setting from '@/pages/Setting';
 import Strategy from '@/pages/Strategy';
 import StrengthWeakness from '@/pages/StrengthWeakness';
 import UserInfo from '@/pages/UserInfo';
-import BottomNavigationLayout from './BottomNavigationLayout';
-import PageLayout from './PageLayout';
-import ProtectedRoute from './ProtectedRoute';
+import {
+  BottomNavigationLayout,
+  PageLayout,
+  ProtectedLayout,
+} from '@/shared/ui';
 
 export default function RouterApp() {
   return (
@@ -24,7 +26,7 @@ export default function RouterApp() {
         </Route>
         <Route element={<PageLayout />}>
           <Route path="/onboarding" element={<OnBoarding />} />
-          <Route element={<ProtectedRoute />}>
+          <Route element={<ProtectedLayout />}>
             <Route path="/detail" element={<Detail />} />
             <Route path="/user-info" element={<UserInfo />} />
             <Route path="/analysis" element={<Analysis />} />

@@ -6,8 +6,8 @@ import SheetContents from '@/domains/UserInformation/components/SheetContent';
 import UserDialogbox from '@/domains/UserInformation/components/UserDialogbox';
 import UserInformationProfiles from '@/domains/UserInformation/components/UserInformationProfiles';
 import { QUESTIONS } from '@/domains/UserInformation/questions';
+import { Button } from '@/shared/components';
 import BottomSheetModal from '@/shared/components/BottomSheetModal/BottomSheetModal';
-import Button from '@/shared/components/Buttons/Button';
 
 export interface userAnswer {
   CONTENTS: string;

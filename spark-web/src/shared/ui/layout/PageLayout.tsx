@@ -1,9 +1,8 @@
 import { Outlet } from 'react-router';
 
-export default function ProtectedRoute() {
+export default function PageLayout() {
   return (
     <div>
-      ProtectedRoute
       <Outlet />
     </div>
   );
