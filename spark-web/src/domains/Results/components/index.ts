@@ -1,1 +1,1 @@
-export * from './ResultInteraction';
+export { default as ResultInteraction } from './ResultInteraction';

@@ -1,3 +1,5 @@
+import { Keyframe } from '@/shared/components';
+
 interface ResultInteraction {
   channelName: string;
 }
@@ -12,7 +14,7 @@ const animation = {
   animationFillMode: 'forwards',
 } as React.CSSProperties;
 
-export function ResultInteraction({ channelName }: ResultInteraction) {
+export default function ResultInteraction({ channelName }: ResultInteraction) {
   return (
     <div
       className={
@@ -20,14 +22,11 @@ export function ResultInteraction({ channelName }: ResultInteraction) {
       }
       style={animation}
     >
-      <style>
-        {`
-      @keyframes ResultInteraction {
-        from { top: -20%; visibility: visible;}
-        to { top: 33%; visibility: visible;}
-      }
-    `}
-      </style>
+      <Keyframe
+        animationName={'ResultInteraction'}
+        from={{ top: '-20%', visibility: 'visible' }}
+        to={{ top: '33%', visibility: 'visible' }}
+      />
       {channelName}님의
       <br /> 채널 분석이 완료 됐어요!
     </div>
