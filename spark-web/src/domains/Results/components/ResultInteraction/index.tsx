@@ -12,19 +12,6 @@ const animation = {
   animationFillMode: 'forwards',
 } as React.CSSProperties;
 
-export function ResultInteractionKeyframe() {
-  return (
-    <style>
-      {`
-      @keyframes ResultInteraction {
-        from { top: -20%; visibility: visible;}
-        to { top: 33%; visibility: visible;}
-      }
-    `}
-    </style>
-  );
-}
-
 export function ResultInteraction({ channelName }: ResultInteraction) {
   return (
     <div
@@ -33,6 +20,14 @@ export function ResultInteraction({ channelName }: ResultInteraction) {
       }
       style={animation}
     >
+      <style>
+        {`
+      @keyframes ResultInteraction {
+        from { top: -20%; visibility: visible;}
+        to { top: 33%; visibility: visible;}
+      }
+    `}
+      </style>
       {channelName}님의
       <br /> 채널 분석이 완료 됐어요!
     </div>

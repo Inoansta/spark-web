@@ -1,9 +1,6 @@
 import Lottie from 'react-lottie';
 import analysis from '@/assets/result/analaysis.json';
-import {
-  ResultInteraction,
-  ResultInteractionKeyframe,
-} from '@/domains/Results/components';
+import { ResultInteraction } from '@/domains/Results/components';
 import { NextPageFooter } from '@/shared/components';
 
 const defaultOptions = {
@@ -14,10 +11,9 @@ const defaultOptions = {
 export default function Result() {
   return (
     <div>
-      <ResultInteractionKeyframe />
-      {/* <div className={'absolute z-10'}>
+      <div className={'absolute z-10'}>
         <Lottie options={defaultOptions} />
-      </div> */}
+      </div>
       <div className={'flex justify-center'}>
         <ResultInteraction channelName={'Spark'} />
       </div>
