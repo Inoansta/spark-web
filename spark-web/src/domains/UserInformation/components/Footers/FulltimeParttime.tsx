@@ -14,16 +14,16 @@ function FulltimeParttime({ onClick, setSteps }: FulltimeParttime) {
   return (
     <div
       className={`${clicked ? 'block' : 'hidden'} bg-white pt-[12px] pb-[30px] fixed left-0 right-0 bottom-0 px-[20px] z-10 flex flex-col gap-[10px]`}
-      onClick={() => {
-        setClicked(false);
-        setSteps();
-      }}
     >
       {TIME.map((item) => {
         return (
           <Button
             text={item}
-            onClick={() => onClick(item)}
+            onClick={() => {
+              onClick(item);
+              setClicked(false);
+              setSteps();
+            }}
             buttonType={'large-outlined-button'}
             key={item}
           />

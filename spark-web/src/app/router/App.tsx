@@ -30,12 +30,11 @@ export default function RouterApp() {
             <Route path="/detail" element={<Detail />} />
             <Route path="/user-info" element={<UserInfo />} />
             <Route path="/analysis" element={<Analysis />} />
-            <Route path="/result" element={<Result />}>
-              <Route path="popular" element={<Popular />} />
-              <Route path="strength-weakness" element={<StrengthWeakness />} />
-              <Route path="growth-prediction" element={<GrowthPrediction />} />
-              <Route path="strategy" element={<Strategy />} />
-            </Route>
+            <Route path="/result" element={<Result />} />
+            <Route path="/popular" element={<Popular />} />
+            <Route path="/strength-weakness" element={<StrengthWeakness />} />
+            <Route path="/growth-prediction" element={<GrowthPrediction />} />
+            <Route path="/strategy" element={<Strategy />} />
           </Route>
         </Route>
       </Routes>

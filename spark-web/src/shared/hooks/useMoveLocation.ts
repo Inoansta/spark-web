@@ -9,10 +9,10 @@ const routeMap = {
   userInfo: '/user-info',
   analysis: '/analysis',
   result: '/result',
-  popular: '/result/popular',
-  strengthWeakness: '/result/strength-weakness',
-  growthPrediction: '/result/growth-prediction',
-  strategy: '/result/strategy',
+  popular: '/popular',
+  strengthWeakness: '/strength-weakness',
+  growthPrediction: '/growth-prediction',
+  strategy: '/strategy',
 } as const;
 
 export interface RouteInfo {
