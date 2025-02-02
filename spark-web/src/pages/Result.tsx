@@ -6,12 +6,13 @@ import { NextPageFooter } from '@/shared/components';
 const defaultOptions = {
   animationData: analysis,
   loop: true,
+  height: '100%',
 };
 
 export default function Result() {
   return (
     <div>
-      <div className={'absolute z-10'}>
+      <div className={'relative z-10'}>
         <Lottie options={defaultOptions} />
       </div>
       <div className={'flex justify-center'}>
