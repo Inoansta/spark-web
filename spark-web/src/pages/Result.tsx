@@ -1,15 +1,15 @@
-// import Lottie from 'react-lottie';
-// import analysis from '@/assets/result/analaysis.json';
+import Lottie from 'react-lottie';
+import analysis from '@/assets/result/analaysis.json';
 import {
-  Footer,
   ResultInteraction,
   ResultInteractionKeyframe,
 } from '@/domains/Results/components';
+import { NextPageFooter } from '@/shared/components';
 
-// const defaultOptions = {
-//   animationData: analysis,
-//   loop: true,
-// };
+const defaultOptions = {
+  animationData: analysis,
+  loop: true,
+};
 
 export default function Result() {
   return (
@@ -21,7 +21,11 @@ export default function Result() {
       <div className={'flex justify-center'}>
         <ResultInteraction channelName={'Spark'} />
       </div>
-      <Footer />
+      <NextPageFooter
+        nextLocation={'/popular'}
+        text={'다음'}
+        buttonType={'large-filled-button'}
+      />
     </div>
   );
 }

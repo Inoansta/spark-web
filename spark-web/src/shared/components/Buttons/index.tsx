@@ -1,4 +1,4 @@
-interface Button {
+export interface ButtonInterface {
   text: string;
   onClick: () => void;
   buttonType:
@@ -16,7 +16,7 @@ const style = {
     'px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-subtitle-b rounded-medium active:bg-primary7',
 };
 
-function Button({ text, onClick, buttonType }: Button) {
+export function Button({ text, onClick, buttonType }: ButtonInterface) {
   return (
     <div className={'flex justify-center'}>
       <button onClick={() => onClick()} className={style[buttonType]}>
@@ -25,5 +25,3 @@ function Button({ text, onClick, buttonType }: Button) {
     </div>
   );
 }
-
-export default Button;
