@@ -10,7 +10,7 @@ const animation = {
   visibility: 'hidden',
   lineHeight: '1.2',
   animationFillMode: 'forwards',
-};
+} as React.CSSProperties;
 
 export function ResultInteractionKeyframe() {
   return (

@@ -1,5 +1,5 @@
 // import Lottie from 'react-lottie';
-import analysis from '@/assets/result/analaysis.json';
+// import analysis from '@/assets/result/analaysis.json';
 import {
   Footer,
   ResultInteraction,
