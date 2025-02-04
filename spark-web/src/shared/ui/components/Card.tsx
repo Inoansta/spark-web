@@ -10,7 +10,7 @@ function Root({ className, children }: RootProps) {
   return (
     <article
       className={clsx(
-        `flex flex-col border rounded-2xl border-midEmphasis gap-y-5 overflow-hidden`,
+        `flex flex-col border rounded-2xl border-midEmphasis gap-y-5 overflow-hidden bg-white`,
         className,
       )}
     >
