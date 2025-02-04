@@ -1,6 +1,7 @@
 export interface SvgProps {
   color?: string;
   className?: string;
+  fill?: string;
   onClick?: () => void;
 }
 
