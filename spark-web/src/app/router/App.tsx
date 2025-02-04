@@ -3,6 +3,7 @@ import Analysis from '@/pages/Analysis';
 import Detail from '@/pages/Detail';
 import GrowthPrediction from '@/pages/GrowthPrediction';
 import Home from '@/pages/Home';
+import Login from '@/pages/Login';
 import OnBoarding from '@/pages/OnBoarding';
 import Popular from '@/pages/Popular';
 import Result from '@/pages/Result';
@@ -26,6 +27,7 @@ export default function RouterApp() {
         </Route>
         <Route element={<PageLayout />}>
           <Route path="/onboarding" element={<OnBoarding />} />
+          <Route path="/login" element={<Login />} />
           <Route element={<ProtectedLayout />}>
             <Route path="/detail" element={<Detail />} />
             <Route path="/user-info" element={<UserInfo />} />
