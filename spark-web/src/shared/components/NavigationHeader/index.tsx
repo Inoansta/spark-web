@@ -11,7 +11,7 @@ interface LeftContentProps extends RouteInfo {
 function Root({ className, children }: Omit<LeftContentProps, 'location'>) {
   return (
     <header
-      className={clsx('flex justify-between px-5 py-4 items-center', className)}
+      className={clsx('flex justify-between px-5 pt-5 items-center', className)}
     >
       {children}
     </header>

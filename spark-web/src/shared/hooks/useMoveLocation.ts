@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 
 const routeMap = {
   home: '/',
+  login: '/login',
   setting: '/setting',
   onboarding: '/onboarding',
   detail: '/detail',

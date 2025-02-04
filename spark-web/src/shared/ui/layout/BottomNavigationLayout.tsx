@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from 'react-router';
-import { HomeIcon } from '@/assets/nav/HomeIcon';
-import { SettingIcon } from '@/assets/nav/SettingIcon';
+import { HomeIcon } from '@/assets/svg/nav/HomeIcon';
+import { SettingIcon } from '@/assets/svg/nav/SettingIcon';
 
 interface NavLinkProps {
   path: string;
@@ -42,14 +42,12 @@ export default function BottomNavigationLayout() {
   return (
     <>
       <Outlet />
-      <nav
-        className={
-          'flex px-[10px] justify-center items-center gap-[10px] border-t bg-white'
-        }
-      >
-        {Object.values(linkConfig).map(({ path, icon, title }) => (
-          <Navigation path={path} icon={icon} title={title} key={path} />
-        ))}
+      <nav className="bg-white fixed bottom-0 max-w-[450px] w-full">
+        <div className="flex px-[10px] justify-center items-center gap-[10px] w-full">
+          {Object.values(linkConfig).map(({ path, icon, title }) => (
+            <Navigation path={path} icon={icon} title={title} key={path} />
+          ))}
+        </div>
       </nav>
     </>
   );

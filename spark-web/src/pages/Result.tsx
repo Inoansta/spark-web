@@ -1,19 +1,13 @@
-import Lottie from 'react-lottie';
 import analysis from '@/assets/result/analaysis.json';
 import { ResultInteraction } from '@/domains/Results/components';
 import { NextPageFooter } from '@/shared/components';
-
-const defaultOptions = {
-  animationData: analysis,
-  loop: true,
-  height: '100%',
-};
+import LottieAnimation from '@/shared/ui/components/AnimationLottie';
 
 export default function Result() {
   return (
     <div>
       <div className={'relative z-10'}>
-        <Lottie options={defaultOptions} />
+        <LottieAnimation animationData={analysis} height="100%" />
       </div>
       <div className={'flex justify-center'}>
         <ResultInteraction channelName={'Spark'} />
