@@ -15,7 +15,7 @@ export default function NextPageFooter({
   const navigate = useMoveLocation(nextLocation);
 
   return (
-    <div className="fixed left-0 right-0 bottom-0 px-[20px] pt-[12px] pb-[21px] z-20">
+    <div className="fixed max-w-[450px] w-full bottom-0 px-[20px] pt-[12px] pb-[21px] z-20">
       <Button text={text} onClick={navigate} buttonType={buttonType} />
     </div>
   );
