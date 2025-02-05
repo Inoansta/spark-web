@@ -135,15 +135,13 @@ export default function Popular() {
               'flex  gap-[20px] flex-col mt-[calc(100vh/6)] mb-[100px]'
             }
           >
-            {dummy.map((item, index) => {
-              return (
-                <PopularCard
-                  videoInformation={item}
-                  index={index}
-                  key={item.id}
-                />
-              );
-            })}
+            {dummy.map((item, index) => (
+              <PopularCard
+                videoInformation={item}
+                index={index}
+                key={item.id}
+              />
+            ))}
           </div>
         </div>
       </div>
