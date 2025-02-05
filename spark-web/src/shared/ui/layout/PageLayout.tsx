@@ -29,19 +29,30 @@ function CurrentLocation() {
         </NavigationHeader>
       );
     }
-    case '/user-info':
+    case '/user-info': {
+      return (
+        <NavigationHeader className={'pb-[5px]'}>
+          <NavigationHeader.LeftContent location="back">
+            <BackIcon />
+          </NavigationHeader.LeftContent>
+          <NavigationHeader.RightContent location="/detail">
+            <CloseIcon />
+          </NavigationHeader.RightContent>
+        </NavigationHeader>
+      );
+    }
     case '/result':
     case '/popular':
     case '/strength-weakness':
     case '/growth-prediction':
     case '/strategy': {
       return (
-        <NavigationHeader>
+        <NavigationHeader className={'p-5 fixed max-w-[450px] w-full'}>
           <NavigationHeader.LeftContent location="back">
-            <BackIcon />
+            <BackIcon color={'white'} />
           </NavigationHeader.LeftContent>
           <NavigationHeader.RightContent location="/detail">
-            <CloseIcon />
+            <CloseIcon color={'white'} />
           </NavigationHeader.RightContent>
         </NavigationHeader>
       );
