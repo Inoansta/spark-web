@@ -1,4 +1,4 @@
-export default function DateFormatter(publishedAt: string): string {
+export function DateFormatter(publishedAt: string): string {
   return new Intl.DateTimeFormat('ko-KR', {
     year: 'numeric',
     month: '2-digit',
