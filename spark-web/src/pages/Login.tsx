@@ -21,7 +21,7 @@ export default function Login() {
       <Spacing size="lsmall" />
       <LottieAnimation
         animationData={channelLogin}
-        style={{ borderRadius: '12px', overflow: 'hidden' }}
+        className="rounded-xl overflow-hidden"
       />
       <Spacing className="h-[76px]" />
       <div className="flex items-center bg-red1 px-[26px] py-3 rounded-[26px]">
