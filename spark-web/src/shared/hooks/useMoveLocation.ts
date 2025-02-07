@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router';
 
-const routeMap = {
+const _routeMap = {
   home: '/',
   login: '/login',
   setting: '/setting',
@@ -17,7 +17,7 @@ const routeMap = {
 } as const;
 
 export interface RouteInfo {
-  location: (typeof routeMap)[keyof typeof routeMap] | 'back';
+  location: (typeof _routeMap)[keyof typeof _routeMap] | 'back';
 }
 
 export const useMoveLocation = (location: RouteInfo['location']) => {
