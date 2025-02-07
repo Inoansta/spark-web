@@ -10,7 +10,7 @@ function UserDialogbox({ answers, isTyped }: UserDialogbox) {
 
   useEffect(() => {
     setFormedQuestions(isTyped ? answers : `${answers}입니다.`);
-  }, []);
+  }, [answers, isTyped]);
 
   return (
     <div className={'text-right my-[20px]'}>
