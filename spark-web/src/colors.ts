@@ -2,6 +2,7 @@ export const COLORS = {
   // Gray Scale
   black: '#1C1C1E', // Black
   gray: '#5E6166', //gray
+  gray5: '#8D9199',
   highEmphasis: '#333333', // High Emphasis Gray
   subText: '#616166', // Gray5
   midEmphasis: '#B9B9B9', // Mid Emphasis Gray
@@ -36,4 +37,7 @@ export const COLORS = {
   gradient6: '#0068FF', // Info1
   gradient7: '#335BFF', // Info2
   gradient8: '#C9DEFE', // Info3
+
+  // red Color
+  red1: '#F00',
 } as const;

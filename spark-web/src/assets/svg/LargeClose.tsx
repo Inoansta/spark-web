@@ -1,6 +1,6 @@
 import { SvgProps } from './nav/SettingIcon';
 
-export const LargeClose = ({ color, className, ...props }: SvgProps) => {
+export const LargeClose = ({ className, ...props }: SvgProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

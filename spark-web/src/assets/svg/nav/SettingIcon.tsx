@@ -1,4 +1,6 @@
-export interface SvgProps {
+import type { ComponentProps } from 'react';
+
+export interface SvgProps extends ComponentProps<'svg'> {
   color?: string;
   className?: string;
   fill?: string;

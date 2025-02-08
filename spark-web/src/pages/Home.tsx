@@ -104,8 +104,8 @@ export default function Home() {
             </div>
           </Card.Header>
         </Card>
+        <Spacing size="large" />
       </div>
-      <Spacing size="larage" />
     </main>
   );
 }

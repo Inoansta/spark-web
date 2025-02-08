@@ -2,11 +2,15 @@ import { Outlet, useLocation } from 'react-router';
 import { BackIcon } from '@/assets/svg/nav/BackIcon';
 import { CloseIcon } from '@/assets/svg/nav/CloseIcon';
 import { NavigationHeader } from '@/shared/components';
+import { RouteInfo } from '@/shared/hooks';
 
 // TODO: switch 문 말고 다른걸로 대체
 function CurrentLocation() {
   const location = useLocation();
   const currentPathname = location.pathname;
+
+  const isSamePathname = (path: RouteInfo['location']) =>
+    currentPathname === path;
 
   switch (currentPathname) {
     case '/analysis': {
@@ -21,7 +25,9 @@ function CurrentLocation() {
     case '/login':
     case '/detail': {
       return (
-        <NavigationHeader>
+        <NavigationHeader
+          className={`${isSamePathname('/login') && 'bg-line'}`}
+        >
           <div />
           <NavigationHeader.RightContent location="/">
             <CloseIcon />

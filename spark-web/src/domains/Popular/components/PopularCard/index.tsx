@@ -1,5 +1,5 @@
 import EyeIcon from '@/assets/svg/EyeIcon';
-import { DateFormatter } from '@/shared/function';
+import { DateFormatter } from '@/domains/Popular/lib/utils';
 
 interface PopularCard {
   videoInformation: any;
