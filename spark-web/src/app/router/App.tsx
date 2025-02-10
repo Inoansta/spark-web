@@ -16,6 +16,7 @@ import {
   PageLayout,
   ProtectedLayout,
 } from '@/shared/ui';
+import { QuerySuspenseBoundary } from '../provider';
 
 export default function RouterApp() {
   return (
@@ -27,7 +28,17 @@ export default function RouterApp() {
         </Route>
         <Route element={<PageLayout />}>
           <Route path="/onboarding" element={<OnBoarding />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={
+              <QuerySuspenseBoundary
+                loadingFallback={<>Loading...</>}
+                errorFallback={<>Error</>}
+              >
+                <Login />
+              </QuerySuspenseBoundary>
+            }
+          />
           <Route element={<ProtectedLayout />}>
             <Route path="/detail" element={<Detail />} />
             <Route path="/user-info" element={<UserInfo />} />
