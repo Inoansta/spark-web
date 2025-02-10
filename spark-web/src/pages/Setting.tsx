@@ -45,7 +45,7 @@ export default function Setting() {
             }) => (
               <li key={title}>
                 <LocationMove
-                  className="flex justify-between px-5 py-3"
+                  className="flex justify-between px-5 py-3 cursor-pointer"
                   location={location}
                 >
                   <div
