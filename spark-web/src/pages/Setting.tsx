@@ -8,10 +8,13 @@ const LIST_DATA = [
   { title: '앱 버전', description: '1.0.00', location: '/' },
   { title: '공지사항', location: '/' },
   { title: '문의하기', location: '/' },
-  { title: '서비스 이용약관', location: 'https://www.app-spark.privacy/' },
+  {
+    title: '서비스 이용약관',
+    location: 'https://spark-terms-and-privacy.vercel.app/',
+  },
   {
     title: '개인정보처리방침',
-    location: 'https://www.app-spark.privacy/privacy',
+    location: 'https://spark-terms-and-privacy.vercel.app/privacy',
   },
   {
     title: '스파크 인스타',
