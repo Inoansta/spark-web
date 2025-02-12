@@ -1,7 +1,6 @@
-import channelLogin from '@/assets/login/channel_login.json';
-import { YoutubeIcon } from '@/assets/svg/YoutubeIcon';
+import channelLogin from '@/assets/login/channel_login.gif';
+import { YoutubeIcon } from '@/assets/svg/logo/YoutubeIcon';
 import { Spacing, Text } from '@/shared/ui';
-import LottieAnimation from '@/shared/ui/components/AnimationLottie';
 
 export default function Login() {
   return (
@@ -19,10 +18,7 @@ export default function Login() {
         />
       </section>
       <Spacing size="lsmall" />
-      <LottieAnimation
-        animationData={channelLogin}
-        className="rounded-xl overflow-hidden"
-      />
+      <img src={channelLogin} />
       <Spacing className="h-[76px]" />
       <div className="flex items-center bg-red1 px-[26px] py-3 rounded-[26px]">
         <YoutubeIcon />

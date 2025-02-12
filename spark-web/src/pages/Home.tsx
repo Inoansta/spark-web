@@ -1,13 +1,12 @@
-import homeStrategy from '@/assets/animation/homeStrategy.json';
-import { Avatar } from '@/assets/svg/Avatar/Avatar';
-import { Logo } from '@/assets/svg/logo/Logo';
+import { Avatar } from '@/assets/home/Avatar';
+import homeStrategy from '@/assets/home/homeStrategy.json';
+import { Logo } from '@/assets/home/Logo';
 import { SmallLogo } from '@/assets/svg/logo/SmallLogo';
 import { FrontIcon } from '@/assets/svg/nav/FrontIcon';
 import { CheerupBar } from '@/domains/Home/components';
 import UserCard from '@/domains/Home/components/UserCard';
 import { NavigationHeader, RouteMove } from '@/shared/components';
-import { Card, Spacing, Text } from '@/shared/ui';
-import LottieAnimation from '@/shared/ui/components/AnimationLottie';
+import { AnimationLottie, Card, Spacing, Text } from '@/shared/ui';
 import SpeechBubble from '@/shared/ui/layout/SpeechBubble';
 
 const mockData = [
@@ -75,7 +74,7 @@ export default function Home() {
           title="내 채널 성장 비법"
           description="구독자를 늘리는 팁을 알려 드릴게요"
           content={
-            <LottieAnimation
+            <AnimationLottie
               animationData={homeStrategy}
               className="w-full h-full"
             />
