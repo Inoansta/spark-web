@@ -10,6 +10,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        suit: ['SUIT', 'sans-serif'],
+      },
       colors: {
         ...COLORS,
       },
