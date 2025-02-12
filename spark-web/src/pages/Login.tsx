@@ -1,9 +1,12 @@
-import channelLogin from '@/assets/login/channel_login.json';
+import loadingGif from '@/assets/login/channel_login.gif';
 import { YoutubeIcon } from '@/assets/svg/YoutubeIcon';
+import LocationMove from '@/domains/Login/components/LocationMove';
+import useGoogleAuth from '@/domains/Login/hooks/useGoogleAuth';
 import { Spacing, Text } from '@/shared/ui';
-import LottieAnimation from '@/shared/ui/components/AnimationLottie';
 
 export default function Login() {
+  const { data } = useGoogleAuth();
+
   return (
     <main className="flex flex-col px-5 pt-5 pb-10 bg-line min-h-[812px]">
       <section className="text-center">
@@ -19,18 +22,23 @@ export default function Login() {
         />
       </section>
       <Spacing size="lsmall" />
-      <LottieAnimation
-        animationData={channelLogin}
-        className="rounded-xl overflow-hidden"
-      />
+
+      <img src={loadingGif} alt="로그인 gif 애니메이션" />
+
       <Spacing className="h-[76px]" />
-      <div className="flex items-center bg-red1 px-[26px] py-3 rounded-[26px]">
+
+      <LocationMove
+        location={data.googleAuthUrl}
+        className="flex items-center bg-red1 px-[26px] py-3 rounded-[26px]"
+      >
         <YoutubeIcon />
         <button className="text-white text-center w-full">
           Youtube 채널 가지고 오기
         </button>
-      </div>
+      </LocationMove>
+
       <Spacing className="h-[10px]" />
+
       <Text
         as="description"
         title="시작함으로써 이용약관 및 개인정보 수집 및 이용에 동의하게 됩니다."
