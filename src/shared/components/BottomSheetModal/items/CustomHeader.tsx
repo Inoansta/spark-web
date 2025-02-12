@@ -10,7 +10,11 @@ function CustomHeader({ title, onClose }: CustomHeader) {
     <div className={'flex flex-col justify-center'}>
       {/* where the close button goes */}
       <div>
-        <LargeClose className={'ml-auto mt-[20px]'} onClick={() => onClose()} />
+        <LargeClose
+          fill="red"
+          className={'ml-auto mt-[20px]'}
+          onClick={() => onClose()}
+        />
       </div>
       <div className={'text-black text-title5-b my-[10px]'}>{title}</div>
     </div>

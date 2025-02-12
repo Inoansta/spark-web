@@ -15,8 +15,8 @@ function CurrentLocation() {
   switch (currentPathname) {
     case '/analysis': {
       return (
-        <NavigationHeader>
-          <NavigationHeader.LeftContent location={'back'}>
+        <NavigationHeader className="bg-line">
+          <NavigationHeader.LeftContent location="/user-info">
             <BackIcon />
           </NavigationHeader.LeftContent>
         </NavigationHeader>
