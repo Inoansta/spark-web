@@ -4,6 +4,7 @@ import Detail from '@/pages/Detail';
 import GrowthPrediction from '@/pages/GrowthPrediction';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
+import Oauth from '@/pages/Oauth';
 import OnBoarding from '@/pages/OnBoarding';
 import Popular from '@/pages/Popular';
 import Result from '@/pages/Result';
@@ -50,6 +51,7 @@ export default function RouterApp() {
             <Route path="/strategy" element={<Strategy />} />
           </Route>
         </Route>
+        <Route path="/oauth/google" element={<Oauth />} />
       </Routes>
     </BrowserRouter>
   );
