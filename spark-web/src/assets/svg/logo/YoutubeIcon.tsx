@@ -1,4 +1,4 @@
-import { SvgProps } from './nav/SettingIcon';
+import { SvgProps } from '../nav/SettingIcon';
 
 export const YoutubeIcon = ({ className, ...props }: SvgProps) => {
   return (

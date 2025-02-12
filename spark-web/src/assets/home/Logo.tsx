@@ -1,4 +1,4 @@
-import { SvgProps } from '../nav/SettingIcon';
+import { SvgProps } from '../svg/nav/SettingIcon';
 
 export const Logo = ({ className, ...props }: SvgProps) => {
   return (
