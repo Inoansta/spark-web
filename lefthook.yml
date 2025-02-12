@@ -27,17 +27,17 @@ pre-push:
   commands:
     lint:
       run: |
-        cd spark-web && npm run lint
+        npm run lint
       stage_fixed: true
 
     build:
       run: |
-        cd spark-web && npm run build
+        npm run build
       stage_fixed: true
 
 pre-commit:
   commands:
     lint:
       run: |
-        cd spark-web && npm run lint
+        npm run lint
       stage_fixed: true
