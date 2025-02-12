@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 interface TextProps {
   as: keyof typeof style;
@@ -12,5 +13,5 @@ const style = {
 } as const;
 
 export default function Text({ as, title, className }: TextProps) {
-  return <p className={clsx(style[as], className)}>{title}</p>;
+  return <p className={twMerge(clsx(style[as], className))}>{title}</p>;
 }

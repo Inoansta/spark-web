@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import { type RouteInfo } from '@/shared/hooks';
 import RouteMove from '../RouteMove';
 
@@ -11,9 +12,11 @@ interface LeftContentProps extends RouteInfo {
 function Root({ className, children }: Omit<LeftContentProps, 'location'>) {
   return (
     <header
-      className={clsx(
-        'flex justify-between px-5 pt-5 items-center bg-inherit',
-        className,
+      className={twMerge(
+        clsx(
+          'flex justify-between px-5 pt-5 items-center bg-inherit cursor-pointer',
+          className,
+        ),
       )}
     >
       {children}

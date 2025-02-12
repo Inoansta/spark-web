@@ -7,3 +7,4 @@ export { default as GlobalLayout } from './layout/GlobalLayout';
 export { default as BottomNavigationLayout } from './layout/BottomNavigationLayout';
 export { default as PageLayout } from './layout/PageLayout';
 export { default as ProtectedLayout } from './layout/ProtectedLayout';
+export { default as AnimationLottie } from './components/AnimationLottie';
