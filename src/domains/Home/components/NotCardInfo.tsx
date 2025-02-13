@@ -5,6 +5,8 @@ import { RouteMove } from '@/shared/components';
 import LottieAnimation from '@/shared/ui/components/AnimationLottie';
 import UserCard from './UserCard';
 
+// TODO: CardInfo와 똑같은 ui 발생.리펙토링 필요
+
 export default function NotCardInfo() {
   return (
     <div className="flex flex-col gap-y-5">
