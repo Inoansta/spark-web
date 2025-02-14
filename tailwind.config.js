@@ -13,6 +13,9 @@ export default {
       fontFamily: {
         suit: ['SUIT', 'sans-serif'],
       },
+      boxShadow: {
+        'custom-up': '0 -2px 5px rgba(0, 0, 0, 0.10)',
+      },
       colors: {
         ...COLORS,
       },

@@ -40,4 +40,5 @@ export const COLORS = {
 
   // red Color
   red1: '#F00',
+  gay2: '#333',
 } as const;
