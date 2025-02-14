@@ -1,13 +1,12 @@
 import type { ReactNode } from 'react';
 import homeStrategy from '@/assets/animation/homeStrategy.json';
 import { Avatar as DefaultImage } from '@/assets/svg/Avatar/Avatar';
-import { SmallLogo } from '@/assets/svg/logo/SmallLogo';
 import { SmallYoutubeIcon } from '@/assets/svg/logo/SmallYoutbeIcon';
 import { FrontIcon } from '@/assets/svg/nav/FrontIcon';
 import { ACCESS_TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { RouteMove } from '@/shared/components';
 import { Storage } from '@/shared/lib';
-import { Card, Flex, LottieAnimation, SpeechBubble, Text } from '@/shared/ui';
+import { Card, Flex, LottieAnimation, Text } from '@/shared/ui';
 import { formatNumberWithCommas, formatNumberWithUnit } from '../lib/utils';
 
 interface ChannelCommonCardProps {
@@ -54,18 +53,18 @@ function ChannelGrowCard() {
 }
 
 // TODO: 분석 여부에 따라서 Bubble 컴포넌트 추가
-function UseChannelRecommend() {
-  const isRecommend = false;
+// function UseChannelRecommend() {
+//   const isRecommend = false;
 
-  return isRecommend ? (
-    <Flex>
-      <SpeechBubble text="스파크가 궁금하다면?" icon={<SmallLogo />} />
-      <ChannelGrowCard />
-    </Flex>
-  ) : (
-    <ChannelGrowCard />
-  );
-}
+//   return isRecommend ? (
+//     <Flex>
+//       <SpeechBubble text="스파크가 궁금하다면?" icon={<SmallLogo />} />
+//       <ChannelGrowCard />
+//     </Flex>
+//   ) : (
+//     <ChannelGrowCard />
+//   );
+// }
 
 function ChannelCommonCard({
   header,
