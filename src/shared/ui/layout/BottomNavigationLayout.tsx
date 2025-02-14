@@ -1,10 +1,11 @@
 import { NavLink, Outlet } from 'react-router';
 import { HomeIcon } from '@/assets/svg/nav/HomeIcon';
-import { SettingIcon } from '@/assets/svg/nav/SettingIcon';
+import { UnifiedSettingIcon } from '@/assets/svg/nav/UnifiedSettingIcon';
+import Flex from './Flex';
 
 interface NavLinkProps {
   path: string;
-  icon: typeof SettingIcon;
+  icon: typeof UnifiedSettingIcon;
   title: string;
 }
 
@@ -17,7 +18,7 @@ const linkConfig = {
   setting: {
     path: '/setting',
     title: '설정',
-    icon: SettingIcon,
+    icon: UnifiedSettingIcon,
   },
 };
 
@@ -27,7 +28,7 @@ function Navigation({ path, icon: Icon, title }: NavLinkProps) {
       <NavLink to={path}>
         {({ isActive }) => (
           <div className={'flex flex-col items-center'}>
-            <Icon color={isActive ? 'black' : 'gray-500'} />
+            <Icon color={isActive ? 'black' : 'gray-500'} isActive={isActive} />
             <span className={isActive ? 'text-black' : 'text-gray-500'}>
               {title}
             </span>
@@ -42,12 +43,17 @@ export default function BottomNavigationLayout() {
   return (
     <>
       <Outlet />
-      <nav className="bg-white fixed bottom-0 max-w-[450px] w-full">
-        <div className="flex px-[10px] justify-center items-center gap-[10px] w-full">
+      <nav className="bg-white fixed bottom-0 max-w-[450px] w-full border-t-disabled shadow-custom-up">
+        <Flex
+          justify="center"
+          align="center"
+          gap={'10px'}
+          className="px-[10px] w-full"
+        >
           {Object.values(linkConfig).map(({ path, icon, title }) => (
             <Navigation path={path} icon={icon} title={title} key={path} />
           ))}
-        </div>
+        </Flex>
       </nav>
     </>
   );
