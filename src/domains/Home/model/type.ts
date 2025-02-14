@@ -11,3 +11,8 @@ export interface ResponseChannelProfile {
   message: string;
   result: ChannelProfileResult;
 }
+
+export interface FormatNumberWithUnitProps {
+  number: number;
+  unit: '회' | '명' | '개';
+}
