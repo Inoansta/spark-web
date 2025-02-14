@@ -1,4 +1,4 @@
-import { SvgProps } from '../nav/SettingIcon';
+import { SvgProps } from '../nav/UnifiedSettingIcon';
 
 export const Avatar = ({ className, ...props }: SvgProps) => {
   return (

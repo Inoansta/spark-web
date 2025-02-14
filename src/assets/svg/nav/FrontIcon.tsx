@@ -1,4 +1,4 @@
-import { SvgProps } from './SettingIcon';
+import { SvgProps } from './UnifiedSettingIcon';
 export const FrontIcon = ({
   className,
   fill = '#8D9199',
