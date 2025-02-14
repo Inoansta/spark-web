@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
+import Flex from '../layout/Flex';
 
 interface RootProps {
   className?: string;
@@ -8,40 +9,30 @@ interface RootProps {
 
 function Root({ className, children }: RootProps) {
   return (
-    <article
+    <Flex
+      direction="column"
+      gapY={5}
       className={clsx(
-        `flex flex-col border rounded-2xl border-midEmphasis gap-y-5 overflow-hidden bg-white`,
+        `border rounded-2xl border-disabled overflow-hidden bg-white`,
         className,
       )}
+      as="article"
     >
       {children}
-    </article>
+    </Flex>
   );
 }
 
 function Header({ className, children }: RootProps) {
-  return (
-    <div className={clsx(`flex flex-col px-5 pt-5 flex-1`, className)}>
-      {children}
-    </div>
-  );
+  return <div className={clsx(`px-5 pt-5 `, className)}>{children}</div>;
 }
 
 function Content({ className, children }: RootProps) {
-  return (
-    <div
-      className={clsx(
-        `p-5 flex justify-between flex-2 gap-x-9 items-center`,
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
+  return <div className={clsx(`px-5`, className)}>{children}</div>;
 }
 
 function Bottom({ className, children }: RootProps) {
-  return <div className={clsx(`flex-1`, className)}>{children}</div>;
+  return <div className={clsx(``, className)}>{children}</div>;
 }
 
 const Card = Object.assign(Root, { Header, Content, Bottom });
