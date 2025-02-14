@@ -6,8 +6,16 @@ import { Divider, Text } from '@/shared/ui';
 
 const LIST_DATA = [
   { title: '앱 버전', description: '1.0.00', location: '/' },
-  { title: '공지사항', location: '/' },
-  { title: '문의하기', location: '/' },
+  {
+    title: '공지사항',
+    location:
+      'https://triangular-trombone-8fb.notion.site/195ea985e0f28085953af92e9b954cfc?pvs=4',
+  },
+  {
+    title: '문의하기',
+    location:
+      'https://triangular-trombone-8fb.notion.site/195ea985e0f280a5a13fdfadff1beac6?pvs=4',
+  },
   {
     title: '서비스 이용약관',
     location: 'https://spark-terms-and-privacy.vercel.app/',
