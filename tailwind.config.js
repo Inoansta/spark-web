@@ -8,6 +8,11 @@ export default {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    {
+      pattern: /^(gap|gap-x|gap-y)-\d+$/,
+    },
+  ],
   theme: {
     extend: {
       fontFamily: {
