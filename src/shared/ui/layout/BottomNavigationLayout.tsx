@@ -47,7 +47,7 @@ export default function BottomNavigationLayout() {
         <Flex
           justify="center"
           align="center"
-          gap={'10px'}
+          gap="[10px]"
           className="px-[10px] w-full"
         >
           {Object.values(linkConfig).map(({ path, icon, title }) => (
