@@ -19,7 +19,7 @@ export default function LocationMove({
   };
 
   return (
-    <div onClick={handleLocationMove} {...props}>
+    <div onClick={handleLocationMove} {...props} className="cursor-pointer">
       {children}
     </div>
   );

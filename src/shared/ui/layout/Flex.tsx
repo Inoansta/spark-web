@@ -1,4 +1,6 @@
 import type { ElementType, ReactNode } from 'react';
+import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 interface FlexProps {
   children: ReactNode;
@@ -6,8 +8,8 @@ interface FlexProps {
   align?: 'center' | 'start' | 'end' | 'baseline' | 'stretch';
   justify?: 'center' | 'start' | 'end' | 'between' | 'around';
   gap?: number | string;
-  gapX?: number;
-  gapY?: number;
+  gapX?: number | string;
+  gapY?: number | string;
   as?: ElementType;
   className?: string;
 }
@@ -27,6 +29,7 @@ const justifyAttribute = {
   between: 'justify-between',
   around: 'justify-around',
 };
+
 export default function Flex({
   children,
   direction = 'row',
@@ -39,20 +42,16 @@ export default function Flex({
   className,
 }: FlexProps) {
   const directionClass = direction === 'row' ? 'flex-row' : 'flex-col';
-
   const alignClass = alignAttribute[align];
-
   const justifyClass = justifyAttribute[justify];
 
-  const gapClass = gap ? `gap-${gap}` : '';
-  const gapXClass = gapX ? `gap-x-${gapX}` : '';
-  const gapYClass = gapY ? `gap-y-${gapY}` : '';
+  const gapClass = gap !== undefined ? `gap-${gap}` : '';
+  const gapXClass = gapX !== undefined ? `gap-x-${gapX}` : '';
+  const gapYClass = gapY !== undefined ? `gap-y-${gapY}` : '';
 
+  const flexClassName =
+    `flex ${directionClass} ${alignClass} ${justifyClass} ${gapClass} ${gapXClass} ${gapYClass}`.trim();
   return (
-    <Tag
-      className={`flex ${directionClass} ${alignClass} ${justifyClass} ${gapClass} ${gapXClass} ${gapYClass} ${className}`}
-    >
-      {children}
-    </Tag>
+    <Tag className={twMerge(clsx(flexClassName, className))}>{children}</Tag>
   );
 }

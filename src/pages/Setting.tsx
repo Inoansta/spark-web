@@ -2,7 +2,7 @@ import { InstaGram } from '@/assets/svg/logo/InstaGram';
 import { BackIcon } from '@/assets/svg/nav/BackIcon';
 import LocationMove from '@/domains/Login/components/LocationMove';
 import { NavigationHeader } from '@/shared/components';
-import { Divider, Text } from '@/shared/ui';
+import { Divider, Flex, Text } from '@/shared/ui';
 
 const LIST_DATA = [
   { title: '앱 버전', description: '1.0.00', location: '/' },
@@ -52,23 +52,22 @@ export default function Setting() {
               descriptionColor,
             }) => (
               <li key={title}>
-                <LocationMove
-                  className="flex justify-between px-5 py-3 cursor-pointer"
-                  location={location}
-                >
-                  <div
-                    className={`${RightIcon && 'flex items-center mr-[2px]'}`}
-                  >
-                    <Text as="title" title={title} />
-                    {RightIcon && <RightIcon />}
-                  </div>
-                  {description && (
-                    <Text
-                      as="description"
-                      title={description}
-                      className={`text-${descriptionColor}`}
-                    />
-                  )}
+                <LocationMove location={location}>
+                  <Flex justify="between" className="px-5 py-3">
+                    <Flex align="center" className="mr-[2px]">
+                      <Text as="title" title={title} />
+                      {RightIcon && <RightIcon />}
+                    </Flex>
+                    {description && (
+                      <Text
+                        as="description"
+                        title={description}
+                        className={`${
+                          descriptionColor === 'primary3' ? 'text-primary3' : ''
+                        }`}
+                      />
+                    )}
+                  </Flex>
                 </LocationMove>
                 <Divider />
               </li>
