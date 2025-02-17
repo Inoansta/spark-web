@@ -22,6 +22,8 @@ export const COLORS = {
   primary7: '#002AEF', // Primary7
   primary8: '#001B12', // Primary8
   primary9: '#00008E', // Primary9
+  primary10: '#3385FF',
+  primary11: '#0066FF',
 
   // Main and Secondary Colors
   main: '#4557FF', // Main
@@ -41,4 +43,5 @@ export const COLORS = {
   // red Color
   red1: '#F00',
   gay2: '#333',
+  gray4: '#C0C2C8',
 } as const;
