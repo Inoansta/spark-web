@@ -1,5 +1,4 @@
 import loadingGif from '@/assets/login/channel_login.gif';
-import { YoutubeIcon } from '@/assets/svg/YoutubeIcon';
 import LocationMove from '@/domains/Login/components/LocationMove';
 import useGoogleAuth from '@/domains/Login/hooks/useGoogleAuth';
 import { Flex, Spacing, Text } from '@/shared/ui';
