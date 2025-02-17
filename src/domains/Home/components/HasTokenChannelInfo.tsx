@@ -3,10 +3,12 @@ import homeStrategy from '@/assets/animation/homeStrategy.json';
 import { Avatar as DefaultImage } from '@/assets/svg/Avatar/Avatar';
 import { SmallYoutubeIcon } from '@/assets/svg/logo/SmallYoutbeIcon';
 import { FrontIcon } from '@/assets/svg/nav/FrontIcon';
+import LocationMove from '@/domains/Login/components/LocationMove';
 import { ACCESS_TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { RouteMove } from '@/shared/components';
 import { Storage } from '@/shared/lib';
 import { Card, Flex, LottieAnimation, Text } from '@/shared/ui';
+import useChannelProfile from '../hooks/useChannelProfile';
 import { formatNumberWithCommas, formatNumberWithUnit } from '../lib/utils';
 
 interface ChannelCommonCardProps {
@@ -18,7 +20,11 @@ interface ChannelCommonCardProps {
   totalView?: string;
 }
 
-function ChannelGrowCard() {
+interface ChannelGrowCardProps {
+  disabled: boolean;
+}
+
+function ChannelGrowCard({ disabled = false }: ChannelGrowCardProps) {
   return (
     <Card>
       <Card.Header>
@@ -35,7 +41,7 @@ function ChannelGrowCard() {
           <button
             type="button"
             title="자세히 알아보기"
-            disabled
+            disabled={disabled}
             className="border-primary5 border bg-inherit text-white w-full px-5 py-[10px] rounded-[10px]"
           >
             <Flex justify="center" align="center" gapX={2}>
@@ -135,33 +141,44 @@ function EmptyCard() {
           </RouteMove>
         }
       />
-      <ChannelGrowCard />
+      <ChannelGrowCard disabled={true} />
     </Flex>
   );
 }
 
 export function ChannelCard() {
-  // const { data } = useChannelProfile();
+  const { data } = useChannelProfile();
 
   return (
     <Flex direction="column" gapY={5}>
       <ChannelCommonCard
         header={
           <Flex justify="between" align="center">
-            <Text as="title" title="@채널명" className="text-[18px]" />
-            <button type="button" className="bg-line p-[10px] rounded-[20px]">
-              <Flex align="center">
-                <SmallYoutubeIcon className="mr-1" />
-                <Text as="description" title="유튜브" className="font-bold" />
-              </Flex>
-            </button>
+            <LocationMove
+              location={`https://www.youtube.com/@${data.result.channelId}`}
+            >
+              <Text
+                as="title"
+                title={`@${data.result.channelName}`}
+                className="text-[18px]"
+              />
+              <button type="button" className="bg-line p-[10px] rounded-[20px]">
+                <Flex align="center">
+                  <SmallYoutubeIcon className="mr-1" />
+                  <Text as="description" title="유튜브" className="font-bold" />
+                </Flex>
+              </button>
+            </LocationMove>
           </Flex>
         }
-        posting={formatNumberWithCommas(10000)}
-        subscriber={formatNumberWithUnit(2800, '명')}
-        totalView={formatNumberWithUnit(10000000, '회')}
+        posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
+        subscriber={formatNumberWithUnit(
+          data.result.subscriberCount ?? 0,
+          '명',
+        )}
+        totalView={formatNumberWithUnit(data.result.totalViewCount ?? 0, '회')}
       />
-      <ChannelGrowCard />
+      <ChannelGrowCard disabled={false} />
     </Flex>
   );
 }
