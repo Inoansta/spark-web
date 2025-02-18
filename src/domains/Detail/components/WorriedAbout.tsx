@@ -152,7 +152,7 @@ export default function WorriedAbout() {
         <br />
         이런 고민 해보신적 있죠?
       </div>
-      <LottieAnimation animationData={carousel} />
+      <LottieAnimation animationData={carousel} loop={true} />
       {/* <div className={'h-[300px]'}>
         <Carousel
           slides={elements}
