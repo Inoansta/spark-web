@@ -71,7 +71,7 @@ export default function Recommendation() {
         </div>
       </div>
       <div className={'mt-[60px] flex justify-center items-center'}>
-        <img src={FirstPro} />
+        <img src={FirstPro} className={'w-[50%]'} />
       </div>
       <div
         className={
@@ -88,7 +88,7 @@ export default function Recommendation() {
         채널의 데이터를 분석하고, 강점과 약점을 진단해요!
       </div>
       <div className={'mt-[60px] flex justify-center items-center'}>
-        <img src={SecondPro} />
+        <img src={SecondPro} className={'w-[40%]'} />
       </div>
       <div className={'flex'}>
         <div
@@ -107,7 +107,7 @@ export default function Recommendation() {
         </div>
       </div>
       <div className={'mt-[60px] flex justify-center items-center'}>
-        <img src={ThirdPro} />
+        <img src={ThirdPro} className={'w-[40%]'} />
       </div>
       <div
         className={

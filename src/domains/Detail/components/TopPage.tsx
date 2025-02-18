@@ -1,5 +1,5 @@
 import channelGrowing from '@/assets/detail/img/channelGrowing.png';
-import subscriberGrowthPredction from '@/assets/detail/img/subscriberGrowthPrediction.png';
+import subscriberGrowthPrediction from '@/assets/detail/img/subscriberGrowthPrediction.png';
 import viewGrowthPrediction from '@/assets/detail/img/viewGrowthPrediciton.png';
 import { Carousel } from '@/shared/components';
 
@@ -7,21 +7,21 @@ const slides = [
   {
     children: (
       <div className={'overflow-hidden mx-auto'}>
-        <img src={subscriberGrowthPredction} />
+        <img src={channelGrowing} className={'w-full'} />
       </div>
     ),
   },
   {
     children: (
       <div className={'overflow-hidden mx-auto'}>
-        <img src={channelGrowing} />
+        <img src={subscriberGrowthPrediction} className={'w-full'} />
       </div>
     ),
   },
   {
     children: (
       <div className={'overflow-hidden mx-auto'}>
-        <img src={viewGrowthPrediction} />
+        <img src={viewGrowthPrediction} className={'w-full'} />
       </div>
     ),
   },
@@ -58,7 +58,7 @@ export default function TopPage() {
           sectionClassName={'w-full'}
           viewPortClassName={'overflow-hidden'}
           containerClassName={'flex -ml-4'}
-          itemClassName={'flex-none w-[50%] px-[6px]'}
+          itemClassName={'flex-none w-[70%] px-[6px]'}
           options={{
             loop: true,
             align: 'center',
