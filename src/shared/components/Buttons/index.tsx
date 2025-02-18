@@ -1,4 +1,5 @@
-export interface ButtonInterface {
+export interface ButtonInterface
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
   onClick: () => void;
   buttonType:
@@ -16,10 +17,19 @@ const style = {
     'px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-subtitle-b rounded-medium active:bg-primary7',
 };
 
-export function Button({ text, onClick, buttonType }: ButtonInterface) {
+export function Button({
+  text,
+  onClick,
+  buttonType,
+  ...props
+}: ButtonInterface) {
   return (
     <div className={'flex justify-center'}>
-      <button onClick={() => onClick()} className={style[buttonType]}>
+      <button
+        onClick={() => onClick()}
+        className={style[buttonType]}
+        {...props}
+      >
         {text}
       </button>
     </div>
