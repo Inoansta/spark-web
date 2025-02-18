@@ -32,10 +32,7 @@ export default function RouterApp() {
           <Route
             path="/login"
             element={
-              <QuerySuspenseBoundary
-                loadingFallback={<>Loading...</>}
-                errorFallback={<>Error</>}
-              >
+              <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>
                 <Login />
               </QuerySuspenseBoundary>
             }

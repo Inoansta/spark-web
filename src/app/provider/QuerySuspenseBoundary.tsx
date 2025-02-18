@@ -15,7 +15,7 @@ interface QuerySuspenseBoundaryProps extends PropsWithChildren {
   loadingFallback: ReactNode;
 }
 
-const ErrorComponents = ({ error, resetErrorBoundary }: FallbackProps) => {
+const ErrorComponents = ({ resetErrorBoundary }: FallbackProps) => {
   console.log('hi');
 
   useLayoutEffect(() => {
@@ -43,7 +43,6 @@ const ErrorComponents = ({ error, resetErrorBoundary }: FallbackProps) => {
 };
 
 export default function QuerySuspenseBoundary({
-  ErrorFallback,
   loadingFallback,
   children,
 }: QuerySuspenseBoundaryProps) {
