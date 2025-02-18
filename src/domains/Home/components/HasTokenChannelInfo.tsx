@@ -1,4 +1,5 @@
-import { type ReactNode, Suspense } from 'react';
+import { type ReactNode } from 'react';
+import { QuerySuspenseBoundary } from '@/app/provider';
 import homeStrategy from '@/assets/animation/homeStrategy.json';
 import { Avatar as DefaultImage } from '@/assets/svg/Avatar/Avatar';
 import { SmallYoutubeIcon } from '@/assets/svg/logo/SmallYoutbeIcon';
@@ -187,9 +188,12 @@ export default function HasTokenChannelInfo() {
   const token = Storage.getLocalStorage(ACCESS_TOKEN);
 
   return token.length !== 0 ? (
-    <Suspense fallback={<>Loading...</>}>
+    <QuerySuspenseBoundary
+      loadingFallback={<>Loading...</>}
+      errorFallback={<>Error...</>}
+    >
       <ChannelCard />
-    </Suspense>
+    </QuerySuspenseBoundary>
   ) : (
     <EmptyCard />
   );
