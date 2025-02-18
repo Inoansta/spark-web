@@ -1,4 +1,5 @@
 import { Flex, Spacing, Text } from '@/shared/ui';
+import type { GrowthFunnelProps } from './GrowthStep';
 
 function BackBlurCard() {
   return (
@@ -27,7 +28,7 @@ function BackBlurCard() {
   );
 }
 
-export default function PredictionView() {
+export default function PredictionViewStep({ onNext }: GrowthFunnelProps) {
   return (
     <div className="p-4">
       <Flex direction="column" justify="center" align="center">
@@ -50,7 +51,10 @@ export default function PredictionView() {
       <Spacing size="large" />
       <Spacing size="large" />
       <Spacing size="xlsmall" />
-      <button className="w-full bg-black text-white py-3 px-5 rounded-[10px]">
+      <button
+        className="w-full bg-black text-white py-3 px-5 rounded-[10px]"
+        onClick={onNext}
+      >
         다음
       </button>
       <Spacing size="xsmall" />

@@ -3,6 +3,10 @@ import { Avatar } from '@/assets/svg/Avatar/Avatar';
 import EyeIcon from '@/assets/svg/EyeIcon';
 import { Divider, Flex, Spacing, Text } from '@/shared/ui';
 
+export interface GrowthFunnelProps {
+  onNext: () => void;
+}
+
 // 값이 들어온다
 // 날을 보고 계산
 // 데이트를 보고 계산
@@ -136,7 +140,7 @@ function VerticalCarousel() {
   );
 }
 
-export default function GrowthStep() {
+export default function GrowthStep({ onNext }: GrowthFunnelProps) {
   return (
     <main className="p-4">
       <Flex direction="column" justify="center" align="center" gapY={3}>
@@ -156,7 +160,10 @@ export default function GrowthStep() {
       />
       <Spacing size="large" />
       <Spacing size="xlsmall" />
-      <button className="w-full bg-black text-white py-3 px-5 rounded-[10px]">
+      <button
+        className="w-full bg-black text-white py-3 px-5 rounded-[10px]"
+        onClick={onNext}
+      >
         다음
       </button>
       <Spacing size="xlsmall" />

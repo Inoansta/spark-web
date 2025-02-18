@@ -1,3 +1,4 @@
+import { RouteMove } from '@/shared/components';
 import { Flex, Spacing, Text } from '@/shared/ui';
 
 function BackBlurCard() {
@@ -49,9 +50,12 @@ export default function SubscriberStep() {
       />
       <Spacing size="large" />
       <Spacing size="large" />
-      <button className="w-full bg-black text-white py-3 px-5 rounded-[10px]">
-        다음
-      </button>
+      <Spacing size="xlsmall" />
+      <RouteMove location="/strategy">
+        <button className="w-full bg-black text-white py-3 px-5 rounded-[10px]">
+          다음
+        </button>
+      </RouteMove>
       <Spacing size="xsmall" />
     </div>
   );
