@@ -1,10 +1,10 @@
-export interface ButtonInterface {
+import type { ComponentProps } from 'react';
+import { Flex } from '@/shared/ui';
+
+export interface ButtonInterface extends ComponentProps<'button'> {
   text: string;
   onClick: () => void;
-  buttonType:
-    | 'small-outlined-button'
-    | 'large-outlined-button'
-    | 'large-filled-button';
+  buttonType: keyof typeof style;
 }
 
 const style = {
@@ -14,14 +14,25 @@ const style = {
     'px-[20px] w-full max-w-[335px] h-[48px] text-primary5 border border-primary5  rounded-md active:bg-primary1',
   'large-filled-button':
     'px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-subtitle-b rounded-medium active:bg-primary7',
+  'small-filled-button':
+    'px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-[15px] rounded-medium active:bg-primary7 cursor-pointer',
 };
 
-export function Button({ text, onClick, buttonType }: ButtonInterface) {
+export function Button({
+  text,
+  onClick,
+  buttonType,
+  ...props
+}: ButtonInterface) {
   return (
-    <div className={'flex justify-center'}>
-      <button onClick={() => onClick()} className={style[buttonType]}>
+    <Flex justify="center">
+      <button
+        className={style[buttonType]}
+        onClick={() => onClick()}
+        {...props}
+      >
         {text}
       </button>
-    </div>
+    </Flex>
   );
 }
