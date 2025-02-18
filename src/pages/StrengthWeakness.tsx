@@ -1,3 +1,5 @@
+import { StrengthWeaknessFunnel } from '@/domains/StrengthWeakness';
+
 export default function StrengthWeakness() {
-  return <div>StrengthWeakness</div>;
+  return <StrengthWeaknessFunnel />;
 }
