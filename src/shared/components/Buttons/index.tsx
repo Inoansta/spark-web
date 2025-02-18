@@ -26,7 +26,7 @@ export function Button({
 }: ButtonInterface) {
   return (
     <Flex justify="center">
-      <button className={style[buttonType]} {...props}>
+      <button className={style[buttonType]} onClick={() => onClick()}>
         {text}
       </button>
     </Flex>
