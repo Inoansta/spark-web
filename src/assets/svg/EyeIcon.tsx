@@ -1,6 +1,6 @@
 import { SvgProps } from './nav/UnifiedSettingIcon';
 
-export default function EyeIcon({ className }: SvgProps) {
+export default function EyeIcon({ className, ...props }: SvgProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,8 +8,9 @@ export default function EyeIcon({ className }: SvgProps) {
       height="20"
       fill="none"
       className={className}
+      {...props}
     >
-      <g fill="#333">
+      <g fill={props.fill ?? '#333'}>
         <path
           fillRule="evenodd"
           d="M5.33 7.237c-.936.788-1.442 1.78-1.91 2.715a.926.926 0 1 1-1.655-.828l.018-.037c.458-.915 1.108-2.217 2.354-3.267C5.43 4.733 7.27 3.982 10 3.982c2.73 0 4.571.751 5.862 1.838 1.247 1.05 1.897 2.352 2.355 3.267l.018.037a.926.926 0 1 1-1.656.828c-.467-.935-.974-1.927-1.91-2.715-.907-.764-2.306-1.403-4.669-1.403-2.363 0-3.762.639-4.67 1.403Z"
