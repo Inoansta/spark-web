@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { type ReactNode, Suspense } from 'react';
 import homeStrategy from '@/assets/animation/homeStrategy.json';
 import { Avatar as DefaultImage } from '@/assets/svg/Avatar/Avatar';
 import { SmallYoutubeIcon } from '@/assets/svg/logo/SmallYoutbeIcon';
@@ -153,10 +153,10 @@ export function ChannelCard() {
     <Flex direction="column" gapY={5}>
       <ChannelCommonCard
         header={
-          <Flex justify="between" align="center">
-            <LocationMove
-              location={`https://www.youtube.com/@${data.result.channelId}`}
-            >
+          <LocationMove
+            location={`https://www.youtube.com/@${data.result.channelId}`}
+          >
+            <Flex justify="between" align="center">
               <Text
                 as="title"
                 title={`@${data.result.channelName}`}
@@ -168,8 +168,8 @@ export function ChannelCard() {
                   <Text as="description" title="유튜브" className="font-bold" />
                 </Flex>
               </button>
-            </LocationMove>
-          </Flex>
+            </Flex>
+          </LocationMove>
         }
         posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
         subscriber={formatNumberWithUnit(
@@ -186,5 +186,11 @@ export function ChannelCard() {
 export default function HasTokenChannelInfo() {
   const token = Storage.getLocalStorage(ACCESS_TOKEN);
 
-  return token ? <ChannelCard /> : <EmptyCard />;
+  return token.length !== 0 ? (
+    <Suspense fallback={<>Loading...</>}>
+      <ChannelCard />
+    </Suspense>
+  ) : (
+    <EmptyCard />
+  );
 }
