@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   FrequentlyAskedQuestions,
   HowToGrow,
@@ -6,9 +7,18 @@ import {
   WorriedAbout,
 } from '@/domains/Detail/components';
 import GraySpace from '@/domains/Detail/components/GraySpace';
-import { RouteMove } from '@/shared/components';
+import { Button } from '@/shared/components';
+import { useMoveLocation } from '@/shared/hooks';
 
 export default function Detail() {
+  const [disable, setDisable] = useState(false);
+  const moveToNext = useMoveLocation('/result');
+
+  useEffect(() => {
+    const connected = localStorage.getItem('access_token');
+    setDisable(connected ? false : true);
+  }, []);
+
   return (
     <div>
       <TopPage />
@@ -19,18 +29,24 @@ export default function Detail() {
       <Recommendation />
       <GraySpace />
       <FrequentlyAskedQuestions />
-      <RouteMove
-        location={'/user-info'}
-        className={'sticky bottom-0 flex justify-center mb-[30px]'}
+
+      <div
+        className={
+          'sticky flex flex-col bottom-0 mb-[30px] px-[20px] gap-[12px]'
+        }
       >
-        <button
-          className={
-            'px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-subtitle-b rounded-medium active:bg-primary7'
-          }
+        <div
+          className={`bg-subText text-white text-caption1-b px-[15px] py-[10px] mx-auto rounded-medium ${disable ? 'inline-block' : 'hidden'}`}
         >
-          시작하기
-        </button>
-      </RouteMove>
+          채널을 연동하면 바로 서비스를 이용할 수 있어요!
+        </div>
+        <Button
+          text={'시작하기'}
+          buttonType={'large-filled-button'}
+          disabled={disable}
+          onClick={() => moveToNext()}
+        />
+      </div>
     </div>
   );
 }
