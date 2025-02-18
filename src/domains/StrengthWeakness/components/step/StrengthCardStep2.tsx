@@ -1,6 +1,6 @@
 import { AddIcon } from '@/assets/svg/AddIcon';
 import { Button } from '@/shared/components';
-import { Flex, Spacing, Text } from '@/shared/ui';
+import { Flex, Text } from '@/shared/ui';
 import DynamicGraphs from '../DynamicGraphs';
 import Tag from '../Tag';
 import type { StrengthWeaknessStepProps } from './StrengthCardStep';
