@@ -10,6 +10,15 @@ export default {
   ],
   theme: {
     extend: {
+      keyframes: {
+        'slide-up': {
+          '0%': { transform: 'translateY(100%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'slide-up': 'slide-up 2s ease-in-out forwards',
+      },
       fontFamily: {
         suit: ['SUIT', 'sans-serif'],
       },
