@@ -1,7 +1,7 @@
 import analysis from '@/assets/result/analaysis.json';
 import { ResultInteraction } from '@/domains/Results/components';
 import { NextPageFooter } from '@/shared/components';
-import LottieAnimation from '@/shared/ui/components/AnimationLottie';
+import { LottieAnimation } from '@/shared/ui';
 
 export default function Result() {
   return (

@@ -4,3 +4,4 @@ export * from './Buttons';
 export { default as Keyframe } from './Keyframe';
 export { default as RouteMove } from './RouteMove';
 export { default as NextPageFooter } from './NextPageFooter';
+export { default as Carousel } from './Carousel';

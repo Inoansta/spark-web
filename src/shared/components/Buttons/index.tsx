@@ -1,6 +1,7 @@
+import type { ComponentProps } from 'react';
 import { Flex } from '@/shared/ui';
 
-export interface ButtonInterface {
+export interface ButtonInterface extends ComponentProps<'button'> {
   text: string;
   onClick: () => void;
   buttonType: keyof typeof style;
@@ -17,10 +18,15 @@ const style = {
     'px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-[15px] rounded-medium active:bg-primary7 cursor-pointer',
 };
 
-export function Button({ text, onClick, buttonType }: ButtonInterface) {
+export function Button({
+  text,
+  onClick,
+  buttonType,
+  ...props
+}: ButtonInterface) {
   return (
     <Flex justify="center">
-      <button onClick={() => onClick()} className={style[buttonType]}>
+      <button className={style[buttonType]} {...props}>
         {text}
       </button>
     </Flex>
