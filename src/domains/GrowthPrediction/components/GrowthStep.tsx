@@ -150,8 +150,8 @@ export default function GrowthStep({ onNext }: GrowthFunnelProps) {
           className="text-center text-white text-[28px]"
         />
         <Spacing size="xsmall" />
-        <VerticalCarousel />
       </Flex>
+      <VerticalCarousel />
       <Spacing size="medium" />
       <Text
         as="title"
