@@ -188,10 +188,7 @@ export default function HasTokenChannelInfo() {
   const token = Storage.getLocalStorage(ACCESS_TOKEN);
 
   return token.length !== 0 ? (
-    <QuerySuspenseBoundary
-      loadingFallback={<>Loading...</>}
-      errorFallback={<>Error...</>}
-    >
+    <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>
       <ChannelCard />
     </QuerySuspenseBoundary>
   ) : (
