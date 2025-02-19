@@ -4,8 +4,8 @@ interface Questionbox {
 }
 
 const style = {
-  first: 'rounded-medium',
-  last: 'rounded-b-medium rounded-tr-medium',
+  first: 'rounded-medium max-w-[80%]',
+  last: 'rounded-b-medium rounded-tr-medium max-w-[80%]',
 };
 
 function Questionbox({ questions, questionType }: Questionbox) {
