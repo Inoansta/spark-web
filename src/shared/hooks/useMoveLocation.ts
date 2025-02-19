@@ -12,6 +12,7 @@ const _routeMap = {
   result: '/result',
   popular: '/popular',
   strengthWeakness: '/strength-weakness',
+  growthPredictionBefore: '/growth-prediction-before',
   growthPrediction: '/growth-prediction',
   strategy: '/strategy',
 } as const;
