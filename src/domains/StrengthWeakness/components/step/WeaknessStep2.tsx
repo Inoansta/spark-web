@@ -44,8 +44,7 @@ export default function WeaknessStep2() {
         </Flex>
       </Flex>
 
-      {/* TODO:성장 예측 전 페이지 추가되면 주소 변경 */}
-      <RouteMove location="/growth-prediction">
+      <RouteMove location="/growth-prediction-before">
         <Button
           text="다음"
           buttonType="small-filled-button"

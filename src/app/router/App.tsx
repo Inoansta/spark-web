@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import Analysis from '@/pages/Analysis';
 import Detail from '@/pages/Detail';
 import GrowthPrediction from '@/pages/GrowthPrediction';
+import GrowthPredictionBefore from '@/pages/GrowthPredictionBefore';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
 import Oauth from '@/pages/Oauth';
@@ -44,6 +45,10 @@ export default function RouterApp() {
             <Route path="/result" element={<Result />} />
             <Route path="/popular" element={<Popular />} />
             <Route path="/strength-weakness" element={<StrengthWeakness />} />
+            <Route
+              path="/growth-prediction-before"
+              element={<GrowthPredictionBefore />}
+            />
             <Route path="/growth-prediction" element={<GrowthPrediction />} />
             <Route path="/strategy" element={<Strategy />} />
           </Route>
