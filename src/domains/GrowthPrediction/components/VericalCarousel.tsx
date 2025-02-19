@@ -74,8 +74,8 @@ export default function VerticalCarousel() {
                       width={24}
                       height={24}
                       fill="white"
-                      avatarBodyFill="#8D9199"
-                      avatarHeadFill="#8D9199"
+                      bodyfill="#8D9199"
+                      headfill="#8D9199"
                     />
                     <Text
                       as="card_description"
