@@ -10,7 +10,7 @@ export default function ProgressBar({
   };
 
   return (
-    <div className="w-full h-4 bg-gray rounded-full overflow-hidden relative">
+    <div className="w-full h-[5px] bg-gray rounded-full overflow-hidden relative">
       <div
         className={`h-full bg-[linear-gradient(90deg,_#4557FF_0%,_#6E78FF_72.33%)] transition-all duration-1000 ease-in-out`}
         style={{ width: getWidth() }}

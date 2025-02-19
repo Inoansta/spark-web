@@ -4,6 +4,7 @@ import { CloseIcon } from '@/assets/svg/nav/CloseIcon';
 import { NavigationHeader } from '@/shared/components';
 import { Spacing } from '@/shared/ui';
 import PageBackground from '@/shared/ui/components/PageBackground';
+import useGrowthPredictionQuery from '../hooks/useGrowthPredictionQuery';
 import { useGrowthStep } from '../hooks/useGrowthStep';
 import GrowthStep from './step/GrowthStep';
 import PredictionViewStep from './step/PredictionViewStep';
@@ -17,6 +18,10 @@ const options = {
 
 export default function GrowthPredictionFunnel() {
   const funnel = useFunnel(options);
+
+  const { data } = useGrowthPredictionQuery();
+
+  console.log(data);
 
   const bgColor = () => {
     switch (funnel.step) {
