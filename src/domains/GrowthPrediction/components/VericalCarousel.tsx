@@ -1,16 +1,7 @@
 import { useState } from 'react';
 import { Avatar } from '@/assets/svg/Avatar/Avatar';
 import EyeIcon from '@/assets/svg/EyeIcon';
-import { Divider, Flex, Spacing, Text } from '@/shared/ui';
-
-export interface GrowthFunnelProps {
-  onNext: () => void;
-}
-
-// 값이 들어온다
-// 날을 보고 계산
-// 데이트를 보고 계산
-// 최근일때만 스타일링 변경
+import { Divider, Flex, Text } from '@/shared/ui';
 
 const carouselData = [
   {
@@ -31,9 +22,7 @@ const carouselData = [
   },
 ];
 
-// 활성화 스타일링
-//
-function VerticalCarousel() {
+export default function VerticalCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = (isActive: boolean) => {
@@ -46,7 +35,7 @@ function VerticalCarousel() {
       direction="column"
       align="center"
       justify="center"
-      className="relative h-[336px] max-w-[300px]"
+      className="relative h-[336px]"
     >
       {carouselData.map((item, index) => {
         const isActive = index === currentIndex;
@@ -65,7 +54,7 @@ function VerticalCarousel() {
               direction="column"
               align="center"
               justify="center"
-              className={`${isActive ? `w-[300px] h-[276px]` : `w-[255px] h-[214px]`} bg-white/10 rounded-xl shadow-xl border border-white backdrop-blur-lg`}
+              className={`${isActive ? `w-[300px] h-[276px]` : `w-[255px] h-[214px]`} bg-white/10 rounded-[20px] shadow-xl border border-white backdrop-blur-lg`}
             >
               <Flex
                 direction="column"
@@ -85,8 +74,8 @@ function VerticalCarousel() {
                       width={24}
                       height={24}
                       fill="white"
-                      avatarBodyFill="#8D9199"
-                      avatarHeadFill="#8D9199"
+                      bodyfill="#8D9199"
+                      headfill="#8D9199"
                     />
                     <Text
                       as="card_description"
@@ -137,36 +126,5 @@ function VerticalCarousel() {
         );
       })}
     </Flex>
-  );
-}
-
-export default function GrowthStep({ onNext }: GrowthFunnelProps) {
-  return (
-    <main className="p-4">
-      <Flex direction="column" justify="center" align="center" gapY={3}>
-        <Text
-          as="title"
-          title="내 채널은 성장중?"
-          className="text-center text-white text-[28px]"
-        />
-        <Spacing size="xsmall" />
-      </Flex>
-      <VerticalCarousel />
-      <Spacing size="medium" />
-      <Text
-        as="title"
-        className="text-white font-medium"
-        title="조회수가 높아도 구독자가 적으면 일시적 관심에 그칠 수 있지만, 적은 조회수로도 구독자가 꾸준히 늘어난다면 충성도 높은 팬이 쌓이고 있다는 뜻이에요. "
-      />
-      <Spacing size="large" />
-      <Spacing size="xlsmall" />
-      <button
-        className="w-full bg-black text-white py-3 px-5 rounded-[10px]"
-        onClick={onNext}
-      >
-        다음
-      </button>
-      <Spacing size="xlsmall" />
-    </main>
   );
 }

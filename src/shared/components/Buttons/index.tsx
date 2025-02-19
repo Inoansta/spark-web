@@ -1,4 +1,5 @@
 import type { ComponentProps } from 'react';
+import { cn } from '@/shared/lib';
 import { Flex } from '@/shared/ui';
 
 export interface ButtonInterface extends ComponentProps<'button'> {
@@ -15,7 +16,7 @@ const style = {
   'large-filled-button':
     'px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-subtitle-b rounded-medium active:bg-primary7',
   'small-filled-button':
-    'px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-[15px] rounded-medium active:bg-primary7 cursor-pointer',
+    'px-[20px] w-full h-[48px] bg-primary5 text-white text-[15px] rounded-medium active:bg-primary7 cursor-pointer',
 };
 
 export function Button({
@@ -27,7 +28,11 @@ export function Button({
   return (
     <Flex justify="center">
       <button
-        className={style[buttonType]}
+        className={
+          props.className?.trim().length
+            ? cn(style[buttonType], props.className)
+            : style[buttonType]
+        }
         onClick={() => onClick()}
         {...props}
       >
