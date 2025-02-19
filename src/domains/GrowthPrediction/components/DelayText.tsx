@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BackIcon } from '@/assets/svg/nav/BackIcon';
-import { CloseIcon } from '@/assets/svg/nav/CloseIcon';
-import { NavigationHeader } from '@/shared/components';
+import { RouteMove } from '@/shared/components';
 import { Flex } from '@/shared/ui';
 
 export default function DelayText({ delay = 7000 }: { delay?: number }) {
@@ -17,17 +15,9 @@ export default function DelayText({ delay = 7000 }: { delay?: number }) {
 
   return (
     <>
-      <NavigationHeader className={'p-5 max-w-[450px] w-full absolute top-4'}>
-        <NavigationHeader.LeftContent location="back">
-          <BackIcon />
-        </NavigationHeader.LeftContent>
-        <NavigationHeader.RightContent location="/detail">
-          <CloseIcon />
-        </NavigationHeader.RightContent>
-      </NavigationHeader>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full">
-        {visible && (
-          <>
+      {visible && (
+        <>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full">
             <Flex direction="column" justify="center" align="center">
               <p className="text-white text-3xl font-bold drop-shadow-lg">
                 000님의
@@ -36,9 +26,14 @@ export default function DelayText({ delay = 7000 }: { delay?: number }) {
                 채널 성장은?
               </p>
             </Flex>
-          </>
-        )}
-      </div>
+          </div>
+          <RouteMove location="/growth-prediction">
+            <button className="absolute bottom-8 left-7 px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-[15px] rounded-medium active:bg-primary7 cursor-pointer">
+              다음
+            </button>
+          </RouteMove>
+        </>
+      )}
     </>
   );
 }
