@@ -1,9 +1,10 @@
 import { useFunnel } from '@use-funnel/browser';
+import { Spacing } from '@/shared/ui';
 import PageBackground from '@/shared/ui/components/PageBackground';
 import { useGrowthStep } from '../hooks/useGrowthStep';
-import GrowthStep from './GrowthStep';
-import PredictionViewStep from './PredictionViewStep';
-import SubscriberStep from './SubscriberStep';
+import GrowthStep from './step/GrowthStep';
+import PredictionViewStep from './step/PredictionViewStep';
+import SubscriberStep from './step/SubscriberStep';
 
 const options = {
   id: '@GrowthPrediction',
@@ -30,6 +31,7 @@ export default function GrowthPredictionFunnel() {
 
   return (
     <PageBackground color={bgColor()}>
+      <Spacing size="xsmall" />
       <funnel.Render
         GrowthStep={({ history }) => (
           <GrowthStep onNext={() => history.push('ViewStep')} />
