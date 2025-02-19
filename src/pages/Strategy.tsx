@@ -1,4 +1,13 @@
-import { useState } from 'react';
+declare global {
+  interface Window {
+    ReactNativeWebView?: {
+      postMessage: (message: string) => void;
+    };
+  }
+}
+
+import { useEffect, useState } from 'react';
+import html2canvas from 'html2canvas';
 import {
   Accordion,
   AccordionItem,
@@ -19,9 +28,43 @@ export default function Strategy() {
     item2: false,
     item3: false,
   });
+  const [screenshotReady, setScreenshotReady] = useState(false);
+  const isWebView = typeof window !== 'undefined' && window.ReactNativeWebView;
+
   const onScreenShot = () => {
     setClicked({ item1: true, item2: true, item3: true });
+    setScreenshotReady(true);
   };
+
+  useEffect(() => {
+    if (!screenshotReady) return;
+
+    if (!isWebView) {
+      console.log('does it get here');
+      html2canvas(document.body).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        console.log(imgData.substring(0, 10));
+        const link = document.createElement('a');
+        link.href = imgData;
+        link.download = 'screenshot.png';
+        link.click();
+      });
+    } else {
+      html2canvas(document.body)
+        .then((canvas) => {
+          const imgData = canvas.toDataURL('image/png');
+          const message = {
+            type: 'screenshot',
+            data: imgData,
+          };
+          window.ReactNativeWebView?.postMessage(JSON.stringify(message));
+        })
+        .catch((error) => {
+          console.error('스크린샷 실패:', error);
+        });
+    }
+    setScreenshotReady(false);
+  }, [screenshotReady]);
 
   return (
     <div
