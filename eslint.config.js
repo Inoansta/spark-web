@@ -14,14 +14,9 @@ export default tseslint.config(
   react.configs.flat.recommended,
   react.configs.flat['jsx-runtime'],
   {
-    plugins: {
-      'react-compiler': reactCompiler,
-      'react-hooks': reactHooks,
-    },
+    plugins: { 'react-compiler': reactCompiler, 'react-hooks': reactHooks },
     settings: {
-      react: {
-        version: 'detect',
-      },
+      react: { version: 'detect' },
       'import/resolver': {
         alias: {
           map: [['@', './src']],
@@ -30,19 +25,11 @@ export default tseslint.config(
         typescript: true,
       },
     },
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: { ...globals.browser },
-    },
+    languageOptions: { ecmaVersion: 2020, globals: { ...globals.browser } },
     rules: {
       eqeqeq: 'error',
       curly: ['warn', 'multi-line', 'consistent'],
-      'sort-imports': [
-        'error',
-        {
-          ignoreDeclarationSort: true,
-        },
-      ],
+      'sort-imports': ['error', { ignoreDeclarationSort: true }],
       'import/no-unresolved': ['error', { commonjs: true, amd: true }],
       'import/named': 'off',
       'import/namespace': 'off',
@@ -51,12 +38,7 @@ export default tseslint.config(
       'import/extensions': [
         'error',
         'ignorePackages',
-        {
-          js: 'never',
-          jsx: 'never',
-          ts: 'never',
-          tsx: 'never',
-        },
+        { js: 'never', jsx: 'never', ts: 'never', tsx: 'never' },
       ],
       'import/order': [
         'error',
@@ -73,11 +55,7 @@ export default tseslint.config(
           ],
           'newlines-between': 'never',
           pathGroups: [
-            {
-              pattern: 'react',
-              group: 'builtin',
-              position: 'before',
-            },
+            { pattern: 'react', group: 'builtin', position: 'before' },
           ],
           pathGroupsExcludedImportTypes: ['builtin'],
         },
@@ -94,8 +72,6 @@ export default tseslint.config(
 
   {
     files: ['*.js'],
-    rules: {
-      '@typescript-eslint/no-require-imports': 'off',
-    },
+    rules: { '@typescript-eslint/no-require-imports': 'off' },
   },
 );

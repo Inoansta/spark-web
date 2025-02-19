@@ -50,7 +50,6 @@ function CurrentLocation() {
     case '/result':
     case '/popular':
     case '/strength-weakness':
-    case '/growth-prediction':
     case '/strategy': {
       return (
         <NavigationHeader className={'p-5 fixed max-w-[450px] w-full'}>
