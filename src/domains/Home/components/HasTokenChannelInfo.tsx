@@ -142,7 +142,7 @@ function EmptyCard() {
           </RouteMove>
         }
       />
-      <ChannelGrowCard disabled={true} />
+      <ChannelGrowCard disabled={false} />
     </Flex>
   );
 }
