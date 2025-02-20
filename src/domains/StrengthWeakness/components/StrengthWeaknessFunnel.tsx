@@ -3,6 +3,7 @@ import PageBackground from '@/shared/ui/components/PageBackground';
 import userCardSteps from '../hooks/useCardFunnel';
 import useStrengthWeaknessOption from '../hooks/useStrengthWeaknessOption';
 import useStrengthWeakStatsQuery from '../hooks/useStrengthWeakStatsQuery';
+import transformDataStrengthWeakness from '../lib/strengthWeaknessTrasnform';
 import ProgressBar from './ProgressBar';
 import StrengthCardStep from './step/StrengthCardStep';
 import StrengthCardStep2 from './step/StrengthCardStep2';
@@ -22,9 +23,9 @@ export default function StrengthWeaknessFunnel() {
   const funnel = useFunnel(options);
 
   const { data, isSuccess } = useStrengthWeakStatsQuery();
-
+  const transformData = transformDataStrengthWeakness(data);
   useStrengthWeaknessOption({
-    weaknesses: data.weaknesses,
+    weaknesses: transformData.weaknesses,
     isSuccess,
   });
 
@@ -34,24 +35,24 @@ export default function StrengthWeaknessFunnel() {
       <funnel.Render
         Strength1={({ history }) => (
           <StrengthCardStep
-            data={data.transformedData.strengths[0]}
+            data={transformData.transformedData.strengths[0]}
             onNext={() => history.push('Strength2')}
           />
         )}
         Strength2={({ history }) => (
           <StrengthCardStep2
-            data={data.transformedData.strengths[1]}
+            data={transformData.transformedData.strengths[1]}
             onNext={() => history.push('Weakness1')}
           />
         )}
         Weakness1={({ history }) => (
           <WeaknessStep
-            data={data.transformedData.weaknesses[0]}
+            data={transformData.transformedData.weaknesses[0]}
             onNext={() => history.push('Weakness2')}
           />
         )}
         Weakness2={() => (
-          <WeaknessStep2 data={data.transformedData.weaknesses[1]} />
+          <WeaknessStep2 data={transformData.transformedData.weaknesses[1]} />
         )}
       />
     </PageBackground>
