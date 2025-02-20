@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { type RouteInfo } from '@/shared/hooks';
+import { Flex } from '@/shared/ui';
 import RouteMove from '../RouteMove';
 
 interface LeftContentProps extends RouteInfo {
@@ -11,16 +12,16 @@ interface LeftContentProps extends RouteInfo {
 
 function Root({ className, children }: Omit<LeftContentProps, 'location'>) {
   return (
-    <header
+    <Flex
+      justify="between"
+      align="center"
       className={twMerge(
-        clsx(
-          'flex justify-between px-5 pt-5 items-center bg-inherit cursor-pointer',
-          className,
-        ),
+        clsx('px-5 pt-5 bg-inherit cursor-pointer', className),
       )}
+      as="header"
     >
       {children}
-    </header>
+    </Flex>
   );
 }
 
