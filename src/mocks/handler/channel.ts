@@ -78,7 +78,7 @@ export const handlers = [
       { status: 200 },
     );
   }),
-  http.get('/youtube/top-video?channelId=', async () => {
+  http.get('/youtube/top-videos?channelId=', async () => {
     await delay(200);
     return HttpResponse.json(
       {
@@ -163,13 +163,16 @@ export const handlers = [
       { status: 200 },
     );
   }),
-  http.get('/channel-predictions/channelId=', async () => {
+  http.get('/channel-predictions?channelId=', async () => {
     await delay(200);
-    return HttpResponse.json({
-      result: {
-        predictedViews: 30148,
-        predictedNetSubscribers: 1163,
+    return HttpResponse.json(
+      {
+        result: {
+          predictedViews: 30148,
+          predictedNetSubscribers: 1163,
+        },
       },
-    });
+      { status: 200 },
+    );
   }),
 ];
