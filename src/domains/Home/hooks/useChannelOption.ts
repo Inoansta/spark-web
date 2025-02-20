@@ -1,5 +1,5 @@
 import { useLayoutEffect } from 'react';
-import { Storage } from '@/shared/lib';
+import useStrategyStore from '@/app/store/useStrategyStore';
 
 export const CHANNEL_ID = 'CHANNEL_ID';
 
@@ -12,9 +12,11 @@ const useChannelOption = <T extends { result?: { channelId: string } }>({
   isSuccess,
   data,
 }: useChannelOptionProps<T>) => {
+  const setField = useStrategyStore((store) => store.setField);
+
   useLayoutEffect(() => {
     if (isSuccess && data.result?.channelId) {
-      Storage.setLocalStorage(CHANNEL_ID, data.result.channelId);
+      setField('channelId', data.result.channelId);
     }
   }, [isSuccess, data]);
 

@@ -9,6 +9,7 @@ import { ACCESS_TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { RouteMove } from '@/shared/components';
 import { Storage } from '@/shared/lib';
 import { Card, Flex, LottieAnimation, Text } from '@/shared/ui';
+import useChannelOption from '../hooks/useChannelOption';
 import useChannelProfile from '../hooks/useChannelProfile';
 import { formatNumberWithCommas, formatNumberWithUnit } from '../lib/utils';
 
@@ -148,7 +149,12 @@ function EmptyCard() {
 }
 
 export function ChannelCard() {
-  const { data } = useChannelProfile();
+  const { data, isSuccess } = useChannelProfile();
+
+  useChannelOption({
+    isSuccess,
+    data,
+  });
 
   return (
     <Flex direction="column" gapY={5}>
