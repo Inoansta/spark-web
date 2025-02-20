@@ -1,4 +1,5 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
+import useStrategyStore from '@/app/store/useStrategyStore';
 import FulltimeParttime from '@/domains/UserInformation/components/Footers/FulltimeParttime';
 import SNSGoal from '@/domains/UserInformation/components/Footers/SNSGoal';
 import Questionbox from '@/domains/UserInformation/components/Questionbox';
@@ -8,6 +9,7 @@ import UserInformationProfiles from '@/domains/UserInformation/components/UserIn
 import { QUESTIONS } from '@/domains/UserInformation/questions';
 import { Button } from '@/shared/components';
 import BottomSheetModal from '@/shared/components/BottomSheetModal/BottomSheetModal';
+import { useMoveLocation } from '@/shared/hooks';
 
 export interface userAnswer {
   CONTENTS: string;
@@ -37,11 +39,12 @@ function UserInfo() {
   const [steps, setSteps] = useState<number>(0);
   const [onlyClicked, setOnlyClicked] = useState<string>('');
   const [open, setOpen] = useState<boolean>(false);
-  const [userAnswer, setUserAnswer] = useState<userAnswer>({
-    CONTENTS: '',
-    FULLTIME: '',
-    GOAL: '',
-  });
+
+  const strategyInfo = useStrategyStore((store) => store);
+  const setStrategyInfo = useStrategyStore((store) => store.setField);
+
+  const handleMoveLocation = useMoveLocation('/analysis');
+
   const [isTyped, setIsTyped] = useState<boolean>(false);
   const bottomRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
@@ -112,10 +115,14 @@ function UserInfo() {
                 setOnlyClicked={(onlyClick: string) =>
                   setOnlyClicked(onlyClick)
                 }
-                setUserAnswer={(userAnswers: userAnswer) =>
-                  setUserAnswer(userAnswers)
-                }
-                userAnswer={userAnswer}
+                setUserAnswer={(userAnswers: userAnswer) => {
+                  setStrategyInfo('userContents', userAnswers.CONTENTS);
+                }}
+                userAnswer={{
+                  CONTENTS: strategyInfo.userContents,
+                  FULLTIME: strategyInfo.userFulltime,
+                  GOAL: strategyInfo.userGoal,
+                }}
                 onlyClicked={onlyClicked}
                 setSteps={(step: number) => setSteps(step)}
                 setOpen={(opened: boolean) => setOpen(opened)}
@@ -126,7 +133,7 @@ function UserInfo() {
         </>
       ) : null}
       {steps >= 4 ? (
-        <UserDialogbox answers={userAnswer.CONTENTS} isTyped={isTyped} />
+        <UserDialogbox answers={strategyInfo.userContents} isTyped={isTyped} />
       ) : null}
       {steps >= 5 ? (
         <>
@@ -136,14 +143,14 @@ function UserInfo() {
       ) : null}
       {steps === 6 ? (
         <FulltimeParttime
-          onClick={(fulltime) =>
-            setUserAnswer({ ...userAnswer, FULLTIME: fulltime })
-          }
+          onClick={(fulltime) => {
+            setStrategyInfo('userFulltime', fulltime);
+          }}
           setSteps={() => setSteps(7)}
         />
       ) : null}
       {steps >= 7 ? (
-        <UserDialogbox answers={userAnswer.FULLTIME} isTyped={isTyped} />
+        <UserDialogbox answers={strategyInfo.userFulltime} isTyped={isTyped} />
       ) : null}
       {steps >= 8 ? (
         <>
@@ -154,14 +161,14 @@ function UserInfo() {
       {steps === 9 ? (
         <SNSGoal
           onClick={(goal) => {
-            setUserAnswer({ ...userAnswer, GOAL: goal });
+            setStrategyInfo('userGoal', goal);
             setSteps(10);
           }}
           setIsTyped={() => setIsTyped(true)}
         />
       ) : null}
       {steps >= 10 ? (
-        <UserDialogbox answers={userAnswer.GOAL} isTyped={isTyped} />
+        <UserDialogbox answers={strategyInfo.userGoal} isTyped={isTyped} />
       ) : null}
       {steps >= 11 ? (
         <>
@@ -175,7 +182,7 @@ function UserInfo() {
           <Button
             text={'나만의 성장비법 받기'}
             buttonType={'large-filled-button'}
-            onClick={() => {}}
+            onClick={handleMoveLocation}
           />
         </div>
       ) : null}
