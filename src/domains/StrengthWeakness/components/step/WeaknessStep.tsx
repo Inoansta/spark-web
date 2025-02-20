@@ -34,7 +34,7 @@ export default function StrengthCardStep2({
       </Flex>
 
       <Flex justify="around" className="pr-4 min-h-64 max-w-full w-full">
-        {data.map(({ date, color, value }, index) => (
+        {data.map(({ date, color, value }) => (
           <Flex direction="column" justify="end" align="center" key={date}>
             <Text as="title" title={`총 ${value}`} className="text-white" />
             <DynamicGraphs
