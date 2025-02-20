@@ -1,12 +1,10 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { CHANNEL_ID } from '@/domains/Home/hooks/useChannelOption';
-import { Storage } from '@/shared/lib';
+import useStrategyStore from '@/app/store/useStrategyStore';
 import popularTopQueryOption from '../service/queryOption';
 
 const usePopularQuery = () => {
-  return useSuspenseQuery(
-    popularTopQueryOption.popularTop(Storage.getLocalStorage(CHANNEL_ID)),
-  );
+  const channelId = useStrategyStore((store) => store.channelId);
+  return useSuspenseQuery(popularTopQueryOption.popularTop({ channelId }));
 };
 
 export default usePopularQuery;
