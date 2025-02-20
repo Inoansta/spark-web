@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import { Logo } from '@/assets/svg/logo/Logo';
 import { SmallLogo } from '@/assets/svg/logo/SmallLogo';
 import { FrontIcon } from '@/assets/svg/nav/FrontIcon';
@@ -7,6 +9,16 @@ import { NavigationHeader } from '@/shared/components';
 import { Card, Flex, Spacing, SpeechBubble, Text } from '@/shared/ui';
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
+
+    if (!hasSeenOnboarding) {
+      navigate('/onboarding');
+    }
+  }, [navigate]);
+
   return (
     <main className="bg-line min-h-full">
       <Flex direction="column" gapY={5}>
