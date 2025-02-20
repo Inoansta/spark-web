@@ -1,7 +1,7 @@
 import { HttpResponse, delay, http } from 'msw';
 
 export const handlers = [
-  http.get('/youtube/channel-profile?channelId=', async () => {
+  http.get('/youtube/channel-profile', async () => {
     await delay(200);
     return HttpResponse.json(
       {
@@ -11,6 +11,8 @@ export const handlers = [
           totalVideoCount: 56,
           subscriberCount: 6820,
           totalViewCount: 222477,
+          defaultThumbnailUrl:
+            'https://yt3.ggpht.com/ytc/AIdro_kl5DflvSAt5cCateTrSwaLn4GBN9r6Kpu3KbWBVHt3T53dfl0=s88-c-k-c0x00ffffff-no-rj',
         },
       },
       { status: 200 },
