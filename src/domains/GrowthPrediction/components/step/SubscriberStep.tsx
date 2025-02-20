@@ -2,7 +2,14 @@ import { RouteMove } from '@/shared/components';
 import { Flex, Text } from '@/shared/ui';
 import MovingBlurCard from '../MovingBlurCard';
 
-export default function SubscriberStep() {
+interface SubscriberStepProps {
+  data: {
+    subscriberCount: number;
+    subscriber: number;
+  };
+}
+
+export default function SubscriberStep({ data }: SubscriberStepProps) {
   return (
     <Flex className="h-full" direction="column" justify="between">
       <Text
@@ -12,7 +19,10 @@ export default function SubscriberStep() {
       />
 
       <Flex direction="column" className="gap-y-[30px] -mt-16">
-        <MovingBlurCard />
+        <MovingBlurCard
+          result={Math.floor(data.subscriberCount)}
+          totalResult={Math.floor(data.subscriber)}
+        />
 
         <Text
           as="title"
