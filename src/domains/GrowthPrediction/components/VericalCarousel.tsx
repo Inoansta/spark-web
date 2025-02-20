@@ -3,31 +3,28 @@ import { Avatar } from '@/assets/svg/Avatar/Avatar';
 import EyeIcon from '@/assets/svg/EyeIcon';
 import { Divider, Flex, Text } from '@/shared/ui';
 
-const carouselData = [
-  {
-    isLately: false,
-    title: '90일 ~ 60일 | 60일 ~ 30일',
-    subscriberGrowth: '150% 성장',
-    subscriberCount: '1,000 > 1,500',
-    viewGrowth: '120% 성장',
-    viewCount: '10,000 > 12,000',
-  },
-  {
-    isLately: true,
-    title: '60일 ~ 30일 | 최근 30일',
-    subscriberGrowth: '150% 성장',
-    subscriberCount: '1,000 > 1,500',
-    viewGrowth: '150% 성장',
-    viewCount: '10,000 > 12,000',
-  },
-];
+interface GrowthRate {
+  view: {
+    late: number;
+    recent: number;
+  };
+  netSubscribers: {
+    late: number;
+    recent: number;
+  };
+}
+interface VerticalCarouselProps {
+  growthRates: GrowthRate[];
+}
 
-export default function VerticalCarousel() {
+export default function VerticalCarousel({
+  growthRates,
+}: VerticalCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = (isActive: boolean) => {
     if (isActive) return;
-    setCurrentIndex((prev) => (prev + 1) % carouselData.length);
+    setCurrentIndex((prev) => (prev + 1) % growthRates.length);
   };
 
   return (
@@ -37,7 +34,7 @@ export default function VerticalCarousel() {
       justify="center"
       className="relative h-[336px]"
     >
-      {carouselData.map((item, index) => {
+      {growthRates.map((item, index) => {
         const isActive = index === currentIndex;
 
         return (
@@ -64,9 +61,16 @@ export default function VerticalCarousel() {
                 className={isActive ? 'px-10 py-[39px]' : 'px-10 pt-36'}
               >
                 <div
-                  className={`${!item.isLately ? 'bg-gray' : 'bg-primary5'} px-[10px] py-[5px] rounded-[15px]`}
+                  className={`${index === 0 ? 'bg-gray' : 'bg-primary5'} px-[10px] py-[5px] rounded-[15px]`}
                 >
-                  <Text as="card_description" title={item.title} />
+                  <Text
+                    as="card_description"
+                    title={
+                      index === 0
+                        ? '90일 ~ 60일 | 60일 ~ 30일'
+                        : '60일 ~ 30일 | 최근 30일'
+                    }
+                  />
                 </div>
                 <Flex gapX={5} align="center" justify="center">
                   <Flex direction="column" align="center" gapY={1}>
@@ -83,16 +87,21 @@ export default function VerticalCarousel() {
                       className="text-[13px]"
                     />
                   </Flex>
-                  <Flex direction="column" align="center" gapY={1}>
+                  <Flex
+                    direction="column"
+                    align="center"
+                    gapY={1}
+                    className="flex-wrap max-w-[142px]"
+                  >
                     <Text
                       as="title"
-                      className="font-bold text-2xl text-white px-[14px]"
-                      title={item.subscriberGrowth}
+                      className="font-bold text-2xl text-white px-[14px] overflow-hidden"
+                      title={`${Math.floor(item.netSubscribers.recent / item.netSubscribers.late) * 100}% 증가`}
                     />
                     <Divider />
                     <Text
                       as="title"
-                      title={item.viewCount}
+                      title={`${item.netSubscribers.late} > ${item.netSubscribers.recent}`}
                       className="text-primary2 px-[14px]"
                     />
                   </Flex>
@@ -102,7 +111,7 @@ export default function VerticalCarousel() {
                     <EyeIcon width={24} height={24} fill="white" />
                     <Text
                       as="card_description"
-                      title="구독자 수"
+                      title="조회 수"
                       className="text-[13px]"
                     />
                   </Flex>
@@ -110,12 +119,12 @@ export default function VerticalCarousel() {
                     <Text
                       as="title"
                       className="font-bold text-2xl text-white px-[14px]"
-                      title={item.subscriberGrowth}
+                      title={`${Math.floor(item.view.recent / item.view.late) * 100}% 증가`}
                     />
                     <Divider />
                     <Text
                       as="title"
-                      title={item.viewCount}
+                      title={`${item.view.late} > ${item.view.recent}`}
                       className="text-primary2 px-[14px]"
                     />
                   </Flex>

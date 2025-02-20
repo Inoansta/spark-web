@@ -1,11 +1,16 @@
 import { Flex, Text } from '@/shared/ui';
+import transformStatsData from '../../lib/transformGrowData';
 import VerticalCarousel from '../VericalCarousel';
 
 export interface GrowthFunnelProps {
+  transformData: ReturnType<typeof transformStatsData>['growthRates'];
   onNext: () => void;
 }
 
-export default function GrowthStep({ onNext }: GrowthFunnelProps) {
+export default function GrowthStep({
+  transformData,
+  onNext,
+}: GrowthFunnelProps) {
   return (
     <Flex direction="column" justify="between" className="h-full">
       <Text
@@ -14,7 +19,7 @@ export default function GrowthStep({ onNext }: GrowthFunnelProps) {
         className="text-center text-white text-[28px]"
       />
 
-      <VerticalCarousel />
+      <VerticalCarousel growthRates={transformData} />
 
       <Text
         as="title"
