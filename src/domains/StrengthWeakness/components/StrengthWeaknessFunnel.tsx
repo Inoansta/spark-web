@@ -24,7 +24,7 @@ export default function StrengthWeaknessFunnel() {
   const { data, isSuccess } = useStrengthWeakStatsQuery();
 
   useStrengthWeaknessOption({
-    data,
+    weaknesses: data.weaknesses,
     isSuccess,
   });
 
@@ -33,15 +33,26 @@ export default function StrengthWeaknessFunnel() {
       <ProgressBar step={funnel.index + 1} />
       <funnel.Render
         Strength1={({ history }) => (
-          <StrengthCardStep onNext={() => history.push('Strength2')} />
+          <StrengthCardStep
+            data={data.transformedData.strengths[0]}
+            onNext={() => history.push('Strength2')}
+          />
         )}
         Strength2={({ history }) => (
-          <StrengthCardStep2 onNext={() => history.push('Weakness1')} />
+          <StrengthCardStep2
+            data={data.transformedData.strengths[1]}
+            onNext={() => history.push('Weakness1')}
+          />
         )}
         Weakness1={({ history }) => (
-          <WeaknessStep onNext={() => history.push('Weakness2')} />
+          <WeaknessStep
+            data={data.transformedData.weaknesses[0]}
+            onNext={() => history.push('Weakness2')}
+          />
         )}
-        Weakness2={() => <WeaknessStep2 />}
+        Weakness2={() => (
+          <WeaknessStep2 data={data.transformedData.weaknesses[1]} />
+        )}
       />
     </PageBackground>
   );
