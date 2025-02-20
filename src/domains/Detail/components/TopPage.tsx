@@ -57,8 +57,8 @@ export default function TopPage() {
           slides={slides}
           sectionClassName={'w-full'}
           viewPortClassName={'overflow-hidden'}
-          containerClassName={'flex -ml-4'}
-          itemClassName={'flex-none w-[70%] px-[6px]'}
+          containerClassName={'flex'}
+          itemClassName={'flex-none w-[full] px-[6px]'}
           options={{
             loop: true,
             align: 'center',

@@ -23,7 +23,8 @@ function CurrentLocation() {
       );
     }
     case '/login':
-    case '/detail': {
+    case '/detail':
+    case '/onboarding': {
       return (
         <NavigationHeader
           className={`${isSamePathname('/login') && 'bg-line'}`}
