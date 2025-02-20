@@ -1,34 +1,37 @@
-const getHeightClass = (value: number, maxValue: number) => {
-  const percent = Math.round((value / maxValue) * 100);
-  if (percent <= 10) return 'h-[10%]';
-  if (percent <= 20) return 'h-[20%]';
-  if (percent <= 30) return 'h-[30%]';
-  if (percent <= 40) return 'h-[40%]';
-  if (percent <= 50) return 'h-[50%]';
-  if (percent <= 60) return 'h-[60%]';
-  if (percent <= 70) return 'h-[70%]';
-  if (percent <= 80) return 'h-[80%]';
-  if (percent <= 90) return 'h-[90%]';
-  return 'h-[100%]';
-};
+interface DynamicGraphs {
+  value: number;
+  maxValue: number;
+  minValue: number;
+  color: string;
+}
 
-// 여기서 max값을 정해야한다.
+const getHeightClass = (value: number, minValue: number, maxValue: number) => {
+  if (!value || !maxValue) return 'h-[5%]';
+
+  const minHeight = 5;
+
+  const scaledValue = Math.log1p(Math.max(0, value - minValue + 1));
+  const scaledMax = Math.log1p(Math.max(0, maxValue - minValue + 1));
+
+  const percent =
+    Math.max(minHeight, Math.round((scaledValue / scaledMax) * 100)) ||
+    minHeight;
+
+  return `h-[${percent}%]`;
+};
 
 export default function DynamicGraphs({
   value,
-  index,
+  maxValue,
+  minValue,
   color,
-}: {
-  value: number;
-  index: number;
-  color: string;
-}) {
+}: DynamicGraphs) {
   return (
     <div
-      className={`w-20 ${getHeightClass(value, 100)} rounded-xl overflow-hidden bg-gray`}
+      className={`w-20 ${getHeightClass(value, minValue, maxValue)} rounded-xl overflow-hidden`}
     >
       <div
-        className={`w-full ${color} h-full animate-slide-up delay-[${index * 200}ms] rounded-xl`}
+        className={`w-full ${color} h-full animate-slide-up delay-[200ms] rounded-xl`}
       />
     </div>
   );
