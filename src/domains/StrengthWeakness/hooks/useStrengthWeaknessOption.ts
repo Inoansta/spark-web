@@ -1,26 +1,23 @@
 import { useLayoutEffect } from 'react';
 import useStrategyStore from '@/app/store/useStrategyStore';
+import { Result } from '../model/type';
 
-interface useStrengthWeaknessOptionProps<
-  T extends { result?: { weaknesses: string[] } },
-> {
+interface useStrengthWeaknessOptionProps {
+  weaknesses: Result['weaknesses'];
   isSuccess: boolean;
-  data: T;
 }
 
-const useStrengthWeaknessOption = <
-  T extends { result?: { weaknesses: string[] } },
->({
-  data,
+const useStrengthWeaknessOption = ({
+  weaknesses,
   isSuccess,
-}: useStrengthWeaknessOptionProps<T>) => {
+}: useStrengthWeaknessOptionProps) => {
   const setField = useStrategyStore((store) => store.setField);
 
   useLayoutEffect(() => {
-    if (isSuccess && data.result?.weaknesses) {
-      setField('weaknesses', data.result.weaknesses);
+    if (isSuccess && weaknesses) {
+      setField('weaknesses', weaknesses);
     }
-  }, [isSuccess, data]);
+  }, [isSuccess, weaknesses]);
 };
 
 export default useStrengthWeaknessOption;

@@ -7,6 +7,7 @@ const strengthWeakQueryOption = {
     queryOptions({
       queryKey: [...strengthWeakQueryOption.stats, 'strengthWeak', channelId],
       queryFn: () => strengthWeakApi.getStrengthWeakApi({ channelId }),
+      // select: (data) => {},
     }),
 };
 

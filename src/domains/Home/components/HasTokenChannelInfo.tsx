@@ -15,7 +15,7 @@ import { formatNumberWithCommas, formatNumberWithUnit } from '../lib/utils';
 
 interface ChannelCommonCardProps {
   header: ReactNode;
-  Avatar?: ReactNode;
+  avatarUrl?: string;
   bottom?: ReactNode;
   posting?: string;
   subscriber?: string;
@@ -76,7 +76,7 @@ function ChannelGrowCard({ disabled = false }: ChannelGrowCardProps) {
 
 function ChannelCommonCard({
   header,
-  Avatar = <DefaultImage />,
+  avatarUrl,
   posting = '???',
   subscriber = '???',
   totalView = '???',
@@ -87,7 +87,17 @@ function ChannelCommonCard({
       <Card.Header>{header}</Card.Header>
       <Card.Content>
         <Flex justify="between" align="center" className="pb-[30px]">
-          <div className="mr-[35px]">{Avatar}</div>
+          <div className="mr-[35px]">
+            {avatarUrl ? (
+              <img
+                src={avatarUrl}
+                alt="avatarImage"
+                className="rounded-[50%]"
+              />
+            ) : (
+              <DefaultImage />
+            )}
+          </div>
           <ul className="w-full">
             <Flex justify="between" align="center" as="li">
               <Flex direction="column" align="center" as="div">
@@ -178,6 +188,7 @@ export function ChannelCard() {
             </Flex>
           </LocationMove>
         }
+        avatarUrl={data.result.defaultThumbnailUrl}
         posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
         subscriber={formatNumberWithUnit(
           data.result.subscriberCount ?? 0,

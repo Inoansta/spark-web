@@ -4,6 +4,7 @@ interface ChannelProfileResult {
   totalVideoCount: number;
   subscriberCount: number;
   totalViewCount: number;
+  defaultThumbnailUrl: string;
 }
 
 export interface ResponseChannelProfile {

@@ -1,10 +1,18 @@
 import { Flex, Text } from '@/shared/ui';
+import type { ResponseGrowthPrediction } from '../../model/type';
 import MovingBlurCard from '../MovingBlurCard';
 import type { GrowthFunnelProps } from './GrowthStep';
+interface PredictionStepProps {
+  viewCount: number;
+  predictedViews: ResponseGrowthPrediction['result']['predictedViews'];
+}
+export interface PredictionStep extends Pick<GrowthFunnelProps, 'onNext'> {
+  data: PredictionStepProps;
+}
 
-export default function PredictionViewStep({ onNext }: GrowthFunnelProps) {
+export default function PredictionViewStep({ data, onNext }: PredictionStep) {
   return (
-    <Flex direction="column" justify="between" className="h-full">
+    <Flex direction="column" justify="between" className={`h-full`}>
       <Text
         as="title"
         title="3개월 뒤 예상 조회수는?"
@@ -12,7 +20,10 @@ export default function PredictionViewStep({ onNext }: GrowthFunnelProps) {
       />
 
       <Flex direction="column" className="gap-y-[30px] -mt-16">
-        <MovingBlurCard />
+        <MovingBlurCard
+          result={Math.floor(data.predictedViews)}
+          totalResult={Math.floor(data.viewCount)}
+        />
 
         <Text
           as="title"

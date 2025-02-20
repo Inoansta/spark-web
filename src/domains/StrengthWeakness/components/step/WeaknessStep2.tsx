@@ -3,12 +3,18 @@ import { Button, RouteMove } from '@/shared/components';
 import { Flex, Text } from '@/shared/ui';
 import DynamicGraphs from '../DynamicGraphs';
 import Tag from '../Tag';
+import { StrengthWeaknessStepProps } from './StrengthCardStep';
 
-export default function WeaknessStep2() {
+export default function WeaknessStep2({
+  data,
+}: Pick<StrengthWeaknessStepProps, 'data'>) {
+  const maxValue = Math.max(...data.map((value) => value.value as number));
+  const minValue = Math.max(1, ...data.map((value) => value.value as number));
+
   return (
     <Flex direction="column" gapY={3} justify="between" className="mt-5 h-full">
       <Flex direction="column" align="start" gapY={3}>
-        <Tag type="강점" index={1} />
+        <Tag type="약점" index={2} />
         <Flex direction="column" gapY={2}>
           <Flex as="section" align="center" gapX={2}>
             <AddIcon />
@@ -27,21 +33,18 @@ export default function WeaknessStep2() {
       </Flex>
 
       <Flex justify="around" className="pr-4 min-h-64 max-w-full w-full">
-        <Flex direction="column" justify="end" align="center">
-          <Text as="title" title="총 6" className="text-white" />
-          <DynamicGraphs color="bg-primary10" value={20} index={0} />
-          <Text as="description" title="90일 ~ 60일" className="text-gray4" />
-        </Flex>
-        <Flex direction="column" justify="end" align="center">
-          <Text as="title" title="총 6" className="text-white" />
-          <DynamicGraphs color="bg-primary10" value={40} index={1} />
-          <Text as="description" title="90일 ~ 60일" className="text-gray4" />
-        </Flex>
-        <Flex direction="column" justify="end" align="center">
-          <Text as="title" title="총 6" className="text-white" />
-          <DynamicGraphs color="bg-primary10" value={100} index={2} />
-          <Text as="description" title="90일 ~ 60일" className="text-gray4" />
-        </Flex>
+        {data.map(({ date, color, value }) => (
+          <Flex direction="column" justify="end" align="center" key={date}>
+            <Text as="title" title={`총 ${value}`} className="text-white" />
+            <DynamicGraphs
+              color={color}
+              value={value as number}
+              maxValue={maxValue}
+              minValue={minValue}
+            />
+            <Text as="description" title={date} className="text-gray4" />
+          </Flex>
+        ))}
       </Flex>
 
       <RouteMove location="/growth-prediction-before">

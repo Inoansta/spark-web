@@ -8,11 +8,11 @@ export interface ResponseChannelStats {
   result: Result;
 }
 
-interface Result {
+export interface Result {
   stats: Stat[];
   growthRates: GrowthRates;
-  strengths: string[];
-  weaknesses: string[];
+  strengths: (keyof Stat)[];
+  weaknesses: (keyof Stat)[];
 }
 
 interface Stat {
