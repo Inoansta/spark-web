@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
-import Storage from '@/shared/lib/storage';
+import { Storage } from '@/shared/lib';
 import loginApi from '../service/handler';
 
 export const ACCESS_TOKEN = 'access_token';

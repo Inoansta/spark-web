@@ -1,6 +1,7 @@
 import { useFunnel } from '@use-funnel/browser';
 import PageBackground from '@/shared/ui/components/PageBackground';
 import userCardSteps from '../hooks/useCardFunnel';
+import useStrengthWeaknessOption from '../hooks/useStrengthWeaknessOption';
 import useStrengthWeakStatsQuery from '../hooks/useStrengthWeakStatsQuery';
 import ProgressBar from './ProgressBar';
 import StrengthCardStep from './step/StrengthCardStep';
@@ -20,9 +21,13 @@ const options = {
 export default function StrengthWeaknessFunnel() {
   const funnel = useFunnel(options);
 
-  const { data } = useStrengthWeakStatsQuery();
+  const { data, isSuccess } = useStrengthWeakStatsQuery();
 
-  console.log(data);
+  useStrengthWeaknessOption({
+    data,
+    isSuccess,
+  });
+
   return (
     <PageBackground color="black_gradient">
       <ProgressBar step={funnel.index + 1} />

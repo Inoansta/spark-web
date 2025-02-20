@@ -16,8 +16,6 @@ interface QuerySuspenseBoundaryProps extends PropsWithChildren {
 }
 
 const ErrorComponents = ({ resetErrorBoundary }: FallbackProps) => {
-  console.log('hi');
-
   useLayoutEffect(() => {
     Storage.removeLocalStorage(ACCESS_TOKEN);
   }, []);

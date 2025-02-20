@@ -1,14 +1,10 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { CHANNEL_ID } from '@/domains/Home/hooks/useChannelOption';
-import { Storage } from '@/shared/lib';
+import useStrategyStore from '@/app/store/useStrategyStore';
 import strengthWeakQueryOption from '../service/queryOption';
 
 const useStrengthWeakStatsQuery = () => {
-  return useSuspenseQuery(
-    strengthWeakQueryOption.strengthWeakStats(
-      Storage.getLocalStorage(CHANNEL_ID),
-    ),
-  );
+  const channelId = useStrategyStore((store) => store.channelId);
+  return useSuspenseQuery(strengthWeakQueryOption.strengthWeakStats(channelId));
 };
 
 export default useStrengthWeakStatsQuery;

@@ -1,13 +1,12 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { CHANNEL_ID } from '@/domains/Home/hooks/useChannelOption';
-import { Storage } from '@/shared/lib';
+import useStrategyStore from '@/app/store/useStrategyStore';
 import growthPredictionQueryOption from '../service/queryOption';
 
 const useGrowthPredictionQuery = () => {
+  const channelId = useStrategyStore((store) => store.channelId);
+
   return useSuspenseQuery(
-    growthPredictionQueryOption.growthPredictions(
-      Storage.getLocalStorage(CHANNEL_ID),
-    ),
+    growthPredictionQueryOption.growthPredictions(channelId),
   );
 };
 
