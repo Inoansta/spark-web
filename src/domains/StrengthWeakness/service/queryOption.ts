@@ -15,12 +15,14 @@ const strengthWeakQueryOption = {
       select: (data) => {
         const { stats, strengths, weaknesses } = data.result;
 
+        const reversedStats = stats.slice().reverse();
+
         const transformData = (
           title: 'strengths' | 'weaknesses',
           categories: Result['weaknesses'],
         ) => {
           return categories.map((category) =>
-            stats.map((stat, index) => ({
+            reversedStats.map((stat, index) => ({
               date: dateLabels[index],
               color:
                 title === 'strengths'

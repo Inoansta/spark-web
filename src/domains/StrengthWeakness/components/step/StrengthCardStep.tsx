@@ -22,8 +22,6 @@ export default function StrengthCardStep({
   const maxValue = Math.max(...data.map((value) => value.value as number));
   const minValue = Math.max(1, ...data.map((value) => value.value as number));
 
-  console.log(maxValue, minValue);
-
   return (
     <Flex direction="column" gapY={3} justify="between" className="mt-5 h-full">
       <Flex direction="column" align="start" gapY={3}>

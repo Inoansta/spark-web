@@ -39,7 +39,6 @@ export default function WeaknessStep2({
             <DynamicGraphs
               color={color}
               value={value as number}
-              index={0}
               maxValue={maxValue}
               minValue={minValue}
             />

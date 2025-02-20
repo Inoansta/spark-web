@@ -40,7 +40,6 @@ export default function StrengthCardStep2({
             <DynamicGraphs
               color={color}
               value={value as number}
-              index={index}
               maxValue={maxValue}
               minValue={minValue}
             />
