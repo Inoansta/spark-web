@@ -10,7 +10,7 @@ export function GrowthPrediectionFetch({
   icon,
   title,
 }: Pick<ProcessStateItemProps, 'icon' | 'title'>) {
-  const { data } = useGrowthPredictionQuery();
+  useGrowthPredictionQuery();
 
   return (
     <ProcessStateItem
@@ -26,7 +26,7 @@ export function ChannelProfileFetch({
   icon,
   title,
 }: Pick<ProcessStateItemProps, 'icon' | 'title'>) {
-  const { data } = useChannelProfile();
+  useChannelProfile();
 
   return (
     <ProcessStateItem
@@ -42,7 +42,7 @@ export function StrengthWeaknessFetch({
   icon,
   title,
 }: Pick<ProcessStateItemProps, 'icon' | 'title'>) {
-  const { data } = useStrengthWeakStatsQuery();
+  useStrengthWeakStatsQuery();
 
   return (
     <ProcessStateItem
@@ -58,7 +58,7 @@ export function TopVideosFetch({
   icon,
   title,
 }: Pick<ProcessStateItemProps, 'icon' | 'title'>) {
-  const { data } = usePopularQuery();
+  usePopularQuery();
 
   return (
     <ProcessStateItem
