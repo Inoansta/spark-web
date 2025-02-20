@@ -10,11 +10,11 @@ import {
   StrengthWeaknessFetch,
   TopVideosFetch,
 } from '@/domains/Analysis/components/DataFetchComponents';
-import { Flex, LottieAnimation, Spacing, Text } from '@/shared/ui';
+import { Flex, LottieAnimation, Text } from '@/shared/ui';
 
 export default function Analysis() {
   return (
-    <main className="bg-line p-[10px]">
+    <main className="bg-line p-[10px] min-h-screen">
       <Flex
         direction="column"
         align="center"
@@ -68,8 +68,6 @@ export default function Analysis() {
           delay={3000} // 3초 후 실행
         />
       </Flex>
-
-      <Spacing size="xsmall" />
     </main>
   );
 }
