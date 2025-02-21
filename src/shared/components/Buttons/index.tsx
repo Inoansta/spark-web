@@ -17,6 +17,10 @@ const style = {
     'px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-subtitle-b rounded-medium active:bg-primary7',
   'small-filled-button':
     'px-[20px] w-full h-[48px] bg-primary5 text-white text-[15px] rounded-medium active:bg-primary7 cursor-pointer',
+  'black-large-filled-button':
+    'px-[20px] w-full max-w-[335px] h-[48px] bg-[#333333] text-white text-subtitle-b rounded-medium',
+  'inactive-large-filled-button':
+    'px-[20px] w-full max-w-[335px] h-[48px] bg-[#E5E5EA] text-[#8D9199] text-subtitle-b rounded-medium',
 };
 
 export function Button({

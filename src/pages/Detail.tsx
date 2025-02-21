@@ -13,7 +13,7 @@ import { useMoveLocation } from '@/shared/hooks';
 
 export default function Detail() {
   const [disable, setDisable] = useState(false);
-  const moveToNext = useMoveLocation('/result');
+  const moveToNext = useMoveLocation('/user-info');
 
   useEffect(() => {
     const connected = localStorage.getItem(ACCESS_TOKEN);
@@ -37,13 +37,17 @@ export default function Detail() {
         }
       >
         <div
-          className={`bg-subText text-white text-caption1-b px-[15px] py-[10px] mx-auto rounded-medium ${disable ? 'inline-block' : 'hidden'}`}
+          className={`bg-subText text-white text-caption1-b font-[700] px-[15px] py-[10px] mx-auto rounded-medium ${disable ? 'inline-block' : 'hidden'}`}
         >
           채널을 연동하면 바로 서비스를 이용할 수 있어요!
         </div>
         <Button
           text={'시작하기'}
-          buttonType={'large-filled-button'}
+          buttonType={
+            disable
+              ? 'inactive-large-filled-button'
+              : 'black-large-filled-button'
+          }
           disabled={disable}
           onClick={() => moveToNext()}
         />

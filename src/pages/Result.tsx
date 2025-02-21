@@ -5,7 +5,7 @@ import { LottieAnimation } from '@/shared/ui';
 
 export default function Result() {
   return (
-    <div>
+    <div className={'h-screen'}>
       <div className={'relative z-10'}>
         <LottieAnimation animationData={analysis} height="100%" />
       </div>
