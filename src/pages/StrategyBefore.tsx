@@ -18,7 +18,7 @@ export default function StrategyBefore() {
           AI가 비법을 찾고 있어요
         </div>
         <div className={'text-body2-m text-center text-white'}>
-          예상 소요시간 20초
+          예상 소요시간 40초
         </div>
       </div>
     </div>
