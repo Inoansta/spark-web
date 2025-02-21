@@ -12,7 +12,6 @@ import { Card, Flex, LottieAnimation, Text } from '@/shared/ui';
 import useChannelOption from '../hooks/useChannelOption';
 import useChannelProfile from '../hooks/useChannelProfile';
 import { formatNumberWithCommas, formatNumberWithUnit } from '../lib/utils';
-
 interface ChannelCommonCardProps {
   header: ReactNode;
   avatarUrl?: string;
@@ -74,7 +73,7 @@ function ChannelGrowCard({ disabled = false }: ChannelGrowCardProps) {
 //   );
 // }
 
-function ChannelCommonCard({
+export function ChannelCommonCard({
   header,
   avatarUrl,
   posting = '???',

@@ -19,10 +19,26 @@ import DownThinSmallAroow from '@/assets/svg/Arrows/DownThinSmallArrow';
 import UpThinSmallArrow from '@/assets/svg/Arrows/UpThinSmallArrowt';
 import Graph2 from '@/assets/svg/Detail/Graph2';
 import YoutubeSource from '@/assets/svg/YoutubeSource';
+import useGetStrategy from '@/domains/Strategy/hooks/useGetStrategy';
 import { Button } from '@/shared/components';
 import { LottieAnimation } from '@/shared/ui';
 
+type StrategyResult = {
+  [key: string]: {
+    제목: string;
+    본문: string;
+    '실행 방법': string[];
+    출처: string;
+  };
+};
+
+type StrategyResponse = {
+  result: StrategyResult;
+};
+
 export default function Strategy() {
+  const { data } = useGetStrategy() as { data: StrategyResponse };
+  const result = data?.result;
   const [clicked, setClicked] = useState({
     item1: false,
     item2: false,
@@ -97,222 +113,94 @@ export default function Strategy() {
             allowZeroExpanded={true}
             className={'flex flex-col gap-[20px]'}
           >
-            <AccordionItem>
-              <div className={'bg-white rounded-extraLarges p-[20px]'}>
-                <AccordionItemHeading
-                  className={
-                    'border-b border-b-[#E5E5EA] text-title5-eb pb-[15px]'
-                  }
-                  onClick={() =>
-                    setClicked({ ...clicked, item1: !clicked.item1 })
-                  }
-                >
-                  <AccordionItemButton
-                    className={'flex flex-row items-center gap-[10px]'}
-                  >
-                    <div>1.</div>
-                    <div className={'flex flex-1'}>유튜브 스튜디오</div>
-                    {clicked.item1 ? (
-                      <UpThinSmallArrow />
-                    ) : (
-                      <DownThinSmallAroow />
-                    )}
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                {clicked.item1 ? (
-                  <div className={'mt-[20px]'}>
-                    <div
-                      className={
-                        'text-body-m border-b border-b-[#E5E5EA] pb-[20px]'
-                      }
-                    >
-                      {/* 📌 부업으로 패션 유튜브를 운영하지만 조회수가 오르지
-                          않는다면? 👉 YouTube Studio의 "Inspiration" 탭을
-                          활용해 보세요. 유튜브의 AI 기반 아이디어를 통해 최신
-                          트렌드에 맞는 영상을 기획할 수 있습니다. 📍 사용 방법
-                          🔹 1. 유튜브 스튜디오 접속 YouTube Studio에
-                          로그인합니다. 왼쪽 메뉴에서 [콘텐츠] → [Inspiration]
-                          탭을 선택합니다. 🔹 2. AI 기반 아이디어 생성 상단
-                          입력창에 키워드를 입력합니다. 예시) 최신 패션 트렌드,
-                          봄·여름 인기 코디, 직장인 데일리룩 추천 입력 후
-                          [Create Ideas] 버튼을 클릭하면 다양한 콘텐츠
-                          아이디어가 생성됩니다. 🔹 3. 제공된 콘텐츠 아이디어
-                          활용 AI가 제안한 아이디어 중 원하는 주제를 선택합니다.
-                          선택한 아이디어를 클릭하면 제목 추천, 영상 개요,
-                          썸네일 제안을 확인할 수 있습니다. 추가 옵션이 필요하면
-                          "Show More" 버튼을 눌러 세부 조정할 수 있습니다. 🔹 4.
-                          제목 & 썸네일 최적화 추천된 제목을 그대로 사용하거나,
-                          "Make it Shorter" 기능을 활용해 수정합니다. AI가
-                          생성한 썸네일을 선택 후 다운로드하여 활용합니다.
-                          시청자의 클릭을 유도할 수 있도록 눈에 띄는 디자인을
-                          선택하세요. */}
-                    </div>
-                    <div className={'flex flex-col pt-[20px]'}>
-                      <div
+            {Object.keys(result).map((item, index) => {
+              return (
+                <div key={index}>
+                  <AccordionItem>
+                    <div className={'bg-white rounded-extraLarges p-[20px]'}>
+                      <AccordionItemHeading
                         className={
-                          'text-subtitle-eb text-[#5E6166] flex flex-row py-[5px]'
+                          'border-b border-b-[#E5E5EA] text-title5-eb pb-[15px]'
+                        }
+                        onClick={() =>
+                          setClicked({ ...clicked, item1: !clicked.item1 })
                         }
                       >
-                        <YoutubeSource />
-                        출처
-                      </div>
-                      <div className={'pl-[20px] text-body2-m text-[#5E6166]'}>
-                        유튜브 채널[{}]
-                      </div>
+                        <AccordionItemButton
+                          className={'flex flex-row items-center gap-[10px]'}
+                        >
+                          <div>{index + 1}.</div>
+                          <div className={'flex flex-1'}>
+                            {result[item].제목}
+                          </div>
+                          {clicked.item1 ? (
+                            <UpThinSmallArrow />
+                          ) : (
+                            <DownThinSmallAroow />
+                          )}
+                        </AccordionItemButton>
+                      </AccordionItemHeading>
+                      {clicked.item1 ? (
+                        <div className={'mt-[20px]'}>
+                          <div
+                            className={
+                              'text-body-m border-b border-b-[#E5E5EA] pb-[20px] px-[10px]'
+                            }
+                          >
+                            <ul className={'list-disc space-y-[5px]'}>
+                              <li className={'leading-[24px]'}>
+                                {result[item].본문}
+                              </li>
+                              <ul
+                                className={
+                                  'list-decimal pl-[15px] space-y-[5px] pt-[10px]'
+                                }
+                              >
+                                {result[item]['실행 방법'].map(
+                                  (item1: string) => {
+                                    return (
+                                      <li
+                                        className={'leading-[24px]'}
+                                        key={item1}
+                                      >
+                                        {item1}
+                                      </li>
+                                    );
+                                  },
+                                )}
+                              </ul>
+                            </ul>
+                          </div>
+                          <div className={'flex flex-col pt-[20px]'}>
+                            <div
+                              className={
+                                'text-subtitle-eb text-[#5E6166] flex flex-row py-[5px]'
+                              }
+                            >
+                              <YoutubeSource />
+                              출처
+                            </div>
+                            <div
+                              className={
+                                'pl-[20px] text-body2-m text-[#5E6166]'
+                              }
+                            >
+                              유튜브 채널[{result[item].출처}]
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className={'text-body-m mt-[20px]'}>
+                          {result[item].본문.length > 10
+                            ? result[item].본문.slice(0, 10) + '...'
+                            : result[item].본문}
+                        </div>
+                      )}
                     </div>
-                  </div>
-                ) : (
-                  <div className={'text-body-m mt-[20px]'}>
-                    📌 부업으로 패션 유튜브를 운영하지만 조회수가 오르지
-                    않는다면?...
-                  </div>
-                )}
-              </div>
-            </AccordionItem>
-            <AccordionItem>
-              <div className={'bg-white rounded-extraLarges p-[20px]'}>
-                <AccordionItemHeading
-                  className={
-                    'border-b border-b-[#E5E5EA] text-title5-eb pb-[15px]'
-                  }
-                  onClick={() =>
-                    setClicked({ ...clicked, item2: !clicked.item2 })
-                  }
-                >
-                  <AccordionItemButton
-                    className={'flex flex-row items-center gap-[10px]'}
-                  >
-                    <div>2.</div>
-                    <div className={'flex flex-1'}>유튜브 스튜디오</div>
-                    {clicked.item2 ? (
-                      <UpThinSmallArrow />
-                    ) : (
-                      <DownThinSmallAroow />
-                    )}
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                {clicked.item2 ? (
-                  <div className={'mt-[20px]'}>
-                    <div
-                      className={
-                        'text-body-m border-b border-b-[#E5E5EA] pb-[20px]'
-                      }
-                    >
-                      {/* 📌 부업으로 패션 유튜브를 운영하지만 조회수가 오르지
-                          않는다면? 👉 YouTube Studio의 "Inspiration" 탭을
-                          활용해 보세요. 유튜브의 AI 기반 아이디어를 통해 최신
-                          트렌드에 맞는 영상을 기획할 수 있습니다. 📍 사용 방법
-                          🔹 1. 유튜브 스튜디오 접속 YouTube Studio에
-                          로그인합니다. 왼쪽 메뉴에서 [콘텐츠] → [Inspiration]
-                          탭을 선택합니다. 🔹 2. AI 기반 아이디어 생성 상단
-                          입력창에 키워드를 입력합니다. 예시) 최신 패션 트렌드,
-                          봄·여름 인기 코디, 직장인 데일리룩 추천 입력 후
-                          [Create Ideas] 버튼을 클릭하면 다양한 콘텐츠
-                          아이디어가 생성됩니다. 🔹 3. 제공된 콘텐츠 아이디어
-                          활용 AI가 제안한 아이디어 중 원하는 주제를 선택합니다.
-                          선택한 아이디어를 클릭하면 제목 추천, 영상 개요,
-                          썸네일 제안을 확인할 수 있습니다. 추가 옵션이 필요하면
-                          "Show More" 버튼을 눌러 세부 조정할 수 있습니다. 🔹 4.
-                          제목 & 썸네일 최적화 추천된 제목을 그대로 사용하거나,
-                          "Make it Shorter" 기능을 활용해 수정합니다. AI가
-                          생성한 썸네일을 선택 후 다운로드하여 활용합니다.
-                          시청자의 클릭을 유도할 수 있도록 눈에 띄는 디자인을
-                          선택하세요. */}
-                    </div>
-                    <div className={'flex flex-col pt-[20px]'}>
-                      <div
-                        className={
-                          'text-subtitle-eb text-[#5E6166] flex flex-row py-[5px]'
-                        }
-                      >
-                        <YoutubeSource />
-                        출처
-                      </div>
-                      <div className={'pl-[20px] text-body2-m text-[#5E6166]'}>
-                        유튜브 채널[{}]
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className={'text-body-m mt-[20px]'}>
-                    📌 부업으로 패션 유튜브를 운영하지만 조회수가 오르지
-                    않는다면?...
-                  </div>
-                )}
-              </div>
-            </AccordionItem>
-            <AccordionItem>
-              <div className={'bg-white rounded-extraLarges p-[20px]'}>
-                <AccordionItemHeading
-                  className={
-                    'border-b border-b-[#E5E5EA] text-title5-eb pb-[15px]'
-                  }
-                  onClick={() =>
-                    setClicked({ ...clicked, item3: !clicked.item3 })
-                  }
-                >
-                  <AccordionItemButton
-                    className={'flex flex-row items-center gap-[10px]'}
-                  >
-                    <div>3.</div>
-                    <div className={'flex flex-1'}>유튜브 스튜디오</div>
-                    {clicked.item3 ? (
-                      <UpThinSmallArrow />
-                    ) : (
-                      <DownThinSmallAroow />
-                    )}
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                {clicked.item3 ? (
-                  <div className={'mt-[20px]'}>
-                    <div
-                      className={
-                        'text-body-m border-b border-b-[#E5E5EA] pb-[20px]'
-                      }
-                    >
-                      {/* 📌 부업으로 패션 유튜브를 운영하지만 조회수가 오르지
-                          않는다면? 👉 YouTube Studio의 "Inspiration" 탭을
-                          활용해 보세요. 유튜브의 AI 기반 아이디어를 통해 최신
-                          트렌드에 맞는 영상을 기획할 수 있습니다. 📍 사용 방법
-                          🔹 1. 유튜브 스튜디오 접속 YouTube Studio에
-                          로그인합니다. 왼쪽 메뉴에서 [콘텐츠] → [Inspiration]
-                          탭을 선택합니다. 🔹 2. AI 기반 아이디어 생성 상단
-                          입력창에 키워드를 입력합니다. 예시) 최신 패션 트렌드,
-                          봄·여름 인기 코디, 직장인 데일리룩 추천 입력 후
-                          [Create Ideas] 버튼을 클릭하면 다양한 콘텐츠
-                          아이디어가 생성됩니다. 🔹 3. 제공된 콘텐츠 아이디어
-                          활용 AI가 제안한 아이디어 중 원하는 주제를 선택합니다.
-                          선택한 아이디어를 클릭하면 제목 추천, 영상 개요,
-                          썸네일 제안을 확인할 수 있습니다. 추가 옵션이 필요하면
-                          "Show More" 버튼을 눌러 세부 조정할 수 있습니다. 🔹 4.
-                          제목 & 썸네일 최적화 추천된 제목을 그대로 사용하거나,
-                          "Make it Shorter" 기능을 활용해 수정합니다. AI가
-                          생성한 썸네일을 선택 후 다운로드하여 활용합니다.
-                          시청자의 클릭을 유도할 수 있도록 눈에 띄는 디자인을
-                          선택하세요. */}
-                    </div>
-                    <div className={'flex flex-col pt-[20px]'}>
-                      <div
-                        className={
-                          'text-subtitle-eb text-[#5E6166] flex flex-row py-[5px]'
-                        }
-                      >
-                        <YoutubeSource />
-                        출처
-                      </div>
-                      <div className={'pl-[20px] text-body2-m text-[#5E6166]'}>
-                        유튜브 채널[{}]
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className={'text-body-m mt-[20px]'}>
-                    📌 부업으로 패션 유튜브를 운영하지만 조회수가 오르지
-                    않는다면?...
-                  </div>
-                )}
-              </div>
-            </AccordionItem>
+                  </AccordionItem>
+                </div>
+              );
+            })}
           </Accordion>
         </div>
       </div>

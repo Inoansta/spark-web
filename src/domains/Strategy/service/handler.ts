@@ -17,8 +17,12 @@ const strategyApi = {
       snsGoal,
       weaknesses,
     };
-
     return httpClient.post<ResponseStrategy, typeof body>(url, body);
+  },
+  getStrategy: async ({ requestId }: { requestId: string }) => {
+    const url = `${BASE_URL}/strategy/${requestId}`;
+    const response = await httpClient.get(url);
+    return response;
   },
 };
 
