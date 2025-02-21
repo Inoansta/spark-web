@@ -1,5 +1,13 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
 import useStrategyStore from '@/app/store/useStrategyStore';
+import { SmallYoutubeIcon } from '@/assets/svg/logo/SmallYoutbeIcon';
+import { ChannelCommonCard } from '@/domains/Home/components/HasTokenChannelInfo';
+import useChannelProfile from '@/domains/Home/hooks/useChannelProfile';
+import {
+  formatNumberWithCommas,
+  formatNumberWithUnit,
+} from '@/domains/Home/lib/utils';
+import LocationMove from '@/domains/Login/components/LocationMove';
 import FulltimeParttime from '@/domains/UserInformation/components/Footers/FulltimeParttime';
 import SNSGoal from '@/domains/UserInformation/components/Footers/SNSGoal';
 import Questionbox from '@/domains/UserInformation/components/Questionbox';
@@ -10,6 +18,7 @@ import { QUESTIONS } from '@/domains/UserInformation/questions';
 import { Button } from '@/shared/components';
 import BottomSheetModal from '@/shared/components/BottomSheetModal/BottomSheetModal';
 import { useMoveLocation } from '@/shared/hooks';
+import { Flex, Text } from '@/shared/ui';
 
 export interface userAnswer {
   CONTENTS: string;
@@ -47,6 +56,8 @@ function UserInfo() {
 
   const [isTyped, setIsTyped] = useState<boolean>(false);
   const bottomRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+
+  const { data } = useChannelProfile();
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView();
@@ -87,12 +98,86 @@ function UserInfo() {
       {steps === 0 ? (
         <>
           <UserInformationProfiles />
+          <ChannelCommonCard
+            header={
+              <LocationMove
+                location={`https://www.youtube.com/@${data.result.channelId}`}
+              >
+                <Flex justify="between" align="center">
+                  <Text
+                    as="title"
+                    title={`@${data.result.channelName}`}
+                    className="text-[18px]"
+                  />
+                  <button
+                    type="button"
+                    className="bg-line p-[10px] rounded-[20px]"
+                  >
+                    <Flex align="center">
+                      <SmallYoutubeIcon className="mr-1" />
+                      <Text
+                        as="description"
+                        title="유튜브"
+                        className="font-bold"
+                      />
+                    </Flex>
+                  </button>
+                </Flex>
+              </LocationMove>
+            }
+            posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
+            subscriber={formatNumberWithUnit(
+              data.result.subscriberCount ?? 0,
+              '명',
+            )}
+            totalView={formatNumberWithUnit(
+              data.result.totalViewCount ?? 0,
+              '회',
+            )}
+          />
           <Questionbox questions={QUESTIONS.contents1} questionType={'last'} />
         </>
       ) : null}
       {steps >= 1 ? (
         <>
           <UserInformationProfiles />
+          <ChannelCommonCard
+            header={
+              <LocationMove
+                location={`https://www.youtube.com/@${data.result.channelId}`}
+              >
+                <Flex justify="between" align="center">
+                  <Text
+                    as="title"
+                    title={`@${data.result.channelName}`}
+                    className="text-[18px]"
+                  />
+                  <button
+                    type="button"
+                    className="bg-line p-[10px] rounded-[20px]"
+                  >
+                    <Flex align="center">
+                      <SmallYoutubeIcon className="mr-1" />
+                      <Text
+                        as="description"
+                        title="유튜브"
+                        className="font-bold"
+                      />
+                    </Flex>
+                  </button>
+                </Flex>
+              </LocationMove>
+            }
+            posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
+            subscriber={formatNumberWithUnit(
+              data.result.subscriberCount ?? 0,
+              '명',
+            )}
+            totalView={formatNumberWithUnit(
+              data.result.totalViewCount ?? 0,
+              '회',
+            )}
+          />
           <Questionbox questions={QUESTIONS.contents1} questionType={'first'} />
           <Questionbox questions={QUESTIONS.contents2} questionType={'last'} />
         </>

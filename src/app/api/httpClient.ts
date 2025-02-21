@@ -42,5 +42,5 @@ class HttpClient extends axiosClient {
 export default new HttpClient({
   // baseURL: import.meta.env.VITE_API_END_POINT,
   // TODO: 최종 배포시 주석 풀기
-  baseURL: '',
+  baseURL: import.meta.env.VITE_API_END_POINT,
 });

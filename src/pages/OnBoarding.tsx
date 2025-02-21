@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import onBoarding2 from '@/assets/animation/onBoarding2.json';
 import onboarding1_youtube from '@/assets/onboarding/onboarding1_youtube.png';
@@ -61,10 +62,9 @@ const slides = contents.map((item) => {
 export default function OnBoarding() {
   const navigate = useNavigate();
 
-  const completeOnboarding = () => {
+  useEffect(() => {
     localStorage.setItem('hasSeenOnboarding', 'true');
-    navigate('/');
-  };
+  }, []);
 
   return (
     <div className={'flex flex-col'}>
@@ -88,7 +88,7 @@ export default function OnBoarding() {
         <Button
           text={'시작하기'}
           buttonType={'large-filled-button'}
-          onClick={completeOnboarding}
+          onClick={() => navigate('/')}
         />
       </div>
     </div>

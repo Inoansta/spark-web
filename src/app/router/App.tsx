@@ -11,6 +11,7 @@ import Popular from '@/pages/Popular';
 import Result from '@/pages/Result';
 import Setting from '@/pages/Setting';
 import Strategy from '@/pages/Strategy';
+import StrategyBefore from '@/pages/StrategyBefore';
 import StrengthWeakness from '@/pages/StrengthWeakness';
 import UserInfo from '@/pages/UserInfo';
 import {
@@ -40,17 +41,39 @@ export default function RouterApp() {
           />
           <Route element={<ProtectedLayout />}>
             <Route path="/detail" element={<Detail />} />
-            <Route path="/user-info" element={<UserInfo />} />
+
+            <Route
+              path="/user-info"
+              element={
+                <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>
+                  <UserInfo />
+                </QuerySuspenseBoundary>
+              }
+            />
             <Route path="/analysis" element={<Analysis />} />
             <Route path="/result" element={<Result />} />
-            <Route path="/popular" element={<Popular />} />
+            <Route
+              path="/popular"
+              element={
+                <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>
+                  <Popular />
+                </QuerySuspenseBoundary>
+              }
+            />
             <Route path="/strength-weakness" element={<StrengthWeakness />} />
             <Route
               path="/growth-prediction-before"
               element={<GrowthPredictionBefore />}
             />
             <Route path="/growth-prediction" element={<GrowthPrediction />} />
-            <Route path="/strategy" element={<Strategy />} />
+            <Route
+              path="/strategy"
+              element={
+                <QuerySuspenseBoundary loadingFallback={<StrategyBefore />}>
+                  <Strategy />
+                </QuerySuspenseBoundary>
+              }
+            />
           </Route>
         </Route>
         <Route path="/oauth/google" element={<Oauth />} />
