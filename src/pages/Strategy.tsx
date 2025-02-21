@@ -56,10 +56,8 @@ export default function Strategy() {
     if (!screenshotReady) return;
 
     if (!isWebView) {
-      console.log('does it get here');
       html2canvas(document.body).then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
-        console.log(imgData.substring(0, 10));
         const link = document.createElement('a');
         link.href = imgData;
         link.download = 'screenshot.png';
