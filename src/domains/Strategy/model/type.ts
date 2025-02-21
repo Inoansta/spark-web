@@ -8,9 +8,5 @@ export interface RequestStrategy {
 export interface ResponseStrategy {
   statusCode: number;
   message: string;
-  result: Result;
-}
-
-interface Result {
   requestId: string;
 }
