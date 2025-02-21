@@ -32,23 +32,19 @@ type StrategyResult = {
   };
 };
 
-type StrategyResponse = {
-  result: StrategyResult;
-};
-
 export default function Strategy() {
-  const { data } = useGetStrategy() as { data: StrategyResponse };
-  const result = data?.result;
-  const [clicked, setClicked] = useState({
-    item1: false,
-    item2: false,
-    item3: false,
+  const { data } = useGetStrategy() as { data: StrategyResult };
+  const result = data;
+  const [clicked, setClicked] = useState<Record<number, boolean>>({
+    0: false,
+    1: false,
+    2: false,
   });
   const [screenshotReady, setScreenshotReady] = useState(false);
   const isWebView = typeof window !== 'undefined' && window.ReactNativeWebView;
 
   const onScreenShot = () => {
-    setClicked({ item1: true, item2: true, item3: true });
+    setClicked({ 0: true, 1: true, 2: true });
     setScreenshotReady(true);
   };
 
@@ -111,7 +107,7 @@ export default function Strategy() {
             allowZeroExpanded={true}
             className={'flex flex-col gap-[20px]'}
           >
-            {Object.keys(result).map((item, index) => {
+            {Object.keys(result).map((item: string, index) => {
               return (
                 <div key={index}>
                   <AccordionItem>
@@ -121,7 +117,7 @@ export default function Strategy() {
                           'border-b border-b-[#E5E5EA] text-title5-eb pb-[15px]'
                         }
                         onClick={() =>
-                          setClicked({ ...clicked, item1: !clicked.item1 })
+                          setClicked({ ...clicked, [index]: !clicked[index] })
                         }
                       >
                         <AccordionItemButton
@@ -131,14 +127,14 @@ export default function Strategy() {
                           <div className={'flex flex-1'}>
                             {result[item].제목}
                           </div>
-                          {clicked.item1 ? (
+                          {clicked[index] ? (
                             <UpThinSmallArrow />
                           ) : (
                             <DownThinSmallAroow />
                           )}
                         </AccordionItemButton>
                       </AccordionItemHeading>
-                      {clicked.item1 ? (
+                      {clicked[index] ? (
                         <div className={'mt-[20px]'}>
                           <div
                             className={
