@@ -1,4 +1,6 @@
 import { useFunnel } from '@use-funnel/browser';
+import useStrategyStore from '@/app/store/useStrategyStore';
+import useStrategy from '@/domains/Strategy/hooks/useStrategy';
 import PageBackground from '@/shared/ui/components/PageBackground';
 import userCardSteps from '../hooks/useCardFunnel';
 import useStrengthWeaknessOption from '../hooks/useStrengthWeaknessOption';
@@ -21,8 +23,12 @@ const options = {
 
 export default function StrengthWeaknessFunnel() {
   const funnel = useFunnel(options);
-
+  const { mutate } = useStrategy();
+  const { userContents, userFulltime, userGoal, weaknesses } = useStrategyStore(
+    (store) => store,
+  );
   const { data, isSuccess } = useStrengthWeakStatsQuery();
+
   const transformData = transformDataStrengthWeakness(data);
   useStrengthWeaknessOption({
     weaknesses: transformData.weaknesses,
@@ -42,7 +48,15 @@ export default function StrengthWeaknessFunnel() {
         Strength2={({ history }) => (
           <StrengthCardStep2
             data={transformData.transformedData.strengths[1]}
-            onNext={() => history.push('Weakness1')}
+            onNext={() => {
+              mutate({
+                activityDomain: userContents,
+                workType: userFulltime,
+                snsGoal: userGoal,
+                weaknesses: weaknesses,
+              });
+              history.push('Weakness1');
+            }}
           />
         )}
         Weakness1={({ history }) => (

@@ -12,5 +12,5 @@ export interface ResponseStrategy {
 }
 
 interface Result {
-  strategy: string;
+  requestId: string;
 }
