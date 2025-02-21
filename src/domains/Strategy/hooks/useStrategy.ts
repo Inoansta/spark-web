@@ -8,10 +8,12 @@ const useStrategy = () => {
     mutationFn: strategyApi.postStrategy,
     onSuccess: (data) => {
       const { result } = data;
+      console.log('useStrategy OnSuccess', result);
       setRequestIdOptions('requestId', result.requestId);
     },
-    onError: () => {
+    onError: (error) => {
       console.log('there is an error');
+      console.log(error);
     },
   });
 };
