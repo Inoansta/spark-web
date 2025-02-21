@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import useGrowthPredictionQuery from '@/domains/GrowthPrediction/hooks/useGrowthPredictionQuery';
 import useChannelProfile from '@/domains/Home/hooks/useChannelProfile';
 import usePopularQuery from '@/domains/Popular/hooks/usePopularQuery';
@@ -10,7 +12,14 @@ export function GrowthPrediectionFetch({
   icon,
   title,
 }: Pick<ProcessStateItemProps, 'icon' | 'title'>) {
-  useGrowthPredictionQuery();
+  const navigate = useNavigate();
+  const { isSuccess } = useGrowthPredictionQuery();
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate('/result');
+    }
+  }, [isSuccess]);
 
   return (
     <ProcessStateItem
