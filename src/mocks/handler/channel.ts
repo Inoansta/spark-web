@@ -158,6 +158,44 @@ export const handlers = [
               viewCount: 20810,
             },
           },
+          {
+            id: 'uJT5tetoDoE',
+            snippet: {
+              title:
+                '옷 잘 입고 싶은 사람 모여라 👜🕶️🧤🧦 흔하지 않은 쇼핑몰 추천 7곳, 일본 감성 몽글몽글한 쇼핑몰, 직장인이 입기 좋은 고퀄리티 쇼핑몰',
+              publishedAt: '2024-12-28T09:00:57Z',
+              thumbnails: {
+                default: {
+                  url: 'https://i.ytimg.com/vi/uJT5tetoDoE/default.jpg',
+                  width: 120,
+                  height: 90,
+                },
+                medium: {
+                  url: 'https://i.ytimg.com/vi/uJT5tetoDoE/mqdefault.jpg',
+                  width: 320,
+                  height: 180,
+                },
+                high: {
+                  url: 'https://i.ytimg.com/vi/uJT5tetoDoE/hqdefault.jpg',
+                  width: 480,
+                  height: 360,
+                },
+                standard: {
+                  url: 'https://i.ytimg.com/vi/uJT5tetoDoE/sddefault.jpg',
+                  width: 640,
+                  height: 480,
+                },
+                maxres: {
+                  url: 'https://i.ytimg.com/vi/uJT5tetoDoE/maxresdefault.jpg',
+                  width: 1280,
+                  height: 720,
+                },
+              },
+            },
+            statistics: {
+              viewCount: 56623,
+            },
+          },
         ],
       },
       { status: 200 },

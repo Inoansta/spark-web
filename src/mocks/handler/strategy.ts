@@ -1,12 +1,19 @@
 import { HttpResponse, delay, http } from 'msw';
 
 export const handlers = [
-  http.post('/pinecone/strategy', async ({ ...body }) => {
+  http.post('/pinecone/strategy', async () => {
     await delay(200);
-    return HttpResponse.json({ data: { body } }, { status: 200 });
+    return HttpResponse.json(
+      {
+        result: {
+          requestId: '14a4f2a1-d997-4d08-a0d0-c3aba4d940ea',
+        },
+      },
+      { status: 200 },
+    );
   }),
 
-  http.get('/pinecone/strategy', async () => {
+  http.get('/pinecone/strategy/*', async () => {
     await delay(200);
     return HttpResponse.json(
       {
