@@ -1,6 +1,8 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import useStrategyStore from '@/app/store/useStrategyStore';
-import { RouteMove } from '@/shared/components';
+import { BackIcon } from '@/assets/svg/nav/BackIcon';
+import { CloseIcon } from '@/assets/svg/nav/CloseIcon';
+import { NavigationHeader, RouteMove } from '@/shared/components';
 import { Flex } from '@/shared/ui';
 
 interface DelayProps {
@@ -22,11 +24,19 @@ function Delay({ delay = 7000, children }: DelayProps) {
   return visible && children;
 }
 
-export default function DelayText({ delay = 7000 }: { delay?: number }) {
+export default function DelayText() {
   const channelName = useStrategyStore((store) => store.channelName);
 
   return (
     <Delay>
+      <NavigationHeader className={'p-5 max-w-[450px] w-full fixed top-4'}>
+        <NavigationHeader.LeftContent location="back">
+          <BackIcon />
+        </NavigationHeader.LeftContent>
+        <NavigationHeader.RightContent location="/detail">
+          <CloseIcon />
+        </NavigationHeader.RightContent>
+      </NavigationHeader>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full">
         <Flex direction="column" justify="center" align="center">
           <p className="text-white text-3xl font-bold drop-shadow-lg">
