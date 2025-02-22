@@ -1,4 +1,3 @@
-import { AddIcon } from '@/assets/svg/AddIcon';
 import { Button, RouteMove } from '@/shared/components';
 import { Flex, Text } from '@/shared/ui';
 import DynamicGraphs from '../DynamicGraphs';
@@ -6,10 +5,10 @@ import Tag from '../Tag';
 import { StrengthWeaknessStepProps } from './StrengthCardStep';
 
 export default function WeaknessStep2({
-  data,
+  data: { data, info },
 }: Pick<StrengthWeaknessStepProps, 'data'>) {
-  const maxValue = Math.max(...data.map((value) => value.value as number));
-  const minValue = Math.max(1, ...data.map((value) => value.value as number));
+  const maxValue = Math.max(...data.map((value) => value.graphValue as number));
+  const minValue = Math.min(...data.map((value) => value.graphValue as number));
 
   return (
     <Flex direction="column" gapY={3} justify="between" className="mt-5 h-full">
@@ -17,28 +16,28 @@ export default function WeaknessStep2({
         <Tag type="약점" index={2} />
         <Flex direction="column" gapY={2}>
           <Flex as="section" align="center" gapX={2}>
-            <AddIcon />
+            <info.Icon />
             <Text
               as="title"
               className="text-white text-[28px] leading-[34px] font-bold"
-              title="영상 업로드 수"
+              title={info.title}
             />
           </Flex>
           <Text
             as="body"
             className="text-white max-w-60"
-            title="꾸준한 업로드 덕분에 채널이 활발하게 성장하고 있어요!"
+            title={info.description.weakness}
           />
         </Flex>
       </Flex>
 
       <Flex justify="around" className="pr-4 min-h-64 max-w-full w-full">
-        {data.map(({ date, color, value }) => (
+        {data.map(({ date, color, graphValue, label }) => (
           <Flex direction="column" justify="end" align="center" key={date}>
-            <Text as="title" title={`총 ${value}`} className="text-white" />
+            <Text as="title" title={label} className="text-white" />
             <DynamicGraphs
               color={color}
-              value={value as number}
+              value={graphValue as number}
               maxValue={maxValue}
               minValue={minValue}
             />
