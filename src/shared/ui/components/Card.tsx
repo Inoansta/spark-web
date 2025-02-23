@@ -13,7 +13,7 @@ function Root({ className, children }: RootProps) {
       direction="column"
       gapY={5}
       className={clsx(
-        `border rounded-2xl border-disabled overflow-hidden bg-white`,
+        `border rounded-[20px] border-disabled overflow-hidden bg-white`,
         className,
       )}
       as="article"

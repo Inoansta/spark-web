@@ -32,10 +32,23 @@ export default function StrengthCardStep2({
         </Flex>
       </Flex>
 
-      <Flex justify="around" className="pr-4 min-h-64 max-w-full w-full">
+      <Flex
+        justify="center"
+        className="pr-4 min-h-64 max-w-full w-full gap-x-5"
+      >
         {data.map(({ date, color, graphValue, label }) => (
-          <Flex direction="column" justify="end" align="center" key={date}>
-            <Text as="title" title={label} className="text-white" />
+          <Flex
+            direction="column"
+            justify="end"
+            align="center"
+            key={date}
+            className="gap-y-[10px]"
+          >
+            <Text
+              as="title"
+              title={label}
+              className="text-white font-bold text-lg"
+            />
             <DynamicGraphs
               color={color}
               value={graphValue as number}
