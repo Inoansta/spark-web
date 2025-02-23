@@ -69,12 +69,14 @@ export default function Setting() {
               <li
                 key={title}
                 onClick={() =>
-                  navigator.userAgent.length > 0 ? SendMessage(location) : null
+                  navigator.userAgent === 'SparkAgent'
+                    ? SendMessage(location)
+                    : null
                 }
               >
                 <LocationMove
                   location={
-                    navigator.userAgent.length > 0
+                    navigator.userAgent === 'SparkAgent'
                       ? 'https://www.app-spark.shop/setting'
                       : location
                   }

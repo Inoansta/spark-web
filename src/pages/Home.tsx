@@ -19,6 +19,17 @@ export default function Home() {
     }
   }, [navigate]);
 
+  const SendMessage = (url: string) => {
+    const message = JSON.stringify({
+      type: 'external_url',
+      url: url,
+    });
+
+    if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage(message);
+    }
+  };
+
   return (
     <main className="bg-line min-h-full">
       <Flex direction="column" gapY={5}>
@@ -36,16 +47,30 @@ export default function Home() {
             </Flex>
             <Card className="pb-5">
               <Card.Header>
-                <LocationMove location="https://triangular-trombone-8fb.notion.site/195ea985e0f280219a6af9afa9f1b7c0?pvs=4">
-                  <Flex justify="between" align="center">
-                    <Text
-                      as="title"
-                      title="이용 가이드"
-                      className="text-[18px]"
-                    />
-                    <FrontIcon />
-                  </Flex>
-                </LocationMove>
+                <div
+                  onClick={() => {
+                    SendMessage(
+                      'https://triangular-trombone-8fb.notion.site/195ea985e0f280219a6af9afa9f1b7c0?pvs=4',
+                    );
+                  }}
+                >
+                  <LocationMove
+                    location={
+                      navigator.userAgent === 'SparkAgent'
+                        ? 'https://www.app-spark.shop/'
+                        : 'https://triangular-trombone-8fb.notion.site/195ea985e0f280219a6af9afa9f1b7c0?pvs=4'
+                    }
+                  >
+                    <Flex justify="between" align="center">
+                      <Text
+                        as="title"
+                        title="이용 가이드"
+                        className="text-[18px]"
+                      />
+                      <FrontIcon />
+                    </Flex>
+                  </LocationMove>
+                </div>
               </Card.Header>
             </Card>
             <Spacing size="large" />
