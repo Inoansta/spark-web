@@ -1,4 +1,4 @@
-import { ComponentProps, FC, ReactNode, SVGProps } from 'react';
+import { ComponentProps, FC } from 'react';
 import { Comment } from '@/assets/strengthWeakness/Comment';
 import { Dollar } from '@/assets/strengthWeakness/Dollar';
 import { Like } from '@/assets/strengthWeakness/Like';
@@ -7,7 +7,7 @@ import { AddIcon } from '@/assets/svg/AddIcon';
 import { Avatar } from '@/assets/svg/Avatar/Avatar';
 import Time from '@/assets/svg/Detail/Time';
 import EyeIcon from '@/assets/svg/EyeIcon';
-import { SvgProps } from '@/assets/svg/nav/UnifiedSettingIcon';
+import type { SvgProps } from '@/assets/svg/nav/UnifiedSettingIcon';
 import { ResponseChannelStats, Result } from '../model/type';
 import { transformLabelData } from './formatData';
 
