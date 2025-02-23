@@ -23,14 +23,18 @@ export default function Login() {
       </section>
       <Spacing size="lsmall" />
 
-      <img src={loadingGif} alt="로그인 gif 애니메이션" />
+      <img
+        src={loadingGif}
+        alt="로그인 gif 애니메이션"
+        className="rounded-[20px]"
+      />
 
       <Spacing className="h-[76px]" />
 
       <LocationMove location={data.googleAuthUrl}>
         <Flex align="center" className="bg-red1 px-[26px] py-3 rounded-[26px]">
           <YoutubeIcon />
-          <button className="text-white w-full">
+          <button className="text-white w-full text-[15px] font-bold">
             Youtube 채널 가지고 오기
           </button>
         </Flex>
