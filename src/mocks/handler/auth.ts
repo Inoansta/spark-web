@@ -13,4 +13,17 @@ export const handlers = [
       { status: 200 },
     );
   }),
+  http.post('/oauth/google/refresh', async ({ params }) => {
+    await delay(200);
+    console.log('params', params);
+    return HttpResponse.json(
+      {
+        data: {
+          access_token: 'newAccess',
+          refresh_token: 'refreshToken',
+        },
+      },
+      { status: 200 },
+    );
+  }),
 ];
