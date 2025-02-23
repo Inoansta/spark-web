@@ -18,7 +18,7 @@ export default function ResultInteraction({ channelName }: ResultInteraction) {
   return (
     <div
       className={
-        'text-white text-title3-eb px-[10px] py-[20px] text-center border border-white rounded-extraLarges bg-white bg-opacity-30 mx-[35px] absolute z-20'
+        'text-white text-[24px] font-[800] leading-[32px] px-[10px] py-[20px] text-center border border-white rounded-extraLarges bg-white bg-opacity-30 mx-[35px] absolute z-20'
       }
       style={animation}
     >

@@ -147,7 +147,11 @@ export default function WorriedAbout() {
         'py-[60px] px-[20px] flex flex-col justify-center items-center gap-[40px]'
       }
     >
-      <div className={'text-center text-title4-eb text-subText'}>
+      <div
+        className={
+          'text-center text-[20px] font-[800] leading-[28px] text-subText'
+        }
+      >
         유튜브 채널 운영하면서
         <br />
         이런 고민 해보신적 있죠?

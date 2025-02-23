@@ -18,6 +18,7 @@ import strategy from '@/assets/animation/strategy.json';
 import DownThinSmallAroow from '@/assets/svg/Arrows/DownThinSmallArrow';
 import UpThinSmallArrow from '@/assets/svg/Arrows/UpThinSmallArrowt';
 import Graph2 from '@/assets/svg/Detail/Graph2';
+import Magic2 from '@/assets/svg/Magic2';
 import YoutubeSource from '@/assets/svg/YoutubeSource';
 import useGetStrategy from '@/domains/Strategy/hooks/useGetStrategy';
 import { Button } from '@/shared/components';
@@ -35,6 +36,7 @@ type StrategyResult = {
 export default function Strategy() {
   const { data } = useGetStrategy() as { data: StrategyResult };
   const result = data;
+
   const [clicked, setClicked] = useState<Record<number, boolean>>({
     0: false,
     1: false,
@@ -85,22 +87,31 @@ export default function Strategy() {
       <div className={'pt-[20px] px-[20px] flex flex-col '}>
         <div
           className={
-            'text-title4-eb text-white flex flex-row items-center gap-[5px]'
+            'text-[20px] font-[800] leading-[28px] text-white flex flex-row items-center gap-[5px]'
           }
         >
           <Graph2 fill={'white'} />
           스파크님의 채널 분석
         </div>
-        <div className={'text-body-m text-white'}>샘플 데이터입니다.</div>
       </div>
       <div className={'mb-[60px] mt-[20px]'}>
         <LottieAnimation animationData={strategy} loop={true} />
       </div>
       <div className={'flex flex-col px-[20px] pt-[20px] mt-[20px]'}>
-        <div className={'text-title5-eb text-white'}>
+        <div
+          className={
+            'text-[18px] font-[800] not-italic leading-[26px] text-white'
+          }
+        >
           00님의 채널 성장을 위한
         </div>
-        <div className={'text-title3-eb text-white'}>3가지 추천 비법</div>
+        <div
+          className={
+            'text-[24px] font-[800] leading-[32px] text-white flex flex-row items-center'
+          }
+        >
+          3가지 추천 비법 <Magic2 />
+        </div>
         <div className={'flex flex-col py-[20px] gap-[20px]'}>
           <Accordion
             allowMultipleExpanded={true}
@@ -114,7 +125,7 @@ export default function Strategy() {
                     <div className={'bg-white rounded-extraLarges p-[20px]'}>
                       <AccordionItemHeading
                         className={
-                          'border-b border-b-[#E5E5EA] text-title5-eb pb-[15px]'
+                          'border-b border-b-[#E5E5EA] text-[18px] font-[800] leading-[26px] pb-[15px]'
                         }
                         onClick={() =>
                           setClicked({ ...clicked, [index]: !clicked[index] })
@@ -123,7 +134,13 @@ export default function Strategy() {
                         <AccordionItemButton
                           className={'flex flex-row items-center gap-[10px]'}
                         >
-                          <div>{index + 1}.</div>
+                          <div
+                            className={
+                              'text-[15px] font-[800] leading-[24px] not-italic'
+                            }
+                          >
+                            {index + 1}.
+                          </div>
                           <div className={'flex flex-1'}>
                             {result[item].제목}
                           </div>
@@ -138,7 +155,7 @@ export default function Strategy() {
                         <div className={'mt-[20px]'}>
                           <div
                             className={
-                              'text-body-m border-b border-b-[#E5E5EA] pb-[20px] px-[10px]'
+                              'text-[18px] font-[800] leading-[26px] border-b border-b-[#E5E5EA] pb-[20px] px-[10px]'
                             }
                           >
                             <ul className={'list-disc space-y-[5px]'}>
@@ -168,7 +185,7 @@ export default function Strategy() {
                           <div className={'flex flex-col pt-[20px]'}>
                             <div
                               className={
-                                'text-subtitle-eb text-[#5E6166] flex flex-row py-[5px]'
+                                'text-[15px] font-[800] leading-[24px] text-[#5E6166] flex flex-row py-[5px]'
                               }
                             >
                               <YoutubeSource />
@@ -176,7 +193,7 @@ export default function Strategy() {
                             </div>
                             <div
                               className={
-                                'pl-[20px] text-body2-m text-[#5E6166]'
+                                'pl-[20px] text-[13px] font-[500] leading-[18px] text-[#5E6166]'
                               }
                             >
                               유튜브 채널[{result[item].출처}]
@@ -184,7 +201,11 @@ export default function Strategy() {
                           </div>
                         </div>
                       ) : (
-                        <div className={'text-body-m mt-[20px]'}>
+                        <div
+                          className={
+                            'text-[18px] font-[800] leading-[26px] mt-[20px]'
+                          }
+                        >
                           {result[item].본문.length > 10
                             ? result[item].본문.slice(0, 10) + '...'
                             : result[item].본문}

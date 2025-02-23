@@ -30,7 +30,7 @@ export default function Recommendation() {
       <div className={'text-center'}>
         <div
           className={
-            'inline-block mt-[100px] px-[20px] py-[10px] text-highEmphasis text-title4-eb bg-white rounded-tl-extraLarges rounded-b-extraLarges'
+            'inline-block mt-[100px] px-[20px] py-[10px] text-[#5E6166] text-[20px] font-[800] leading-[28px] bg-white rounded-tl-extraLarges rounded-b-extraLarges'
           }
         >
           🔥 유튜브가 추천하는
@@ -41,14 +41,22 @@ export default function Recommendation() {
       <div className={'px-[20px] mb-[40px]'}>
         <div
           className={
-            'inline-block bg-primary5 text-white text-caption-b p-[10px] mt-[10px] rounded-tr-extraLarges rounded-b-extraLarges'
+            'inline-block bg-primary5 text-white text-[12px] font-[700] leading-[16px] p-[10px] mt-[10px] rounded-tr-extraLarges rounded-b-extraLarges'
           }
         >
-          단순히 트렌드 따라가기가 아닌,내 채널에 맞는 전략이 필요해요!
+          단순히 트렌드 따라가기가 아닌,{' '}
+          <span
+            className={
+              'inline underline-offset-auto underline [text-underline-position:from-font] [text-decoration-skip-ink:auto] text-[13px] font-[800] leading-[18px]'
+            }
+          >
+            내 채널에 맞는 전략
+          </span>
+          이 필요해요!
         </div>
         <div
           className={
-            'inline-block bg-primary5 text-white text-caption-b p-[10px] mt-[5px] rounded-tr-extraLarges rounded-b-extraLarges'
+            'inline-block bg-primary5 text-white text-[12px] font-[700] leading-[16px] p-[10px] mt-[5px] rounded-tr-extraLarges rounded-b-extraLarges'
           }
         >
           스파크는...
@@ -57,14 +65,18 @@ export default function Recommendation() {
       <div className={'text-center'}>
         <div
           className={
-            'inline-block rounded-small bg-white text-primary5 text-subtitle-eb mb-[10px]'
+            'inline-block rounded-small bg-white text-primary5 text-[15px] font-[800] leading-[24px] mb-[10px] px-[5px]'
           }
         >
           유튜브의 공식 데이터와 알고리즘 원칙을 기반으로
         </div>
-        <div className={'text-white text-title4-eb'}>
+        <div className={'text-white text-[24px] font-[800] leading-[32px]'}>
           내 채널에 맞는{' '}
-          <span className={'inline text-title3-eb bg-primary5 rounded-small'}>
+          <span
+            className={
+              'inline text-[24px] font-[800] leading-[32px] bg-primary5 rounded-small px-[3px]'
+            }
+          >
             성장 비법
           </span>
           을 제시해요!
@@ -75,12 +87,12 @@ export default function Recommendation() {
       </div>
       <div
         className={
-          'inline-block bg-white rounded-r-full p-[20px] mt-[20px] text-body2-b'
+          'inline-block mr-[30px] bg-white rounded-r-full p-[20px] mt-[20px] text-[13px] font-[700] leading-[18px]'
         }
       >
         <span
           className={
-            'bg-black text-white rounded-full mr-[10px] w-[24px] h-[24px] inline-flex justify-center items-center'
+            'bg-[#333333] text-white rounded-full mr-[10px] w-[24px] h-[24px] inline-flex justify-center items-center text-[15px] font-[800] leading-[24px]'
           }
         >
           1
@@ -93,12 +105,12 @@ export default function Recommendation() {
       <div className={'flex'}>
         <div
           className={
-            'inline-block bg-white rounded-l-full p-[20px] ml-auto mt-[20px] text-body2-b'
+            'inline-block ml-[auto] bg-white rounded-l-full p-[20px] mt-[20px] text-[13px] font-[700] leading-[18px]'
           }
         >
           <span
             className={
-              'bg-black text-white rounded-full mr-[10px] w-[24px] h-[24px] inline-flex justify-center items-center'
+              'bg-[#333333] text-white rounded-full mr-[10px] w-[24px] h-[24px] inline-flex justify-center items-center text-[15px] font-[800] leading-[24px]'
             }
           >
             2
@@ -111,12 +123,12 @@ export default function Recommendation() {
       </div>
       <div
         className={
-          'inline-block bg-white rounded-r-full p-[20px] mt-[20px] text-body2-b'
+          'inline-block mr-[30px] bg-white rounded-r-full p-[20px] mt-[20px] text-[13px] font-[700] leading-[18px]'
         }
       >
         <span
           className={
-            'bg-black text-white rounded-full mr-[10px] w-[24px] h-[24px] inline-flex justify-center items-center'
+            'bg-[#333333] text-white rounded-full mr-[10px] w-[24px] h-[24px] inline-flex justify-center items-center text-[15px] font-[800] leading-[24px]'
           }
         >
           3
@@ -128,7 +140,11 @@ export default function Recommendation() {
           className="rounded-t-[calc(100vw/2)] bg-cover bg-center h-[670px] pt-[87px] px-[20px] flex flex-col gap-[60px] text-center"
           style={{ backgroundImage: `url(${BackGround})` }}
         >
-          <div className={'text-white text-title4-eb text-center'}>
+          <div
+            className={
+              'text-white text-[20px] font-[800] leading-[28px] text-center'
+            }
+          >
             &quot;스파크는 빠르고,
             <br />
             효율적인 성장을
@@ -148,8 +164,20 @@ export default function Recommendation() {
                 >
                   {item.svg}
                   <div className={'flex flex-col'}>
-                    <div className={'text-body2-b'}>{item.first}</div>
-                    <div className={'text-body2-m'}>{item.second}</div>
+                    <div
+                      className={
+                        'text-[13px] font-[700] leading-[18px] text-[#1C1C1E]'
+                      }
+                    >
+                      {item.first}
+                    </div>
+                    <div
+                      className={
+                        'text-[13px] font-[500] leading-[18px] text-[#333333]'
+                      }
+                    >
+                      {item.second}
+                    </div>
                   </div>
                 </div>
               );
@@ -157,7 +185,7 @@ export default function Recommendation() {
           </div>
           <div
             className={
-              'inline-block self-center p-[10px] text-white text-title5-b border border-white border-opacity-50 bg-white bg-opacity-15 rounded-b-extraLarges rounded-tl-extraLarges'
+              'inline-block self-center p-[10px] text-white text-[18px] font-[700] leadindg-[26px] border border-white border-opacity-50 bg-white bg-opacity-15 rounded-b-extraLarges rounded-tl-extraLarges'
             }
           >
             스파크와 함께라면,

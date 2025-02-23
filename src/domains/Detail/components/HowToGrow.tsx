@@ -17,12 +17,12 @@ export default function HowToGrow() {
         <div className={'text-center mt-[42px]'}>
           <div
             className={
-              'mb-[12px] text-caption-b text-primary4 bg-primary1 rounded-small px-[10px] inline-block mx-auto py-[2px]'
+              'mb-[12px] text-[12px] font-[700] leading-[16px] text-primary4 bg-primary1 rounded-small px-[10px] inline-block mx-auto py-[2px]'
             }
           >
             Check List
           </div>
-          <div className={'text-title4-eb text-[#787CFE]'}>
+          <div className={'text-title4-eb text-[20px] text-[#787CFE]'}>
             혹시 이런 방법으로 채널을 <br />
             성장 시키고 계시진 않나요?
           </div>
@@ -35,7 +35,7 @@ export default function HowToGrow() {
               <div
                 key={item}
                 className={
-                  'p-[10px] border-b border-b-primary2 text-highEmphasis flex flex-row gap-[10px]'
+                  'p-[10px] border-b border-b-primary2 text-[13px] font-[500] leading-[18px] text-highEmphasis  flex flex-row gap-[10px]'
                 }
               >
                 <CheckPlus />
@@ -46,17 +46,21 @@ export default function HowToGrow() {
         </div>
         <div
           className={
-            'flex flex-col gap-[10px] rounded-extraLarges px-[10px] py-[20px] bg-white/10 mt-[52px] mb-[70px] shadow-[0px_5px_10px_0px_rgba(0,0,0,0.15)] backdrop-blur-[5px]'
+            'flex flex-col gap-[10px] rounded-extraLarges px-[10px] py-[20px] bg-white/10 mt-[52px] mb-[70px] shadow-[0px_5px_10px_0px_rgba(0,0,0,0.15),0px_-10px_50px_0px_#FFF,0px_0px_100px_0px_#FFF] backdrop-blur-[5px] border border-[#FFF]'
           }
         >
           <img src={PoliceCarLight} className={'mx-auto'} />
-          <div className={'text-center text-highEmphasis text-subtitle-b'}>
+          <div
+            className={
+              'text-center text-highEmphasis text-[15px] font-[700] leading-[24px]'
+            }
+          >
             이 방법들은 단기적인 효과는 있어도,
             <br />
             오히려{' '}
             <span
               className={
-                'inline text-subtitle-eb text-[#FF4242] underline underline-offset-1'
+                'inline text-[15px] font-[800] leading-[24px] text-[#FF4242] underline underline-offset-1'
               }
             >
               알고리즘에 부정적인 영향
