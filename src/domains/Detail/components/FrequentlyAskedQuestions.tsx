@@ -95,7 +95,13 @@ const items = [
 ];
 
 export default function FrequentlyAskedQuestions() {
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState<Record<number, boolean>>({
+    0: false,
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+  });
 
   return (
     <div className={'px-[20px]'}>
@@ -108,11 +114,13 @@ export default function FrequentlyAskedQuestions() {
       </div>
       <div className={'mb-[30px]'}>
         <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
-          {items.map((item) => (
+          {items.map((item, index) => (
             <AccordionItem key={item.heading}>
               <AccordionItemHeading
                 className={'p-[20px] '}
-                onClick={() => setClicked(!clicked)}
+                onClick={() =>
+                  setClicked({ ...clicked, [index]: !clicked[index] })
+                }
               >
                 <AccordionItemButton
                   className={
@@ -121,7 +129,7 @@ export default function FrequentlyAskedQuestions() {
                 >
                   <div className={'flex-[2]'}>{item.heading}</div>
                   <div className={'flex-1'}>
-                    {clicked ? (
+                    {clicked[index] ? (
                       <DownThinSmallAroow className={'ml-auto'} />
                     ) : (
                       <UpThinSmallArrow className={'ml-auto'} />
@@ -130,9 +138,7 @@ export default function FrequentlyAskedQuestions() {
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel
-                className={
-                  'flex flex-row p-[20px] text-[15px] font-[500] leading-[24px] text-subText  bg-line'
-                }
+                className={`${clicked[index] ? null : 'hidden'} flex flex-row p-[20px] text-[15px] font-[500] leading-[24px] text-subText  bg-line`}
               >
                 <div className={'flex justify-center'}>A.</div>
                 {item.content}

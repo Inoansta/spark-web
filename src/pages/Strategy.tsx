@@ -14,6 +14,7 @@ import {
   AccordionItemButton,
   AccordionItemHeading,
 } from 'react-accessible-accordion';
+import useStrategyStore from '@/app/store/useStrategyStore';
 import strategy from '@/assets/animation/strategy.json';
 import DownThinSmallAroow from '@/assets/svg/Arrows/DownThinSmallArrow';
 import UpThinSmallArrow from '@/assets/svg/Arrows/UpThinSmallArrowt';
@@ -34,6 +35,8 @@ type StrategyResult = {
 };
 
 export default function Strategy() {
+  const [successOrError, setSuccessOrError] = useState('');
+  const channelName = useStrategyStore((store) => store.channelName);
   const { data } = useGetStrategy() as { data: StrategyResult };
   const result = data;
 
@@ -54,13 +57,19 @@ export default function Strategy() {
     if (!screenshotReady) return;
 
     if (!isWebView) {
-      html2canvas(document.body).then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
-        const link = document.createElement('a');
-        link.href = imgData;
-        link.download = 'screenshot.png';
-        link.click();
-      });
+      html2canvas(document.body)
+        .then((canvas) => {
+          const imgData = canvas.toDataURL('image/png');
+          const link = document.createElement('a');
+          link.href = imgData;
+          link.download = 'screenshot.png';
+          link.click();
+        })
+        .then(() => setSuccessOrError('이미지 저장이 완료됐어요.'))
+        .catch((error) => {
+          setSuccessOrError('이미지 저장을 실패했어요.');
+          console.log('image save error', error);
+        });
     } else {
       html2canvas(document.body)
         .then((canvas) => {
@@ -71,8 +80,10 @@ export default function Strategy() {
           };
           window.ReactNativeWebView?.postMessage(JSON.stringify(message));
         })
+        .then(() => setSuccessOrError('이미지 저장이 완료됐어요.'))
         .catch((error) => {
-          console.error('스크린샷 실패:', error);
+          setSuccessOrError('이미지 저장을 실패했어요.');
+          console.log('image sending error', error);
         });
     }
     setScreenshotReady(false);
@@ -85,13 +96,17 @@ export default function Strategy() {
       }
     >
       <div className={'pt-[20px] px-[20px] flex flex-col '}>
+        {/* <div className="relative flex w-[285px] h-[34px] text-center items-center  px-[10px] py-[5px] rounded-[10px] text-white text-[11px] font-[500] leading-[14px] shadow-md bg-white">
+          샘플 데이터입니다. 다시 보고 싶으면, 뒤로 가기를 눌러주세요.
+          <div className="absolute bottom-1 left-4 transform translate-y-full w-2 h-2 bg-gray-100 rotate-45 bg-white"></div>
+        </div> */}
         <div
           className={
             'text-[20px] font-[800] leading-[28px] text-white flex flex-row items-center gap-[5px]'
           }
         >
           <Graph2 fill={'white'} />
-          스파크님의 채널 분석
+          {channelName}님의 채널 분석
         </div>
       </div>
       <div className={'mb-[60px] mt-[20px]'}>
@@ -103,7 +118,7 @@ export default function Strategy() {
             'text-[18px] font-[800] not-italic leading-[26px] text-white'
           }
         >
-          00님의 채널 성장을 위한
+          {channelName}님의 채널 성장을 위한
         </div>
         <div
           className={
@@ -219,7 +234,30 @@ export default function Strategy() {
           </Accordion>
         </div>
       </div>
-      <div className={'pb-[20px]'}>
+      <div className={'flex'}>
+        {successOrError.length > 0 ? (
+          successOrError === '이미지 저장이 완료됐어요.' ? (
+            <div
+              className={
+                'mx-[auto] mt-[20px] px-[15px] py-[10px] rounded-medium border bg-[#DBEFDC] border-[#4CAF50] text-[#4CAF50] text-[11px] leading-[14px] font-[700] inline-block'
+              }
+            >
+              {successOrError}
+            </div>
+          ) : (
+            <div
+              className={
+                'mx-[auto] mt-[20px] px-[15px] py-[10px] rounded-medium border bg-[#FED5D5] border-[#FF4242] text-[#FF4242] text-[11px] leading-[14px] font-[700] inline-block'
+              }
+            >
+              {successOrError}
+            </div>
+          )
+        ) : (
+          <></>
+        )}
+      </div>
+      <div className={'mt-[12px] pb-[20px]'}>
         <Button
           text={'이미지로 저장하기'}
           buttonType={'large-filled-button'}
