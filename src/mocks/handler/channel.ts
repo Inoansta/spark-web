@@ -213,4 +213,15 @@ export const handlers = [
       { status: 200 },
     );
   }),
+  http.get('/channel', async () => {
+    await delay(200);
+    return HttpResponse.json(
+      {
+        status: 400,
+        code: 'COMMON_008',
+        message: 'string',
+      },
+      { status: 400 },
+    );
+  }),
 ];

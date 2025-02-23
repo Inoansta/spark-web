@@ -8,11 +8,14 @@ export type ApiResponse<T> = {
   headers?: AxiosResponseHeaders;
 };
 
-export const API_STATUS_CODE = {
-  SUCCESS: 200,
-  POST_SUCCESS: 201,
-  BAD_REQUEST: 400,
-  UNAUTHORIZED: 401,
-  FORBIDDEN: 403,
-  NOT_FOUND: 404,
+export interface ResponseData {
+  status: number;
+  code: 'COMMON_008' | 'COMMON_012' | 'COMMON_013';
+  message: string;
+}
+
+export const ERRORCODE = {
+  COMMON_008: 'COMMON_008',
+  COMMON_012: 'COMMON_012',
+  COMMON_013: 'COMMON_013',
 } as const;

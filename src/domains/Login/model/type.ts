@@ -5,6 +5,9 @@ export interface ResponseGoogleAuthUrl {
 export interface RequestPostToken {
   code: string;
 }
+export interface RequestPostRefreshToken {
+  refresh: string;
+}
 
 export interface ResponsePostToken {
   error: string;

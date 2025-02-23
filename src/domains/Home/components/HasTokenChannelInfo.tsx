@@ -5,7 +5,7 @@ import { Avatar as DefaultImage } from '@/assets/svg/Avatar/Avatar';
 import { SmallYoutubeIcon } from '@/assets/svg/logo/SmallYoutbeIcon';
 import { FrontIcon } from '@/assets/svg/nav/FrontIcon';
 import LocationMove from '@/domains/Login/components/LocationMove';
-import { ACCESS_TOKEN } from '@/domains/Login/hooks/useAuthToken';
+import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { RouteMove } from '@/shared/components';
 import { Storage } from '@/shared/lib';
 import { Card, Flex, LottieAnimation, Text } from '@/shared/ui';
@@ -221,7 +221,7 @@ export function ChannelCard() {
 }
 
 export default function HasTokenChannelInfo() {
-  const token = Storage.getLocalStorage(ACCESS_TOKEN);
+  const token = Storage.getLocalStorage(TOKEN.ACCESS);
 
   return token.length !== 0 ? (
     <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>

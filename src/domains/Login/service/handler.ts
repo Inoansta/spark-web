@@ -1,5 +1,6 @@
 import httpClient from '@/app/api/httpClient';
 import type {
+  RequestPostRefreshToken,
   RequestPostToken,
   ResponseGoogleAuthUrl,
   ResponsePostToken,
@@ -16,7 +17,17 @@ const loginApi = {
 
   postToken: async ({ code }: RequestPostToken) => {
     const url = `${BASE_URL}/callback`;
+
     const body = { code };
+
+    return await httpClient.post<ResponsePostToken, typeof body>(url, {
+      ...body,
+    });
+  },
+
+  refreshToken: async ({ refresh }: RequestPostRefreshToken) => {
+    const url = `${BASE_URL}/refresh`;
+    const body = { refresh };
 
     return await httpClient.post<ResponsePostToken, typeof body>(url, {
       ...body,

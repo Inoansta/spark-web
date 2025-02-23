@@ -7,7 +7,7 @@ import {
   WorriedAbout,
 } from '@/domains/Detail/components';
 import GraySpace from '@/domains/Detail/components/GraySpace';
-import { ACCESS_TOKEN } from '@/domains/Login/hooks/useAuthToken';
+import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { Button } from '@/shared/components';
 import { useMoveLocation } from '@/shared/hooks';
 
@@ -16,7 +16,7 @@ export default function Detail() {
   const moveToNext = useMoveLocation('/user-info');
 
   useEffect(() => {
-    const connected = localStorage.getItem(ACCESS_TOKEN);
+    const connected = localStorage.getItem(TOKEN.ACCESS);
     setDisable(connected ? false : true);
   }, []);
 
