@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Avatar } from '@/assets/svg/Avatar/Avatar';
-import EyeIcon from '@/assets/svg/EyeIcon';
+import { SubscriberIcon } from '@/assets/growthPrediction/SubscriberIcon';
+import { ViewIcon } from '@/assets/growthPrediction/ViewIcon';
 import { Divider, Flex, Text } from '@/shared/ui';
 
 interface GrowthRate {
@@ -15,6 +15,15 @@ interface GrowthRate {
 }
 interface VerticalCarouselProps {
   growthRates: GrowthRate[];
+}
+
+function calculateGrowthRate(late: number, recent: number) {
+  if (late === 0 && recent === 0) return '0% 유지 중';
+  if (late === 0) return recent > 0 ? '무한한 성장' : '0% 유지 중';
+
+  const rate = Math.floor(((recent - late) / Math.abs(late)) * 100);
+
+  return `${rate === 0 ? '0' : rate}% ${rate >= 0 ? '성장' : '감소'}`;
 }
 
 export default function VerticalCarousel({
@@ -36,7 +45,6 @@ export default function VerticalCarousel({
     >
       {growthRates.map((item, index) => {
         const isActive = index === currentIndex;
-
         return (
           <div
             key={index}
@@ -73,14 +81,12 @@ export default function VerticalCarousel({
                   />
                 </div>
                 <Flex gapX={5} align="center" justify="center">
-                  <Flex direction="column" align="center" gapY={1}>
-                    <Avatar
-                      width={24}
-                      height={24}
-                      fill="white"
-                      bodyfill="#8D9199"
-                      headfill="#8D9199"
-                    />
+                  <Flex
+                    direction="column"
+                    align="center"
+                    className="gap-y-[5px]"
+                  >
+                    <SubscriberIcon />
                     <Text
                       as="card_description"
                       title="구독자 수"
@@ -91,24 +97,31 @@ export default function VerticalCarousel({
                     direction="column"
                     align="center"
                     gapY={1}
-                    className="flex-wrap max-w-[142px]"
+                    className="max-w-[140px]"
                   >
                     <Text
                       as="title"
                       className="font-bold text-2xl text-white px-[14px] overflow-hidden"
-                      title={`${Math.floor(item.netSubscribers.recent / item.netSubscribers.late) * 100}% 증가`}
+                      title={calculateGrowthRate(
+                        item.netSubscribers.late,
+                        item.netSubscribers.recent,
+                      )}
                     />
                     <Divider />
                     <Text
                       as="title"
                       title={`${item.netSubscribers.late} > ${item.netSubscribers.recent}`}
-                      className="text-primary2 px-[14px]"
+                      className="text-primary2 px-[14px] text-[15px] font-medium"
                     />
                   </Flex>
                 </Flex>
                 <Flex gapX={5} align="center" justify="center">
-                  <Flex direction="column" align="center" gapY={1}>
-                    <EyeIcon width={24} height={24} fill="white" />
+                  <Flex
+                    direction="column"
+                    align="center"
+                    className="gap-y-[5px]"
+                  >
+                    <ViewIcon />
                     <Text
                       as="card_description"
                       title="조회 수"
@@ -119,13 +132,16 @@ export default function VerticalCarousel({
                     <Text
                       as="title"
                       className="font-bold text-2xl text-white px-[14px]"
-                      title={`${Math.floor(item.view.recent / item.view.late) * 100}% 증가`}
+                      title={calculateGrowthRate(
+                        item.view.late,
+                        item.view.recent,
+                      )}
                     />
                     <Divider />
                     <Text
                       as="title"
                       title={`${item.view.late} > ${item.view.recent}`}
-                      className="text-primary2 px-[14px]"
+                      className="text-primary2 px-[14px] text-[15px] font-medium"
                     />
                   </Flex>
                 </Flex>
