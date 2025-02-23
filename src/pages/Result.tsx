@@ -8,8 +8,8 @@ export default function Result() {
   const channelName = useStrategyStore((store) => store.channelName);
   return (
     <div className={'h-screen'}>
-      <div className={'relative z-10'}>
-        <LottieAnimation animationData={analysis} height="100%" />
+      <div className={'overflow-hidden relative  h-full z-10'}>
+        <LottieAnimation animationData={analysis} />
       </div>
       <div className={'flex justify-center'}>
         <ResultInteraction channelName={channelName} />

@@ -32,29 +32,27 @@ export default function Popular() {
         }
       >
         <div className={'flex flex-col gap-[5px]'}>
-          <div className={'text-title2-eb text-white'}>인기 콘텐츠 TOP3</div>
-          <div className={'text-body-m text-white'}>
+          <div className={'text-[28px] font-[800] leading-[38px] text-white'}>
+            인기 콘텐츠 TOP3
+          </div>
+          <div className={'text-[15px] font-[500] leading-[24px] text-white'}>
             가장 많은 조회수를 기록한 콘텐츠들이에요!
           </div>
         </div>
-        <div className={'flex flex-1 flex-col'}>
-          <div
-            className={
-              'flex  gap-[20px] flex-col mt-[calc(100vh/10)] mb-[100px]'
-            }
-          >
-            <NoList data={popular.data.result}>
-              {popular.data.result.map((item, index) => (
-                <PopularCard
-                  videoInformation={item}
-                  index={index}
-                  key={item.id}
-                />
-              ))}
-            </NoList>
-          </div>
+
+        <div className={'flex  gap-[20px] flex-col mt-[60px] mb-[200px]'}>
+          <NoList data={popular.data.result}>
+            {popular.data.result.map((item, index) => (
+              <PopularCard
+                videoInformation={item}
+                index={index}
+                key={item.id}
+              />
+            ))}
+          </NoList>
         </div>
       </div>
+
       <NextPageFooter
         nextLocation={'/strength-weakness'}
         text={'다음'}
