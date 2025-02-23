@@ -9,21 +9,24 @@ const slides = [
   {
     children: (
       <div className={'overflow-hidden flex justify-center'}>
-        <img src={channelGrowing} className={'max-h-[300px]'} />
+        <img src={channelGrowing} className={'h-[250px] w-[180px]'} />
       </div>
     ),
   },
   {
     children: (
       <div className={'overflow-hidden flex justify-center'}>
-        <img src={subscriberGrowthPrediction} className={'max-h-[300px]'} />
+        <img
+          src={subscriberGrowthPrediction}
+          className={'h-[250px] w-[180px]'}
+        />
       </div>
     ),
   },
   {
     children: (
       <div className={'overflow-hidden flex justify-center'}>
-        <img src={viewGrowthPrediction} className={'max-h-[300px]'} />
+        <img src={viewGrowthPrediction} className={'h-[250px] w-[180px]'} />
       </div>
     ),
   },
@@ -39,7 +42,7 @@ export default function TopPage() {
       <div className={'flex flex-col text-center'}>
         <div
           className={
-            'bg-clip-text text-transparent bg-gradient-to-b from-black to-[#FBB1F5] via-[#4557FF] text-title3-eb font-[800] leading-[32px]'
+            'bg-clip-text text-transparent bg-gradient-to-b from-black to-[#FBB1F5] via-[#4557FF] text-[24px] font-[800] leading-[32px]'
           }
         >
           작은 Spark로
@@ -47,7 +50,7 @@ export default function TopPage() {
         </div>
         <div
           className={
-            'bg-line text-subText text-subtitle-b mx-auto px-[10px] mt-[5px] leading-[24px]'
+            'bg-line text-subText text-[15px] font-[700] mx-auto px-[10px] mt-[5px] leading-[24px]'
           }
         >
           &quot;AI가 알려주는 당신만의 SNS 성장 비법&quot;

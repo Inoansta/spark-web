@@ -98,86 +98,90 @@ function UserInfo() {
       {steps === 0 ? (
         <>
           <UserInformationProfiles />
-          <ChannelCommonCard
-            header={
-              <LocationMove
-                location={`https://www.youtube.com/@${data.result.channelId}`}
-              >
-                <Flex justify="between" align="center">
-                  <Text
-                    as="title"
-                    title={`@${data.result.channelName}`}
-                    className="text-[18px]"
-                  />
-                  <button
-                    type="button"
-                    className="bg-line p-[10px] rounded-[20px]"
-                  >
-                    <Flex align="center">
-                      <SmallYoutubeIcon className="mr-1" />
-                      <Text
-                        as="description"
-                        title="유튜브"
-                        className="font-bold"
-                      />
-                    </Flex>
-                  </button>
-                </Flex>
-              </LocationMove>
-            }
-            posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
-            subscriber={formatNumberWithUnit(
-              data.result.subscriberCount ?? 0,
-              '명',
-            )}
-            totalView={formatNumberWithUnit(
-              data.result.totalViewCount ?? 0,
-              '회',
-            )}
-          />
+          <div className={'mt-[10px]'}>
+            <ChannelCommonCard
+              header={
+                <LocationMove
+                  location={`https://www.youtube.com/@${data.result.channelId}`}
+                >
+                  <Flex justify="between" align="center">
+                    <Text
+                      as="title"
+                      title={`@${data.result.channelName}`}
+                      className="text-[18px]"
+                    />
+                    <button
+                      type="button"
+                      className="bg-line p-[10px] rounded-[20px]"
+                    >
+                      <Flex align="center">
+                        <SmallYoutubeIcon className="mr-1" />
+                        <Text
+                          as="description"
+                          title="유튜브"
+                          className="font-bold"
+                        />
+                      </Flex>
+                    </button>
+                  </Flex>
+                </LocationMove>
+              }
+              posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
+              subscriber={formatNumberWithUnit(
+                data.result.subscriberCount ?? 0,
+                '명',
+              )}
+              totalView={formatNumberWithUnit(
+                data.result.totalViewCount ?? 0,
+                '회',
+              )}
+            />
+          </div>
           <Questionbox questions={QUESTIONS.contents1} questionType={'last'} />
         </>
       ) : null}
       {steps >= 1 ? (
         <>
           <UserInformationProfiles />
-          <ChannelCommonCard
-            header={
-              <LocationMove
-                location={`https://www.youtube.com/@${data.result.channelId}`}
-              >
-                <Flex justify="between" align="center">
-                  <Text
-                    as="title"
-                    title={`@${data.result.channelName}`}
-                    className="text-[18px]"
-                  />
-                  <button
-                    type="button"
-                    className="bg-line p-[10px] rounded-[20px]"
-                  >
-                    <Flex align="center">
-                      <SmallYoutubeIcon className="mr-1" />
-                      <Text
-                        as="description"
-                        title="유튜브"
-                        className="font-bold"
-                      />
-                    </Flex>
-                  </button>
-                </Flex>
-              </LocationMove>
-            }
-            posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
-            subscriber={formatNumberWithUnit(
-              data.result.subscriberCount ?? 0,
-              '명',
-            )}
-            totalView={formatNumberWithUnit(
-              data.result.totalViewCount ?? 0,
-              '회',
-            )}
-          />
+          <div className={'mt-[10px]'}>
+            <ChannelCommonCard
+              header={
+                <LocationMove
+                  location={`https://www.youtube.com/@${data.result.channelId}`}
+                >
+                  <Flex justify="between" align="center">
+                    <Text
+                      as="title"
+                      title={`@${data.result.channelName}`}
+                      className="text-[18px]"
+                    />
+                    <button
+                      type="button"
+                      className="bg-line p-[10px] rounded-[20px]"
+                    >
+                      <Flex align="center">
+                        <SmallYoutubeIcon className="mr-1" />
+                        <Text
+                          as="description"
+                          title="유튜브"
+                          className="font-bold"
+                        />
+                      </Flex>
+                    </button>
+                  </Flex>
+                </LocationMove>
+              }
+              posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
+              subscriber={formatNumberWithUnit(
+                data.result.subscriberCount ?? 0,
+                '명',
+              )}
+              totalView={formatNumberWithUnit(
+                data.result.totalViewCount ?? 0,
+                '회',
+              )}
+            />
+          </div>
           <Questionbox questions={QUESTIONS.contents1} questionType={'first'} />
           <Questionbox questions={QUESTIONS.contents2} questionType={'last'} />
         </>

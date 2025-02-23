@@ -14,7 +14,7 @@ const style = {
   'large-outlined-button':
     'px-[20px] w-full max-w-[335px] h-[48px] text-primary5 border border-primary5  rounded-md active:bg-primary1',
   'large-filled-button':
-    'px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-subtitle-b rounded-medium active:bg-primary7',
+    'px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-[15px] font-[700] leading-[24px] rounded-medium active:bg-primary7',
   'small-filled-button':
     'px-[20px] w-full h-[48px] bg-primary5 text-white text-[15px] rounded-medium active:bg-primary7 cursor-pointer',
   'black-large-filled-button':

@@ -6,8 +6,8 @@ import { LottieAnimation } from '@/shared/ui';
 export default function Result() {
   return (
     <div className={'h-screen'}>
-      <div className={'relative z-10'}>
-        <LottieAnimation animationData={analysis} height="100%" />
+      <div className={'overflow-hidden relative  h-full z-10'}>
+        <LottieAnimation animationData={analysis} />
       </div>
       <div className={'flex justify-center'}>
         <ResultInteraction channelName={'Spark'} />
