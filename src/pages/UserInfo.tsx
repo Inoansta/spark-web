@@ -100,6 +100,7 @@ function UserInfo() {
           <UserInformationProfiles />
           <div className={'mt-[10px]'}>
             <ChannelCommonCard
+              isLogin
               header={
                 <LocationMove
                   location={`https://www.youtube.com/@${data.result.channelId}`}
