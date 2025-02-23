@@ -1,13 +1,6 @@
-import {
-  type PropsWithChildren,
-  type ReactNode,
-  Suspense,
-  useLayoutEffect,
-} from 'react';
+import { type PropsWithChildren, type ReactNode, Suspense } from 'react';
 import { QueryErrorResetBoundary } from '@tanstack/react-query';
 import { ErrorBoundary, type FallbackProps } from 'react-error-boundary';
-import { ACCESS_TOKEN } from '@/domains/Login/hooks/useAuthToken';
-import { Storage } from '@/shared/lib';
 import { Flex } from '@/shared/ui';
 
 interface QuerySuspenseBoundaryProps extends PropsWithChildren {
@@ -16,10 +9,6 @@ interface QuerySuspenseBoundaryProps extends PropsWithChildren {
 }
 
 const ErrorComponents = ({ resetErrorBoundary }: FallbackProps) => {
-  useLayoutEffect(() => {
-    Storage.removeLocalStorage(ACCESS_TOKEN);
-  }, []);
-
   return (
     <Flex
       justify="center"
