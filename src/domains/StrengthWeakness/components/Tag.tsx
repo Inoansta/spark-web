@@ -7,7 +7,9 @@ export default function Tag({ type, index }: TagProps) {
   const bgColor = type === '강점' ? 'bg-primary10' : 'bg-gradient4';
 
   return (
-    <span className={`rounded-xl px-2 py-1 text-white text-center ${bgColor}`}>
+    <span
+      className={`rounded-xl px-[10px] py-[5px] text-white text-center ${bgColor} text-[13px] font-bold`}
+    >
       {`${type} ${index}`}
     </span>
   );

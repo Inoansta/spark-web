@@ -3,6 +3,7 @@ import { combine } from 'zustand/middleware';
 
 const initialState = {
   channelId: '',
+  channelName: '',
   userContents: '',
   userFulltime: '',
   userGoal: '',

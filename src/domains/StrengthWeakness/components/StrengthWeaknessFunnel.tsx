@@ -23,13 +23,14 @@ const options = {
 
 export default function StrengthWeaknessFunnel() {
   const funnel = useFunnel(options);
+  const { data, isSuccess } = useStrengthWeakStatsQuery();
   const { mutate } = useStrategy();
   const { userContents, userFulltime, userGoal, weaknesses } = useStrategyStore(
     (store) => store,
   );
-  const { data, isSuccess } = useStrengthWeakStatsQuery();
 
   const transformData = transformDataStrengthWeakness(data);
+
   useStrengthWeaknessOption({
     weaknesses: transformData.weaknesses,
     isSuccess,

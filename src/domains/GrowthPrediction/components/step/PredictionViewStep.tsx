@@ -33,7 +33,7 @@ export default function PredictionViewStep({ data, onNext }: PredictionStep) {
       </Flex>
 
       <button
-        className="w-full bg-black text-white py-3 px-5 rounded-[10px]"
+        className="w-full bg-[#333] text-white py-3 px-5 rounded-[10px]"
         onClick={onNext}
       >
         다음

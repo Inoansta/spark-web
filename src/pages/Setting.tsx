@@ -5,7 +5,11 @@ import { NavigationHeader } from '@/shared/components';
 import { Divider, Flex, Text } from '@/shared/ui';
 
 const LIST_DATA = [
-  { title: '앱 버전', description: '1.0.00', location: '/' },
+  {
+    title: '앱 버전',
+    description: '1.0.00',
+    location: '/',
+  },
   {
     title: '공지사항',
     location:
@@ -55,15 +59,21 @@ export default function Setting() {
                 <LocationMove location={location}>
                   <Flex justify="between" className="px-5 py-3">
                     <Flex align="center" className="mr-[2px]">
-                      <Text as="title" title={title} />
-                      {RightIcon && <RightIcon />}
+                      <Text
+                        as="title"
+                        title={title}
+                        className="text-highEmphasis font-bold"
+                      />
+                      {RightIcon && <RightIcon className="ml-[2px]" />}
                     </Flex>
                     {description && (
                       <Text
                         as="description"
                         title={description}
                         className={`${
-                          descriptionColor === 'primary3' ? 'text-primary3' : ''
+                          descriptionColor === 'primary3'
+                            ? 'text-primary3'
+                            : 'text-gray5 font-medium'
                         }`}
                       />
                     )}

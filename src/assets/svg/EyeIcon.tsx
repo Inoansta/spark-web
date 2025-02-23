@@ -1,13 +1,12 @@
 import { SvgProps } from './nav/UnifiedSettingIcon';
 
-export default function EyeIcon({ className, ...props }: SvgProps) {
+export default function EyeIcon({ ...props }: SvgProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="20"
       height="20"
       fill="none"
-      className={className}
       {...props}
     >
       <g fill={props.fill ?? '#333'}>

@@ -27,12 +27,14 @@ function Navigation({ path, icon: Icon, title }: NavLinkProps) {
     <section className={'flex-1 py-2 cursor-pointer'}>
       <NavLink to={path}>
         {({ isActive }) => (
-          <div className={'flex flex-col items-center'}>
+          <Flex direction="column" align="center">
             <Icon color={isActive ? 'black' : 'gray-500'} isActive={isActive} />
-            <span className={isActive ? 'text-black' : 'text-gray-500'}>
+            <span
+              className={`text-center text-[12px] font-medium ${isActive ? 'text-black' : 'text-gray5'}`}
+            >
               {title}
             </span>
-          </div>
+          </Flex>
         )}
       </NavLink>
     </section>
