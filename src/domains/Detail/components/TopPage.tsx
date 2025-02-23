@@ -59,7 +59,7 @@ export default function TopPage() {
       <div className={'mt-[40px]'}>
         <LottieAnimation animationData={detail} />
       </div>
-      <div className={'flex-grow flex items-end pt-[60px]'}>
+      <div className={'flex-grow flex items-end mt-[60px]'}>
         <Carousel
           slides={slides}
           sectionClassName={'w-full'}
