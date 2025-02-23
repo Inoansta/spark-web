@@ -26,13 +26,13 @@ export default function SubscriberStep({ data }: SubscriberStepProps) {
 
         <Text
           as="title"
-          className="text-black font-medium"
+          className="text-[#333] font-medium"
           title="지난 3개월 동안의 데이터를 분석해, 3개월 뒤 예상 구독자수를 계산했어요. Spark 서비스만의 정교한 예측 로직을 적용해 최대한 정확한 수치를 제공합니다!"
         />
       </Flex>
 
       <RouteMove location="/strategy">
-        <button className="w-full bg-black text-white py-3 px-5 rounded-[10px]">
+        <button className="w-full bg-[#333] text-white py-3 px-5 rounded-[10px]">
           다음
         </button>
       </RouteMove>
