@@ -19,6 +19,7 @@ interface ChannelCommonCardProps {
   posting?: string;
   subscriber?: string;
   totalView?: string;
+  isLogin?: boolean;
 }
 
 interface ChannelGrowCardProps {
@@ -27,10 +28,10 @@ interface ChannelGrowCardProps {
 
 function ChannelGrowCard({ disabled = false }: ChannelGrowCardProps) {
   return (
-    <Card>
+    <Card className="rounded-[20px]">
       <Card.Header>
         <Flex direction="column">
-          <Text as="title" title="내 채널 성장 비법" />
+          <Text as="title" title="내 채널 성장 비법" className="text-lg" />
           <Text as="description" title="구독자를 늘리는 팁을 알려 드릴게요" />
         </Flex>
       </Card.Header>
@@ -39,20 +40,22 @@ function ChannelGrowCard({ disabled = false }: ChannelGrowCardProps) {
       </Card.Content>
       <Card.Bottom className="px-5 pb-5">
         <RouteMove location="/detail">
-          <button
-            type="button"
-            title="자세히 알아보기"
-            disabled={disabled}
-            className="border-primary5 border bg-inherit text-white w-full px-5 py-[10px] rounded-[10px]"
-          >
-            <Flex justify="center" align="center" gapX={2}>
-              <Text
-                title="자세히 알아보기"
-                as="description"
-                className="text-primary5 font-bold"
-              />
-            </Flex>
-          </button>
+          <Flex direction="column" align="center" justify="center">
+            <button
+              type="button"
+              title="자세히 알아보기"
+              disabled={disabled}
+              className="border-primary5 border bg-inherit text-white w-[295px] h-[48px] px-5 py-[10px] rounded-[10px]"
+            >
+              <Flex justify="center" align="center" gapX={2}>
+                <Text
+                  title="자세히 알아보기"
+                  as="description"
+                  className="text-primary5 font-bold"
+                />
+              </Flex>
+            </button>
+          </Flex>
         </RouteMove>
       </Card.Bottom>
     </Card>
@@ -80,37 +83,46 @@ export function ChannelCommonCard({
   subscriber = '???',
   totalView = '???',
   bottom,
+  isLogin = false,
 }: ChannelCommonCardProps) {
   return (
     <Card>
       <Card.Header>{header}</Card.Header>
       <Card.Content>
-        <Flex justify="between" align="center" className="pb-[30px]">
+        <Flex
+          justify="between"
+          align="center"
+          className={isLogin ? 'pb-[30px]' : undefined}
+        >
           <div className="mr-[35px]">
             {avatarUrl ? (
               <img
                 src={avatarUrl}
                 alt="avatarImage"
-                className="rounded-[50%]"
+                className="rounded-[50%] max-w-[60px] max-h-[60px]"
               />
             ) : (
-              <DefaultImage />
+              <DefaultImage width={60} height={60} />
             )}
           </div>
           <ul className="w-full">
             <Flex justify="between" align="center" as="li">
               <Flex direction="column" align="center" as="div">
-                <Text as="title" title={posting} className="text-gray" />
-                <Text as="description" title="게시물" className="text-gray" />
-              </Flex>
-              <Flex direction="column" align="center" as="div">
-                <Text as="title" title={subscriber} className="text-gray" />
-                <Text as="description" title="구독자" className="text-gray" />
-              </Flex>
-              <Flex direction="column" align="center" as="div">
-                <Text as="title" title={totalView} className="text-gray" />
                 <Text
-                  as="description"
+                  as="card_title"
+                  title={posting}
+                  className="text-highEmphasis"
+                />
+                <Text as="card_content" title="게시물" />
+              </Flex>
+              <Flex direction="column" align="center" as="div">
+                <Text as="card_title" title={subscriber} />
+                <Text as="card_content" title="구독자" />
+              </Flex>
+              <Flex direction="column" align="center" as="div">
+                <Text as="card_title" title={totalView} />
+                <Text
+                  as="card_content"
                   title="누적 조회수"
                   className="text-gray"
                 />
@@ -168,9 +180,10 @@ export function ChannelCard() {
   return (
     <Flex direction="column" gapY={5}>
       <ChannelCommonCard
+        isLogin
         header={
           <LocationMove
-            location={`https://www.youtube.com/@${data.result.channelId}`}
+            location={`https://www.youtube.com/@${data.result.channelName}`}
           >
             <Flex justify="between" align="center">
               <Text
@@ -178,10 +191,17 @@ export function ChannelCard() {
                 title={`@${data.result.channelName}`}
                 className="text-[18px]"
               />
-              <button type="button" className="bg-line p-[10px] rounded-[20px]">
+              <button
+                type="button"
+                className="bg-line px-[10px] py-[5px] rounded-[20px]"
+              >
                 <Flex align="center">
                   <SmallYoutubeIcon className="mr-1" />
-                  <Text as="description" title="유튜브" className="font-bold" />
+                  <Text
+                    as="description"
+                    title="유튜브"
+                    className="font-bold text-[12px]"
+                  />
                 </Flex>
               </button>
             </Flex>

@@ -39,10 +39,10 @@ export default function DelayText() {
       </NavigationHeader>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full">
         <Flex direction="column" justify="center" align="center">
-          <p className="text-white text-3xl font-bold drop-shadow-lg">
+          <p className="text-white text-[28px] font-extrabold drop-shadow-lg">
             {channelName}님의
           </p>
-          <p className="text-white text-3xl font-bold drop-shadow-lg">
+          <p className="text-white text-[28px] font-extrabold drop-shadow-lg">
             채널 성장은?
           </p>
         </Flex>
