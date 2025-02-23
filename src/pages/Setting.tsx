@@ -38,6 +38,17 @@ const LIST_DATA = [
 ];
 
 export default function Setting() {
+  const SendMessage = (url: string) => {
+    const message = JSON.stringify({
+      type: 'external_url',
+      url: url,
+    });
+
+    if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage(message);
+    }
+  };
+
   return (
     <>
       <NavigationHeader>
@@ -55,8 +66,19 @@ export default function Setting() {
               rightIcon: RightIcon,
               descriptionColor,
             }) => (
-              <li key={title}>
-                <LocationMove location={location}>
+              <li
+                key={title}
+                onClick={() =>
+                  navigator.userAgent.length > 0 ? SendMessage(location) : null
+                }
+              >
+                <LocationMove
+                  location={
+                    navigator.userAgent.length > 0
+                      ? 'https://www.app-spark.shop/setting'
+                      : location
+                  }
+                >
                   <Flex justify="between" className="px-5 py-3">
                     <Flex align="center" className="mr-[2px]">
                       <Text

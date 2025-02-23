@@ -22,7 +22,9 @@ export default function HowToGrow() {
           >
             Check List
           </div>
-          <div className={'text-title4-eb text-[20px] text-[#787CFE]'}>
+          <div
+            className={'text-[20px] font-[800] leading-[28px]] text-[#787CFE]'}
+          >
             혹시 이런 방법으로 채널을 <br />
             성장 시키고 계시진 않나요?
           </div>
