@@ -18,4 +18,5 @@ export const ERRORCODE = {
   COMMON_008: 'COMMON_008',
   COMMON_012: 'COMMON_012',
   COMMON_013: 'COMMON_013',
-} as const;
+  COMMON_999: 'COMMON_999',
+};
