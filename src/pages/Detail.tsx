@@ -10,13 +10,14 @@ import GraySpace from '@/domains/Detail/components/GraySpace';
 import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { Button } from '@/shared/components';
 import { useMoveLocation } from '@/shared/hooks';
+import { Storage } from '@/shared/lib';
 
 export default function Detail() {
   const [disable, setDisable] = useState(false);
   const moveToNext = useMoveLocation('/user-info');
 
   useEffect(() => {
-    const connected = localStorage.getItem(TOKEN.ACCESS);
+    const connected = Storage.getLocalStorage(TOKEN.ACCESS);
     setDisable(connected ? false : true);
   }, []);
 
