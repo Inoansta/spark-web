@@ -10,7 +10,7 @@ export interface ButtonInterface extends ComponentProps<'button'> {
 
 const style = {
   'small-outlined-button':
-    'px-[20px] w-full max-w-[70px] h-[40px] text-primary5 border border-primary5  rounded-md active:bg-primary1',
+    'px-[20px] w-full max-w-[70px] h-[40px] text-primary5 text-[13px] font-[700] leading-[18px] border border-primary5  rounded-md active:bg-primary1',
   'large-outlined-button':
     'px-[20px] w-full max-w-[335px] h-[48px] text-primary5 border border-primary5  rounded-md active:bg-primary1',
   'large-filled-button':
