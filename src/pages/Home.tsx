@@ -6,13 +6,14 @@ import { FrontIcon } from '@/assets/svg/nav/FrontIcon';
 import { CheerupBar, HasTokenChannelInfo } from '@/domains/Home/components';
 import LocationMove from '@/domains/Login/components/LocationMove';
 import { NavigationHeader } from '@/shared/components';
+import { Storage } from '@/shared/lib';
 import { Card, Flex, Spacing, SpeechBubble, Text } from '@/shared/ui';
 
 export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
+    const hasSeenOnboarding = Storage.getLocalStorage('hasSeenOnboarding');
 
     if (!hasSeenOnboarding) {
       navigate('/onboarding');

@@ -5,6 +5,7 @@ import onboarding1_youtube from '@/assets/onboarding/onboarding1_youtube.png';
 import onboarding2_strategies from '@/assets/onboarding/onboarding2_strategies.png';
 import OnBoardingFrame from '@/domains/onBoarding/components/OnBoardingFrame';
 import { Button, Carousel } from '@/shared/components';
+import { Storage } from '@/shared/lib';
 import { LottieAnimation } from '@/shared/ui';
 
 const contents = [
@@ -63,7 +64,7 @@ export default function OnBoarding() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.setItem('hasSeenOnboarding', 'true');
+    Storage.setLocalStorage('hasSeenOnboarding', 'true');
   }, []);
 
   return (
