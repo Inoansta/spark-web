@@ -41,8 +41,10 @@ function SheetContents({
         <Button
           text={'확인'}
           onClick={() => {
-            setOpen(false);
-            setSteps(3);
+            if (onlyClicked.length > 0) {
+              setOpen(false);
+              setSteps(3);
+            }
           }}
           buttonType={'small-outlined-button'}
         />
