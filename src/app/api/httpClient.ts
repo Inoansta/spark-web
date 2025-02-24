@@ -35,6 +35,7 @@ class HttpClient extends axiosClient {
           return Promise.reject(error);
         }
 
+        console.log(error);
         const { code } = error.response!.data;
 
         const { config } = error;
@@ -65,7 +66,8 @@ class HttpClient extends axiosClient {
             break;
           }
           case ERRORCODE.COMMON_012:
-          case ERRORCODE.COMMON_013: {
+          case ERRORCODE.COMMON_013:
+          case ERRORCODE.COMMON_999: {
             Storage.removeLocalStorage(TOKEN.ACCESS);
             Storage.removeLocalStorage(TOKEN.REFRESH);
             window.location.href = '/login';
