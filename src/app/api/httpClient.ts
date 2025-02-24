@@ -46,7 +46,7 @@ class HttpClient extends axiosClient {
               const refreshToken = Storage.getLocalStorage(TOKEN.REFRESH);
 
               const data = await loginApi.refreshToken({
-                refresh: refreshToken,
+                refreshToken: refreshToken,
               });
 
               if (data !== null && data.access_token) {

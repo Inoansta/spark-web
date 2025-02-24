@@ -25,9 +25,9 @@ const loginApi = {
     });
   },
 
-  refreshToken: async ({ refresh }: RequestPostRefreshToken) => {
+  refreshToken: async ({ refreshToken }: RequestPostRefreshToken) => {
     const url = `${BASE_URL}/refresh`;
-    const body = { refresh };
+    const body = { refreshToken };
 
     return await httpClient.post<ResponsePostToken, typeof body>(url, {
       ...body,

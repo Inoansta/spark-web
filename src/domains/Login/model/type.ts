@@ -6,7 +6,7 @@ export interface RequestPostToken {
   code: string;
 }
 export interface RequestPostRefreshToken {
-  refresh: string;
+  refreshToken: string;
 }
 
 export interface ResponsePostToken {
