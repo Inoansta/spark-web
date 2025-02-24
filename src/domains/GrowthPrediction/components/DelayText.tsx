@@ -2,11 +2,7 @@ import { type ReactNode, useEffect, useState } from 'react';
 import useStrategyStore from '@/app/store/useStrategyStore';
 import { BackIcon } from '@/assets/svg/nav/BackIcon';
 import { CloseIcon } from '@/assets/svg/nav/CloseIcon';
-import {
-  NavigationHeader,
-  NextPageFooter,
-  RouteMove,
-} from '@/shared/components';
+import { NavigationHeader, NextPageFooter } from '@/shared/components';
 import { Flex } from '@/shared/ui';
 
 interface DelayProps {
