@@ -41,7 +41,7 @@ export default function Recommendation() {
       <div className={'px-[20px] mb-[40px]'}>
         <div
           className={
-            'inline-block bg-primary5 text-white text-[12px] font-[700] leading-[16px] p-[10px] mt-[10px] rounded-tr-extraLarges rounded-b-extraLarges'
+            'inline-block bg-primary5 text-white text-[12px] font-[700] leading-[16px] p-[10px] mt-[10px] rounded-tr-extraLarges rounded-b-extraLarges mr-[20px]'
           }
         >
           단순히 트렌드 따라가기가 아닌,{' '}
