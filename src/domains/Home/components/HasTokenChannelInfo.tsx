@@ -4,7 +4,6 @@ import homeStrategy from '@/assets/animation/homeStrategy.json';
 import { Avatar as DefaultImage } from '@/assets/svg/Avatar/Avatar';
 import { SmallYoutubeIcon } from '@/assets/svg/logo/SmallYoutbeIcon';
 import { FrontIcon } from '@/assets/svg/nav/FrontIcon';
-import LocationMove from '@/domains/Login/components/LocationMove';
 import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { RouteMove } from '@/shared/components';
 import { Storage } from '@/shared/lib';
@@ -182,30 +181,26 @@ export function ChannelCard() {
       <ChannelCommonCard
         isLogin
         header={
-          <LocationMove
-            location={`https://www.youtube.com/@${data.result.channelName}`}
-          >
-            <Flex justify="between" align="center">
-              <Text
-                as="title"
-                title={`@${data.result.channelName}`}
-                className="text-[18px]"
-              />
-              <button
-                type="button"
-                className="bg-line px-[10px] py-[5px] rounded-[20px]"
-              >
-                <Flex align="center">
-                  <SmallYoutubeIcon className="mr-1" />
-                  <Text
-                    as="description"
-                    title="유튜브"
-                    className="font-bold text-[12px]"
-                  />
-                </Flex>
-              </button>
-            </Flex>
-          </LocationMove>
+          <Flex justify="between" align="center">
+            <Text
+              as="title"
+              title={`@${data.result.channelName}`}
+              className="text-[18px]"
+            />
+            <button
+              type="button"
+              className="bg-line px-[10px] py-[5px] rounded-[20px]"
+            >
+              <Flex align="center">
+                <SmallYoutubeIcon className="mr-1" />
+                <Text
+                  as="description"
+                  title="유튜브"
+                  className="font-bold text-[12px]"
+                />
+              </Flex>
+            </button>
+          </Flex>
         }
         avatarUrl={data.result.defaultThumbnailUrl}
         posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
