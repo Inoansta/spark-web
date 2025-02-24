@@ -20,6 +20,7 @@ export default function VideoPlayer() {
         cldVid={video}
         autoPlay
         playsInline
+        muted
         controls={false}
         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
       />
