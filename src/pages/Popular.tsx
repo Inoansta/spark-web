@@ -15,8 +15,8 @@ function NoList({
   return isList ? (
     children
   ) : (
-    <div className="flex flex-col justify-center items-center text-white">
-      현재 영상이 등록된게 없어요...ㅠㅠ
+    <div className="flex flex-1 mt-[100px] justify-center items-center text-white">
+      유튜브에 등록된 영상이 존재하지 않습니다.
     </div>
   );
 }
