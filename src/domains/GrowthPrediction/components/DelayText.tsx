@@ -2,7 +2,11 @@ import { type ReactNode, useEffect, useState } from 'react';
 import useStrategyStore from '@/app/store/useStrategyStore';
 import { BackIcon } from '@/assets/svg/nav/BackIcon';
 import { CloseIcon } from '@/assets/svg/nav/CloseIcon';
-import { NavigationHeader, RouteMove } from '@/shared/components';
+import {
+  NavigationHeader,
+  NextPageFooter,
+  RouteMove,
+} from '@/shared/components';
 import { Flex } from '@/shared/ui';
 
 interface DelayProps {
@@ -47,11 +51,11 @@ export default function DelayText() {
           </p>
         </Flex>
       </div>
-      <RouteMove location="/growth-prediction">
-        <button className="absolute bottom-8 left-7 px-[20px] w-full max-w-[335px] h-[48px] bg-primary5 text-white text-[15px] rounded-medium active:bg-primary7 cursor-pointer">
-          다음
-        </button>
-      </RouteMove>
+      <NextPageFooter
+        nextLocation={'/growth-prediction'}
+        text={'다음'}
+        buttonType={'large-filled-button'}
+      />
     </Delay>
   );
 }
