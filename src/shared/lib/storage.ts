@@ -1,6 +1,6 @@
 const getLocalStorage = (key: string) => {
   try {
-    const value = localStorage.getItem(key);
+    const value = sessionStorage.getItem(key);
 
     return value ? JSON.parse(value) : '';
   } catch (error: unknown) {
@@ -14,7 +14,7 @@ const getLocalStorage = (key: string) => {
 
 const setLocalStorage = <T>(key: string, value: T) => {
   try {
-    localStorage.setItem(key, JSON.stringify(value));
+    sessionStorage.setItem(key, JSON.stringify(value));
   } catch (error: unknown) {
     if (error instanceof Error) {
       throw new Error(error.message);
@@ -26,7 +26,7 @@ const setLocalStorage = <T>(key: string, value: T) => {
 
 const removeLocalStorage = (key: string) => {
   try {
-    localStorage.removeItem(key);
+    sessionStorage.removeItem(key);
   } catch (error: unknown) {
     if (error instanceof Error) {
       throw new Error(error.message);
