@@ -12,10 +12,18 @@ export default function OnBoardingFrame({
   return (
     <div>
       <div className={'flex flex-col justify-center my-[40px] gap-[5px]'}>
-        <div className={'text-title3-eb leading-[32px] text-center'}>
+        <div
+          className={
+            'text-[24px] font-[800] leading-[32px] text-[#333333] text-center'
+          }
+        >
           {title}
         </div>
-        <div className={'text-body2-b text-[#8D9199] text-center'}>
+        <div
+          className={
+            'text-[13px] font-[700] leading-[18px] text-[#8D9199] text-center'
+          }
+        >
           {subTitle}
         </div>
       </div>

@@ -151,12 +151,16 @@ export default function Strategy() {
                         >
                           <div
                             className={
-                              'text-[15px] font-[800] leading-[24px] not-italic'
+                              'text-[15px] font-[800] leading-[24px] text-[#333333] not-italic'
                             }
                           >
-                            {index + 1}.
+                            {index + 1}
                           </div>
-                          <div className={'flex flex-1'}>
+                          <div
+                            className={
+                              'flex flex-1 text-[18px] font-[800] leading-[26px] text-[#333333]'
+                            }
+                          >
                             {result[item].제목}
                           </div>
                           {clicked[index] ? (
@@ -170,7 +174,7 @@ export default function Strategy() {
                         <div className={'mt-[20px]'}>
                           <div
                             className={
-                              'text-[18px] font-[800] leading-[26px] border-b border-b-[#E5E5EA] pb-[20px] px-[10px]'
+                              'text-[15px] font-[500] leading-[24px] text-[#5E6166] border-b border-b-[#E5E5EA] pb-[20px] px-[10px]'
                             }
                           >
                             <ul className={'list-disc space-y-[5px]'}>
@@ -218,7 +222,7 @@ export default function Strategy() {
                       ) : (
                         <div
                           className={
-                            'text-[18px] font-[800] leading-[26px] mt-[20px]'
+                            'text-[15px] font-[500] leading-[24px] text-[#333333] leading-[26px] mt-[20px]'
                           }
                         >
                           {result[item].본문.length > 10
