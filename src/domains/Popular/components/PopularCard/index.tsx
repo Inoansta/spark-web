@@ -30,7 +30,9 @@ export default function PopularCard({ videoInformation, index }: PopularCard) {
         </div>
         <div className={'flex flex-1 flex-col py-[7px] pr-[10px] gap-[20px]'}>
           <div className={'text-[13px] font-[700] leading-[18px]'}>
-            {videoInformation.snippet.title}
+            {videoInformation.snippet.title.length > 36
+              ? videoInformation.snippet.title.slice(0, 36) + '...'
+              : videoInformation.snippet.title}
           </div>
           <div className={'flex flex-row items-center'}>
             <div

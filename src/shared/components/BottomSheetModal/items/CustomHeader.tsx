@@ -16,7 +16,11 @@ function CustomHeader({ title, onClose }: CustomHeader) {
           onClick={() => onClose()}
         />
       </div>
-      <div className={'text-black text-title5-b my-[10px]'}>{title}</div>
+      <div
+        className={'text-black text-[18px] font-[700] leading-[26px] my-[10px]'}
+      >
+        {title}
+      </div>
     </div>
   );
 }
