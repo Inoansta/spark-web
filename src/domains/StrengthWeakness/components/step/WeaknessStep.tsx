@@ -26,7 +26,7 @@ export default function StrengthCardStep2({
           </Flex>
           <Text
             as="body"
-            className="text-white max-w-60"
+            className="text-white"
             title={info.description.weakness}
           />
         </Flex>
