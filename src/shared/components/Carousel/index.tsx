@@ -1,6 +1,5 @@
 import React from 'react';
 import { EmblaOptionsType } from 'embla-carousel';
-import useEmblaCarousel from 'embla-carousel-react';
 interface Slide {
   children?: React.ReactNode;
 }
@@ -12,18 +11,17 @@ interface PropType {
   viewPortClassName: string;
   containerClassName: string;
   itemClassName: string;
+  emblaRef: any;
 }
 
 export default function Carousel({
   slides,
-  options,
   sectionClassName,
   viewPortClassName,
   containerClassName,
   itemClassName,
+  emblaRef,
 }: PropType) {
-  const [emblaRef] = useEmblaCarousel(options);
-
   return (
     <section className={sectionClassName}>
       <div className={viewPortClassName} ref={emblaRef}>

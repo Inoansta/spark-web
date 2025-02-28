@@ -1,3 +1,4 @@
+import useEmblaCarousel from 'embla-carousel-react';
 import detail from '@/assets/animation/detail.json';
 import channelGrowing from '@/assets/detail/img/channelGrowing.png';
 import subscriberGrowthPrediction from '@/assets/detail/img/subscriberGrowthPrediction.png';
@@ -33,6 +34,11 @@ const slides = [
 ];
 
 export default function TopPage() {
+  const [emblaRef] = useEmblaCarousel({
+    loop: true,
+    align: 'center',
+  });
+
   return (
     <div
       className={
@@ -66,10 +72,7 @@ export default function TopPage() {
           viewPortClassName={'overflow-hidden'}
           containerClassName={'flex flex-row'}
           itemClassName={'flex-none w-[60%] px-[10px]'}
-          options={{
-            loop: true,
-            align: 'center',
-          }}
+          emblaRef={emblaRef}
         />
       </div>
     </div>
