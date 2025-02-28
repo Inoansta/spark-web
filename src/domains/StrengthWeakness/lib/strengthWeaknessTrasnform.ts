@@ -2,7 +2,6 @@ import { ComponentProps, FC } from 'react';
 import { Comment } from '@/assets/strengthWeakness/Comment';
 import { Dollar } from '@/assets/strengthWeakness/Dollar';
 import { Like } from '@/assets/strengthWeakness/Like';
-import { Share } from '@/assets/strengthWeakness/Share';
 import { AddIcon } from '@/assets/svg/AddIcon';
 import { Avatar } from '@/assets/svg/Avatar/Avatar';
 import Time from '@/assets/svg/Detail/Time';
@@ -15,8 +14,11 @@ const dateLabels = ['90 ~ 60일', '60 ~ 30일', '30 ~ 최근'];
 const strengthsColor = ['bg-gradient8', 'bg-primary10', 'bg-primary11'];
 const weaknessesColor = ['bg-gradient5', 'bg-gradient4', 'bg-gradient3'];
 
+// 문구 수정
+// 유지도 추가
+
 const titleLabel: Record<
-  keyof Result['growthRates'],
+  Exclude<keyof Result['growthRates'], 'shares'>,
   {
     title: string;
     Icon: FC<ComponentProps<'svg'>> | FC<SvgProps>; // ✅ React.FC 타입으로 변경
@@ -36,15 +38,17 @@ const titleLabel: Record<
     },
   },
   netSubscribers: {
-    title: '구독자수',
+    title: '신규 구독자수',
     Icon: Avatar, // ✅ <Avatar /> 형태로 사용 가능
     description: {
-      strengths: '구독자가 꾸준히 늘고 있어요! 좋은 콘텐츠를 계속 만들어봐요!',
-      weakness: '구독자 수가 줄었어요. 콘텐츠의 질을 높여보세요!',
+      strengths:
+        '채널이 성장하고 있어요! 지금처럼 꾸준히 하면 더 많은 팬이 생길 거예요.',
+      weakness:
+        '새 구독자가 줄고 있어요. 어떤 콘텐츠에서 이탈이 많은지 확인해야 해요.',
     },
   },
   likes: {
-    title: '좋아요수',
+    title: '좋아요 수',
     Icon: Like,
     description: {
       strengths: '업로드가 활발해요! 꾸준한 활동은 채널 성장에 도움이 돼요.',
@@ -61,22 +65,13 @@ const titleLabel: Record<
         '댓글이 줄었네요. 팔로워가 반응할 만한 질문이나 이벤트를 시도해볼까요?',
     },
   },
-  shares: {
-    title: '공유',
-    Icon: Share,
-    description: {
-      strengths:
-        '공유가 활발해요! 사람들이 서로 공유할 만큼 매력적인 콘텐츠예요!',
-      weakness:
-        '공유가 줄었어요. 영상을 공유할 이유를 더 명확하게 전달해주는 건 어떨까요?',
-    },
-  },
   estimatedRevenue: {
     title: '수익',
     Icon: Dollar,
     description: {
-      strengths: '수익이 증가하고 있어요! 좋은 콘텐츠를 계속 만들어봐요!',
-      weakness: '수익이 감소했어요. 광고 최적화 및 후원을 고려해보세요!',
+      strengths: '수익이 상승했어요! 유용한 정보를 담은 콘텐츠, 대성공이에요!',
+      weakness:
+        '수익이 감소했어요.  멤버십이나 슈퍼챗 같은 추가 수익원을 검토해보는 건 어때요?',
     },
   },
   averageViewDuration: {
