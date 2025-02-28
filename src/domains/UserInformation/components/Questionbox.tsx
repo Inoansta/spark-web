@@ -11,7 +11,7 @@ const style = {
 function Questionbox({ questions, questionType }: Questionbox) {
   return (
     <div
-      className={`text-left mt-[5px] ${questionType === 'last' ? 'mb-[5px]' : null}`}
+      className={`text-left mt-[10px] ${questionType === 'last' ? 'mb-[5px]' : null}`}
     >
       <div
         className={`bg-primary1 text-black inline-block px-[20px] py-[10px] ${style[questionType]}`}

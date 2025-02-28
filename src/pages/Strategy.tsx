@@ -20,6 +20,7 @@ import DownThinSmallAroow from '@/assets/svg/Arrows/DownThinSmallArrow';
 import UpThinSmallArrow from '@/assets/svg/Arrows/UpThinSmallArrowt';
 import Graph2 from '@/assets/svg/Detail/Graph2';
 import Magic2 from '@/assets/svg/Magic2';
+import Tooltip from '@/assets/svg/Strategy/Tooltip';
 import YoutubeSource from '@/assets/svg/YoutubeSource';
 import useGetStrategy from '@/domains/Strategy/hooks/useGetStrategy';
 import { Button } from '@/shared/components';
@@ -96,10 +97,7 @@ export default function Strategy() {
       }
     >
       <div className={'pt-[20px] px-[20px] flex flex-col '}>
-        {/* <div className="relative flex w-[285px] h-[34px] text-center items-center  px-[10px] py-[5px] rounded-[10px] text-white text-[11px] font-[500] leading-[14px] shadow-md bg-white">
-          샘플 데이터입니다. 다시 보고 싶으면, 뒤로 가기를 눌러주세요.
-          <div className="absolute bottom-1 left-4 transform translate-y-full w-2 h-2 bg-gray-100 rotate-45 bg-white"></div>
-        </div> */}
+        <Tooltip />
         <div
           className={
             'text-[20px] font-[800] leading-[28px] text-white flex flex-row items-center gap-[5px]'
@@ -158,7 +156,7 @@ export default function Strategy() {
                           </div>
                           <div
                             className={
-                              'flex flex-1 text-[18px] font-[800] leading-[26px] text-[#333333]'
+                              'flex flex-1 break-keep text-[18px] font-[800] leading-[26px] text-[#333333]'
                             }
                           >
                             {result[item].제목}
