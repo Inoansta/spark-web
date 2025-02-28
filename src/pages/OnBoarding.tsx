@@ -1,9 +1,14 @@
 import { useEffect } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { useNavigate } from 'react-router';
 import onBoarding2 from '@/assets/animation/onBoarding2.json';
 import onboarding1_youtube from '@/assets/onboarding/onboarding1_youtube.png';
 import onboarding2_strategies from '@/assets/onboarding/onboarding2_strategies.png';
 import OnBoardingFrame from '@/domains/onBoarding/components/OnBoardingFrame';
+import {
+  DotButton,
+  useDotButton,
+} from '@/domains/onBoarding/hooks/useDotButton';
 import { Button, Carousel } from '@/shared/components';
 import { Storage } from '@/shared/lib';
 import { LottieAnimation } from '@/shared/ui';
@@ -62,6 +67,13 @@ const slides = contents.map((item) => {
 
 export default function OnBoarding() {
   const navigate = useNavigate();
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    align: 'center',
+    axis: 'x',
+  });
+  const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    useDotButton(emblaApi);
 
   useEffect(() => {
     Storage.setLocalStorage('hasSeenOnboarding', 'true');
@@ -69,21 +81,34 @@ export default function OnBoarding() {
 
   return (
     <div className={'flex flex-col'}>
+      <div
+        className={
+          'px-[20px] py-[10px] flex flex-row justify-center items-center gap-[10px]'
+        }
+      >
+        {scrollSnaps.map((_, index) => (
+          <DotButton
+            key={index}
+            onClick={() => onDotButtonClick(index)}
+            className={
+              index === selectedIndex
+                ? 'w-[8px] h-[8px] rounded-full bg-[#4557FF]'
+                : 'w-[8px] h-[8px] rounded-full bg-[#C0C2C8]'
+            }
+          />
+        ))}
+      </div>
       <Carousel
         slides={slides}
         sectionClassName={'flex-1'}
         viewPortClassName={'overflow-hidden'}
         containerClassName={'flex flex-row '}
         itemClassName={'flex-none w-full px-[6px]'}
-        options={{
-          loop: false,
-          align: 'center',
-          axis: 'x',
-        }}
+        emblaRef={emblaRef}
       />
       <div
         className={
-          'absolute fixed bottom-0 px-[20px] pb-[30px] pt-[12px] max-w-[450px] w-full'
+          'fixed bottom-0 px-[20px] pb-[30px] pt-[12px] max-w-[450px] w-full'
         }
       >
         <Button
