@@ -115,11 +115,19 @@ export function ChannelCommonCard({
                 <Text as="card_content" title="게시물" />
               </Flex>
               <Flex direction="column" align="center" as="div">
-                <Text as="card_title" title={subscriber} />
+                <Text
+                  as="card_title"
+                  title={subscriber}
+                  className="text-highEmphasis"
+                />
                 <Text as="card_content" title="구독자" />
               </Flex>
               <Flex direction="column" align="center" as="div">
-                <Text as="card_title" title={totalView} />
+                <Text
+                  as="card_title"
+                  title={totalView}
+                  className="text-highEmphasis"
+                />
                 <Text
                   as="card_content"
                   title="누적 조회수"
