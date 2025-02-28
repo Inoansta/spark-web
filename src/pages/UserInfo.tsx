@@ -110,18 +110,22 @@ function UserInfo() {
                     <Text
                       as="title"
                       title={`@${data.result.channelName}`}
-                      className="text-[18px]"
+                      className="text-[13px]"
                     />
                     <button
                       type="button"
-                      className="bg-line p-[10px] rounded-[20px]"
+                      className="bg-line px-2 py-1 rounded-[15px]"
                     >
                       <Flex align="center">
-                        <SmallYoutubeIcon className="mr-1" />
+                        <SmallYoutubeIcon
+                          className="mr-1"
+                          width={15}
+                          height={15}
+                        />
                         <Text
                           as="description"
                           title="유튜브"
-                          className="font-bold"
+                          className="font-bold text-[12px]"
                         />
                       </Flex>
                     </button>
