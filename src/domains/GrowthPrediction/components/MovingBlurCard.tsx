@@ -30,7 +30,7 @@ export default function MovingBlurCard({
           <Text
             as="title"
             title={`총 ${formatNumberWithCommas(result!)}회 달성`}
-            className="text-[28px] text-primary4"
+            className={`${String(result).length <= 4 ? 'text-[28px]' : 'text-[24px]'} text-primary4`}
           />
         </div>
         <Divider />
