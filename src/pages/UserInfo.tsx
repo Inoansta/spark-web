@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
 import useStrategyStore from '@/app/store/useStrategyStore';
 import { SmallYoutubeIcon } from '@/assets/svg/logo/SmallYoutbeIcon';
-import { ChannelCommonCard } from '@/domains/Home/components/HasTokenChannelInfo';
+import { ChannelCommonCard } from '@/domains/Home/components/ChannelCommonCard';
 import useChannelProfile from '@/domains/Home/hooks/useChannelProfile';
 import {
   formatNumberWithCommas,
@@ -100,6 +100,7 @@ function UserInfo() {
           <UserInformationProfiles />
           <div className={'mt-[10px]'}>
             <ChannelCommonCard
+              size="medium"
               isLogin
               header={
                 <LocationMove
@@ -146,6 +147,7 @@ function UserInfo() {
           <UserInformationProfiles />
           <div className={'mt-[10px]'}>
             <ChannelCommonCard
+              size="medium"
               isLogin
               header={
                 <LocationMove
@@ -155,11 +157,11 @@ function UserInfo() {
                     <Text
                       as="title"
                       title={`@${data.result.channelName}`}
-                      className="text-[18px]"
+                      className="text-[13px]"
                     />
                     <button
                       type="button"
-                      className="bg-line p-[10px] rounded-[20px]"
+                      className="bg-line px-2 py-1 rounded-[15px]"
                     >
                       <Flex align="center">
                         <SmallYoutubeIcon className="mr-1" />
