@@ -19,7 +19,7 @@ export const handlers = [
     );
   }),
   http.get('/youtube/channel-stats?channelId=', async () => {
-    await delay(200);
+    await delay(3000);
     return HttpResponse.json(
       {
         result: {

@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import analysis from '@/assets/animation/analysis/analysis.json';
 import { Analysis as AnalysisIcon } from '@/assets/svg/logo/Analysis';
 import { Bulb } from '@/assets/svg/logo/Bulb';
@@ -7,9 +8,11 @@ import AnalysisState from '@/domains/Analysis/components/AnalysisState';
 import {
   ChannelProfileFetch,
   GrowthPrediectionFetch,
+  IsFetching,
   StrengthWeaknessFetch,
   TopVideosFetch,
 } from '@/domains/Analysis/components/DataFetchComponents';
+import ProcessStateItem from '@/domains/Analysis/components/ProcessStateItem';
 import { Flex, LottieAnimation, Text } from '@/shared/ui';
 
 export default function Analysis() {
@@ -61,12 +64,24 @@ export default function Analysis() {
           delay={2000} // 2초 후 실행
         />
 
-        <AnalysisState
-          icon={<Bulb />}
-          title="채널 성장 비법"
-          DataFetchComponent={GrowthPrediectionFetch}
-          delay={3000} // 3초 후 실행
-        />
+        <Suspense
+          fallback={
+            <ProcessStateItem
+              icon={<Bulb />}
+              title="채널 성장 비법"
+              stateTitle="시작 전이에요"
+              state="onload"
+            />
+          }
+        >
+          <IsFetching>
+            <AnalysisState
+              icon={<Bulb />}
+              title="채널 성장 비법"
+              DataFetchComponent={GrowthPrediectionFetch}
+            />
+          </IsFetching>
+        </Suspense>
       </Flex>
     </main>
   );

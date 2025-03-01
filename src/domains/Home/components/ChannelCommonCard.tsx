@@ -77,7 +77,7 @@ export function ChannelCommonCard({
         <Flex
           justify="between"
           align="center"
-          className={isLogin && isMedium ? 'pb-[22px]' : 'pb-[30px]'}
+          className={isLogin ? 'pb-[30px]' : isMedium ? 'pb-[22px]' : undefined}
         >
           <div className="mr-[35px]">
             {avatarUrl ? (

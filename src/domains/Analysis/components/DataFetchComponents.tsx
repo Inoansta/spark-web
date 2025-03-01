@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import useGrowthPredictionQuery from '@/domains/GrowthPrediction/hooks/useGrowthPredictionQuery';
 import useChannelProfile from '@/domains/Home/hooks/useChannelProfile';
@@ -7,6 +7,12 @@ import useStrengthWeakStatsQuery from '@/domains/StrengthWeakness/hooks/useStren
 import ProcessStateItem, {
   type ProcessStateItemProps,
 } from './ProcessStateItem';
+
+export function IsFetching({ children }: PropsWithChildren) {
+  const { isSuccess } = useStrengthWeakStatsQuery();
+
+  return isSuccess && children;
+}
 
 export function GrowthPrediectionFetch({
   icon,
