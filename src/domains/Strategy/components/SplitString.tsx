@@ -6,6 +6,7 @@ export default function SplitString({ item1 }: { item1: string }) {
   for (let i = 0; i < item1.length; i++) {
     if (item1[i] === ':') {
       separate_position = i;
+      break;
     }
   }
   first = item1.slice(0, separate_position + 1);
