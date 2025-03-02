@@ -22,6 +22,7 @@ import Graph2 from '@/assets/svg/Detail/Graph2';
 import Magic2 from '@/assets/svg/Magic2';
 import Tooltip from '@/assets/svg/Strategy/Tooltip';
 import YoutubeSource from '@/assets/svg/YoutubeSource';
+import SplitString from '@/domains/Strategy/components/SplitString';
 import useGetStrategy from '@/domains/Strategy/hooks/useGetStrategy';
 import { Button } from '@/shared/components';
 import { LottieAnimation } from '@/shared/ui';
@@ -187,11 +188,9 @@ export default function Strategy() {
                                 {result[item]['실행 방법'].map(
                                   (item1: string) => {
                                     return (
-                                      <li
-                                        className={'leading-[24px]'}
-                                        key={item1}
-                                      >
-                                        {item1}
+                                      <li key={item1}>
+                                        {/* TODO */}
+                                        <SplitString item1={item1} />
                                       </li>
                                     );
                                   },
