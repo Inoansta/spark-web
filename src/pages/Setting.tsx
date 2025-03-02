@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import { InstaGram } from '@/assets/svg/logo/InstaGram';
 import { BackIcon } from '@/assets/svg/nav/BackIcon';
 import LocationMove from '@/domains/Login/components/LocationMove';
+import SettingToast from '@/domains/Setting/components/SettingToast';
 import { NavigationHeader } from '@/shared/components';
 import { Divider, Flex, Text } from '@/shared/ui';
 
@@ -38,6 +40,15 @@ const LIST_DATA = [
 ];
 
 export default function Setting() {
+  const [accessToken, setAccessToken] = useState(false);
+  const [closed, setClosed] = useState(true);
+
+  useEffect(() => {
+    const access_token = sessionStorage.getItem('access_token');
+    console.log(access_token);
+    setAccessToken(() => (access_token ? true : false));
+  }, []);
+
   const SendMessage = (url: string) => {
     const message = JSON.stringify({
       type: 'external_url',
@@ -49,6 +60,10 @@ export default function Setting() {
     }
   };
 
+  const LogOut = () => {
+    setClosed(false);
+  };
+
   return (
     <>
       <NavigationHeader>
@@ -56,8 +71,8 @@ export default function Setting() {
           <BackIcon />
         </NavigationHeader.LeftContent>
       </NavigationHeader>
-      <main>
-        <ul className="flex-col p-5 gap-x-[5px]">
+      <main className={'px-5'}>
+        <ul className="flex-col pt-5 gap-x-[5px]">
           {LIST_DATA.map(
             ({
               title,
@@ -108,7 +123,14 @@ export default function Setting() {
             ),
           )}
         </ul>
+        <div
+          className={`${accessToken ? 'block' : 'hidden'} py-[12px] px-[20px] text-[15px] font-[700] leading-[24px] text-[#5E6166]`}
+          onClick={LogOut}
+        >
+          로그아웃
+        </div>
       </main>
+      <SettingToast closed={closed} setClosed={() => setClosed(true)} />
     </>
   );
 }
