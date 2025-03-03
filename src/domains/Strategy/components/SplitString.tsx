@@ -9,8 +9,13 @@ export default function SplitString({ item1 }: { item1: string }) {
       break;
     }
   }
-  first = item1.slice(0, separate_position + 1);
-  second = item1.slice(separate_position + 1);
+  if (separate_position === 0) {
+    second = item1;
+  } else {
+    first = item1.slice(0, separate_position + 1);
+    second = item1.slice(separate_position + 1);
+  }
+
   return (
     <div className={'leading-[24px]'}>
       <span className={'text-black font-[700]'}>{first}</span>
