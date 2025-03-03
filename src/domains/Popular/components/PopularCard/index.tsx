@@ -1,5 +1,8 @@
+import { type ReactNode } from 'react';
 import EyeIcon from '@/assets/svg/EyeIcon';
 import { DateFormatter } from '@/domains/Popular/lib/utils';
+import usePopularQuery from '../../hooks/usePopularQuery';
+import { type ResponsePopularTop } from '../../model/type';
 
 interface PopularCard {
   videoInformation: any;
@@ -7,7 +10,25 @@ interface PopularCard {
 }
 
 const rankStyle = ['bg-primary5', 'bg-[#787CFE]', 'bg-subText'];
-export default function PopularCard({ videoInformation, index }: PopularCard) {
+
+function NoList({
+  data,
+  children,
+}: {
+  data: ResponsePopularTop['result'];
+  children: ReactNode;
+}) {
+  const isList = data.length !== 0;
+  return isList ? (
+    children
+  ) : (
+    <div className="flex flex-1 mt-[100px] justify-center items-center text-white">
+      유튜브에 등록된 영상이 존재하지 않습니다.
+    </div>
+  );
+}
+
+function PopularCard({ videoInformation, index }: PopularCard) {
   const formattedDate = DateFormatter(videoInformation.snippet.publishedAt);
 
   return (
@@ -40,7 +61,7 @@ export default function PopularCard({ videoInformation, index }: PopularCard) {
                 'flex flex-row items-center text-[13px] font-[700] leading-[18px] text-[#333]'
               }
             >
-              <EyeIcon className={'mr-[5px]'} />
+              <EyeIcon className={'mr-[5px]'} fill="#333" />
               {videoInformation.statistics.viewCount}
             </div>
             <div
@@ -54,5 +75,17 @@ export default function PopularCard({ videoInformation, index }: PopularCard) {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function PopularContainer() {
+  const popular = usePopularQuery();
+
+  return (
+    <NoList data={popular.data.result}>
+      {popular.data.result.map((item, index) => (
+        <PopularCard videoInformation={item} index={index} key={item.id} />
+      ))}
+    </NoList>
   );
 }

@@ -1,7 +1,6 @@
 import { useFunnel } from '@use-funnel/browser';
 import useStrategyStore from '@/app/store/useStrategyStore';
 import useStrategy from '@/domains/Strategy/hooks/useStrategy';
-import PageBackground from '@/shared/ui/components/PageBackground';
 import userCardSteps from '../hooks/useCardFunnel';
 import useStrengthWeaknessOption from '../hooks/useStrengthWeaknessOption';
 import useStrengthWeakStatsQuery from '../hooks/useStrengthWeakStatsQuery';
@@ -23,12 +22,12 @@ const options = {
 
 export default function StrengthWeaknessFunnel() {
   const funnel = useFunnel(options);
-  const { data, isSuccess } = useStrengthWeakStatsQuery();
   const { mutate } = useStrategy();
   const { userContents, userFulltime, userGoal, weaknesses } = useStrategyStore(
     (store) => store,
   );
 
+  const { data, isSuccess } = useStrengthWeakStatsQuery();
   const transformData = transformDataStrengthWeakness(data);
 
   useStrengthWeaknessOption({
@@ -37,7 +36,7 @@ export default function StrengthWeaknessFunnel() {
   });
 
   return (
-    <PageBackground color="black_gradient">
+    <>
       <ProgressBar step={funnel.index + 1} />
       <funnel.Render
         Strength1={({ history }) => (
@@ -70,6 +69,6 @@ export default function StrengthWeaknessFunnel() {
           <WeaknessStep2 data={transformData.transformedData.weaknesses[1]} />
         )}
       />
-    </PageBackground>
+    </>
   );
 }
