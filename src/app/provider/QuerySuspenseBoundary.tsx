@@ -8,8 +8,7 @@ interface QuerySuspenseBoundaryProps extends PropsWithChildren {
   loadingFallback: ReactNode;
 }
 
-const ErrorComponents = ({ resetErrorBoundary, ...props }: FallbackProps) => {
-  console.log(props);
+const ErrorComponents = ({ resetErrorBoundary }: FallbackProps) => {
   return (
     <Flex
       justify="center"
