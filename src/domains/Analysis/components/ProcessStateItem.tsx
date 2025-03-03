@@ -32,7 +32,7 @@ export default function ProcessStateItem({
       as="li"
     >
       <Flex as="article">
-        <div className={`${stateStyle.iconBg} rounded-2xl p-2 mr-3`}>
+        <div className={`${stateStyle.iconBg} rounded-[50%] p-2 mr-3`}>
           {icon}
         </div>
         <Flex direction="column" className="gap-x-1" as="section">
