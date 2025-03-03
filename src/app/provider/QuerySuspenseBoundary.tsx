@@ -8,27 +8,6 @@ interface QuerySuspenseBoundaryProps extends PropsWithChildren {
   loadingFallback: ReactNode;
 }
 
-const NetWorkErrorComponent = ({ resetErrorBoundary }: FallbackProps) => {
-  return (
-    <Flex
-      justify="center"
-      align="center"
-      direction="column"
-      className="border-primary3 border rounded-md bg-primary4 py-4"
-      gapY={5}
-    >
-      {/* <p>An error occurred: {error.message}</p> */}
-      <p className="text-white">엇 에러가 발생했어요!</p>
-      <button
-        onClick={resetErrorBoundary}
-        className="p-4 bg-primary6 text-white rounded-lg"
-      >
-        다시 시도
-      </button>
-    </Flex>
-  );
-};
-
 const ErrorComponents = ({ resetErrorBoundary, ...props }: FallbackProps) => {
   console.log(props);
   return (
