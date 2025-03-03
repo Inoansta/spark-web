@@ -1,4 +1,3 @@
-import { QuerySuspenseBoundary } from '@/app/provider';
 import { SmallYoutubeIcon } from '@/assets/svg/logo/SmallYoutbeIcon';
 import { FrontIcon } from '@/assets/svg/nav/FrontIcon';
 import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
@@ -93,11 +92,5 @@ export function ChannelCard() {
 export default function HasTokenChannelInfo() {
   const token = Storage.getLocalStorage(TOKEN.ACCESS);
 
-  return token.length !== 0 ? (
-    <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>
-      <ChannelCard />
-    </QuerySuspenseBoundary>
-  ) : (
-    <EmptyCard />
-  );
+  return token.length !== 0 ? <ChannelCard /> : <EmptyCard />;
 }
