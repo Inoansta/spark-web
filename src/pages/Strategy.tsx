@@ -226,7 +226,7 @@ export default function Strategy() {
                           }
                         >
                           {result[item].본문.length > 10
-                            ? result[item].본문.slice(0, 10) + '...'
+                            ? result[item].본문.slice(0, 40) + '...'
                             : result[item].본문}
                         </div>
                       )}
