@@ -173,7 +173,7 @@ export default function Strategy() {
                         <div className={'mt-[20px]'}>
                           <div
                             className={
-                              'text-[15px] font-[500] leading-[24px] text-[#5E6166] border-b border-b-[#E5E5EA] pb-[20px] px-[10px]'
+                              'text-[15px] font-[500] leading-[24px] text-[#333333] border-b border-b-[#E5E5EA] pb-[20px] px-[10px]'
                             }
                           >
                             <ul className={'list-disc space-y-[5px]'}>
@@ -188,7 +188,10 @@ export default function Strategy() {
                                 {result[item]['실행 방법'].map(
                                   (item1: string) => {
                                     return (
-                                      <li key={item1}>
+                                      <li
+                                        key={item1}
+                                        className={'marker:font-[700]'}
+                                      >
                                         {/* TODO */}
                                         <SplitString item1={item1} />
                                       </li>
