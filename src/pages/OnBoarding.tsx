@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useNavigate } from 'react-router';
 import onBoarding2 from '@/assets/animation/onBoarding2.json';
+import card1 from '@/assets/onboarding/card1.png';
 import onboarding1_youtube from '@/assets/onboarding/onboarding1_youtube.png';
-import onboarding2_strategies from '@/assets/onboarding/onboarding2_strategies.png';
 import OnBoardingFrame from '@/domains/onBoarding/components/OnBoardingFrame';
 import {
   DotButton,
@@ -50,7 +50,7 @@ const contents = [
       </>
     ),
     subTitle: '“ 간단하고 따라하기 쉬운 비법을 준비했어요 “',
-    children: <img src={onboarding2_strategies} className={'max-h-[350px]'} />,
+    children: <img src={card1} className={'max-h-[350px]'} />,
   },
 ];
 

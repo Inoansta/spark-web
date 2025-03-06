@@ -72,7 +72,7 @@ export const handlers = [
             uploadedVideos: -25,
           },
           strengths: ['estimatedRevenue', 'averageViewDuration'],
-          weaknesses: ['netSubscribers', 'shares'],
+          weaknesses: ['netSubscribers', 'views'],
         },
       },
       { status: 200 },
@@ -198,7 +198,7 @@ export const handlers = [
           },
         ],
       },
-      { status: 200 },
+      { status: 400 },
     );
   }),
   http.get('/channel-predictions?channelId=', async () => {

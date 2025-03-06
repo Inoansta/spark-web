@@ -13,19 +13,6 @@ import UpThinSmallArrow from '@/assets/svg/Arrows/UpThinSmallArrowt';
 
 const items = [
   {
-    heading: '유료 서비스인가요?',
-    content: (
-      <ol className={'pl-[5px]'} type="A">
-        <li>
-          네, 맞아요. 한 번 이용할 때마다 이용료가 부과되는 방식이에요. 서비스
-          운영에 필요한 비용을 고려해 합리적인 가격으로 제공하고 있어요. 그만큼
-          여러분이 채널을 빠르게 성장시킬 수 있도록 정확하고 효율적인 전략을
-          제공하니, 그 가치는 충분히 보실 수 있을 거예요!
-        </li>
-      </ol>
-    ),
-  },
-  {
     heading: '내 채널 정보를 어떻게 활용하나요? 안전한건가요?',
     content: (
       <ol className={'pl-[5px]'} type="A">
