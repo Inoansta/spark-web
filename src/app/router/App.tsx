@@ -52,14 +52,7 @@ export default function RouterApp() {
             />
             <Route path="/analysis" element={<Analysis />} />
             <Route path="/result" element={<Result />} />
-            <Route
-              path="/popular"
-              element={
-                <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>
-                  <Popular />
-                </QuerySuspenseBoundary>
-              }
-            />
+            <Route path="/popular" element={<Popular />} />
             <Route path="/strength-weakness" element={<StrengthWeakness />} />
             <Route
               path="/growth-prediction-before"
