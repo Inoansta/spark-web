@@ -10,7 +10,10 @@ export default function Popular() {
           'flex flex-col bg-gradient-to-b from-highEmphasis to-black px-[20px] pt-[65px] min-h-screen'
         }
       >
-        <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>
+        <QuerySuspenseBoundary
+          loadingFallback={<>Loading...</>}
+          textColor="text-white"
+        >
           <div className={'flex flex-col gap-[5px]'}>
             <div className={'text-[28px] font-[800] leading-[38px] text-white'}>
               인기 콘텐츠 TOP3
