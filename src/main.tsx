@@ -3,6 +3,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 // import { Provider, QuerySuspenseBoundary } from './app/provider';
 import { Provider } from './app/provider';
+import ClarityEffector from './app/provider/ClarityEffector';
 import { RouterApp } from './app/router';
 import { GlobalLayout } from './shared/ui';
 
@@ -27,6 +28,7 @@ deferRender().then(() =>
           <RouterApp />
           {/* </QuerySuspenseBoundary> */}
         </Provider>
+        <ClarityEffector />
       </GlobalLayout>
     </StrictMode>,
   ),
