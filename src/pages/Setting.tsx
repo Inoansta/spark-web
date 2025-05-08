@@ -24,11 +24,13 @@ const LIST_DATA = [
   },
   {
     title: '서비스 이용약관',
-    location: 'https://spark-terms-and-privacy.vercel.app/',
+    location:
+      'https://triangular-trombone-8fb.notion.site/195ea985e0f280388a06c5a505a1c878',
   },
   {
     title: '개인정보처리방침',
-    location: 'https://spark-terms-and-privacy.vercel.app/privacy',
+    location:
+      'https://triangular-trombone-8fb.notion.site/195ea985e0f280d9a91df721862c86ee',
   },
   {
     title: '스파크 인스타',
@@ -127,7 +129,7 @@ export default function Setting() {
           className={`${accessToken ? 'block' : 'hidden'} py-[12px] px-[20px] text-[15px] font-[700] leading-[24px] text-[#5E6166]`}
           onClick={LogOut}
         >
-          로그아웃
+          계정삭제(Google 연동해제)
         </div>
       </main>
       <SettingToast closed={closed} setClosed={() => setClosed(true)} />

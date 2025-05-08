@@ -102,6 +102,7 @@ function UserInfo() {
             <ChannelCommonCard
               size="medium"
               isLogin
+              avatarUrl={data.result.defaultThumbnailUrl}
               header={
                 <LocationMove
                   location={`https://www.youtube.com/@${data.result.channelId}`}
@@ -153,6 +154,7 @@ function UserInfo() {
             <ChannelCommonCard
               size="medium"
               isLogin
+              avatarUrl={data.result.defaultThumbnailUrl}
               header={
                 <LocationMove
                   location={`https://www.youtube.com/@${data.result.channelId}`}
