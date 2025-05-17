@@ -9,6 +9,7 @@ import PageBackground from '@/shared/ui/components/PageBackground';
 import useGrowthPredictionQuery from '../hooks/useGrowthPredictionQuery';
 import { useGrowthStep } from '../hooks/useGrowthStep';
 import transformStatsData from '../lib/transformGrowData';
+import GrowthPredictionSkeleton from '../skeleton/skeleton';
 import GrowthStep from './step/GrowthStep';
 import PredictionViewStep from './step/PredictionViewStep';
 import SubscriberStep from './step/SubscriberStep';
@@ -69,11 +70,7 @@ export default function GrowthPredictionFunnel() {
       </NavigationHeader>
       <PageBackground color={bgColor(funnel.step)}>
         <Spacing size="xsmall" />
-        <QuerySuspenseBoundary
-          loadingFallback={<>Loading...</>}
-          textColor="text-white"
-          buttonColor="bg-white"
-        >
+        <QuerySuspenseBoundary loadingFallback={<GrowthPredictionSkeleton />}>
           <GrowthPredictionDataFetchingFunnel funnel={funnel} />
         </QuerySuspenseBoundary>
       </PageBackground>
