@@ -8,6 +8,7 @@ export interface ResponseMetaAuthUrl {
 
 export interface RequestPostToken {
   code: string;
+  platform: 'google' | 'meta';
 }
 export interface RequestPostRefreshToken {
   refreshToken: string;
