@@ -90,7 +90,8 @@ export function ChannelCard() {
 }
 
 export default function HasTokenChannelInfo() {
-  const token = Storage.getLocalStorage(TOKEN.ACCESS);
+  //TODO  TOKEN.REFRESH를 ACCESS로 바꿀것. 임시방편
+  const token = Storage.getLocalStorage(TOKEN.REFRESH);
 
   return token.length !== 0 ? <ChannelCard /> : <EmptyCard />;
 }

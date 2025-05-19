@@ -3,20 +3,25 @@ import type {
   RequestPostRefreshToken,
   RequestPostToken,
   ResponseGoogleAuthUrl,
+  ResponseMetaAuthUrl,
   ResponsePostToken,
 } from '../model/type';
 
-const BASE_URL = '/oauth/google';
-
 const loginApi = {
   getGoogleAuthUrl: async () => {
-    const url = `${BASE_URL}/auth`;
+    const url = `/oauth/google/auth`;
 
     return await httpClient.get<ResponseGoogleAuthUrl>(url);
   },
 
+  getMetaAuthUrl: async () => {
+    const url = '/oauth/meta/auth';
+
+    return await httpClient.get<ResponseMetaAuthUrl>(url);
+  },
+
   postToken: async ({ code }: RequestPostToken) => {
-    const url = `${BASE_URL}/callback`;
+    const url = `/oauth/google/callback`;
 
     const body = { code };
 
@@ -26,7 +31,7 @@ const loginApi = {
   },
 
   refreshToken: async ({ refreshToken }: RequestPostRefreshToken) => {
-    const url = `${BASE_URL}/refresh`;
+    const url = `/oauth/google/refresh`;
     const body = { refreshToken };
 
     return await httpClient.post<ResponsePostToken, typeof body>(url, {

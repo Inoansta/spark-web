@@ -6,6 +6,7 @@ import GrowthPredictionBefore from '@/pages/GrowthPredictionBefore';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
 import Oauth from '@/pages/Oauth';
+import OauthMeta from '@/pages/OauthMeta';
 import OnBoarding from '@/pages/OnBoarding';
 import Popular from '@/pages/Popular';
 import Result from '@/pages/Result';
@@ -70,6 +71,7 @@ export default function RouterApp() {
           </Route>
         </Route>
         <Route path="/oauth/google" element={<Oauth />} />
+        <Route path="/oauth/meta" element={<OauthMeta />} />
       </Routes>
     </BrowserRouter>
   );
