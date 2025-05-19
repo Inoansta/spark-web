@@ -8,7 +8,7 @@ export default function OauthMeta() {
 
   const { mutate } = useAuthToken();
   useEffect(() => {
-    mutate({ code });
+    mutate({ code: code, platform: 'meta' });
   }, [mutate, code]);
 
   return <></>;

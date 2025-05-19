@@ -9,7 +9,7 @@ export default function Oauth() {
   const { mutate } = useAuthToken();
 
   useEffect(() => {
-    mutate({ code });
+    mutate({ code: code, platform: 'google' });
   }, [mutate, code]);
 
   return <></>;

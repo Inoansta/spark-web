@@ -20,8 +20,8 @@ const loginApi = {
     return await httpClient.get<ResponseMetaAuthUrl>(url);
   },
 
-  postToken: async ({ code }: RequestPostToken) => {
-    const url = `/oauth/google/callback`;
+  postToken: async ({ code, platform }: RequestPostToken) => {
+    const url = `/oauth/${platform}/callback`;
 
     const body = { code };
 
