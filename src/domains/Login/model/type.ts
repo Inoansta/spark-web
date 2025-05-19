@@ -2,6 +2,10 @@ export interface ResponseGoogleAuthUrl {
   googleAuthUrl: string;
 }
 
+export interface ResponseMetaAuthUrl {
+  metaAuthUrl: string;
+}
+
 export interface RequestPostToken {
   code: string;
 }
