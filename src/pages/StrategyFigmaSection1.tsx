@@ -1,18 +1,18 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import useStrategyStore from '@/app/store/useStrategyStore';
-import RightArrow from '@/assets/svg/Arrows/RightArrow';
+// import RightArrow from '@/assets/svg/Arrows/RightArrow';
 import Magic from '@/assets/svg/Detail/Magic';
 import SmallStar from '@/assets/svg/Strategy/SmallStar';
-import Star from '@/assets/svg/Strategy/Star';
-import StarShadow from '@/assets/svg/Strategy/Star_shadow';
-import { Divider, Flex, Spacing } from '@/shared/ui';
+// import Star from '@/assets/svg/Strategy/Star';
+// import StarShadow from '@/assets/svg/Strategy/Star_shadow';
+import { Flex, Spacing } from '@/shared/ui';
 import PageBackground from '@/shared/ui/components/PageBackground';
 
 export default function StrategyFigmaSection1() {
   const {
-    userContents = '패션',
-    userFulltime = '전업',
-    userGoal = '개인적인 취미 및 즐거움',
+    // userContents = '패션',
+    // userFulltime = '전업',
+    // userGoal = '개인적인 취미 및 즐거움',
     channelName,
   } = useStrategyStore((store) => store);
 
@@ -129,47 +129,47 @@ function ToolComment({
   );
 }
 
-function StrategyStar() {
-  const [isOpen, setIsOpen] = useState(false);
+// function StrategyStar() {
+//   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
+//   const handleClick = () => {
+//     setIsOpen(!isOpen);
+//   };
 
-  return (
-    <>
-      {isOpen ? (
-        <Flex className="flex-col items-center justify-center gap-[30px]">
-          <Flex className="flex-col items-center justify-center gap-7">
-            <Star />
-            <div
-              style={{
-                fill: '#FFF',
-                filter:
-                  'drop-shadow(0px 0px 10.363px #FFF) drop-shadow(0px 0px 20.726px #FFF) drop-shadow(0px 0px 72.54px #4557FF) drop-shadow(0px 0px 145.08px #4557FF) drop-shadow(0px 0px 248.708px #4557FF) drop-shadow(0px 0px 435.239px #4557FF)',
-              }}
-            >
-              <StarShadow />
-            </div>
-          </Flex>
-          <button className="bg-primary5 border-primary6 border-[1px] rounded-[20px] px-5 py-[11px] max-h-10">
-            <Flex className="items-center gap-[6px]">
-              <span className="font-extrabold text-[13px] text-[#FFF]">
-                1번째 비법 보여주기
-              </span>
-              <RightArrow />
-            </Flex>
-          </button>
-          <p className="font-extrabold text-xl text-[#FFF] max-w-[197px] text-center">
-            유튜브 스튜디오의 Inspiration 탭 활용하기
-          </p>
-        </Flex>
-      ) : (
-        <ToolComment
-          content="첫 번째 성장 비법이 기다리고 있어요!"
-          position="left"
-        />
-      )}
-    </>
-  );
-}
+//   return (
+//     <>
+//       {isOpen ? (
+//         <Flex className="flex-col items-center justify-center gap-[30px]">
+//           <Flex className="flex-col items-center justify-center gap-7">
+//             <Star />
+//             <div
+//               style={{
+//                 fill: '#FFF',
+//                 filter:
+//                   'drop-shadow(0px 0px 10.363px #FFF) drop-shadow(0px 0px 20.726px #FFF) drop-shadow(0px 0px 72.54px #4557FF) drop-shadow(0px 0px 145.08px #4557FF) drop-shadow(0px 0px 248.708px #4557FF) drop-shadow(0px 0px 435.239px #4557FF)',
+//               }}
+//             >
+//               <StarShadow />
+//             </div>
+//           </Flex>
+//           <button className="bg-primary5 border-primary6 border-[1px] rounded-[20px] px-5 py-[11px] max-h-10">
+//             <Flex className="items-center gap-[6px]">
+//               <span className="font-extrabold text-[13px] text-[#FFF]">
+//                 1번째 비법 보여주기
+//               </span>
+//               <RightArrow />
+//             </Flex>
+//           </button>
+//           <p className="font-extrabold text-xl text-[#FFF] max-w-[197px] text-center">
+//             유튜브 스튜디오의 Inspiration 탭 활용하기
+//           </p>
+//         </Flex>
+//       ) : (
+//         <ToolComment
+//           content="첫 번째 성장 비법이 기다리고 있어요!"
+//           position="left"
+//         />
+//       )}
+//     </>
+//   );
+// }

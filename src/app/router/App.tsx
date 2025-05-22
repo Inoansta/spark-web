@@ -11,7 +11,7 @@ import OnBoarding from '@/pages/OnBoarding';
 import Popular from '@/pages/Popular';
 import Result from '@/pages/Result';
 import Setting from '@/pages/Setting';
-import Strategy from '@/pages/Strategy';
+// import Strategy from '@/pages/Strategy';
 import StrategyBefore from '@/pages/StrategyBefore';
 import StrategyFigmaSection1 from '@/pages/StrategyFigmaSection1';
 import StrengthWeakness from '@/pages/StrengthWeakness';
