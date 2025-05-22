@@ -2,8 +2,13 @@ export interface ResponseGoogleAuthUrl {
   googleAuthUrl: string;
 }
 
+export interface ResponseMetaAuthUrl {
+  metaAuthUrl: string;
+}
+
 export interface RequestPostToken {
   code: string;
+  platform: 'google' | 'meta';
 }
 export interface RequestPostRefreshToken {
   refreshToken: string;

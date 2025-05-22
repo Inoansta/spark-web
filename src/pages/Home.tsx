@@ -5,6 +5,7 @@ import { Logo } from '@/assets/svg/logo/Logo';
 import { SmallLogo } from '@/assets/svg/logo/SmallLogo';
 import { FrontIcon } from '@/assets/svg/nav/FrontIcon';
 import { CheerupBar, HasTokenChannelInfo } from '@/domains/Home/components';
+import HomeSkeleton from '@/domains/Home/skeleton/skeleton';
 import LocationMove from '@/domains/Login/components/LocationMove';
 import { NavigationHeader } from '@/shared/components';
 import { Storage } from '@/shared/lib';
@@ -40,7 +41,7 @@ export default function Home() {
             <Logo />
           </NavigationHeader.LeftContent>
         </NavigationHeader>
-        <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>
+        <QuerySuspenseBoundary loadingFallback={<HomeSkeleton />}>
           <CheerupBar />
           <Flex direction="column" gapY={5} className="px-5">
             <HasTokenChannelInfo />

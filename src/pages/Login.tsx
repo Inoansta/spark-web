@@ -1,11 +1,14 @@
-import loadingGif from '@/assets/login/channel_login.gif';
+import ChannelLink from '@/assets/svg/ChannelLink.svg';
+import { InstagramIcon } from '@/assets/svg/InstagramIcon';
 import { YoutubeIcon } from '@/assets/svg/YoutubeIcon';
 import LocationMove from '@/domains/Login/components/LocationMove';
 import useGoogleAuth from '@/domains/Login/hooks/useGoogleAuth';
+import useMetaAuth from '@/domains/Login/hooks/useMetaAuth';
 import { Flex, Spacing, Text } from '@/shared/ui';
 
 export default function Login() {
-  const { data } = useGoogleAuth();
+  const google = useGoogleAuth();
+  const meta = useMetaAuth();
 
   return (
     <Flex direction="column" className="px-5 pt-5 pb-10 bg-line min-h-[812px]">
@@ -23,23 +26,34 @@ export default function Login() {
       </section>
       <Spacing size="lsmall" />
 
-      <img
-        src={loadingGif}
-        alt="로그인 gif 애니메이션"
-        className="rounded-[20px]"
-      />
+      <img src={ChannelLink} className="mx-[20px]" />
 
       <Spacing className="h-[76px]" />
 
-      <LocationMove location={data.googleAuthUrl}>
-        <Flex align="center" className="bg-red1 px-[26px] py-3 rounded-[26px]">
-          <YoutubeIcon />
-          <button className="text-white w-full text-[15px] font-bold">
-            Youtube 채널 가지고 오기
-          </button>
-        </Flex>
-      </LocationMove>
-
+      <Flex direction="column" gapY={'[10px]'}>
+        <LocationMove location={meta.data.metaAuthUrl}>
+          <Flex
+            align="center"
+            className="bg-[#333] px-[26px] py-3 rounded-[26px]"
+          >
+            <InstagramIcon />
+            <button className="text-white w-full text-[15px] font-bold">
+              Instagram 채널 가지고 오기
+            </button>
+          </Flex>
+        </LocationMove>
+        <LocationMove location={google.data.googleAuthUrl}>
+          <Flex
+            align="center"
+            className="bg-red1 px-[26px] py-3 rounded-[26px]"
+          >
+            <YoutubeIcon />
+            <button className="text-white w-full text-[15px] font-bold">
+              Youtube 채널 가지고 오기
+            </button>
+          </Flex>
+        </LocationMove>
+      </Flex>
       <Spacing className="h-[10px]" />
 
       <Text

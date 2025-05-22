@@ -14,9 +14,11 @@ export const useAuthToken = () => {
   return useMutation({
     mutationFn: loginApi.postToken,
     onSuccess: (data) => {
-      const { access_token, refresh_token } = data;
-      Storage.setLocalStorage(TOKEN.ACCESS, access_token);
-      Storage.setLocalStorage(TOKEN.REFRESH, refresh_token);
+      Storage.setLocalStorage(TOKEN.ACCESS, data.access_token);
+
+      if (data.refresh_token) {
+        Storage.setLocalStorage(TOKEN.REFRESH, data.refresh_token);
+      }
       navigate('/');
     },
     onError: () => {
