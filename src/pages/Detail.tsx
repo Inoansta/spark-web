@@ -17,7 +17,8 @@ export default function Detail() {
   const moveToNext = useMoveLocation('/user-info');
 
   useEffect(() => {
-    const connected = Storage.getLocalStorage(TOKEN.ACCESS);
+    //TODO REFRESH를 ACCESS로 바꾸기
+    const connected = Storage.getLocalStorage(TOKEN.REFRESH);
     setDisable(connected ? false : true);
   }, []);
 
