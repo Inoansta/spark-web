@@ -1,7 +1,9 @@
 import type { ReactNode } from 'react';
 import homeStrategy from '@/assets/animation/homeStrategy.json';
 import { Avatar as DefaultImage } from '@/assets/svg/Avatar/Avatar';
+import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { RouteMove } from '@/shared/components';
+import { Storage } from '@/shared/lib';
 import { Card, Flex, LottieAnimation, Text } from '@/shared/ui';
 
 interface ChannelCommonCardProps {
@@ -18,6 +20,8 @@ interface ChannelCommonCardProps {
 interface ChannelGrowCardProps {
   disabled: boolean;
 }
+
+const refresh_token = Storage.getLocalStorage(TOKEN.REFRESH);
 
 export function ChannelGrowCard({ disabled = false }: ChannelGrowCardProps) {
   return (
@@ -115,7 +119,7 @@ export function ChannelCommonCard({
                 />
                 <Text
                   as="card_content"
-                  title="구독자"
+                  title={refresh_token ? '구독자' : '팔로워'}
                   className={`${isMedium && 'text-[11px]'}`}
                 />
               </Flex>
@@ -127,7 +131,7 @@ export function ChannelCommonCard({
                 />
                 <Text
                   as="card_content"
-                  title="누적 조회수"
+                  title={refresh_token ? '누적 조회수' : '팔로잉'}
                   className={`${isMedium && 'text-[11px]'}`}
                 />
               </Flex>
