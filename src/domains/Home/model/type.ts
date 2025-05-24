@@ -7,10 +7,24 @@ interface ChannelProfileResult {
   defaultThumbnailUrl: string;
 }
 
+interface MetaProfileResult {
+  userName: string;
+  profileUrl: string;
+  followersCount: number;
+  followingCount: number;
+  postsCount: number;
+}
+
 export interface ResponseChannelProfile {
   statusCode: number;
   message: string;
   result: ChannelProfileResult;
+}
+
+export interface ResponseMetaProfile {
+  statusCode: number;
+  message: string;
+  result: MetaProfileResult;
 }
 
 export interface FormatNumberWithUnitProps {
