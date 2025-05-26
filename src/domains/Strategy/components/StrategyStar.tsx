@@ -15,7 +15,7 @@ interface StarListItem {
   title: string;
   star: ReactNode;
   content: string;
-  position: 'left' | 'center' | 'bottom' | 'right';
+  position: 'left' | 'right';
   onClick?: () => void;
 }
 
@@ -96,7 +96,8 @@ const StrategyStarGroup = () => {
                 <div className="max-w-[186px]">
                   <ToolComment
                     content="첫 번째 성장 비법이 기다리고 있어요!"
-                    position={item.position === 'left' ? 'left' : 'center'}
+                    // position={item.position === 'left' ? 'left' : 'center'}
+                    position="center"
                     onClick={handleClick}
                     id={item.id}
                   />
@@ -120,7 +121,7 @@ function ToolComment({
   id,
 }: {
   content: string;
-  position: 'left' | 'center' | 'bottom';
+  position: 'left' | 'center';
   onClick?: (id: number) => void;
   id: number;
 }) {

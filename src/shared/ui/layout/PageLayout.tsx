@@ -50,8 +50,8 @@ function CurrentLocation() {
     }
     case '/result':
     case '/popular':
-    case '/strength-weakness':
-    case '/strategy': {
+    case '/strength-weakness': // case '/strategy':
+    {
       return (
         <NavigationHeader className={'p-5 fixed max-w-[450px] w-full'}>
           <NavigationHeader.LeftContent location="back">

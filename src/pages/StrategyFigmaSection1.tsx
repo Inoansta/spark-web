@@ -5,13 +5,17 @@ import Magic from '@/assets/svg/Detail/Magic';
 import EyeIcon from '@/assets/svg/EyeIcon';
 import BlackYoutube from '@/assets/svg/Strategy/BlackYoutube';
 import StrategyStarGroup from '@/domains/Strategy/components/StrategyStar';
-import { Divider, Flex, Spacing } from '@/shared/ui';
+import { Divider, Flex } from '@/shared/ui';
 import PageBackground from '@/shared/ui/components/PageBackground';
 
-const UserInfoHashTag = ({ hashTagList }: { hashTagList: string[] }) => {
+const UserInfoHashTag = ({
+  hashTagList = ['패션', '전업', '개인적인 취미 및 즐거움'],
+}: {
+  hashTagList: string[];
+}) => {
   return (
     <Flex align="center" gap="1">
-      {['패션', '전업', '개인적인 취미 및 즐거움'].map((item) => (
+      {hashTagList.map((item) => (
         <div
           key={item}
           className="px-[10px] py-[5px] bg-white bg-opacity-10 rounded-[5px]"
@@ -139,11 +143,11 @@ const UserInfo = () => {
 function AnalysisCard({
   icon,
   title,
-  description,
+  description = '',
 }: {
   icon: React.ReactNode;
   title: string;
-  description: string;
+  description?: string;
   iconBg?: string;
 }) {
   return (
@@ -152,10 +156,12 @@ function AnalysisCard({
         {icon}
         <p className="text-sm font-medium text-[#3385FF]">{title}</p>
       </div>
-      <div className="flex justify-between px-[5px]">
-        <p>최근 30일</p>
-        <p>N분 증가</p>
-      </div>
+      {description && (
+        <div className="flex justify-between px-[5px]">
+          <p>최근 30일</p>
+          <p>N분 증가</p>
+        </div>
+      )}
     </div>
   );
 }
