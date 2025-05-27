@@ -22,6 +22,7 @@ import UpThinSmallArrow from '@/assets/svg/Arrows/UpThinSmallArrowt';
 import Magic2 from '@/assets/svg/Magic2';
 // import Tooltip from '@/assets/svg/Strategy/Tooltip';
 import YoutubeSource from '@/assets/svg/YoutubeSource';
+// import SplitString from '@/domains/Strategy/components/SplitString';
 import SplitString from '@/domains/Strategy/components/SplitString';
 import useGetStrategy from '@/domains/Strategy/hooks/useGetStrategy';
 import { Button } from '@/shared/components';
@@ -218,7 +219,11 @@ export default function Strategy() {
                                         key={item1}
                                         className={'marker:font-[700]'}
                                       >
-                                        <SplitString item1={item1} />
+                                        <SplitString
+                                          item1={item1}
+                                          index={1}
+                                          key={item1}
+                                        />
                                       </li>
                                     );
                                   },
