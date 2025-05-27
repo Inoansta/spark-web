@@ -130,7 +130,6 @@ export function MetaCard() {
 }
 
 export default function HasTokenChannelInfo() {
-  //TODO  TOKEN.REFRESH를 ACCESS로 바꿀것. 임시방편
   const access_token = Storage.getLocalStorage(TOKEN.ACCESS);
   const refresh_token = Storage.getLocalStorage(TOKEN.REFRESH);
   if (!access_token) {
