@@ -11,7 +11,7 @@ import OnBoarding from '@/pages/OnBoarding';
 import Popular from '@/pages/Popular';
 import Result from '@/pages/Result';
 import Setting from '@/pages/Setting';
-import Strategy from '@/pages/Strategy';
+// import Strategy from '@/pages/Strategy';
 import StrategyBefore from '@/pages/StrategyBefore';
 import StrengthWeakness from '@/pages/StrengthWeakness';
 import UserInfo from '@/pages/UserInfo';
@@ -64,7 +64,7 @@ export default function RouterApp() {
               path="/strategy"
               element={
                 <QuerySuspenseBoundary loadingFallback={<StrategyBefore />}>
-                  <Strategy />
+                  {/* <Strategy /> */}
                 </QuerySuspenseBoundary>
               }
             />

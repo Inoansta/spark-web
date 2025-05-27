@@ -22,7 +22,7 @@ import Graph2 from '@/assets/svg/Detail/Graph2';
 import Magic2 from '@/assets/svg/Magic2';
 import Tooltip from '@/assets/svg/Strategy/Tooltip';
 import YoutubeSource from '@/assets/svg/YoutubeSource';
-import SplitString from '@/domains/Strategy/components/SplitString';
+// import SplitString from '@/domains/Strategy/components/SplitString';
 import useGetStrategy from '@/domains/Strategy/hooks/useGetStrategy';
 import { Button } from '@/shared/components';
 import { LottieAnimation } from '@/shared/ui';
@@ -193,7 +193,7 @@ export default function Strategy() {
                                         className={'marker:font-[700]'}
                                       >
                                         {/* TODO */}
-                                        <SplitString item1={item1} />
+                                        {/* <SplitString item1={item1} index={1}/> */}
                                       </li>
                                     );
                                   },
