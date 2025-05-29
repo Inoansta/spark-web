@@ -15,9 +15,14 @@ export default {
           '0%': { transform: 'translateY(100%)' },
           '100%': { transform: 'translateY(0)' },
         },
+        moveUpDown: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
       },
       animation: {
         'slide-up': 'slide-up 2s ease-in-out forwards',
+        moveUpDown: 'moveUpDown 2s infinite ease-in-out',
       },
       fontFamily: {
         suit: ['SUIT', 'sans-serif'],
@@ -113,6 +118,32 @@ export default {
         'caption1-b': [
           '11pt',
           { lineHeight: '14px', letterSpacing: '0%', fontWeight: '700' },
+        ],
+      },
+      dropShadow: {
+        'star-1': [
+          '0 0 10.363px #fff',
+          '0 0 20.726px #fff',
+          '0 0 72.54px #4557ff',
+          '0 0 145.08px #4557ff',
+          '0 0 248.708px #4557ff',
+          '0 0 435.239px #4557ff',
+        ],
+        'star-2': [
+          '0 0 10.363px #fff',
+          '0 0 20.726px #fff',
+          '0 0 72.54px #fff',
+          '0 0 145.08px #787cfe',
+          '0 0 248.708px #787cfe',
+          '0 0 435.239px #787cfe',
+        ],
+        'star-3': [
+          '0 0 20.726px #fff',
+          '0 0 10.363px #fff',
+          '0 0 72.54px #fff',
+          '0 0 145.08px #fbb5f5',
+          '0 0 248.708px #fbb5f5',
+          '0 0 435.239px #fbb5f5',
         ],
       },
     },
