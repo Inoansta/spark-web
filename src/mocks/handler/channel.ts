@@ -198,7 +198,7 @@ export const handlers = [
           },
         ],
       },
-      { status: 400 },
+      { status: 200 },
     );
   }),
   http.get('/channel-predictions?channelId=', async () => {

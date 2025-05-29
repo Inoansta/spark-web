@@ -1,5 +1,9 @@
 import httpClient from '@/app/api/httpClient';
-import type { RequestStrategy, ResponseStrategy } from '../model/type';
+import type {
+  RequestStrategy,
+  ResponseStrategy,
+  ResponseStrategyResult,
+} from '../model/type';
 
 const BASE_URL = 'pinecone';
 
@@ -23,7 +27,7 @@ const strategyApi = {
   getStrategy: async ({ requestId }: { requestId: string }) => {
     const url = `${BASE_URL}/strategy/${requestId}`;
 
-    const response = await httpClient.get(url);
+    const response = await httpClient.get<ResponseStrategyResult>(url);
     return response;
   },
 };

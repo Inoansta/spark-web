@@ -1,201 +1,87 @@
-import useStrategyStore from '@/app/store/useStrategyStore';
+import useEmblaCarousel from 'embla-carousel-react';
 import Bulb from '@/assets/svg/Detail/Bulb';
-import Graph2 from '@/assets/svg/Detail/Graph2';
-import Magic from '@/assets/svg/Detail/Magic';
-import EyeIcon from '@/assets/svg/EyeIcon';
-import BlackYoutube from '@/assets/svg/Strategy/BlackYoutube';
+import useGrowthPredictionQuery from '@/domains/GrowthPrediction/hooks/useGrowthPredictionQuery';
+import usePopularQuery from '@/domains/Popular/hooks/usePopularQuery';
+import ActionButtonsRow from '@/domains/Strategy/components/ActionButtonsRow';
+import AnalysisCard from '@/domains/Strategy/components/AnalysisCard';
+import ContentCard from '@/domains/Strategy/components/ContentCard';
+import ContentHeader from '@/domains/Strategy/components/ContentHeader';
+import HighlightBox from '@/domains/Strategy/components/HighlightBox';
+import PredictionRow from '@/domains/Strategy/components/PredictionRow';
 import StrategyStarGroup from '@/domains/Strategy/components/StrategyStar';
+import UserInfoHeader from '@/domains/Strategy/components/UserInfoHeader';
+import useGetStrategy from '@/domains/Strategy/hooks/useGetStrategy';
+import useStrengthWeakStatsQuery from '@/domains/StrengthWeakness/hooks/useStrengthWeakStatsQuery';
+import { Carousel } from '@/shared/components';
 import { Divider, Flex } from '@/shared/ui';
 import PageBackground from '@/shared/ui/components/PageBackground';
 
-const UserInfoHashTag = ({
-  hashTagList = ['패션', '전업', '개인적인 취미 및 즐거움'],
-}: {
-  hashTagList: string[];
-}) => {
-  return (
-    <Flex align="center" gap="1">
-      {hashTagList.map((item) => (
-        <div
-          key={item}
-          className="px-[10px] py-[5px] bg-white bg-opacity-10 rounded-[5px]"
-        >
-          <span className="text-xs font-medium text-primary2"># {item}</span>
-        </div>
-      ))}
-    </Flex>
-  );
-};
-
-function ContentCard() {
-  return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 10,
-        padding: 10,
-        background: '#fff',
-        border: '0.5px solid #E5E5EA',
-        borderRadius: 20,
-        width: 335,
-      }}
-    >
-      {/* 썸네일 */}
-      <img
-        src={'/src/assets/figma/thumbnail.png'}
-        alt="thumbnail"
-        style={{
-          width: 120,
-          height: 90,
-          borderRadius: 10,
-          objectFit: 'cover',
-        }}
-      />
-      {/* 정보 영역 */}
-      <div
-        style={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          gap: 20,
-          paddingRight: 10,
-        }}
-      >
-        {/* 제목 */}
-        <div
-          style={{
-            fontFamily: 'SUIT',
-            fontWeight: 700,
-            fontSize: 13,
-            color: '#1C1C1E',
-            lineHeight: 1.38,
-          }}
-        >
-          🍖 성수동 립스테이크 플레이트 야외 먹방! | Eating...
-        </div>
-        {/* 상세 정보 */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: 8,
-          }}
-        >
-          {/* 뷰 */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-            <EyeIcon width={20} height={20} color="#333" />
-            <span
-              style={{
-                fontFamily: 'SUIT',
-                fontWeight: 700,
-                fontSize: 13,
-                color: '#333',
-              }}
-            >
-              1,058
-            </span>
-          </div>
-          {/* 날짜 */}
-          <span
-            style={{
-              fontFamily: 'SUIT',
-              fontWeight: 500,
-              fontSize: 11,
-              color: '#8D9199',
-              lineHeight: 1.27,
-            }}
-          >
-            2024.11.10
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const UserInfo = () => {
-  const {
-    userContents = '패션',
-    userFulltime = '전업',
-    userGoal = '개인적인 취미 및 즐거움',
-    channelName,
-  } = useStrategyStore((store) => store);
-  return (
-    <section>
-      <p className="text-lg font-bold text-[#FFF]">
-        {channelName}님의 채널 성장을 위한
-      </p>
-      <div className="flex items-center mb-[10px]">
-        <p className="text-2xl font-extrabold text-[#C6C5FF]">
-          3가지 추천 비법
-        </p>
-        <Magic />
-      </div>
-      <UserInfoHashTag hashTagList={[userContents, userFulltime, userGoal]} />
-    </section>
-  );
-};
-
-// AnalysisCard 컴포넌트 정의
-function AnalysisCard({
-  icon,
-  title,
-  description = '',
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description?: string;
-  iconBg?: string;
-}) {
-  return (
-    <div className="flex flex-col gap-5 border border-[#E5E5EA] rounded-[10px] p-[10px]">
-      <div className="flex items-center gap-[2px]">
-        {icon}
-        <p className="text-sm font-medium text-[#3385FF]">{title}</p>
-      </div>
-      {description && (
-        <div className="flex justify-between px-[5px]">
-          <p>최근 30일</p>
-          <p>N분 증가</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
 export default function StrategyFigmaSection1() {
+  const { data: strategyData } = useGetStrategy();
+  const { data: popularData } = usePopularQuery();
+  const { data: strengthWeaknessData } = useStrengthWeakStatsQuery();
+  const { data: growthPredictionData } = useGrowthPredictionQuery();
+
+  console.log(strategyData);
+  console.log(popularData);
+  console.log(strengthWeaknessData);
+  console.log(growthPredictionData);
+
+  // 1.데이터 필터링
+  // 2.컴포넌트 구현
+  // 3.애니메이션 에러 해결
+
+  // embla carousel hook
+  const [emblaRef] = useEmblaCarousel({
+    loop: false,
+    align: 'start',
+    axis: 'x',
+  });
+
+  const slides = popularData?.result.map((item, index) => {
+    return {
+      children: (
+        <ContentCard
+          title={item.snippet.title}
+          imageUrl={item.snippet.thumbnails.default.url}
+          viewCount={Number(item.statistics.viewCount)}
+          createdAt={item.snippet.publishedAt}
+          rank={index + 1}
+        />
+      ),
+    };
+  });
+
   return (
     <main className="bg-white overflow-y-auto">
       <PageBackground color="black_linear_gradient">
-        <UserInfo />
-        <StrategyStarGroup />
+        <UserInfoHeader />
+        <StrategyStarGroup
+          contentList={[
+            strategyData.비법1.제목,
+            strategyData.비법2.제목,
+            strategyData.비법3.제목,
+          ]}
+        />
       </PageBackground>
       <Divider size="RowMedium" />
       <section className="p-[20px]">
         <Flex direction="column" gapY={5}>
-          <Flex align="center" gap="1">
-            <BlackYoutube />
-            <p className="text-lg font-extrabold text-[#000]">
-              인기콘텐츠 TOP3
-            </p>
-          </Flex>
-          <section>
-            <ContentCard />
-          </section>
+          <ContentHeader title="인기 콘텐츠 TOP 3" />
+          <Carousel
+            slides={slides}
+            sectionClassName={''}
+            viewPortClassName={'overflow-hidden'}
+            containerClassName={'flex flex-row'}
+            itemClassName={'flex-none w-[335px] mr-[5px]'}
+            emblaRef={emblaRef}
+          />
         </Flex>
       </section>
       <Divider size="RowMedium" />
       <section className="p-[20px]">
         <Flex direction="column" gapY={5}>
-          <Flex align="center" gap="1">
-            <Graph2 fill="#000" />
-            <p className="text-lg font-extrabold text-[#000]">
-              내 채널의 강 약점 분석
-            </p>
-          </Flex>
+          <ContentHeader title="내 채널의 강 약점 분석" />
           <section>
             <div className="grid grid-cols-2 grid-rows-2 gap-4">
               <AnalysisCard
@@ -223,35 +109,25 @@ export default function StrategyFigmaSection1() {
         </Flex>
       </section>
       <Divider size="RowMedium" />
-      <section className="p-[20px]">
-        <Flex direction="column" gapY={5}>
-          <Flex align="center" gap="1">
-            <Bulb fill="#000" />
-            <p className="text-lg font-extrabold text-[#000]">
-              홍길동님의 성장예측
-            </p>
-          </Flex>
-          <Flex direction="column" className="gap-[10px]">
-            <span className="text-[13px] font-medium text-primary4 bg-primary1 rounded-[5px] px-[5px] py-[10px]">
-              3개월 후 성장예측
-            </span>
-            <Flex justify="between" align="center">
-              <span>예상 조회수</span>
-              <Flex direction="column" className="gap-[2px]">
-                <p>총 1,400회 달성</p>
-                <p>매달 400회 증가</p>
-              </Flex>
-            </Flex>
-            <Flex justify="between" align="center">
-              <span>예상 조회수</span>
-              <Flex direction="column" className="gap-[2px]">
-                <p>총 1,400회 달성</p>
-                <p>매달 400회 증가</p>
-              </Flex>
-            </Flex>
+      <section className="p-[20px] pb-[40px]">
+        <Flex direction="column" gap={5}>
+          <ContentHeader title="홍길동님의 성장 예측" />
+          <Flex direction="column" gap={2}>
+            <HighlightBox>3개월 후 성장 예측</HighlightBox>
+            <PredictionRow
+              label="예상 조회수"
+              value="총 1,400회 달성!"
+              sub="매달 400회 증가"
+            />
+            <PredictionRow
+              label="예상 구독자수"
+              value="총 1,400명 증가!"
+              sub="매달 400명 증가"
+            />
           </Flex>
         </Flex>
       </section>
+      <ActionButtonsRow />
     </main>
   );
 }

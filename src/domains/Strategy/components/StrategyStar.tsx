@@ -17,36 +17,24 @@ interface StarListItem {
   content: string;
   position: 'left' | 'right';
   onClick?: () => void;
+  selected: boolean;
 }
 
-const StrategyStarGroup = () => {
-  // api로직 호출
-  const [starList, setStarList] = useState<StarListItem[]>([
-    {
-      id: 1,
-      isOpen: true,
-      title: '1번째 비법',
-      star: <Star1 />,
-      content: '유튜브 스튜디오의 Inspiration 탭 활용하기',
-      position: 'left',
-    },
-    {
-      id: 2,
-      isOpen: false,
-      title: '2번째 비법',
-      star: <Star2 />,
-      content: '유튜브 스튜디오의 Inspiration 탭 활용하기',
-      position: 'right',
-    },
-    {
-      id: 3,
-      isOpen: false,
-      title: '3번째 비법',
-      star: <Star3 />,
-      content: '유튜브 스튜디오의 Inspiration 탭 활용하기',
-      position: 'left',
-    },
-  ]);
+const getInitialData = (contentList: string[]): StarListItem[] =>
+  contentList.map((item, index) => ({
+    id: index + 1,
+    isOpen: index === 0 ? true : false,
+    title: `${index + 1}번째 비법`,
+    star: index === 0 ? <Star1 /> : index === 1 ? <Star2 /> : <Star3 />,
+    content: item,
+    position: index % 2 === 0 ? 'left' : 'right',
+    selected: index === 0 ? true : false,
+  }));
+
+const StrategyStarGroup = ({ contentList }: { contentList: string[] }) => {
+  const [starList, setStarList] = useState<StarListItem[]>(
+    getInitialData(contentList),
+  );
 
   const handleClick = (id: number) => {
     const newStarList = starList.map((item) => {
@@ -54,6 +42,7 @@ const StrategyStarGroup = () => {
         return {
           ...item,
           isOpen: true,
+          selected: true,
         };
       } else {
         return {
@@ -71,7 +60,12 @@ const StrategyStarGroup = () => {
       <Spacing size="large" />
       {starList.map((item) =>
         item.isOpen ? (
-          <StrategyStar key={item.id} star={item.star} id={item.id} />
+          <StrategyStar
+            key={item.id}
+            star={item.star}
+            id={item.id}
+            content={item.content}
+          />
         ) : (
           <Flex
             key={item.id}
@@ -84,7 +78,11 @@ const StrategyStarGroup = () => {
                 <SmallStar />
                 <div className="max-w-[186px]">
                   <ToolComment
-                    content="첫 번째 성장 비법이 기다리고 있어요!"
+                    content={
+                      !item.selected
+                        ? '첫 번째 성장 비법이 기다리고 있어요!'
+                        : '첫 번째 성장 비법은 확인했어요'
+                    }
                     position="left"
                     onClick={handleClick}
                     id={item.id}
@@ -95,8 +93,11 @@ const StrategyStarGroup = () => {
               <>
                 <div className="max-w-[186px]">
                   <ToolComment
-                    content="첫 번째 성장 비법이 기다리고 있어요!"
-                    // position={item.position === 'left' ? 'left' : 'center'}
+                    content={
+                      !item.selected
+                        ? '첫 번째 성장 비법이 기다리고 있어요!'
+                        : '첫 번째 성장 비법은 확인했어요'
+                    }
                     position="center"
                     onClick={handleClick}
                     id={item.id}
@@ -144,7 +145,15 @@ function ToolComment({
   );
 }
 
-function StrategyStar({ star, id }: { star: ReactNode; id: number }) {
+function StrategyStar({
+  star,
+  id,
+  content,
+}: {
+  star: ReactNode;
+  id: number;
+  content: string;
+}) {
   return (
     <Flex className="flex-col items-center justify-center gap-[30px] mb-[103px] mt-[80px]">
       <Flex className="flex-col items-center justify-center gap-7">
@@ -164,13 +173,13 @@ function StrategyStar({ star, id }: { star: ReactNode; id: number }) {
       <button className="bg-primary5 border-primary6 border-[1px] rounded-[20px] px-5 py-[11px] max-h-10">
         <Flex className="items-center gap-[6px]">
           <span className="font-extrabold text-[13px] text-[#FFF]">
-            1번째 비법 보여주기
+            {`${id}번째 비법 보여주기`}
           </span>
           <RightArrow />
         </Flex>
       </button>
       <p className="font-extrabold text-xl text-[#FFF] max-w-[197px] text-center">
-        유튜브 스튜디오의 Inspiration 탭 활용하기
+        {content}
       </p>
     </Flex>
   );
