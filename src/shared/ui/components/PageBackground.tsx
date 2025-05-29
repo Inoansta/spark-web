@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react';
+import { cn } from '@/shared/lib';
 
 interface PageBackgroundProps {
   color: keyof typeof BG_COLOR;
   children: ReactNode;
+  className?: string;
 }
 
 const BG_COLOR = {
@@ -18,10 +20,13 @@ const BG_COLOR = {
 export default function PageBackground({
   color,
   children,
+  className,
 }: PageBackgroundProps) {
   return (
-    <div className={`${BG_COLOR[color]} min-h-screen`}>
-      <div className="px-[20px] py-[65px] min-h-screen">{children}</div>
+    <div className={cn(`${BG_COLOR[color]}`, className ?? '')}>
+      <div className={cn(`px-[20px] py-[65px]`, className ?? '')}>
+        {children}
+      </div>
     </div>
   );
 }

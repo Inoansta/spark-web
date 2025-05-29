@@ -1,6 +1,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
-import Bulb from '@/assets/svg/Detail/Bulb';
 import useGrowthPredictionQuery from '@/domains/GrowthPrediction/hooks/useGrowthPredictionQuery';
+import transformStatsData from '@/domains/GrowthPrediction/lib/transformGrowData';
+import { formatNumberWithCommas } from '@/domains/Home/lib/utils';
 import usePopularQuery from '@/domains/Popular/hooks/usePopularQuery';
 import ActionButtonsRow from '@/domains/Strategy/components/ActionButtonsRow';
 import AnalysisCard from '@/domains/Strategy/components/AnalysisCard';
@@ -12,6 +13,7 @@ import StrategyStarGroup from '@/domains/Strategy/components/StrategyStar';
 import UserInfoHeader from '@/domains/Strategy/components/UserInfoHeader';
 import useGetStrategy from '@/domains/Strategy/hooks/useGetStrategy';
 import useStrengthWeakStatsQuery from '@/domains/StrengthWeakness/hooks/useStrengthWeakStatsQuery';
+import transformDataStrengthWeakness from '@/domains/StrengthWeakness/lib/strengthWeaknessTrasnform';
 import { Carousel } from '@/shared/components';
 import { Divider, Flex } from '@/shared/ui';
 import PageBackground from '@/shared/ui/components/PageBackground';
@@ -22,14 +24,14 @@ export default function StrategyFigmaSection1() {
   const { data: strengthWeaknessData } = useStrengthWeakStatsQuery();
   const { data: growthPredictionData } = useGrowthPredictionQuery();
 
-  console.log(strategyData);
-  console.log(popularData);
-  console.log(strengthWeaknessData);
-  console.log(growthPredictionData);
+  const { transformedData } = transformDataStrengthWeakness(
+    strengthWeaknessData.result,
+  );
 
-  // 1.데이터 필터링
-  // 2.컴포넌트 구현
+  const transformData = transformStatsData(strengthWeaknessData.result.stats);
+
   // 3.애니메이션 에러 해결
+  // 4.어느 특정 api는 어떤것을 먼저 부르고 불러야지 성공적으로 요청된다.
 
   // embla carousel hook
   const [emblaRef] = useEmblaCarousel({
@@ -42,9 +44,13 @@ export default function StrategyFigmaSection1() {
     return {
       children: (
         <ContentCard
-          title={item.snippet.title}
+          title={
+            item.snippet.title.length > 36
+              ? item.snippet.title.slice(0, 36) + '...'
+              : item.snippet.title
+          }
           imageUrl={item.snippet.thumbnails.default.url}
-          viewCount={Number(item.statistics.viewCount)}
+          viewCount={formatNumberWithCommas(item.statistics.viewCount)}
           createdAt={item.snippet.publishedAt}
           rank={index + 1}
         />
@@ -54,7 +60,8 @@ export default function StrategyFigmaSection1() {
 
   return (
     <main className="bg-white overflow-y-auto">
-      <PageBackground color="black_linear_gradient">
+      {/* 높이 지정 필요 */}
+      <PageBackground color="black_linear_gradient" className="min-h-screen">
         <UserInfoHeader />
         <StrategyStarGroup
           contentList={[
@@ -73,7 +80,7 @@ export default function StrategyFigmaSection1() {
             sectionClassName={''}
             viewPortClassName={'overflow-hidden'}
             containerClassName={'flex flex-row'}
-            itemClassName={'flex-none w-[335px] mr-[5px]'}
+            itemClassName={'flex-none w-[335px] mr-[5px] max-h-[113px]'}
             emblaRef={emblaRef}
           />
         </Flex>
@@ -84,26 +91,26 @@ export default function StrategyFigmaSection1() {
           <ContentHeader title="내 채널의 강 약점 분석" />
           <section>
             <div className="grid grid-cols-2 grid-rows-2 gap-4">
-              <AnalysisCard
-                icon={<Bulb fill="#fff" width={20} height={20} />}
-                title="콘텐츠 반응이 뜨거워요"
-                description={`최근 업로드한 영상의\n좋아요/댓글 비율이 높아요.`}
-              />
-              <AnalysisCard
-                icon={<Bulb fill="#fff" width={20} height={20} />}
-                title="참여율이 낮아요"
-                description={`댓글, 좋아요 등\n참여 지표가 업계 평균보다 낮아요.`}
-              />
-              <AnalysisCard
-                icon={<Bulb fill="#fff" width={20} height={20} />}
-                title="콘텐츠 반응이 뜨거워요"
-                description={`최근 업로드한 영상의\n좋아요/댓글 비율이 높아요.`}
-              />
-              <AnalysisCard
-                icon={<Bulb fill="#fff" width={20} height={20} />}
-                title="참여율이 낮아요"
-                description={`댓글, 좋아요 등\n참여 지표가 업계 평균보다 낮아요.`}
-              />
+              {transformedData.strengths.map(({ info, data }, index) => (
+                <AnalysisCard
+                  key={index}
+                  icon={<info.Icon fill="#3385FF" width={20} height={20} />}
+                  type={'strengths'}
+                  title={info.title}
+                  data={data[data.length - 1].graphValue}
+                  date={'최근 30일 전'}
+                />
+              ))}
+              {transformedData.weaknesses.map(({ info, data }, index) => (
+                <AnalysisCard
+                  key={index}
+                  icon={<info.Icon fill="#FF3333" width={20} height={20} />}
+                  type={'weaknesses'}
+                  title={info.title}
+                  data={data[data.length - 1].graphValue}
+                  date={'최근 30일 전'}
+                />
+              ))}
             </div>
           </section>
         </Flex>
@@ -116,13 +123,21 @@ export default function StrategyFigmaSection1() {
             <HighlightBox>3개월 후 성장 예측</HighlightBox>
             <PredictionRow
               label="예상 조회수"
-              value="총 1,400회 달성!"
-              sub="매달 400회 증가"
+              value={`총 ${formatNumberWithCommas(
+                Math.floor(growthPredictionData.result.predictedViews),
+              )} 달성`}
+              sub={`매달 ${formatNumberWithCommas(
+                transformData.viewCount,
+              )}회 증가`}
             />
             <PredictionRow
               label="예상 구독자수"
-              value="총 1,400명 증가!"
-              sub="매달 400명 증가"
+              value={`총 ${formatNumberWithCommas(
+                Math.floor(growthPredictionData.result.predictedNetSubscribers),
+              )} 달성`}
+              sub={`매달 ${formatNumberWithCommas(
+                transformData.netSubscribersCount,
+              )}명 증가`}
             />
           </Flex>
         </Flex>

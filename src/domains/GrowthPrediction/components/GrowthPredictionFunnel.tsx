@@ -68,7 +68,7 @@ export default function GrowthPredictionFunnel() {
           />
         </NavigationHeader.RightContent>
       </NavigationHeader>
-      <PageBackground color={bgColor(funnel.step)}>
+      <PageBackground color={bgColor(funnel.step)} className="h-screen">
         <Spacing size="xsmall" />
         <QuerySuspenseBoundary loadingFallback={<GrowthPredictionSkeleton />}>
           <GrowthPredictionDataFetchingFunnel funnel={funnel} />
