@@ -3,7 +3,7 @@ import { DateFormatter } from '@/domains/Popular/lib/utils';
 
 interface ContentCardProps {
   title: string;
-  viewCount: number;
+  viewCount: string;
   createdAt: string;
   imageUrl: string;
   rank: number;
@@ -39,8 +39,8 @@ export default function ContentCard({
         <div className="flex justify-between items-center gap-2">
           {/* 뷰 */}
           <div className="flex items-center gap-1.5">
-            <EyeIcon width={20} height={20} fill="#333" />
-            <span className="font-suit font-bold text-[13px] text-[#333]">
+            <EyeIcon width={20} height={20} fill="#333" className="h-full" />
+            <span className="font-suit font-bold text-[13px] text-[#333] leading-[18px]">
               {viewCount}
             </span>
           </div>
