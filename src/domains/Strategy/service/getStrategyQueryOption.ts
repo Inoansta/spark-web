@@ -13,6 +13,7 @@ const getStrategyQueryOption = {
       queryFn: () => {
         return strategyApi.getStrategy({ requestId });
       },
+      staleTime: 1000 * 60 * 5,
     }),
 };
 

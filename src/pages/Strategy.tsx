@@ -18,11 +18,12 @@ import useStrategyStore from '@/app/store/useStrategyStore';
 import strategy from '@/assets/animation/strategy.json';
 import DownThinSmallAroow from '@/assets/svg/Arrows/DownThinSmallArrow';
 import UpThinSmallArrow from '@/assets/svg/Arrows/UpThinSmallArrowt';
-import Graph2 from '@/assets/svg/Detail/Graph2';
+// import Graph2 from '@/assets/svg/Detail/Graph2';
 import Magic2 from '@/assets/svg/Magic2';
-import Tooltip from '@/assets/svg/Strategy/Tooltip';
+// import Tooltip from '@/assets/svg/Strategy/Tooltip';
 import YoutubeSource from '@/assets/svg/YoutubeSource';
 // import SplitString from '@/domains/Strategy/components/SplitString';
+import SplitString from '@/domains/Strategy/components/SplitString';
 import useGetStrategy from '@/domains/Strategy/hooks/useGetStrategy';
 import { Button } from '@/shared/components';
 import { LottieAnimation } from '@/shared/ui';
@@ -35,6 +36,8 @@ type StrategyResult = {
     출처: string;
   };
 };
+
+const hashtags = ['#패션', '#부업', '#개인적인 취미 및 즐거움'];
 
 export default function Strategy() {
   const [successOrError, setSuccessOrError] = useState('');
@@ -92,22 +95,46 @@ export default function Strategy() {
   }, [screenshotReady]);
 
   return (
-    <div
-      className={
-        'bg-gradient-to-b from-black to-[#FBB1F5] via-[#4557FF] pt-[44px]'
-      }
-    >
-      <div className={'pt-[20px] px-[20px] flex flex-col '}>
-        <Tooltip />
-        <div
-          className={
-            'text-[20px] font-[800] leading-[28px] text-white flex flex-row items-center gap-[5px]'
-          }
-        >
-          <Graph2 fill={'white'} />
-          {channelName}님의 채널 분석
+    <div className="min-h-screen bg-gradient-to-b from-black via-[#787CFE] to-[#FFCDFB] pt-12">
+      <div className="px-5 pt-5">
+        <div className="text-[18px] font-bold text-white">
+          {channelName}님의 채널 성장을 위한
+        </div>
+        <div className="flex items-center gap-2 mt-1">
+          <span className="text-[24px] font-extrabold text-[#C6C5FF]">
+            3가지 추천 비법
+          </span>
+          <span className="w-6 h-6 bg-[#9C9FFF] rounded-full inline-block" />
+        </div>
+        <div className="flex gap-2 mt-4">
+          {hashtags.map((tag) => (
+            <span
+              key={tag}
+              className="bg-white/10 text-[#C6C5FF] text-xs font-medium rounded px-2 py-1"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
+
+      <div className="mt-8 flex flex-col gap-6 px-5">
+        <div className="bg-white rounded-2xl p-5 flex flex-col items-center shadow">
+          <div className="w-12 h-12 bg-[#4557FF] rounded-full flex items-center justify-center mb-2 shadow-lg">
+            <span className="text-white font-bold text-lg">1</span>
+          </div>
+          <div className="flex items-center bg-gradient-to-r from-[#0034FB] to-[#4557FF] rounded-full px-5 py-2 mb-2">
+            <span className="text-white text-xs font-extrabold">
+              첫 번째 비법 확인하기
+            </span>
+            <span className="ml-2 w-3 h-3 bg-white rounded-full" />
+          </div>
+          <div className="text-center text-[20px] font-extrabold text-[#333]">
+            유튜브 스튜디오의 Inspiration 탭 활용하기
+          </div>
+        </div>
+      </div>
+
       <div className={'mb-[60px] mt-[20px]'}>
         <LottieAnimation animationData={strategy} loop={true} />
       </div>
@@ -192,8 +219,11 @@ export default function Strategy() {
                                         key={item1}
                                         className={'marker:font-[700]'}
                                       >
-                                        {/* TODO */}
-                                        {/* <SplitString item1={item1} index={1}/> */}
+                                        <SplitString
+                                          item1={item1}
+                                          index={1}
+                                          key={item1}
+                                        />
                                       </li>
                                     );
                                   },

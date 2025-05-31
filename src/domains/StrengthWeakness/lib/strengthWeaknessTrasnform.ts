@@ -39,7 +39,7 @@ const titleLabel: Record<
   },
   netSubscribers: {
     title: '신규 구독자수',
-    Icon: Avatar, // ✅ <Avatar /> 형태로 사용 가능
+    Icon: Avatar,
     description: {
       strengths:
         '채널이 성장하고 있어요! 지금처럼 꾸준히 하면 더 많은 팬이 생길 거예요.',
@@ -100,9 +100,9 @@ const titleLabel: Record<
  * - 데이터를 strengths & weaknesses 형식으로 변환
  */
 export default function transformDataStrengthWeakness(
-  data: ResponseChannelStats,
+  data: ResponseChannelStats['result'],
 ) {
-  const { stats, strengths, weaknesses } = data.result;
+  const { stats, strengths, weaknesses } = data;
 
   // 데이터 최신순으로 정렬
   const reversedStats = stats.slice().reverse();

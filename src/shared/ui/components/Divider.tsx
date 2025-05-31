@@ -1,11 +1,16 @@
+import { cn } from '@/shared/lib';
+
 interface DividerProps {
-  type?: 'row' | 'column';
+  size?: keyof typeof DIVIDER_SIZE;
 }
 
-export default function Divider({ type = 'row' }: DividerProps) {
-  return (
-    <div
-      className={`${type === 'row' ? 'w-full h-[1px]' : 'h-full w-[1px]'} bg-disabled`}
-    />
-  );
+const DIVIDER_SIZE = {
+  RowSmall: 'h-[1px] w-full',
+  RowMedium: 'h-[5px] w-full',
+  ColumnSmall: 'h-full w-[1px]',
+  ColumnMedium: 'h-full w-[5px]',
+} as const;
+
+export default function Divider({ size = 'RowSmall' }: DividerProps) {
+  return <div className={cn(DIVIDER_SIZE[size], 'bg-disabled')} />;
 }

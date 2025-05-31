@@ -28,7 +28,7 @@ export default function StrengthWeaknessFunnel() {
   );
 
   const { data, isSuccess } = useStrengthWeakStatsQuery();
-  const transformData = transformDataStrengthWeakness(data);
+  const transformData = transformDataStrengthWeakness(data.result);
 
   useStrengthWeaknessOption({
     weaknesses: transformData.weaknesses,

@@ -1,5 +1,4 @@
-import { SvgProps } from '../nav/UnifiedSettingIcon';
-
+import type { SvgProps } from '../nav/UnifiedSettingIcon';
 export default function Magic({ ...props }: SvgProps) {
   return (
     <svg
