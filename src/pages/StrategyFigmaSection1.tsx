@@ -40,23 +40,26 @@ export default function StrategyFigmaSection1() {
     axis: 'x',
   });
 
-  const slides = popularData?.result.map((item, index) => {
-    return {
-      children: (
-        <ContentCard
-          title={
-            item.snippet.title.length > 36
-              ? item.snippet.title.slice(0, 36) + '...'
-              : item.snippet.title
-          }
-          imageUrl={item.snippet.thumbnails.default.url}
-          viewCount={formatNumberWithCommas(item.statistics.viewCount)}
-          createdAt={item.snippet.publishedAt}
-          rank={index + 1}
-        />
-      ),
-    };
-  });
+  const slides =
+    popularData?.result.length > 0
+      ? popularData?.result.map((item, index) => {
+          return {
+            children: (
+              <ContentCard
+                title={
+                  item.snippet.title.length > 36
+                    ? item.snippet.title.slice(0, 36) + '...'
+                    : item.snippet.title
+                }
+                imageUrl={item.snippet.thumbnails.default.url}
+                viewCount={formatNumberWithCommas(item.statistics.viewCount)}
+                createdAt={item.snippet.publishedAt}
+                rank={index + 1}
+              />
+            ),
+          };
+        })
+      : [];
 
   return (
     <main className="bg-white overflow-y-auto">
@@ -75,14 +78,22 @@ export default function StrategyFigmaSection1() {
       <section className="p-[20px]">
         <Flex direction="column" gapY={5}>
           <ContentHeader title="인기 콘텐츠 TOP 3" />
-          <Carousel
-            slides={slides}
-            sectionClassName={''}
-            viewPortClassName={'overflow-hidden'}
-            containerClassName={'flex flex-row'}
-            itemClassName={'flex-none w-[335px] mr-[5px] max-h-[113px]'}
-            emblaRef={emblaRef}
-          />
+          {slides.length > 0 ? (
+            <Carousel
+              slides={slides}
+              sectionClassName={''}
+              viewPortClassName={'overflow-hidden'}
+              containerClassName={'flex flex-row'}
+              itemClassName={'flex-none w-[335px] mr-[5px] max-h-[113px]'}
+              emblaRef={emblaRef}
+            />
+          ) : (
+            <div className="flex flex-col items-center justify-center">
+              <div className="text-body2-m text-center text-gray-400 w-full h-[113px]">
+                인기 콘텐츠가 없어요
+              </div>
+            </div>
+          )}
         </Flex>
       </section>
       <Divider size="RowMedium" />
