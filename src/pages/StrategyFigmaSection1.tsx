@@ -88,8 +88,8 @@ export default function StrategyFigmaSection1() {
               emblaRef={emblaRef}
             />
           ) : (
-            <div className="flex flex-col items-center justify-center h-[113px]">
-              <div className="text-body2-m text-center text-gray-400">
+            <div className="flex flex-col items-center justify-center">
+              <div className="text-body2-m text-center text-gray-400 w-full h-[113px]">
                 인기 콘텐츠가 없어요
               </div>
             </div>
