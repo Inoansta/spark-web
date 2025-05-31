@@ -1,4 +1,5 @@
 import { type ReactNode, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import RightArrow from '@/assets/svg/Arrows/RightArrow';
 import SmallStar from '@/assets/svg/Strategy/SmallStar';
 // import Star from '@/assets/svg/Strategy/Star';
@@ -35,6 +36,7 @@ const StrategyStarGroup = ({ contentList }: { contentList: string[] }) => {
   const [starList, setStarList] = useState<StarListItem[]>(
     getInitialData(contentList),
   );
+
   const [prevId, setPrevId] = useState<number | null>(null);
 
   const handleClick = (id: number) => {
@@ -166,7 +168,7 @@ function StrategyStar({
   prevStar?: ReactNode;
   prevContent?: string;
 }) {
-  const animationDelays = ['0s', '0.3s', '0.6s'];
+  const navigate = useNavigate();
   const dropShadows = [
     'drop-shadow-star-1',
     'drop-shadow-star-2',
@@ -196,7 +198,6 @@ function StrategyStar({
           <Flex className="flex-col items-center justify-center gap-7">
             <div
               className={`fill-white animate-moveUpDown ${dropShadows[prevId - 1]}`}
-              style={{ animationDelay: animationDelays[prevId - 1] }}
             >
               {prevStar}
             </div>
@@ -226,13 +227,15 @@ function StrategyStar({
         <Flex className="flex-col items-center justify-center gap-7">
           <div
             className={`fill-white animate-moveUpDown ${dropShadows[id - 1]}`}
-            style={{ animationDelay: animationDelays[id - 1] }}
           >
             {star}
           </div>
           <StarShadow />
         </Flex>
-        <button className="bg-primary5 border-primary6 border-[1px] rounded-[20px] px-5 py-[11px] max-h-10">
+        <button
+          onClick={() => navigate(`/strategy/${id}`)}
+          className="bg-primary5 border-primary6 border-[1px] rounded-[20px] px-5 py-[11px] max-h-10"
+        >
           <Flex className="items-center gap-[6px]">
             <span className="font-extrabold text-[13px] text-[#FFF]">
               {`${id}번째 비법 보여주기`}

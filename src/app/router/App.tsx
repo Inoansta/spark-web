@@ -12,6 +12,7 @@ import Popular from '@/pages/Popular';
 import Result from '@/pages/Result';
 import Setting from '@/pages/Setting';
 // import Strategy from '@/pages/Strategy';
+import StrategyB from '@/pages/StrategyB';
 import StrategyBefore from '@/pages/StrategyBefore';
 import StrategyFigmaSection1 from '@/pages/StrategyFigmaSection1';
 import StrengthWeakness from '@/pages/StrengthWeakness';
@@ -66,6 +67,14 @@ export default function RouterApp() {
               element={
                 <QuerySuspenseBoundary loadingFallback={<StrategyBefore />}>
                   <StrategyFigmaSection1 />
+                </QuerySuspenseBoundary>
+              }
+            />
+            <Route
+              path="/strategy/:id"
+              element={
+                <QuerySuspenseBoundary loadingFallback={<StrategyBefore />}>
+                  <StrategyB />
                 </QuerySuspenseBoundary>
               }
             />
