@@ -14,7 +14,7 @@ export interface ResponseStrategy {
 interface StrategyDetail {
   제목: string;
   본문: string;
-  실행방법: string[];
+  '실행 방법': string[];
   출처: string;
 }
 
