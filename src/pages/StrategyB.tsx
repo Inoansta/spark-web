@@ -22,7 +22,6 @@ export default function StrategyB() {
     return <div>해당하는 비법을 찾을 수 없습니다.</div>;
   }
 
-  console.log('currentStrategy:', currentStrategy);
   return (
     <div
       className={
@@ -53,7 +52,7 @@ export default function StrategyB() {
                   ✅ 실행 방법
                 </div>
                 <div className="flex flex-col gap-[20px]">
-                  {currentStrategy.실행방법.map(
+                  {currentStrategy['실행 방법'].map(
                     (item: string, index: number) => {
                       return (
                         <SplitString key={item} item1={item} index={index} />
