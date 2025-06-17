@@ -196,11 +196,7 @@ function StrategyStar({
           `}
         >
           <Flex className="flex-col items-center justify-center gap-7">
-            <div
-              className={`fill-white animate-moveUpDown ${dropShadows[prevId - 1]}`}
-            >
-              {prevStar}
-            </div>
+            <div className={`animate-moveUpDown`}>{prevStar}</div>
             <StarShadow />
           </Flex>
           <button className="bg-primary5 border-primary6 border-[1px] rounded-[20px] px-5 py-[11px] max-h-10">
@@ -225,11 +221,7 @@ function StrategyStar({
         `}
       >
         <Flex className="flex-col items-center justify-center gap-7">
-          <div
-            className={`fill-white animate-moveUpDown ${dropShadows[id - 1]}`}
-          >
-            {star}
-          </div>
+          <div className={`animate-moveUpDown`}>{star}</div>
           <StarShadow />
         </Flex>
         <button
