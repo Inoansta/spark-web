@@ -23,7 +23,7 @@ export function GrowthPrediectionFetch({
 
   useEffect(() => {
     if (isSuccess) {
-      setTimeout(() => navigate('/result'), 2000);
+      setTimeout(() => navigate('/popular'), 2000);
     }
   }, [isSuccess]);
 

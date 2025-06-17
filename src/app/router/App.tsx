@@ -9,7 +9,6 @@ import Oauth from '@/pages/Oauth';
 import OauthMeta from '@/pages/OauthMeta';
 import OnBoarding from '@/pages/OnBoarding';
 import Popular from '@/pages/Popular';
-import Result from '@/pages/Result';
 import Setting from '@/pages/Setting';
 import StrategyB from '@/pages/StrategyB';
 import StrategyBefore from '@/pages/StrategyBefore';
@@ -53,7 +52,6 @@ export default function RouterApp() {
               }
             />
             <Route path="/analysis" element={<Analysis />} />
-            <Route path="/result" element={<Result />} />
             <Route path="/popular" element={<Popular />} />
             <Route path="/strength-weakness" element={<StrengthWeakness />} />
             <Route

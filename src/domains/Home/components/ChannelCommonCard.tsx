@@ -88,7 +88,7 @@ export function ChannelCommonCard({
               <img
                 src={avatarUrl}
                 alt="avatarImage"
-                className={`rounded-[50%] ${isMedium ? 'w-[45px] h-[45px]' : 'max-w-[60px] max-h-[60px]'}`}
+                className={`rounded-[50%] ${isMedium ? 'w-[45px]' : 'max-w-[60px] max-h-[60px]'}`}
               />
             ) : (
               <DefaultImage
