@@ -169,11 +169,6 @@ function StrategyStar({
   prevContent?: string;
 }) {
   const navigate = useNavigate();
-  const dropShadows = [
-    'drop-shadow-star-1',
-    'drop-shadow-star-2',
-    'drop-shadow-star-3',
-  ];
 
   // 마운트 시 트랜지션 효과를 위한 상태
   const [show, setShow] = useState(false);
