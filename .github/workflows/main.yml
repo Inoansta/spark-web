@@ -20,10 +20,16 @@ jobs:
           fetch-depth: 0
           ref: main
 
-      - name: Push to forked repository (B)
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.AUTO_ACTIONS }}
-          repository: Inoansta/Spark-Front
-          branch: main
-          force: true
+      - name: Add remote-url
+        run: |
+          git remote add forked-repo https://Inoansta:${{ secrets.FORKED_REPO_TOKEN }}@github.com/Inoansta/Spark-Front
+          git config user.name Inoansta
+          git config user.email sea0416@naver.com
+
+      - name: Push changes to forked-repo
+        run: |
+          git push -f forked-repo main
+
+      - name: Clean up
+        run: |
+          git remote remove forked-repo
