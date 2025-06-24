@@ -22,6 +22,17 @@ function CurrentLocation() {
         </NavigationHeader>
       );
     }
+    case '/strategy/1':
+    case '/strategy/2':
+    case '/strategy/3': {
+      return (
+        <NavigationHeader className="p-5 fixed max-w-[450px] w-full">
+          <NavigationHeader.LeftContent location="/user-info">
+            <BackIcon color={'white'} />
+          </NavigationHeader.LeftContent>
+        </NavigationHeader>
+      );
+    }
     case '/login':
     case '/detail':
     case '/onboarding': {
