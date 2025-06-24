@@ -62,7 +62,7 @@ export default function StrategyFigmaSection1() {
       : [];
 
   return (
-    <main className="bg-white overflow-y-auto">
+    <main className="bg-white overflow-y-auto pb-[64px]">
       {/* 높이 지정 필요 */}
       <PageBackground color="black_linear_gradient" className="min-h-screen">
         <UserInfoHeader />
