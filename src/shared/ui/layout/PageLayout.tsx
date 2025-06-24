@@ -27,7 +27,7 @@ function CurrentLocation() {
     case '/strategy/3': {
       return (
         <NavigationHeader className="p-5 fixed max-w-[450px] w-full">
-          <NavigationHeader.LeftContent location="/user-info">
+          <NavigationHeader.LeftContent location="back">
             <BackIcon color={'white'} />
           </NavigationHeader.LeftContent>
         </NavigationHeader>
