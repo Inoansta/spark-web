@@ -28,11 +28,8 @@ export default function Home() {
       url: url,
     });
 
-    const isWebView =
-      typeof window !== 'undefined' && window.ReactNativeWebView;
-
-    if (isWebView) {
-      window.ReactNativeWebView?.postMessage(message);
+    if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage(message);
     }
   };
 
