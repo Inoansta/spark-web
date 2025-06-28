@@ -47,7 +47,6 @@ export default function Setting() {
 
   useEffect(() => {
     const access_token = sessionStorage.getItem('access_token');
-    console.log(access_token);
     setAccessToken(() => (access_token ? true : false));
   }, []);
 
@@ -57,8 +56,11 @@ export default function Setting() {
       url: url,
     });
 
-    if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(message);
+    const isWebView =
+      typeof window !== 'undefined' && window.ReactNativeWebView;
+
+    if (isWebView) {
+      window.ReactNativeWebView?.postMessage(message);
     }
   };
 
