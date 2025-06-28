@@ -7,8 +7,11 @@ export default function ActionButtonsRow() {
   const isWebView = typeof window !== 'undefined' && window.ReactNativeWebView;
 
   const onClickReview = () => {
+    const url =
+      'https://apps.apple.com/kr/app/spark-%EC%8A%A4%ED%8C%8C%ED%81%AC/id6742328947';
     const message = JSON.stringify({
-      type: 'review',
+      type: 'external_url',
+      url: url,
     });
 
     if (isWebView) {
