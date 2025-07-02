@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import EyeIcon from '@/assets/svg/EyeIcon';
-import { DateFormatter } from '@/domains/Popular/lib/utils';
+import { DateFormatter } from '@/domains/Youtube/Popular/lib/utils';
 import usePopularQuery from '../../hooks/usePopularQuery';
 import { type ResponsePopularTop } from '../../model/type';
 

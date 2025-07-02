@@ -3,8 +3,8 @@ import html2canvas from 'html2canvas';
 import { useParams } from 'react-router';
 import Magic2 from '@/assets/svg/Magic2';
 import YoutubeSource from '@/assets/svg/YoutubeSource';
-import SplitString from '@/domains/Strategy/components/SplitString';
-import useGetStrategy from '@/domains/Strategy/hooks/useGetStrategy';
+import SplitString from '@/domains/Youtube/Strategy/components/SplitString';
+import useGetStrategy from '@/domains/Youtube/Strategy/hooks/useGetStrategy';
 import { Button } from '@/shared/components';
 
 // params로 넘겨주기

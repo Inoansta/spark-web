@@ -1,9 +1,9 @@
 import { PropsWithChildren, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import useGrowthPredictionQuery from '@/domains/GrowthPrediction/hooks/useGrowthPredictionQuery';
 import useChannelProfile from '@/domains/Home/hooks/useChannelProfile';
-import usePopularQuery from '@/domains/Popular/hooks/usePopularQuery';
-import useStrengthWeakStatsQuery from '@/domains/StrengthWeakness/hooks/useStrengthWeakStatsQuery';
+import useGrowthPredictionQuery from '@/domains/Youtube/GrowthPrediction/hooks/useGrowthPredictionQuery';
+import usePopularQuery from '@/domains/Youtube/Popular/hooks/usePopularQuery';
+import useStrengthWeakStatsQuery from '@/domains/Youtube/StrengthWeakness/hooks/useStrengthWeakStatsQuery';
 import ProcessStateItem, {
   type ProcessStateItemProps,
 } from './ProcessStateItem';

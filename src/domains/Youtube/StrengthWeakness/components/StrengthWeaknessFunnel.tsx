@@ -1,6 +1,6 @@
 import { useFunnel } from '@use-funnel/browser';
 import useStrategyStore from '@/app/store/useStrategyStore';
-import useStrategy from '@/domains/Strategy/hooks/useStrategy';
+import useStrategy from '@/domains/Youtube/Strategy/hooks/useStrategy';
 import userCardSteps from '../hooks/useCardFunnel';
 import useStrengthWeaknessOption from '../hooks/useStrengthWeaknessOption';
 import useStrengthWeakStatsQuery from '../hooks/useStrengthWeakStatsQuery';

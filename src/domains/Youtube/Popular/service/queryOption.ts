@@ -1,5 +1,5 @@
 import { queryOptions } from '@tanstack/react-query';
-import type { RequestChannelStats } from '@/domains/StrengthWeakness/model/type';
+import type { RequestChannelStats } from '@/domains/Youtube/StrengthWeakness/model/type';
 import popularApi from './handler';
 
 const popularTopQueryOption = {
