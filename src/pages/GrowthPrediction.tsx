@@ -1,4 +1,4 @@
-import { GrowthPredictionFunnel } from '@/domains/GrowthPrediction';
+import { GrowthPredictionFunnel } from '@/domains/Youtube/GrowthPrediction';
 
 export default function GrowthPrediction() {
   return <GrowthPredictionFunnel />;

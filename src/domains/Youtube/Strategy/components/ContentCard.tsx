@@ -1,5 +1,5 @@
 import EyeIcon from '@/assets/svg/EyeIcon';
-import { DateFormatter } from '@/domains/Popular/lib/utils';
+import { DateFormatter } from '@/domains/Youtube/Popular/lib/utils';
 
 interface ContentCardProps {
   title: string;

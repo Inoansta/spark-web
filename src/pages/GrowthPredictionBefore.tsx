@@ -1,4 +1,4 @@
-import { VideoPlayer } from '@/domains/GrowthPrediction';
+import { VideoPlayer } from '@/domains/Youtube/GrowthPrediction';
 
 export default function GrowthPredictionBefore() {
   return <VideoPlayer />;

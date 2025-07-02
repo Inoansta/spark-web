@@ -1,6 +1,6 @@
 import { QuerySuspenseBoundary } from '@/app/provider';
-import PopularContainer from '@/domains/Popular/components/PopularCard';
-import PopularSkeleton from '@/domains/Popular/skeleton/skeleton';
+import PopularContainer from '@/domains/Youtube/Popular/components/PopularCard';
+import PopularSkeleton from '@/domains/Youtube/Popular/skeleton/skeleton';
 import { NextPageFooter } from '@/shared/components';
 
 export default function Popular() {

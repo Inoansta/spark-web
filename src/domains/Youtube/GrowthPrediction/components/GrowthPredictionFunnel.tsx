@@ -2,7 +2,7 @@ import { useFunnel } from '@use-funnel/browser';
 import { QuerySuspenseBoundary } from '@/app/provider';
 import { BackIcon } from '@/assets/svg/nav/BackIcon';
 import { CloseIcon } from '@/assets/svg/nav/CloseIcon';
-import useStrengthWeakStatsQuery from '@/domains/StrengthWeakness/hooks/useStrengthWeakStatsQuery';
+import useStrengthWeakStatsQuery from '@/domains/Youtube/StrengthWeakness/hooks/useStrengthWeakStatsQuery';
 import { NavigationHeader } from '@/shared/components';
 import { Spacing } from '@/shared/ui';
 import PageBackground from '@/shared/ui/components/PageBackground';

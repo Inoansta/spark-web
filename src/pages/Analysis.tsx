@@ -5,15 +5,15 @@ import { Analysis as AnalysisIcon } from '@/assets/svg/logo/Analysis';
 import { Bulb } from '@/assets/svg/logo/Bulb';
 import { Graph } from '@/assets/svg/logo/Graph';
 import { YoutubeIcon } from '@/assets/svg/logo/YoutubeIcon';
-import AnalysisState from '@/domains/Analysis/components/AnalysisState';
+import AnalysisState from '@/domains/Youtube/Analysis/components/AnalysisState';
 import {
   ChannelProfileFetch,
   GrowthPrediectionFetch,
   IsFetching,
   StrengthWeaknessFetch,
   TopVideosFetch,
-} from '@/domains/Analysis/components/DataFetchComponents';
-import ProcessStateItem from '@/domains/Analysis/components/ProcessStateItem';
+} from '@/domains/Youtube/Analysis/components/DataFetchComponents';
+import ProcessStateItem from '@/domains/Youtube/Analysis/components/ProcessStateItem';
 import { Flex, LottieAnimation, Text } from '@/shared/ui';
 
 export default function Analysis() {

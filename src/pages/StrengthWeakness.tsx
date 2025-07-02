@@ -1,6 +1,6 @@
 import { QuerySuspenseBoundary } from '@/app/provider';
-import { StrengthWeaknessFunnel } from '@/domains/StrengthWeakness';
-import StrengthWeaknessSkeleton from '@/domains/StrengthWeakness/skeleton/skeleton';
+import { StrengthWeaknessFunnel } from '@/domains/Youtube/StrengthWeakness';
+import StrengthWeaknessSkeleton from '@/domains/Youtube/StrengthWeakness/skeleton/skeleton';
 import PageBackground from '@/shared/ui/components/PageBackground';
 
 export default function StrengthWeakness() {

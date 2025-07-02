@@ -1,5 +1,5 @@
 import httpClient from '@/app/api/httpClient';
-import type { RequestChannelStats } from '@/domains/StrengthWeakness/model/type';
+import type { RequestChannelStats } from '@/domains/Youtube/StrengthWeakness/model/type';
 import type { ResponseGrowthPrediction } from '../model/type';
 
 const BASE_URL = '/channel-predictions';

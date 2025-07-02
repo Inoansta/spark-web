@@ -1,4 +1,4 @@
-import type { ResponseChannelStats } from '@/domains/StrengthWeakness/model/type';
+import type { ResponseChannelStats } from '@/domains/Youtube/StrengthWeakness/model/type';
 
 export default function transformStatsData(
   stats: ResponseChannelStats['result']['stats'],

@@ -8,13 +8,13 @@ import {
   formatNumberWithUnit,
 } from '@/domains/Home/lib/utils';
 import LocationMove from '@/domains/Login/components/LocationMove';
-import FulltimeParttime from '@/domains/UserInformation/components/Footers/FulltimeParttime';
-import SNSGoal from '@/domains/UserInformation/components/Footers/SNSGoal';
-import Questionbox from '@/domains/UserInformation/components/Questionbox';
-import SheetContents from '@/domains/UserInformation/components/SheetContent';
-import UserDialogbox from '@/domains/UserInformation/components/UserDialogbox';
-import UserInformationProfiles from '@/domains/UserInformation/components/UserInformationProfiles';
-import { QUESTIONS } from '@/domains/UserInformation/questions';
+import FulltimeParttime from '@/domains/Youtube/UserInformation/components/Footers/FulltimeParttime';
+import SNSGoal from '@/domains/Youtube/UserInformation/components/Footers/SNSGoal';
+import Questionbox from '@/domains/Youtube/UserInformation/components/Questionbox';
+import SheetContents from '@/domains/Youtube/UserInformation/components/SheetContent';
+import UserDialogbox from '@/domains/Youtube/UserInformation/components/UserDialogbox';
+import UserInformationProfiles from '@/domains/Youtube/UserInformation/components/UserInformationProfiles';
+import { QUESTIONS } from '@/domains/Youtube/UserInformation/questions';
 import { Button } from '@/shared/components';
 import BottomSheetModal from '@/shared/components/BottomSheetModal/BottomSheetModal';
 import { useMoveLocation } from '@/shared/hooks';
