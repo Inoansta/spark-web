@@ -22,7 +22,7 @@ jobs:
 
       - name: Add remote-url
         run: |
-          git remote add forked-repo https://Inoansta:${{ secrets.FORKED_REPO_TOKEN }}@github.com/Inoansta/Spark-Front
+          git remote add forked-repo https://Inoansta:${{ secrets.FORKED_REPO_TOKEN }}@github.com/Inoansta/spark-web
           git config user.name Inoansta
           git config user.email sea0416@naver.com
 
