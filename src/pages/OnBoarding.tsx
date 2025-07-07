@@ -50,7 +50,7 @@ const contents = [
       </>
     ),
     subTitle: '“ 간단하고 따라하기 쉬운 비법을 준비했어요 “',
-    children: <img src={card1} className={'max-h-[350px]'} />,
+    children: <img src={card1} className={'max-h-[360px]'} />,
   },
 ];
 
@@ -80,7 +80,7 @@ export default function OnBoarding() {
   }, []);
 
   return (
-    <div className={'flex flex-col'}>
+    <div className={'flex flex-col bg-[#F3F4F7] h-screen'}>
       <div
         className={
           'px-[20px] py-[10px] flex flex-row justify-center items-center gap-[10px]'
