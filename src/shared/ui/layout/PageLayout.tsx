@@ -38,7 +38,7 @@ function CurrentLocation() {
     case '/onboarding': {
       return (
         <NavigationHeader
-          className={`${isSamePathname('/login') && 'bg-line'}`}
+          className={`${isSamePathname('/login') && 'bg-line'} ${isSamePathname('/onboarding') && 'bg-[#F3F4F7]'}`}
         >
           <div />
           <NavigationHeader.RightContent location="/">
