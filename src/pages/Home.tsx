@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { QuerySuspenseBoundary } from '@/app/provider';
 import { Logo } from '@/assets/svg/logo/Logo';
@@ -7,11 +7,13 @@ import { FrontIcon } from '@/assets/svg/nav/FrontIcon';
 import { CheerupBar, HasTokenChannelInfo } from '@/domains/Home/components';
 import HomeSkeleton from '@/domains/Home/skeleton/skeleton';
 import LocationMove from '@/domains/Login/components/LocationMove';
+import SettingToast from '@/domains/Setting/components/SettingToast';
 import { NavigationHeader } from '@/shared/components';
 import { Storage } from '@/shared/lib';
 import { Card, Flex, Spacing, SpeechBubble, Text } from '@/shared/ui';
 
 export default function Home() {
+  const [closed, setClosed] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,57 +39,64 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-line min-h-screen">
-      <Flex direction="column" gapY={5}>
-        <NavigationHeader>
-          <NavigationHeader.LeftContent location="/">
-            <Logo />
-          </NavigationHeader.LeftContent>
-        </NavigationHeader>
-        <QuerySuspenseBoundary loadingFallback={<HomeSkeleton />}>
-          <CheerupBar />
-          <Flex direction="column" gapY={5} className="px-5">
-            <HasTokenChannelInfo />
-            <Flex direction="column" className="gap-y-[10px]">
-              <Flex>
-                <SpeechBubble
-                  text="스파크가 궁금하다면?"
-                  icon={<SmallLogo />}
-                />
-              </Flex>
-              <Card className="pb-5">
-                <Card.Header>
-                  <div
-                    onClick={() => {
-                      SendMessage(
-                        'https://triangular-trombone-8fb.notion.site/195ea985e0f280219a6af9afa9f1b7c0?pvs=4',
-                      );
-                    }}
-                  >
-                    <LocationMove
-                      location={
-                        navigator.userAgent === 'SparkAgent'
-                          ? 'https://www.app-spark.shop/'
-                          : 'https://triangular-trombone-8fb.notion.site/195ea985e0f280219a6af9afa9f1b7c0?pvs=4'
-                      }
+    <>
+      <main className="bg-line min-h-screen">
+        <Flex direction="column" gapY={5}>
+          <NavigationHeader>
+            <NavigationHeader.LeftContent location="/">
+              <Logo />
+            </NavigationHeader.LeftContent>
+          </NavigationHeader>
+          <QuerySuspenseBoundary loadingFallback={<HomeSkeleton />}>
+            <CheerupBar />
+            <Flex direction="column" gapY={5} className="px-5">
+              <HasTokenChannelInfo setClosed={setClosed} />
+              <Flex direction="column" className="gap-y-[10px]">
+                <Flex>
+                  <SpeechBubble
+                    text="스파크가 궁금하다면?"
+                    icon={<SmallLogo />}
+                  />
+                </Flex>
+                <Card className="pb-5">
+                  <Card.Header>
+                    <div
+                      onClick={() => {
+                        SendMessage(
+                          'https://triangular-trombone-8fb.notion.site/195ea985e0f280219a6af9afa9f1b7c0?pvs=4',
+                        );
+                      }}
                     >
-                      <Flex justify="between" align="center">
-                        <Text
-                          as="title"
-                          title="이용 가이드"
-                          className="text-[18px]"
-                        />
-                        <FrontIcon />
-                      </Flex>
-                    </LocationMove>
-                  </div>
-                </Card.Header>
-              </Card>
-              <Spacing size="large" />
+                      <LocationMove
+                        location={
+                          navigator.userAgent === 'SparkAgent'
+                            ? 'https://www.app-spark.shop/'
+                            : 'https://triangular-trombone-8fb.notion.site/195ea985e0f280219a6af9afa9f1b7c0?pvs=4'
+                        }
+                      >
+                        <Flex justify="between" align="center">
+                          <Text
+                            as="title"
+                            title="이용 가이드"
+                            className="text-[18px]"
+                          />
+                          <FrontIcon />
+                        </Flex>
+                      </LocationMove>
+                    </div>
+                  </Card.Header>
+                </Card>
+                <Spacing size="large" />
+              </Flex>
             </Flex>
-          </Flex>
-        </QuerySuspenseBoundary>
-      </Flex>
-    </main>
+          </QuerySuspenseBoundary>
+        </Flex>
+      </main>
+      <SettingToast
+        closed={closed}
+        setClosed={() => setClosed(true)}
+        location={'home'}
+      />
+    </>
   );
 }

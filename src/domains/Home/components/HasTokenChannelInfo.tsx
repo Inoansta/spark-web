@@ -1,4 +1,6 @@
-import { SmallYoutubeIcon } from '@/assets/svg/logo/SmallYoutbeIcon';
+import { Dispatch, SetStateAction } from 'react';
+import { HomeInstagramLogo } from '@/assets/svg/HomeInstagramLogo';
+import { HomeYoutubeLogo } from '@/assets/svg/HomeYoutubeLogo';
 import { FrontIcon } from '@/assets/svg/nav/FrontIcon';
 import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { RouteMove } from '@/shared/components';
@@ -8,9 +10,17 @@ import useChannelOption from '../hooks/useChannelOption';
 import useChannelProfile from '../hooks/useChannelProfile';
 import useMetaProfile from '../hooks/useMetaOptions';
 import { formatNumberWithCommas, formatNumberWithUnit } from '../lib/utils';
-import { ChannelCommonCard, ChannelGrowCard } from './ChannelCommonCard';
+import {
+  ChannelCommonCard,
+  ChannelGrowCard,
+  EmptyGrowCard,
+} from './ChannelCommonCard';
 
-function EmptyCard() {
+function EmptyCard({
+  setClosed,
+}: {
+  setClosed: Dispatch<SetStateAction<boolean>>;
+}) {
   return (
     <Flex direction="column" gapY={5}>
       <ChannelCommonCard
@@ -23,12 +33,13 @@ function EmptyCard() {
           <RouteMove location="/login">
             <button
               type="button"
-              title="내채널 가져오기"
+              title="채널을 연동하면 프로필이 보여요!"
               className="bg-primary5 text-white w-full px-5 py-[10px]"
+              onClick={() => setClosed(false)}
             >
               <Flex justify="center" align="center" gapX={2}>
                 <Text
-                  title="내채널 가져오기"
+                  title="내 채널 가져오기"
                   as="description"
                   className="text-white font-bold"
                 />
@@ -38,12 +49,16 @@ function EmptyCard() {
           </RouteMove>
         }
       />
-      <ChannelGrowCard disabled={false} />
+      <EmptyGrowCard />
     </Flex>
   );
 }
 
-export function ChannelCard() {
+export function ChannelCard({
+  setClosed,
+}: {
+  setClosed: Dispatch<SetStateAction<boolean>>;
+}) {
   const { data, isSuccess } = useChannelProfile();
 
   useChannelOption({
@@ -65,14 +80,13 @@ export function ChannelCard() {
             <button
               type="button"
               className="bg-line px-[10px] py-[5px] rounded-[20px]"
+              onClick={() => setClosed(false)}
             >
               <Flex align="center">
-                <SmallYoutubeIcon className="mr-1" />
-                <Text
-                  as="description"
-                  title="유튜브"
-                  className="font-bold text-[12px]"
-                />
+                <HomeYoutubeLogo className="mr-1" />
+                <div className="text-gray text-[12px] font-[500] leading[16px text-center">
+                  채널 변경
+                </div>
               </Flex>
             </button>
           </Flex>
@@ -90,7 +104,11 @@ export function ChannelCard() {
   );
 }
 
-export function MetaCard() {
+export function MetaCard({
+  setClosed,
+}: {
+  setClosed: Dispatch<SetStateAction<boolean>>;
+}) {
   const { data } = useMetaProfile();
 
   return (
@@ -107,36 +125,39 @@ export function MetaCard() {
             <button
               type="button"
               className="bg-line px-[10px] py-[5px] rounded-[20px]"
+              onClick={() => setClosed(false)}
             >
               <Flex align="center">
-                <SmallYoutubeIcon className="mr-1" />
-                <Text
-                  as="description"
-                  title="인스타그램"
-                  className="font-bold text-[12px]"
-                />
+                <HomeInstagramLogo className="mr-1" />
+                <div className="text-gray text-[12px] font-[500] leading[16px text-center">
+                  채널 변경
+                </div>
               </Flex>
             </button>
           </Flex>
         }
         avatarUrl={data.result.profileUrl}
         posting={formatNumberWithCommas(data.result.postsCount ?? 0)}
-        subscriber={formatNumberWithCommas(data.result.followersCount ?? 0)}
-        totalView={formatNumberWithCommas(data.result.followingCount ?? 0)}
+        subscriber={formatNumberWithUnit(data.result.followersCount ?? 0, '명')}
+        totalView={formatNumberWithUnit(data.result.followingCount ?? 0, '명')}
       />
       <ChannelGrowCard disabled={false} />
     </Flex>
   );
 }
 
-export default function HasTokenChannelInfo() {
+export default function HasTokenChannelInfo({
+  setClosed,
+}: {
+  setClosed: Dispatch<SetStateAction<boolean>>;
+}) {
   const access_token = Storage.getLocalStorage(TOKEN.ACCESS);
   const refresh_token = Storage.getLocalStorage(TOKEN.REFRESH);
   if (!access_token) {
-    return <EmptyCard />;
+    return <EmptyCard setClosed={setClosed} />;
   } else if (refresh_token.length !== 0) {
-    return <ChannelCard />;
+    return <ChannelCard setClosed={setClosed} />;
   } else {
-    return <MetaCard />;
+    return <MetaCard setClosed={setClosed} />;
   }
 }

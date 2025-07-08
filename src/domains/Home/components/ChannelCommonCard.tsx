@@ -1,10 +1,12 @@
 import type { ReactNode } from 'react';
-import homeStrategy from '@/assets/animation/homeStrategy.json';
+import HomeGIF from '@/assets/Action1.gif';
 import { Avatar as DefaultImage } from '@/assets/svg/Avatar/Avatar';
+import CardInstagram from '@/assets/svg/CardInstagram';
+import CardYoutube from '@/assets/svg/CardYoutube';
 import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { RouteMove } from '@/shared/components';
 import { Storage } from '@/shared/lib';
-import { Card, Flex, LottieAnimation, Text } from '@/shared/ui';
+import { Card, Flex, Text } from '@/shared/ui';
 
 interface ChannelCommonCardProps {
   header: ReactNode;
@@ -22,6 +24,50 @@ interface ChannelGrowCardProps {
 }
 
 const refresh_token = Storage.getLocalStorage(TOKEN.REFRESH);
+const access_token = Storage.getLocalStorage(TOKEN.ACCESS);
+
+export function EmptyGrowCard() {
+  return (
+    <Card className="rounded-[20px]">
+      <Card.Header>
+        <Flex direction="column">
+          <Text
+            as="title"
+            title="내가 성장하고 싶은 플랫폼은? "
+            className="text-lg"
+          />
+          <Text
+            as="description"
+            title={`선택한 플랫폼에 따라 어떤 도움을 드릴지 소개할게요.`}
+          />
+        </Flex>
+      </Card.Header>
+      <Card.Content>
+        <img src={HomeGIF} alt="no image" className={'rounded-medium'} />
+      </Card.Content>
+      <div className={'flex flex-row border-t border-t-[#E8E8FF]'}>
+        <RouteMove
+          className={
+            'py-[12px] flex-1 text-center border-r border-r-[#E8E8FF] text-[12px] text-[#4557FF] font-[700] leading-[16px] flex flex-row justify-center items-center'
+          }
+          location={'/detail'}
+        >
+          <CardInstagram className={'mr-[5px]'} />
+          인스타그램
+        </RouteMove>
+        <RouteMove
+          className={
+            'py-[12px] flex-1 text-center text-[12px] text-[#4557FF] font-[700] leading-[16px] flex flex-row justify-center items-center'
+          }
+          location={'/detail'}
+        >
+          <CardYoutube className={'mr-[5px]'} />
+          유튜브
+        </RouteMove>
+      </div>
+    </Card>
+  );
+}
 
 export function ChannelGrowCard({ disabled = false }: ChannelGrowCardProps) {
   return (
@@ -29,11 +75,14 @@ export function ChannelGrowCard({ disabled = false }: ChannelGrowCardProps) {
       <Card.Header>
         <Flex direction="column">
           <Text as="title" title="내 채널 성장 비법" className="text-lg" />
-          <Text as="description" title="구독자를 늘리는 팁을 알려 드릴게요" />
+          <Text
+            as="description"
+            title={`${refresh_token ? '구독자' : '팔로워'}를 늘리는 팁을 알려 드릴게요`}
+          />
         </Flex>
       </Card.Header>
       <Card.Content>
-        <LottieAnimation animationData={homeStrategy} />
+        <img src={HomeGIF} alt="no image" className={'rounded-medium'} />
       </Card.Content>
       <Card.Bottom className="px-5 pb-5">
         <RouteMove location="/detail">
@@ -42,13 +91,13 @@ export function ChannelGrowCard({ disabled = false }: ChannelGrowCardProps) {
               type="button"
               title="자세히 알아보기"
               disabled={disabled}
-              className="border-primary5 border bg-inherit text-white w-[295px] h-[48px] px-5 py-[10px] rounded-[10px]"
+              className="bg-primary5 text-white w-full h-[48px] px-5 py-[10px] rounded-[10px]"
             >
               <Flex justify="center" align="center" gapX={2}>
                 <Text
                   title="자세히 알아보기"
                   as="description"
-                  className="text-primary5 font-bold"
+                  className="text-white font-bold"
                 />
               </Flex>
             </button>
@@ -107,7 +156,7 @@ export function ChannelCommonCard({
                 />
                 <Text
                   as="card_content"
-                  title="게시물"
+                  title={access_token ? '게시물' : ''}
                   className={`${isMedium && 'text-[11px]'}`}
                 />
               </Flex>
@@ -119,7 +168,9 @@ export function ChannelCommonCard({
                 />
                 <Text
                   as="card_content"
-                  title={refresh_token ? '구독자' : '팔로워'}
+                  title={
+                    refresh_token ? '구독자' : `${access_token ? '팔로워' : ''}`
+                  }
                   className={`${isMedium && 'text-[11px]'}`}
                 />
               </Flex>
@@ -131,7 +182,11 @@ export function ChannelCommonCard({
                 />
                 <Text
                   as="card_content"
-                  title={refresh_token ? '누적 조회수' : '팔로잉'}
+                  title={
+                    refresh_token
+                      ? '누적 조회수'
+                      : `${access_token ? '팔로잉' : ''}`
+                  }
                   className={`${isMedium && 'text-[11px]'}`}
                 />
               </Flex>
