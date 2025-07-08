@@ -18,6 +18,23 @@ export const handlers = [
       { status: 200 },
     );
   }),
+  http.get('/meta/account-profile', async () => {
+    await delay(200);
+    return HttpResponse.json(
+      {
+        result: {
+          channelId: 'UCCuQOrhdJV2ckJeMg4nCoqQ',
+          userName: 'leeeumm',
+          postsCount: 56,
+          followersCount: 6820,
+          followingCount: 222477,
+          profileUrl:
+            'https://yt3.ggpht.com/ytc/AIdro_kl5DflvSAt5cCateTrSwaLn4GBN9r6Kpu3KbWBVHt3T53dfl0=s88-c-k-c0x00ffffff-no-rj',
+        },
+      },
+      { status: 200 },
+    );
+  }),
   http.get('/youtube/channel-stats?channelId=', async () => {
     await delay(3000);
     return HttpResponse.json(

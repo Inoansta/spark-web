@@ -134,7 +134,11 @@ export default function Setting() {
           계정삭제(Google 연동해제)
         </div>
       </main>
-      <SettingToast closed={closed} setClosed={() => setClosed(true)} />
+      <SettingToast
+        closed={closed}
+        setClosed={() => setClosed(true)}
+        location={'setting'}
+      />
     </>
   );
 }

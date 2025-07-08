@@ -3,9 +3,14 @@ import { useMoveLocation } from '@/shared/hooks';
 interface SettingToast {
   closed: boolean;
   setClosed: () => void;
+  location: 'home' | 'setting';
 }
 
-export default function SettingToast({ closed, setClosed }: SettingToast) {
+export default function SettingToast({
+  closed,
+  setClosed,
+  location,
+}: SettingToast) {
   const navigate = useMoveLocation('/');
 
   const onClose = () => {
@@ -29,15 +34,30 @@ export default function SettingToast({ closed, setClosed }: SettingToast) {
       >
         <div className={'px-[20px] pb-[15px] flex flex-col gap-[10px]'}>
           <div className={'text-[18px] font-[700] leading-[26px] text-center'}>
-            계정삭제(Google 연동해제)
+            {location === 'home'
+              ? '채널을 변경하시겠어요?'
+              : '계정삭제(Google 연동해제)'}
           </div>
           <div
             className={
               'break-all text-[13px] text-[#333] font-[500] leading-[18px] text-center'
             }
           >
-            계정삭제하면, Google 연동이 해제되어 데이터가 삭제됩니다.
-            계정삭제하시겠습니까?
+            {location === 'home' ? (
+              <>
+                로그인된 인스타그램에서 로그아웃됩니다.
+                <br />
+                다른 채널로 다시 로그인할 수 있어요.
+                <br />
+                계속 진행할까요?
+              </>
+            ) : (
+              <>
+                계정삭제하면, Google 연동이 해제되어 데이터가 삭제됩니다.
+                <br />
+                계정삭제하시겠습니까?
+              </>
+            )}
           </div>
         </div>
         <div className={'border-t border-t-[#E5E5EA] flex flex-row'}>
@@ -55,7 +75,7 @@ export default function SettingToast({ closed, setClosed }: SettingToast) {
             }
             onClick={onLogOut}
           >
-            계정삭제
+            {location === 'home' ? '로그아웃' : '계정삭제'}
           </button>
         </div>
       </div>
