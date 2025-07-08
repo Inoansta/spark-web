@@ -114,7 +114,7 @@ export default function OnBoarding() {
         <Button
           text={'시작하기'}
           buttonType={'large-filled-button'}
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/login')}
         />
       </div>
     </div>
