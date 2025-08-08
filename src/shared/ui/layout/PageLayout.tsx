@@ -35,6 +35,7 @@ function CurrentLocation() {
     }
     case '/login':
     case '/detail':
+    case '/instagram-detail':
     case '/onboarding': {
       return (
         <NavigationHeader
