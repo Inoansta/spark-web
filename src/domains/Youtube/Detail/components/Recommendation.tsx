@@ -3,8 +3,8 @@ import FirstPro from '@/assets/detail/img/FirstPro.png';
 import SecondPro from '@/assets/detail/img/SecondPro.png';
 import ThirdPro from '@/assets/detail/img/ThirdPro.png';
 import Graph from '@/assets/svg/Detail/Graph';
-import Magic from '@/assets/svg/Detail/Magic';
-import Time from '@/assets/svg/Detail/Time';
+import Magic2 from '@/assets/svg/Detail/Magic';
+import Time3 from '@/assets/svg/Detail/Time';
 
 const whatWeDo = [
   {
@@ -15,12 +15,12 @@ const whatWeDo = [
   {
     first: '잘못된 정보로 시간 낭비하지 마세요!',
     second: '스파크는 유튜브 공식 자료만을 제공해요.',
-    svg: <Magic />,
+    svg: <Magic2 />,
   },
   {
     first: '내 채널에 최적화된 성장 비법으로,',
     second: '차별화된 콘텐츠를 만들어보세요!',
-    svg: <Time />,
+    svg: <Time3 />,
   },
 ];
 
