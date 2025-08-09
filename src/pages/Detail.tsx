@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import {
   FrequentlyAskedQuestions,
+  GraySpace,
   HowToGrow,
   Recommendation,
   TopPage,
   WorriedAbout,
 } from '@/domains/Youtube/Detail/components';
-import GraySpace from '@/domains/Youtube/Detail/components/GraySpace';
 import { Button } from '@/shared/components';
 import { useMoveLocation } from '@/shared/hooks';
 import { Storage } from '@/shared/lib';
