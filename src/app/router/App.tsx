@@ -4,6 +4,7 @@ import Detail from '@/pages/Detail';
 import GrowthPrediction from '@/pages/GrowthPrediction';
 import GrowthPredictionBefore from '@/pages/GrowthPredictionBefore';
 import Home from '@/pages/Home';
+import InstagramDetail from '@/pages/InstagramDetail';
 import Login from '@/pages/Login';
 import Oauth from '@/pages/Oauth';
 import OauthMeta from '@/pages/OauthMeta';
@@ -42,7 +43,7 @@ export default function RouterApp() {
           />
           <Route element={<ProtectedLayout />}>
             <Route path="/detail" element={<Detail />} />
-
+            <Route path="/instagram-detail" element={<InstagramDetail />} />
             <Route
               path="/user-info"
               element={

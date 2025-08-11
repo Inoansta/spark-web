@@ -50,7 +50,7 @@ export function EmptyGrowCard() {
           className={
             'py-[12px] flex-1 text-center border-r border-r-[#E8E8FF] text-[12px] text-[#4557FF] font-[700] leading-[16px] flex flex-row justify-center items-center'
           }
-          location={'/detail'}
+          location={'/instagram-detail'}
         >
           <CardInstagram className={'mr-[5px]'} />
           인스타그램

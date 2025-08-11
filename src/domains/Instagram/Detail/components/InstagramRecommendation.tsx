@@ -3,8 +3,8 @@ import FirstPro from '@/assets/detail/img/FirstPro.png';
 import SecondPro from '@/assets/detail/img/SecondPro.png';
 import ThirdPro from '@/assets/detail/img/ThirdPro.png';
 import Graph from '@/assets/svg/Detail/Graph';
-import Magic2 from '@/assets/svg/Detail/Magic';
-import Time3 from '@/assets/svg/Detail/Time';
+import Magic2 from '@/assets/svg/Detail/Magic2';
+import Time3 from '@/assets/svg/Detail/Time3';
 
 const whatWeDo = [
   {
@@ -14,7 +14,12 @@ const whatWeDo = [
   },
   {
     first: '잘못된 정보로 시간 낭비하지 마세요!',
-    second: '스파크는 유튜브 공식 자료만을 제공해요.',
+    second: (
+      <>
+        스파크는 인스타그램의
+        <br /> 공식 자료만을 제공해요.
+      </>
+    ),
     svg: <Magic2 />,
   },
   {
@@ -24,7 +29,7 @@ const whatWeDo = [
   },
 ];
 
-export default function Recommendation() {
+export default function InstagramRecommendation() {
   return (
     <div className={'bg-gradient-to-b from-[#4557FF] to-[#F8F9FD]'}>
       <div className={'text-center'}>
@@ -33,7 +38,7 @@ export default function Recommendation() {
             'inline-block mt-[100px] px-[20px] py-[10px] text-[#5E6166] text-[20px] font-[800] leading-[28px] bg-white rounded-tl-extraLarges rounded-b-extraLarges'
           }
         >
-          🔥 유튜브가 추천하는
+          🔥 인스타그램이 추천하는
           <br />
           채널로 성장하려면?
         </div>
@@ -68,7 +73,7 @@ export default function Recommendation() {
             'inline-block rounded-small bg-white text-primary5 text-[15px] font-[800] leading-[24px] mb-[10px] px-[5px]'
           }
         >
-          유튜브의 공식 데이터와 알고리즘 원칙을 기반으로
+          인스타그램의 공식 데이터와 알고리즘 원칙을 기반으로
         </div>
         <div className={'text-white text-[24px] font-[800] leading-[32px]'}>
           내 채널에 맞는{' '}

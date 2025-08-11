@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
-import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import {
-  FrequentlyAskedQuestions,
-  GraySpace,
-  HowToGrow,
-  Recommendation,
-  TopPage,
-  WorriedAbout,
-} from '@/domains/Youtube/Detail/components';
+  InstagramFAQ,
+  InstagramKakao,
+  InstagramRecommendation,
+  WrongWay,
+} from '@/domains/Instagram/Detail/components';
+import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
+import { GraySpace, TopPage } from '@/domains/Youtube/Detail/components';
 import { Button } from '@/shared/components';
 import { useMoveLocation } from '@/shared/hooks';
 import { Storage } from '@/shared/lib';
 
-export default function Detail() {
+export default function InstagramDetail() {
   const [disable, setDisable] = useState(false);
   const moveToNext = useMoveLocation('/user-info');
 
@@ -21,18 +20,16 @@ export default function Detail() {
     const connected = Storage.getLocalStorage(TOKEN.REFRESH);
     setDisable(connected ? false : true);
   }, []);
-
   return (
     <div>
       <TopPage />
       <GraySpace />
-      <WorriedAbout />
-      <HowToGrow />
+      <InstagramKakao />
+      <WrongWay />
       <GraySpace />
-      <Recommendation />
+      <InstagramRecommendation />
       <GraySpace />
-      <FrequentlyAskedQuestions />
-
+      <InstagramFAQ />
       <div
         className={
           'sticky flex flex-col bottom-0 mb-[30px] px-[20px] gap-[12px]'
