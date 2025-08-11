@@ -1,4 +1,4 @@
-import KakaoTalk from '@/assets/detail/img/KakaoTalk.jpg';
+import UncoloredKakaoTalk from '@/assets/detail/img/UncoloredKakaoTalk.png';
 import DetailX from '@/assets/svg/Detail/DetailX';
 
 export default function WrongWay() {
@@ -22,8 +22,11 @@ export default function WrongWay() {
           채널 성장에 도움이 되지 않아요
         </div>
       </div>
-      <div className="pt-[100px] pb-[80px] px-[20px] flex flex-col justify-center bg-[#F3F4F7] blur-lg">
-        <img src={KakaoTalk} className="mt-[40px] mx-[20px]" />
+      <div className="pt-[100px] pb-[80px] px-[20px] flex flex-col justify-center bg-[#F3F4F7] blur-sm">
+        <img
+          src={UncoloredKakaoTalk}
+          className="mt-[40px] mx-[20px] rounded-[25px]"
+        />
       </div>
     </div>
   );
