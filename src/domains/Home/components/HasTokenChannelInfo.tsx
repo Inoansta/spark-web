@@ -6,9 +6,12 @@ import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { RouteMove } from '@/shared/components';
 import { Storage } from '@/shared/lib';
 import { Flex, Text } from '@/shared/ui';
-import useChannelOption from '../hooks/useChannelOption';
-import useChannelProfile from '../hooks/useChannelProfile';
-import useMetaProfile from '../hooks/useMetaOptions';
+import {
+  useChannelOption,
+  useChannelProfile,
+  useMetaOption,
+  useMetaProfile,
+} from '../hooks';
 import { formatNumberWithCommas, formatNumberWithUnit } from '../lib/utils';
 import {
   ChannelCommonCard,
@@ -109,7 +112,9 @@ export function MetaCard({
 }: {
   setClosed: Dispatch<SetStateAction<boolean>>;
 }) {
-  const { data } = useMetaProfile();
+  const { data, isSuccess } = useMetaProfile();
+  //session storage에 올림
+  useMetaOption({ isSuccess, data });
 
   return (
     <Flex direction="column" gapY={5}>

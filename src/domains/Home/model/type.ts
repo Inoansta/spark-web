@@ -13,6 +13,7 @@ interface MetaProfileResult {
   followersCount: number;
   followingCount: number;
   postsCount: number;
+  instagramBusinessAccountId: string;
 }
 
 export interface ResponseChannelProfile {
