@@ -69,26 +69,26 @@ function UserInfo() {
       case 1:
         setTimeout(() => setSteps(2), 1000);
         break;
-      case 3:
-        setTimeout(() => setSteps(4), 1000);
-        break;
-      case 4:
-        setTimeout(() => setSteps(5), 1000);
+      case 2:
+        setTimeout(() => setSteps(3), 1000);
         break;
       case 5:
         setTimeout(() => setSteps(6), 1000);
         break;
-      case 7:
-        setTimeout(() => setSteps(8), 1000);
+      case 6:
+        setTimeout(() => setSteps(7), 1000);
         break;
       case 8:
         setTimeout(() => setSteps(9), 1000);
         break;
-      case 10:
-        setTimeout(() => setSteps(11), 1000);
+      case 9:
+        setTimeout(() => setSteps(10), 1000);
         break;
       case 11:
         setTimeout(() => setSteps(12), 1000);
+        break;
+      case 12:
+        setTimeout(() => setSteps(13), 1000);
         break;
     }
   }, [steps]);
@@ -147,7 +147,7 @@ function UserInfo() {
           <Questionbox questions={QUESTIONS.contents1} questionType={'last'} />
         </>
       ) : null}
-      {steps >= 1 ? (
+      {steps === 1 ? (
         <>
           <UserInformationProfiles />
           <div className={'mt-[10px]'}>
@@ -200,7 +200,61 @@ function UserInfo() {
           <Questionbox questions={QUESTIONS.contents2} questionType={'last'} />
         </>
       ) : null}
-      {steps === 2 ? (
+      {steps >= 2 ? (
+        <>
+          <UserInformationProfiles />
+          <div className={'mt-[10px]'}>
+            <ChannelCommonCard
+              size="medium"
+              isLogin
+              avatarUrl={data.result.defaultThumbnailUrl}
+              header={
+                <LocationMove
+                  location={`https://www.youtube.com/@${data.result.channelId}`}
+                >
+                  <Flex justify="between" align="center">
+                    <Text
+                      as="title"
+                      title={`@${data.result.channelName}`}
+                      className="text-[13px]"
+                    />
+                    <button
+                      type="button"
+                      className="bg-line px-2 py-1 rounded-[15px]"
+                    >
+                      <Flex align="center">
+                        <SmallYoutubeIcon
+                          className="mr-1"
+                          width={15}
+                          height={15}
+                        />
+                        <Text
+                          as="description"
+                          title="유튜브"
+                          className="font-bold text-[12px]"
+                        />
+                      </Flex>
+                    </button>
+                  </Flex>
+                </LocationMove>
+              }
+              posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
+              subscriber={formatNumberWithUnit(
+                data.result.subscriberCount ?? 0,
+                '명',
+              )}
+              totalView={formatNumberWithUnit(
+                data.result.totalViewCount ?? 0,
+                '회',
+              )}
+            />
+          </div>
+          <Questionbox questions={QUESTIONS.contents1} questionType={'first'} />
+          <Questionbox questions={QUESTIONS.contents2} questionType={'last'} />
+          <Questionbox questions={QUESTIONS.contents3} questionType={'last'} />
+        </>
+      ) : null}
+      {steps === 3 ? (
         <>
           <div className={'fixed left-0 right-0 px-[20px] py-[12px] bottom-0'}>
             <Button
@@ -235,51 +289,51 @@ function UserInfo() {
           />
         </>
       ) : null}
-      {steps >= 4 ? (
+      {steps >= 5 ? (
         <UserDialogbox answers={strategyInfo.userContents} isTyped={isTyped} />
       ) : null}
-      {steps >= 5 ? (
+      {steps >= 6 ? (
         <>
           <UserInformationProfiles />
           <Questionbox questions={QUESTIONS.fulltime} questionType={'last'} />
         </>
       ) : null}
-      {steps === 6 ? (
+      {steps === 7 ? (
         <FulltimeParttime
           onClick={(fulltime) => {
             setStrategyInfo('userFulltime', fulltime);
           }}
-          setSteps={() => setSteps(7)}
+          setSteps={() => setSteps(8)}
         />
       ) : null}
-      {steps >= 7 ? (
+      {steps >= 8 ? (
         <UserDialogbox answers={strategyInfo.userFulltime} isTyped={isTyped} />
       ) : null}
-      {steps >= 8 ? (
+      {steps >= 9 ? (
         <>
           <UserInformationProfiles />
           <Questionbox questions={QUESTIONS.goal} questionType={'last'} />
         </>
       ) : null}
-      {steps === 9 ? (
+      {steps === 10 ? (
         <SNSGoal
           onClick={(goal) => {
             setStrategyInfo('userGoal', goal);
-            setSteps(10);
+            setSteps(11);
           }}
           setIsTyped={() => setIsTyped(true)}
         />
       ) : null}
-      {steps >= 10 ? (
+      {steps >= 11 ? (
         <UserDialogbox answers={strategyInfo.userGoal} isTyped={isTyped} />
       ) : null}
-      {steps >= 11 ? (
+      {steps >= 12 ? (
         <>
           <UserInformationProfiles />
           <Questionbox questions={QUESTIONS.analyze} questionType={'last'} />
         </>
       ) : null}
-      {steps === 12 ? (
+      {steps === 13 ? (
         <div className={'bottom-0 sticky py-[12px]  bg-white'}>
           {/* onClick에 api연결하기 */}
           <Button

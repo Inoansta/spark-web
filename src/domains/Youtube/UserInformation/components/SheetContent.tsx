@@ -43,7 +43,7 @@ function SheetContents({
           onClick={() => {
             if (onlyClicked.length > 0) {
               setOpen(false);
-              setSteps(3);
+              setSteps(5);
             }
           }}
           buttonType={'small-outlined-button'}
