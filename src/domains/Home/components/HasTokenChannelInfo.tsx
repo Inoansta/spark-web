@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useLayoutEffect, useState } from 'react';
 import { HomeInstagramLogo } from '@/assets/svg/HomeInstagramLogo';
 import { HomeYoutubeLogo } from '@/assets/svg/HomeYoutubeLogo';
 import { FrontIcon } from '@/assets/svg/nav/FrontIcon';
@@ -156,8 +156,12 @@ export default function HasTokenChannelInfo({
 }: {
   setClosed: Dispatch<SetStateAction<boolean>>;
 }) {
-  const access_token = Storage.getLocalStorage(TOKEN.ACCESS);
-  const refresh_token = Storage.getLocalStorage(TOKEN.REFRESH);
+  const [access_token, setAccessToken] = useState('');
+  const [refresh_token, setRefreshToken] = useState('');
+  useLayoutEffect(() => {
+    setAccessToken(Storage.getLocalStorage(TOKEN.ACCESS));
+    setRefreshToken(Storage.getLocalStorage(TOKEN.REFRESH));
+  }, []);
   if (!access_token) {
     return <EmptyCard setClosed={setClosed} />;
   } else if (refresh_token.length !== 0) {

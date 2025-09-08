@@ -85,7 +85,9 @@ export function ChannelGrowCard({ disabled = false }: ChannelGrowCardProps) {
         <img src={HomeGIF} alt="no image" className={'rounded-medium'} />
       </Card.Content>
       <Card.Bottom className="px-5 pb-5">
-        <RouteMove location="/detail">
+        <RouteMove
+          location={`${refresh_token ? '/detail' : '/instagram-detail'}`}
+        >
           <Flex direction="column" align="center" justify="center">
             <button
               type="button"

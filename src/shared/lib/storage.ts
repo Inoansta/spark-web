@@ -1,15 +1,6 @@
 const getLocalStorage = (key: string) => {
-  try {
-    const value = sessionStorage.getItem(key);
-
-    return value ? JSON.parse(value) : '';
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      throw new Error(error.message);
-    } else {
-      throw new Error('Unknown error occurred');
-    }
-  }
+  const value = sessionStorage.getItem(key);
+  return value ? JSON.parse(value) : '';
 };
 
 const setLocalStorage = <T>(key: string, value: T) => {
