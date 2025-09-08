@@ -17,7 +17,7 @@ export default function InstagramDetail() {
 
   useEffect(() => {
     //TODO REFRESH를 ACCESS로 바꾸기
-    const connected = Storage.getLocalStorage(TOKEN.REFRESH);
+    const connected = Storage.getLocalStorage(TOKEN.ACCESS);
     setDisable(connected ? false : true);
   }, []);
   return (
