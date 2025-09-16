@@ -1,24 +1,16 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
 import useStrategyStore from '@/app/store/useStrategyStore';
-import { SmallYoutubeIcon } from '@/assets/svg/logo/SmallYoutbeIcon';
-import { ChannelCommonCard } from '@/domains/Home/components/ChannelCommonCard';
-import useChannelProfile from '@/domains/Home/hooks/useChannelProfile';
-import {
-  formatNumberWithCommas,
-  formatNumberWithUnit,
-} from '@/domains/Home/lib/utils';
-import LocationMove from '@/domains/Login/components/LocationMove';
-import FulltimeParttime from '@/domains/Youtube/UserInformation/components/Footers/FulltimeParttime';
-import SNSGoal from '@/domains/Youtube/UserInformation/components/Footers/SNSGoal';
-import Questionbox from '@/domains/Youtube/UserInformation/components/Questionbox';
-import SheetContents from '@/domains/Youtube/UserInformation/components/SheetContent';
-import UserDialogbox from '@/domains/Youtube/UserInformation/components/UserDialogbox';
-import UserInformationProfiles from '@/domains/Youtube/UserInformation/components/UserInformationProfiles';
-import { QUESTIONS } from '@/domains/Youtube/UserInformation/questions';
+import FulltimeParttime from '@/domains/UserInformation/components/Footers/FulltimeParttime';
+import SNSGoal from '@/domains/UserInformation/components/Footers/SNSGoal';
+import Questionbox from '@/domains/UserInformation/components/Questionbox';
+import SheetContents from '@/domains/UserInformation/components/SheetContent';
+import UserDialogbox from '@/domains/UserInformation/components/UserDialogbox';
+import UserInfoCard from '@/domains/UserInformation/components/UserInfoCard';
+import UserInformationProfiles from '@/domains/UserInformation/components/UserInformationProfiles';
+import { QUESTIONS } from '@/domains/UserInformation/questions';
 import { Button } from '@/shared/components';
 import BottomSheetModal from '@/shared/components/BottomSheetModal/BottomSheetModal';
 import { useMoveLocation } from '@/shared/hooks';
-import { Flex, Text } from '@/shared/ui';
 
 export interface userAnswer {
   CONTENTS: string;
@@ -56,8 +48,6 @@ function UserInfo() {
 
   const [isTyped, setIsTyped] = useState<boolean>(false);
   const bottomRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
-
-  const { data } = useChannelProfile();
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView();
@@ -99,50 +89,7 @@ function UserInfo() {
         <>
           <UserInformationProfiles />
           <div className={'mt-[10px]'}>
-            <ChannelCommonCard
-              size="medium"
-              isLogin
-              avatarUrl={data.result.defaultThumbnailUrl}
-              header={
-                <LocationMove
-                  location={`https://www.youtube.com/@${data.result.channelId}`}
-                >
-                  <Flex justify="between" align="center">
-                    <Text
-                      as="title"
-                      title={`@${data.result.channelName}`}
-                      className="text-[13px]"
-                    />
-                    <button
-                      type="button"
-                      className="bg-line px-2 py-1 rounded-[15px]"
-                    >
-                      <Flex align="center">
-                        <SmallYoutubeIcon
-                          className="mr-1"
-                          width={15}
-                          height={15}
-                        />
-                        <Text
-                          as="description"
-                          title="유튜브"
-                          className="font-bold text-[12px]"
-                        />
-                      </Flex>
-                    </button>
-                  </Flex>
-                </LocationMove>
-              }
-              posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
-              subscriber={formatNumberWithUnit(
-                data.result.subscriberCount ?? 0,
-                '명',
-              )}
-              totalView={formatNumberWithUnit(
-                data.result.totalViewCount ?? 0,
-                '회',
-              )}
-            />
+            <UserInfoCard />
           </div>
           <Questionbox questions={QUESTIONS.contents1} questionType={'last'} />
         </>
@@ -151,50 +98,7 @@ function UserInfo() {
         <>
           <UserInformationProfiles />
           <div className={'mt-[10px]'}>
-            <ChannelCommonCard
-              size="medium"
-              isLogin
-              avatarUrl={data.result.defaultThumbnailUrl}
-              header={
-                <LocationMove
-                  location={`https://www.youtube.com/@${data.result.channelId}`}
-                >
-                  <Flex justify="between" align="center">
-                    <Text
-                      as="title"
-                      title={`@${data.result.channelName}`}
-                      className="text-[13px]"
-                    />
-                    <button
-                      type="button"
-                      className="bg-line px-2 py-1 rounded-[15px]"
-                    >
-                      <Flex align="center">
-                        <SmallYoutubeIcon
-                          className="mr-1"
-                          width={15}
-                          height={15}
-                        />
-                        <Text
-                          as="description"
-                          title="유튜브"
-                          className="font-bold text-[12px]"
-                        />
-                      </Flex>
-                    </button>
-                  </Flex>
-                </LocationMove>
-              }
-              posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
-              subscriber={formatNumberWithUnit(
-                data.result.subscriberCount ?? 0,
-                '명',
-              )}
-              totalView={formatNumberWithUnit(
-                data.result.totalViewCount ?? 0,
-                '회',
-              )}
-            />
+            <UserInfoCard />
           </div>
           <Questionbox questions={QUESTIONS.contents1} questionType={'first'} />
           <Questionbox questions={QUESTIONS.contents2} questionType={'last'} />
@@ -204,50 +108,7 @@ function UserInfo() {
         <>
           <UserInformationProfiles />
           <div className={'mt-[10px]'}>
-            <ChannelCommonCard
-              size="medium"
-              isLogin
-              avatarUrl={data.result.defaultThumbnailUrl}
-              header={
-                <LocationMove
-                  location={`https://www.youtube.com/@${data.result.channelId}`}
-                >
-                  <Flex justify="between" align="center">
-                    <Text
-                      as="title"
-                      title={`@${data.result.channelName}`}
-                      className="text-[13px]"
-                    />
-                    <button
-                      type="button"
-                      className="bg-line px-2 py-1 rounded-[15px]"
-                    >
-                      <Flex align="center">
-                        <SmallYoutubeIcon
-                          className="mr-1"
-                          width={15}
-                          height={15}
-                        />
-                        <Text
-                          as="description"
-                          title="유튜브"
-                          className="font-bold text-[12px]"
-                        />
-                      </Flex>
-                    </button>
-                  </Flex>
-                </LocationMove>
-              }
-              posting={formatNumberWithCommas(data.result.totalVideoCount ?? 0)}
-              subscriber={formatNumberWithUnit(
-                data.result.subscriberCount ?? 0,
-                '명',
-              )}
-              totalView={formatNumberWithUnit(
-                data.result.totalViewCount ?? 0,
-                '회',
-              )}
-            />
+            <UserInfoCard />
           </div>
           <Questionbox questions={QUESTIONS.contents1} questionType={'first'} />
           <Questionbox questions={QUESTIONS.contents2} questionType={'last'} />
