@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { type ReactNode, useLayoutEffect, useState } from 'react';
 import HomeGIF from '@/assets/Action1.gif';
 import { Avatar as DefaultImage } from '@/assets/svg/Avatar/Avatar';
 import CardInstagram from '@/assets/svg/CardInstagram';
@@ -22,9 +22,6 @@ interface ChannelCommonCardProps {
 interface ChannelGrowCardProps {
   disabled: boolean;
 }
-
-const refresh_token = Storage.getLocalStorage(TOKEN.REFRESH);
-const access_token = Storage.getLocalStorage(TOKEN.ACCESS);
 
 export function EmptyGrowCard() {
   return (
@@ -70,6 +67,11 @@ export function EmptyGrowCard() {
 }
 
 export function ChannelGrowCard({ disabled = false }: ChannelGrowCardProps) {
+  const [refresh_token, setRefreshToken] = useState('');
+  useLayoutEffect(() => {
+    setRefreshToken(Storage.getLocalStorage(TOKEN.REFRESH));
+  }, []);
+
   return (
     <Card className="rounded-[20px]">
       <Card.Header>
@@ -121,7 +123,12 @@ export function ChannelCommonCard({
   size = 'large',
 }: ChannelCommonCardProps) {
   const isMedium = size === 'medium';
-
+  const [access_token, setAccessToken] = useState('');
+  const [refresh_token, setRefreshToken] = useState('');
+  useLayoutEffect(() => {
+    setAccessToken(Storage.getLocalStorage(TOKEN.ACCESS));
+    setRefreshToken(Storage.getLocalStorage(TOKEN.REFRESH));
+  }, []);
   return (
     <Card
       isMedium={isMedium}
