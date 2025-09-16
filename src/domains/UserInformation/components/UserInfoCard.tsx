@@ -58,11 +58,23 @@ function YoutubeCard() {
 }
 
 export default function UserInfoCard() {
-  const [refresh_token, setRefreshToken] = useState('');
+  type TokenState = 'youtube' | 'empty' | 'meta';
+
+  const [state, setState] = useState<TokenState>('empty');
 
   useEffect(() => {
-    setRefreshToken(Storage.getLocalStorage(TOKEN.REFRESH));
+    const token = Storage.getLocalStorage(TOKEN.REFRESH);
+
+    if (token && token.length > 0) {
+      setState('youtube');
+    } else {
+      setState('meta');
+    }
   }, []);
 
-  return refresh_token ? <YoutubeCard /> : <MetaCard />;
+  if (state === 'youtube') {
+    return <YoutubeCard />;
+  } else if (state === 'meta') {
+    return <MetaCard />;
+  }
 }
