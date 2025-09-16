@@ -8,7 +8,6 @@ import useMetaPopularQuery from '../hooks/useMetaPopularQuery';
 interface PopularCard {
   videoInformation: any;
   index: number;
-  likes: number;
 }
 
 const rankStyle = ['bg-primary5', 'bg-[#787CFE]', 'bg-subText'];
