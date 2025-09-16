@@ -23,11 +23,11 @@ export const handlers = [
     return HttpResponse.json(
       {
         result: {
-          channelId: 'UCCuQOrhdJV2ckJeMg4nCoqQ',
           userName: 'leeeumm',
           postsCount: 56,
           followersCount: 6820,
           followingCount: 222477,
+          instagramBusinessAccountId: '17841471069509671',
           profileUrl:
             'https://yt3.ggpht.com/ytc/AIdro_kl5DflvSAt5cCateTrSwaLn4GBN9r6Kpu3KbWBVHt3T53dfl0=s88-c-k-c0x00ffffff-no-rj',
         },
@@ -240,5 +240,43 @@ export const handlers = [
       },
       { status: 400 },
     );
+  }),
+  http.get('/meta/top-contents', async () => {
+    await delay(200);
+    return HttpResponse.json({
+      result: [
+        {
+          id: '18002988923727425',
+          caption: '',
+          timestamp: '2025-02-18T13:20:36+0000',
+          mediaType: 'IMAGE',
+          contentUrl:
+            'https://scontent-nrt1-2.cdninstagram.com/v/t51.75761-15/480179406_17858106774368984_3581032881115181231_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=1-7&_nc_sid=18de74&_nc_ohc=_5Jsx1wGDIAQ7kNvwGGWNGN&_nc_oc=AdnzGLZ_8zKBhflI9vqA2f50UZbH_spCfFJ7EeMVHpo3WVbEYyaLidSxRvZ41tAUzp4&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hmOk_JLvhBNca4OAs6BgZQ&oh=00_AfYXes9M04M937PnMThQzP0d8vHqp-g817AcMWOX23KFHw&oe=68CEC383',
+          views: 727,
+          likes: 3,
+        },
+        {
+          id: '18293302513242280',
+          caption: '',
+          timestamp: '2025-02-18T13:20:23+0000',
+          mediaType: 'IMAGE',
+          contentUrl:
+            'https://scontent-nrt1-2.cdninstagram.com/v/t51.75761-15/480763849_17858106681368984_1918310517997031216_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=1-7&_nc_sid=18de74&_nc_ohc=MHG-tmd8WNQQ7kNvwENu9ic&_nc_oc=AdlBIu2-98EkmwrNnHCtoeeGYBU48YXPSej2et-xNXZqFn7vits1fvW-bHtN1ZIbuqE&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hmOk_JLvhBNca4OAs6BgZQ&oh=00_AfacOCfrpIHSnmbaX-MGehk2WA1b03znxNQvl6k8xdH9ZQ&oe=68CEC83C',
+          views: 668,
+          likes: 3,
+        },
+        {
+          id: '18062265455501728',
+          caption:
+            '스파크 사용 방법💜\n#유튜브강의 #유튜브크리에이터 #크리에이터 #릴스 #릴스그램 #릴스맛집 #숏츠 #유튜버 #유튜버추천 #유튜버마케팅',
+          timestamp: '2025-04-01T12:29:47+0000',
+          mediaType: 'VIDEO',
+          contentUrl:
+            'https://scontent-nrt1-1.cdninstagram.com/v/t51.75761-15/488229756_17863860792368984_453657160267114430_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=1-7&_nc_sid=18de74&_nc_ohc=4iZry5JF-i4Q7kNvwFlzM_Z&_nc_oc=AdkXh_9wRlfbuaF3ZcVre9MESQiVe7ov1G8Yq8QZ20JUFMnN2HjB04e_gGoqxpekMik&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hmOk_JLvhBNca4OAs6BgZQ&oh=00_AfajsnaP1ojHg5UAuBdFnC-rG17cNww3hyBt8uAHUHSJBw&oe=68CED5BB',
+          views: 658,
+          likes: 12,
+        },
+      ],
+    });
   }),
 ];

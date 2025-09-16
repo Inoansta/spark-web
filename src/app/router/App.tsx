@@ -5,6 +5,7 @@ import GrowthPrediction from '@/pages/GrowthPrediction';
 import GrowthPredictionBefore from '@/pages/GrowthPredictionBefore';
 import Home from '@/pages/Home';
 import InstagramDetail from '@/pages/InstagramDetail';
+import InstagramPopular from '@/pages/InstagramPopular';
 import Login from '@/pages/Login';
 import Oauth from '@/pages/Oauth';
 import OauthMeta from '@/pages/OauthMeta';
@@ -54,6 +55,7 @@ export default function RouterApp() {
             />
             <Route path="/analysis" element={<Analysis />} />
             <Route path="/popular" element={<Popular />} />
+            <Route path="/instagram-popular" element={<InstagramPopular />} />
             <Route path="/strength-weakness" element={<StrengthWeakness />} />
             <Route
               path="/growth-prediction-before"
