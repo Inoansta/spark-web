@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react';
 import EyeIcon from '@/assets/svg/EyeIcon';
+import FireIcon from '@/assets/svg/FireIcon';
 import { DateFormatter } from '@/domains/Youtube/Popular/lib/utils';
 import type { ResponsePopularTop } from '@/domains/Youtube/Popular/model/type';
 import useMetaPopularQuery from '../hooks/useMetaPopularQuery';
@@ -7,6 +8,7 @@ import useMetaPopularQuery from '../hooks/useMetaPopularQuery';
 interface PopularCard {
   videoInformation: any;
   index: number;
+  likes: number;
 }
 
 const rankStyle = ['bg-primary5', 'bg-[#787CFE]', 'bg-subText'];
@@ -80,15 +82,19 @@ function PopularCard({ videoInformation, index }: PopularCard) {
           <div className={'flex flex-row items-center'}>
             <div
               className={
-                'flex flex-row items-center text-[13px] font-[700] leading-[18px] text-[#333]'
+                'flex-1 flex flex-row items-center text-[13px] font-[700] leading-[18px] text-[#333]'
               }
             >
-              <EyeIcon className={'mr-[5px]'} fill="#333" />
+              <EyeIcon className={'mr-[5px] w-[20px] h-[20px]'} fill="#333" />
               {videoInformation.views}
+            </div>
+            <div className="flex-1 flex flex-row items-center text-[13px] font-[700] leading-[18px] text-[#333]">
+              <FireIcon className={'mr-[5px] w-[20px] h-[20px]'} fill="#333" />
+              {videoInformation.likes}
             </div>
             <div
               className={
-                'ml-auto text-[#8D9199] text-[11px] font-[700] leading-[14px]'
+                'flex-1 ml-auto text-[#8D9199] text-[11px] font-[700] leading-[14px]'
               }
             >
               {formattedDate}
