@@ -81,11 +81,24 @@ type IsFetchingProps = PropsWithChildren<{
   platform: 'y' | 'm';
 }>;
 
-export function IsFetching({ children, platform }: IsFetchingProps) {
-  const youtubeStatsQuery = useStrengthWeakStatsQuery(platform === 'y');
-  const metaStatsQuery = useMetaChannelStats(platform === 'm');
+function StrengthWeakStatsSuccess() {
+  const { isSuccess } = useStrengthWeakStatsQuery();
+  return isSuccess;
+}
 
-  const isSuccess = youtubeStatsQuery.isSuccess || metaStatsQuery.isSuccess;
+function MetaChannelStatsSuccess() {
+  const { isSuccess } = useMetaChannelStats();
+  return isSuccess;
+}
+
+export function IsFetching({ children, platform }: IsFetchingProps) {
+  let isSuccess;
+  if (platform === 'y') {
+    isSuccess = StrengthWeakStatsSuccess();
+  } else if (platform === 'm') {
+    isSuccess = MetaChannelStatsSuccess();
+  }
+
   return isSuccess && children;
 }
 

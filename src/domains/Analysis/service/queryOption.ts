@@ -4,17 +4,10 @@ import metaAnalysisApi from './handlers';
 const metaAnalysisQueryOption = {
   metaStats: ['metaStats'] as const,
   metaPerformance: ['metaPerformance'] as const,
-  metaChannelStats: ({
-    channelId,
-    enabled = false,
-  }: {
-    channelId: string;
-    enabled?: boolean;
-  }) =>
+  metaChannelStats: (channelId: string) =>
     queryOptions({
       queryKey: [...metaAnalysisQueryOption.metaStats, 'stats', channelId],
       queryFn: () => metaAnalysisApi.GetMetaStatsApi(channelId),
-      enabled: enabled,
     }),
   metaStatisticsPerformance: (channelId: string) =>
     queryOptions({

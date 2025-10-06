@@ -1,12 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import useStrategyStore from '@/app/store/useStrategyStore';
 import metaAnalysisQueryOption from '../service/queryOption';
 
-const useMetaChannelStats = (enabled?: boolean) => {
+const useMetaChannelStats = () => {
   const channelId = useStrategyStore((store) => store.channelId);
-  return useQuery(
-    metaAnalysisQueryOption.metaChannelStats({ channelId, enabled }),
-  );
+  return useSuspenseQuery(metaAnalysisQueryOption.metaChannelStats(channelId));
 };
 
 export default useMetaChannelStats;
