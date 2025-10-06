@@ -3,10 +3,20 @@ import strengthWeakApi from './handler';
 
 const strengthWeakQueryOption = {
   stats: ['stats'] as const,
-  strengthWeakStats: (channelId: string) =>
+  strengthWeakStats: ({
+    channelId,
+    enabled = false,
+  }: {
+    channelId: string;
+    enabled?: boolean;
+  }) =>
     queryOptions({
       queryKey: [...strengthWeakQueryOption.stats, 'strengthWeak', channelId],
-      queryFn: () => strengthWeakApi.getStrengthWeakApi({ channelId }),
+      queryFn: () => {
+        console.log('hello', enabled);
+        return strengthWeakApi.getStrengthWeakApi({ channelId });
+      },
+      enabled: enabled,
       // select: (data) => {},
     }),
 };

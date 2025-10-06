@@ -35,6 +35,72 @@ export const handlers = [
       { status: 200 },
     );
   }),
+
+  http.get('/meta/channel-stats', async () => {
+    await delay(200);
+    return HttpResponse.json(
+      {
+        result: {
+          stats: [
+            {
+              startDate: '2025-09-05',
+              endDate: '2025-10-05',
+              impressions: 0,
+              likes: 0,
+              comments: 0,
+              profileStats: 27,
+              followers: 0,
+              unfollowers: 0,
+              viewsFollowers: 125,
+              viewsNonFollowers: 172,
+              adsCount: 0,
+              uploadedMedia: 0,
+            },
+            {
+              startDate: '2025-08-06',
+              endDate: '2025-09-05',
+              impressions: 1,
+              likes: 0,
+              comments: 0,
+              profileStats: 202,
+              followers: 0,
+              unfollowers: 0,
+              viewsFollowers: 1257,
+              viewsNonFollowers: 2033,
+              adsCount: 0,
+              uploadedMedia: 0,
+            },
+            {
+              startDate: '2025-07-07',
+              endDate: '2025-08-06',
+              impressions: 0,
+              likes: 0,
+              comments: 0,
+              profileStats: 178,
+              followers: 0,
+              unfollowers: 0,
+              viewsFollowers: 781,
+              viewsNonFollowers: 1292,
+              adsCount: 0,
+              uploadedMedia: 1,
+            },
+          ],
+          growthRates: {
+            viewsNonFollowers: -91.53959665518937,
+            followers: 0,
+            viewsFollowers: -90.05568814638028,
+            uploadedMedia: 0,
+            impressions: -100,
+            adsCount: 0,
+            profileStats: -86.63366336633663,
+          },
+          strengths: ['followers', 'uploadedMedia'],
+          weaknesses: ['impressions', 'viewsNonFollowers'],
+        },
+      },
+      { status: 200 },
+    );
+  }),
   http.get('/youtube/channel-stats?channelId=', async () => {
     await delay(3000);
     return HttpResponse.json(
@@ -279,4 +345,29 @@ export const handlers = [
       ],
     });
   }),
+  http.get(
+    '/meta/statistics/performance?instagramBusinessAccountId=',
+    async () => {
+      await delay(200);
+      return HttpResponse.json({
+        result: {
+          averageComments: {
+            recent30Days: 0,
+            days30to60: 0,
+            days60to90: 0,
+          },
+          averageLikes: {
+            recent30Days: 0,
+            days30to60: 0,
+            days60to90: 0,
+          },
+          averageViews: {
+            recent30Days: 0,
+            days30to60: 0,
+            days60to90: 2073,
+          },
+        },
+      });
+    },
+  ),
 ];
