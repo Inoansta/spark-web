@@ -13,10 +13,19 @@ function CurrentLocation() {
     currentPathname === path;
 
   switch (currentPathname) {
-    case '/analysis': {
+    case '/analysis/m': {
       return (
         <NavigationHeader className="bg-line">
-          <NavigationHeader.LeftContent location="/user-info">
+          <NavigationHeader.LeftContent location="/user-info/m">
+            <BackIcon />
+          </NavigationHeader.LeftContent>
+        </NavigationHeader>
+      );
+    }
+    case '/analysis/y': {
+      return (
+        <NavigationHeader className="bg-line">
+          <NavigationHeader.LeftContent location="/user-info/y">
             <BackIcon />
           </NavigationHeader.LeftContent>
         </NavigationHeader>

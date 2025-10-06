@@ -46,14 +46,14 @@ export default function RouterApp() {
             <Route path="/detail" element={<Detail />} />
             <Route path="/instagram-detail" element={<InstagramDetail />} />
             <Route
-              path="/user-info"
+              path="/user-info/:platform"
               element={
                 <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>
                   <UserInfo />
                 </QuerySuspenseBoundary>
               }
             />
-            <Route path="/analysis" element={<Analysis />} />
+            <Route path="/analysis/:platform" element={<Analysis />} />
             <Route path="/popular" element={<Popular />} />
             <Route path="/instagram-popular" element={<InstagramPopular />} />
             <Route path="/strength-weakness" element={<StrengthWeakness />} />

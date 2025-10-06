@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { HomeYoutubeLogo } from '@/assets/svg/HomeYoutubeLogo';
 import { ChannelCommonCard } from '@/domains/Home/components/ChannelCommonCard';
 import { useChannelProfile, useMetaProfile } from '@/domains/Home/hooks';
@@ -6,8 +5,6 @@ import {
   formatNumberWithCommas,
   formatNumberWithUnit,
 } from '@/domains/Home/lib/utils';
-import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
-import { Storage } from '@/shared/lib';
 import { Flex, Text } from '@/shared/ui';
 
 function MetaCard() {
@@ -57,24 +54,10 @@ function YoutubeCard() {
   );
 }
 
-export default function UserInfoCard() {
-  type TokenState = 'youtube' | 'empty' | 'meta';
-
-  const [state, setState] = useState<TokenState>('empty');
-
-  useEffect(() => {
-    const token = Storage.getLocalStorage(TOKEN.REFRESH);
-
-    if (token && token.length > 0) {
-      setState('youtube');
-    } else {
-      setState('meta');
-    }
-  }, []);
-
-  if (state === 'youtube') {
+export default function UserInfoCard({ platform }: { platform: 'y' | 'm' }) {
+  if (platform === 'y') {
     return <YoutubeCard />;
-  } else if (state === 'meta') {
+  } else if (platform === 'm') {
     return <MetaCard />;
   }
 }

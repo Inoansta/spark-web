@@ -13,7 +13,7 @@ import { Storage } from '@/shared/lib';
 
 export default function InstagramDetail() {
   const [disable, setDisable] = useState(false);
-  const moveToNext = useMoveLocation('/user-info');
+  const moveToNext = useMoveLocation('/user-info/m');
 
   useEffect(() => {
     //TODO REFRESH를 ACCESS로 바꾸기

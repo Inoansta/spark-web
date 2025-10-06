@@ -14,7 +14,7 @@ import { Storage } from '@/shared/lib';
 
 export default function Detail() {
   const [disable, setDisable] = useState(false);
-  const moveToNext = useMoveLocation('/user-info');
+  const moveToNext = useMoveLocation('/user-info/y');
 
   useEffect(() => {
     //TODO REFRESH를 ACCESS로 바꾸기
