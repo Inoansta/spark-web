@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
 import { HomeYoutubeLogo } from '@/assets/svg/HomeYoutubeLogo';
 import { ChannelCommonCard } from '@/domains/Home/components/ChannelCommonCard';
 import { useChannelProfile, useMetaProfile } from '@/domains/Home/hooks';
@@ -7,8 +5,6 @@ import {
   formatNumberWithCommas,
   formatNumberWithUnit,
 } from '@/domains/Home/lib/utils';
-import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
-import { Storage } from '@/shared/lib';
 import { Flex, Text } from '@/shared/ui';
 
 function MetaCard() {
