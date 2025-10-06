@@ -1,22 +1,29 @@
 import { Suspense } from 'react';
+import { useParams } from 'react-router';
 import { QuerySuspenseBoundary } from '@/app/provider';
 import analysis from '@/assets/animation/analysis/analysis.json';
 import { Analysis as AnalysisIcon } from '@/assets/svg/logo/Analysis';
 import { Bulb } from '@/assets/svg/logo/Bulb';
 import { Graph } from '@/assets/svg/logo/Graph';
 import { YoutubeIcon } from '@/assets/svg/logo/YoutubeIcon';
-import AnalysisState from '@/domains/Youtube/Analysis/components/AnalysisState';
+import AnalysisState from '@/domains/Analysis/components/AnalysisState';
 import {
   ChannelProfileFetch,
   GrowthPrediectionFetch,
   IsFetching,
+  MetaChannelStatsFetch,
+  MetaPerformanceFetch,
+  MetaProfileFetch,
+  MetaTopContentsFetch,
   StrengthWeaknessFetch,
   TopVideosFetch,
-} from '@/domains/Youtube/Analysis/components/DataFetchComponents';
-import ProcessStateItem from '@/domains/Youtube/Analysis/components/ProcessStateItem';
+} from '@/domains/Analysis/components/DataFetchComponents';
+import ProcessStateItem from '@/domains/Analysis/components/ProcessStateItem';
 import { Flex, LottieAnimation, Text } from '@/shared/ui';
 
 export default function Analysis() {
+  const { platform } = useParams() as { platform: 'm' | 'y' };
+
   return (
     <main className="bg-line p-[10px] min-h-screen">
       <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>
@@ -48,21 +55,27 @@ export default function Analysis() {
           <AnalysisState
             icon={<YoutubeIcon />}
             title="채널 정보 불러오기"
-            DataFetchComponent={ChannelProfileFetch}
+            DataFetchComponent={
+              platform === 'y' ? ChannelProfileFetch : MetaProfileFetch
+            }
             delay={0} // 첫 번째는 바로 실행
           />
 
           <AnalysisState
             icon={<AnalysisIcon />}
             title="채널 데이터 분석"
-            DataFetchComponent={TopVideosFetch}
+            DataFetchComponent={
+              platform === 'y' ? TopVideosFetch : MetaTopContentsFetch
+            }
             delay={1000} // 1초 후 실행
           />
 
           <AnalysisState
             icon={<Graph />}
             title="채널 강약점 진단"
-            DataFetchComponent={StrengthWeaknessFetch}
+            DataFetchComponent={
+              platform === 'y' ? StrengthWeaknessFetch : MetaChannelStatsFetch
+            }
             delay={2000} // 2초 후 실행
           />
 
@@ -76,11 +89,15 @@ export default function Analysis() {
               />
             }
           >
-            <IsFetching>
+            <IsFetching platform={platform}>
               <AnalysisState
                 icon={<Bulb />}
                 title="채널 성장 비법"
-                DataFetchComponent={GrowthPrediectionFetch}
+                DataFetchComponent={
+                  platform === 'y'
+                    ? GrowthPrediectionFetch
+                    : MetaPerformanceFetch
+                }
               />
             </IsFetching>
           </Suspense>
