@@ -1,4 +1,5 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router';
 import useStrategyStore from '@/app/store/useStrategyStore';
 import FulltimeParttime from '@/domains/UserInformation/components/Footers/FulltimeParttime';
 import SNSGoal from '@/domains/UserInformation/components/Footers/SNSGoal';
@@ -43,8 +44,8 @@ function UserInfo() {
 
   const strategyInfo = useStrategyStore((store) => store);
   const setStrategyInfo = useStrategyStore((store) => store.setField);
-
-  const handleMoveLocation = useMoveLocation('/analysis');
+  const { platform } = useParams() as { platform: 'm' | 'y' };
+  const handleMoveLocation = useMoveLocation(`/analysis/${platform}`);
 
   const [isTyped, setIsTyped] = useState<boolean>(false);
   const bottomRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
@@ -85,33 +86,22 @@ function UserInfo() {
 
   return (
     <div className={'px-[20px] flex flex-col'}>
-      {steps === 0 ? (
+      {steps >= 0 ? (
         <>
           <UserInformationProfiles />
           <div className={'mt-[10px]'}>
-            <UserInfoCard />
+            <UserInfoCard platform={platform} />
           </div>
           <Questionbox questions={QUESTIONS.contents1} questionType={'last'} />
         </>
       ) : null}
-      {steps === 1 ? (
+      {steps >= 1 ? (
         <>
-          <UserInformationProfiles />
-          <div className={'mt-[10px]'}>
-            <UserInfoCard />
-          </div>
-          <Questionbox questions={QUESTIONS.contents1} questionType={'first'} />
           <Questionbox questions={QUESTIONS.contents2} questionType={'last'} />
         </>
       ) : null}
       {steps >= 2 ? (
         <>
-          <UserInformationProfiles />
-          <div className={'mt-[10px]'}>
-            <UserInfoCard />
-          </div>
-          <Questionbox questions={QUESTIONS.contents1} questionType={'first'} />
-          <Questionbox questions={QUESTIONS.contents2} questionType={'last'} />
           <Questionbox questions={QUESTIONS.contents3} questionType={'last'} />
         </>
       ) : null}
