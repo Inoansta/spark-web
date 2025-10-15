@@ -5,3 +5,5 @@ export { default as Keyframe } from './Keyframe';
 export { default as RouteMove } from './RouteMove';
 export { default as NextPageFooter } from './NextPageFooter';
 export { default as Carousel } from './Carousel';
+export { default as HighlightText } from './HighlightText/HighlightText';
+export { Badge } from './Badge/Badge';
