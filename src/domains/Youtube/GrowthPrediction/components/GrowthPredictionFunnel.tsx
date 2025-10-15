@@ -2,19 +2,17 @@ import { useFunnel } from '@use-funnel/browser';
 import { QuerySuspenseBoundary } from '@/app/provider';
 import { BackIcon } from '@/assets/svg/nav/BackIcon';
 import { CloseIcon } from '@/assets/svg/nav/CloseIcon';
-import useStrengthWeakStatsQuery from '@/domains/Youtube/StrengthWeakness/hooks/useStrengthWeakStatsQuery';
-import { NavigationHeader } from '@/shared/components';
-import { Spacing } from '@/shared/ui';
+import { HighlightText, NavigationHeader } from '@/shared/components';
+import { Flex } from '@/shared/ui';
 import PageBackground from '@/shared/ui/components/PageBackground';
-import useGrowthPredictionQuery from '../hooks/useGrowthPredictionQuery';
 import { useGrowthStep } from '../hooks/useGrowthStep';
-import transformStatsData from '../lib/transformGrowData';
 import GrowthPredictionSkeleton from '../skeleton/skeleton';
-import GrowthStep from './step/GrowthStep';
-import PredictionViewStep from './step/PredictionViewStep';
-import SubscriberStep from './step/SubscriberStep';
+import ChannelStep from './step/ChannelStep';
+import EngagementStep from './step/EngagementStep';
+import SubscriberStep from './step/SubscribeStep';
+// import PredictionViewStep from './step/PredictionViewStep';
 
-type StepName = 'GrowthStep' | 'ViewStep' | 'SubscriberStep';
+type StepName = 'SubscriberStep' | 'ChannelStep' | 'EngagementStep';
 
 interface Funnel {
   step: StepName;
@@ -22,33 +20,31 @@ interface Funnel {
     push: (nextStep: StepName) => void;
   };
   Render: React.FC<{
-    GrowthStep: React.FC<{ history: { push: (step: StepName) => void } }>;
-    ViewStep: React.FC<{ history: { push: (step: StepName) => void } }>;
-    SubscriberStep: React.FC;
+    SubscriberStep: React.FC<{ history: { push: (step: StepName) => void } }>;
+    ChannelStep: React.FC<{ history: { push: (step: StepName) => void } }>;
+    EngagementStep: React.FC;
   }>;
 }
 
 const options = {
   id: '@GrowthPrediction',
-  initial: { context: {}, step: 'GrowthStep' } as const,
+  initial: { context: {}, step: 'SubscriberStep' } as const,
   steps: useGrowthStep,
 };
 
-const bgColor = (step: string) => {
-  switch (step) {
-    case 'GrowthStep': {
-      return 'primary_gradient';
-    }
-    case 'ViewStep': {
-      return 'black_linear_gradient';
-    }
-    case 'SubscriberStep': {
-      return 'white_linear_gradient';
-    }
-    default: {
-      return 'primary_gradient';
-    }
-  }
+const stepTitle = {
+  SubscriberStep: {
+    title: '구독자수는 얼마나 늘었을까?',
+    highlight: '구독자수는',
+  },
+  ChannelStep: {
+    title: '현재 내 채널의',
+    highlight: '현재 내 채널의',
+  },
+  EngagementStep: {
+    title: '조회수만큼 중요한',
+    highlight: '조회수만큼 중요한',
+  },
 };
 
 export default function GrowthPredictionFunnel() {
@@ -56,58 +52,51 @@ export default function GrowthPredictionFunnel() {
 
   return (
     <>
-      <NavigationHeader className={'p-5 fixed max-w-[450px] w-full'}>
+      <NavigationHeader className={'fixed p-5 w-full max-w-[450px]'}>
         <NavigationHeader.LeftContent location="back">
-          <BackIcon
-            color={funnel.step === 'SubscriberStep' ? 'black' : 'white'}
-          />
+          <BackIcon color="black" />
         </NavigationHeader.LeftContent>
         <NavigationHeader.RightContent location="/detail">
-          <CloseIcon
-            color={funnel.step === 'SubscriberStep' ? 'black' : 'white'}
-          />
+          <CloseIcon color="black" />
         </NavigationHeader.RightContent>
       </NavigationHeader>
-      <PageBackground color={bgColor(funnel.step)} className="h-screen">
-        <Spacing size="xsmall" />
-        <QuerySuspenseBoundary loadingFallback={<GrowthPredictionSkeleton />}>
-          <GrowthPredictionDataFetchingFunnel funnel={funnel} />
-        </QuerySuspenseBoundary>
+      <PageBackground color="gray" className="w-full h-screen">
+        <Flex direction="column" align="center" className="pt-20 h-full">
+          {/* 페이지 제목 */}
+          <div className="px-5 mb-4 text-center">
+            <HighlightText
+              text={stepTitle[funnel.step].title}
+              highlight={stepTitle[funnel.step].highlight}
+              className="text-xl font-bold text-gray"
+              highlightClassName="text-primary5"
+            />
+          </div>
+
+          {/* 메인 콘텐츠 - 남은 공간을 모두 차지 */}
+          <div className="flex flex-1 justify-center w-full">
+            <QuerySuspenseBoundary
+              loadingFallback={<GrowthPredictionSkeleton />}
+            >
+              <GrowthPredictionDataFetchingFunnel funnel={funnel} />
+            </QuerySuspenseBoundary>
+          </div>
+        </Flex>
       </PageBackground>
     </>
   );
 }
 
 function GrowthPredictionDataFetchingFunnel({ funnel }: { funnel: Funnel }) {
-  const { data } = useGrowthPredictionQuery();
-  const { data: strengthWeakness } = useStrengthWeakStatsQuery();
-
-  const transformData = transformStatsData(strengthWeakness.result.stats);
-
   return (
     <funnel.Render
-      GrowthStep={({ history }) => (
-        <GrowthStep
-          transformData={transformData.growthRates}
-          onNext={() => history.push('ViewStep')}
-        />
+      SubscriberStep={({ history }) => (
+        <SubscriberStep onNext={() => history.push('ChannelStep')} />
       )}
-      ViewStep={({ history }) => (
-        <PredictionViewStep
-          data={{
-            viewCount: transformData.viewCount,
-            predictedViews: data.result.predictedViews,
-          }}
-          onNext={() => history.push('SubscriberStep')}
-        />
+      ChannelStep={({ history }) => (
+        <ChannelStep onNext={() => history.push('EngagementStep')} />
       )}
-      SubscriberStep={() => (
-        <SubscriberStep
-          data={{
-            subscriberCount: transformData.netSubscribersCount,
-            subscriber: data.result.predictedNetSubscribers,
-          }}
-        />
+      EngagementStep={() => (
+        <EngagementStep onNext={() => console.log('Engagement completed')} />
       )}
     />
   );
