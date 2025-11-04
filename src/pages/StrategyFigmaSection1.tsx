@@ -1,4 +1,5 @@
 import useEmblaCarousel from 'embla-carousel-react';
+import useStrategyStore from '@/app/store/useStrategyStore';
 import { formatNumberWithCommas } from '@/domains/Home/lib/utils';
 import useGrowthPredictionQuery from '@/domains/Youtube/GrowthPrediction/hooks/useGrowthPredictionQuery';
 import transformStatsData from '@/domains/Youtube/GrowthPrediction/lib/transformGrowData';
@@ -19,6 +20,7 @@ import { Divider, Flex } from '@/shared/ui';
 import PageBackground from '@/shared/ui/components/PageBackground';
 
 export default function StrategyFigmaSection1() {
+  const { channelName } = useStrategyStore();
   const { data: strategyData } = useGetStrategy();
   const { data: popularData } = usePopularQuery();
   const { data: strengthWeaknessData } = useStrengthWeakStatsQuery();
@@ -109,7 +111,7 @@ export default function StrategyFigmaSection1() {
                   type={'strengths'}
                   title={info.title}
                   data={data[data.length - 1].graphValue}
-                  date={'최근 30일 전'}
+                  date={'최근 30일'}
                 />
               ))}
               {transformedData.weaknesses.map(({ info, data }, index) => (
@@ -119,7 +121,7 @@ export default function StrategyFigmaSection1() {
                   type={'weaknesses'}
                   title={info.title}
                   data={data[data.length - 1].graphValue}
-                  date={'최근 30일 전'}
+                  date={'최근 30일'}
                 />
               ))}
             </div>
@@ -129,7 +131,7 @@ export default function StrategyFigmaSection1() {
       <Divider size="RowMedium" />
       <section className="p-[20px] pb-[40px]">
         <Flex direction="column" gap={5}>
-          <ContentHeader title="홍길동님의 성장 예측" />
+          <ContentHeader title={`${channelName}님의 성장 예측`} />
           <Flex direction="column" gap={2}>
             <HighlightBox>3개월 후 성장 예측</HighlightBox>
             <PredictionRow
