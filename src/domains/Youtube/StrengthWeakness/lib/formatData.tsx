@@ -1,4 +1,4 @@
-import { type Result } from '../model/type';
+import { type InstaResult, type Result } from '../model/type';
 
 export function formatSubscribers(count: number): string {
   if (count >= 10_000) {
@@ -47,6 +47,23 @@ export function transformLabelData(
     case 'shares':
     case 'uploadedVideos':
     case 'views': {
+      return formatSubscribers(data);
+    }
+  }
+}
+
+export function transformMetaLabelData(
+  label: keyof InstaResult['growthRates'],
+  data: number,
+) {
+  switch (label) {
+    case 'viewsNonFollowers':
+    case 'followers':
+    case 'viewsFollowers':
+    case 'uploadedMedia':
+    case 'impressions':
+    case 'adsCount':
+    case 'profileStats': {
       return formatSubscribers(data);
     }
   }

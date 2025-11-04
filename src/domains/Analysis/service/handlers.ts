@@ -1,5 +1,8 @@
 import httpClient from '@/app/api/httpClient';
-import type { ResponseChannelStats } from './../../Youtube/StrengthWeakness/model/type';
+import type {
+  ResponseInstaChannelStats,
+  ResponseMetaPerformance,
+} from './../../Youtube/StrengthWeakness/model/type';
 
 const BASE_URL = '/meta';
 
@@ -9,14 +12,14 @@ const metaAnalysisApi = {
     const params = `instagramBusinessAccountId=${channelId}`;
 
     const url = `${baseUrl}${params}`;
-    return await httpClient.get<ResponseChannelStats>(url);
+    return await httpClient.get<ResponseInstaChannelStats>(url);
   },
   GetMetaPerformance: async (channelId: string) => {
     const baseUrl = `${BASE_URL}/statistics/performance?`;
     const params = `instagramBusinessAccountId=${channelId}`;
 
     const url = `${baseUrl}${params}`;
-    return await httpClient.get<ResponseChannelStats>(url);
+    return await httpClient.get<ResponseMetaPerformance>(url);
   },
 };
 

@@ -1,5 +1,5 @@
 import httpClient from '@/app/api/httpClient';
-import type { ResponsePopularTop } from '@/domains/Youtube/Popular/model/type';
+import type { ResponseInstaPopularTop } from '@/domains/Youtube/Popular/model/type';
 import type { RequestChannelStats } from '@/domains/Youtube/StrengthWeakness/model/type';
 
 const BASE_URL = '/meta';
@@ -10,7 +10,7 @@ const metaPopularApi = {
 
     const url = `${BASE_URL}/top-contents?${params}`;
 
-    return httpClient.get<ResponsePopularTop>(url);
+    return httpClient.get<ResponseInstaPopularTop>(url);
   },
 };
 

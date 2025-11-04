@@ -5,6 +5,7 @@ import GrowthPrediction from '@/pages/GrowthPrediction';
 import GrowthPredictionBefore from '@/pages/GrowthPredictionBefore';
 import Home from '@/pages/Home';
 import InstagramDetail from '@/pages/InstagramDetail';
+import InstagramStrategyFigmaSection1 from '@/pages/InstagramFigmaSection1';
 import InstagramPopular from '@/pages/InstagramPopular';
 import Login from '@/pages/Login';
 import Oauth from '@/pages/Oauth';
@@ -67,6 +68,14 @@ export default function RouterApp() {
               element={
                 <QuerySuspenseBoundary loadingFallback={<StrategyBefore />}>
                   <StrategyFigmaSection1 />
+                </QuerySuspenseBoundary>
+              }
+            />
+            <Route
+              path="/instagram-strategy"
+              element={
+                <QuerySuspenseBoundary loadingFallback={<StrategyBefore />}>
+                  <InstagramStrategyFigmaSection1 />
                 </QuerySuspenseBoundary>
               }
             />
