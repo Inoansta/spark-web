@@ -4,6 +4,22 @@ export interface ResponsePopularTop {
   result: Result[];
 }
 
+export interface ResponseInstaPopularTop {
+  statusCode: number;
+  message: string;
+  result: InstaResult[];
+}
+
+interface InstaResult {
+  id: string;
+  caption: string;
+  timestamp: string;
+  mediaType: string;
+  contentUrl: string;
+  views: number;
+  likes: number;
+}
+
 interface Result {
   id: string;
   snippet: Snippet;
