@@ -37,8 +37,10 @@ export default function AnalysisCard({
           <span className="font-suit font-extrabold text-[13px] text-[#1C1C1E] leading-[1.38]">
             {data}
           </span>
-          <span className="font-suit font-bold text-[12px] text-[#3385FF] leading-[1.33]">
-            증가
+          <span
+            className={`font-suit font-bold text-[12px] ${type === 'strengths' ? 'text-[#3385FF]' : 'text-[#FF3333]'} leading-[1.33]`}
+          >
+            {type === 'strengths' ? '증가' : '감소'}
           </span>
         </div>
       </div>

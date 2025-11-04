@@ -2,7 +2,7 @@ import { type ReactNode } from 'react';
 import EyeIcon from '@/assets/svg/EyeIcon';
 import FireIcon from '@/assets/svg/FireIcon';
 import { DateFormatter } from '@/domains/Youtube/Popular/lib/utils';
-import type { ResponsePopularTop } from '@/domains/Youtube/Popular/model/type';
+import type { ResponseInstaPopularTop } from '@/domains/Youtube/Popular/model/type';
 import useMetaPopularQuery from '../hooks/useMetaPopularQuery';
 
 interface PopularCard {
@@ -16,7 +16,7 @@ function NoList({
   data,
   children,
 }: {
-  data: ResponsePopularTop['result'];
+  data: ResponseInstaPopularTop['result'];
   children: ReactNode;
 }) {
   const isList = data.length !== 0;
