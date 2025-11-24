@@ -84,7 +84,6 @@ const CustomXAxisTick = (props: any) => {
 
 export default function RechartsSubscriberChart({
   data = defaultData,
-  className = '',
 }: RechartsSubscriberChartProps) {
   return (
     <div className="w-full h-full">

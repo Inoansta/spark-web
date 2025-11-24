@@ -2,6 +2,7 @@ export const COLORS = {
   // Gray Scale
   black: '#1C1C1E', // Black
   gray: '#5E6166', //gray
+  gary3: '#E5E5EA',
   gray5: '#8D9199',
   highEmphasis: '#333333', // High Emphasis Gray
   subText: '#616166', // Gray5
