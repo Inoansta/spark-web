@@ -15,6 +15,7 @@ const BG_COLOR = {
     'bg-[linear-gradient(180deg,_#000_-9.11%,_#787CFE_50.12%,_#FFCDFB_123.03%)]',
   white_linear_gradient:
     'bg-[linear-gradient(180deg,_#F8F9FD_0.01%,_#4557FF_70.21%,_#FFCDFB_106.76%)]',
+  gray: 'bg-line',
 } as const;
 
 export default function PageBackground({
