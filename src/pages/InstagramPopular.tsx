@@ -28,7 +28,7 @@ export default function InstagramPopular() {
       </div>
 
       <NextPageFooter
-        nextLocation={'/strength-weakness'}
+        nextLocation={'/growth-prediction-before'}
         text={'다음'}
         buttonType={'large-filled-button'}
       />
