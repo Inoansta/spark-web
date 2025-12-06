@@ -1,4 +1,5 @@
 import EyeIcon from '@/assets/svg/EyeIcon';
+import { Performance } from '@/domains/Youtube/StrengthWeakness/model/type';
 import { Badge } from '@/shared/components';
 import { Flex } from '@/shared/ui';
 import { Box, BoxContent, BoxHeader } from '../Box';
@@ -6,30 +7,43 @@ import FlexibleChart from '../FlexibleChart';
 
 export interface ChannelStepProps {
   onNext: () => void;
+  averageViews: Performance;
 }
 
-export default function ChannelStep({ onNext }: ChannelStepProps) {
+export default function ChannelStep({
+  onNext,
+  averageViews,
+}: ChannelStepProps) {
   // Figma 디자인에 따른 하락 트렌드 데이터
   const channelViewData = [
     {
       period: '90일 ~ 60일',
-      value: 25000,
-      displayValue: '2.5만회',
+      value: averageViews.days60to90,
+      displayValue: `${averageViews.days60to90}회`,
       shortPeriod: '90일~60일',
     },
     {
       period: '60일 ~ 30일',
-      value: 5000,
-      displayValue: '5,000회',
+      value: averageViews.days30to60,
+      displayValue: `${averageViews.days30to60}회`,
       shortPeriod: '60일~30일',
     },
     {
       period: '최근 30일',
-      value: 25000,
-      displayValue: '2.5만회',
+      value: averageViews.recent30Days,
+      displayValue: `${averageViews.recent30Days}회`,
       shortPeriod: '최근 30일',
     },
   ];
+  const variant = () => {
+    if (averageViews.days60to90 - averageViews.recent30Days > 0) {
+      return 'decline';
+    } else if (averageViews.days60to90 - averageViews.recent30Days < 0) {
+      return 'growth';
+    } else {
+      return 'neutral';
+    }
+  };
 
   return (
     <Flex
@@ -50,7 +64,7 @@ export default function ChannelStep({ onNext }: ChannelStepProps) {
             </Flex>
           </BoxHeader>
           <BoxContent className="p-5 h-[300px] w-full">
-            <FlexibleChart variant="decline" data={channelViewData} />
+            <FlexibleChart variant={variant()} data={channelViewData} />
           </BoxContent>
         </Box>
 

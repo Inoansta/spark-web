@@ -10,8 +10,8 @@ interface ChartDataPoint {
 type ChartVariant = 'growth' | 'decline' | 'neutral';
 
 interface FlexibleChartProps {
-  data?: ChartDataPoint[];
-  variant?: ChartVariant;
+  data: ChartDataPoint[];
+  variant: ChartVariant;
   className?: string;
 }
 
@@ -35,70 +35,6 @@ const chartThemes = {
     backgroundColor: 'rgba(232, 234, 237, 0.4)',
     textColor: '#8D9199',
   },
-};
-
-// 샘플 데이터
-const sampleData = {
-  growth: [
-    {
-      period: '90일 ~ 60일',
-      value: 1.5,
-      displayValue: '1.5명',
-      shortPeriod: '90일~60일',
-    },
-    {
-      period: '60일 ~ 30일',
-      value: 3,
-      displayValue: '3명',
-      shortPeriod: '60일~30일',
-    },
-    {
-      period: '최근 30일',
-      value: 6,
-      displayValue: '6명',
-      shortPeriod: '최근 30일',
-    },
-  ],
-  decline: [
-    {
-      period: '90일 ~ 60일',
-      value: 25000,
-      displayValue: '2.5만회',
-      shortPeriod: '90일~60일',
-    },
-    {
-      period: '60일 ~ 30일',
-      value: 5000,
-      displayValue: '5,000회',
-      shortPeriod: '60일~30일',
-    },
-    {
-      period: '최근 30일',
-      value: 25000,
-      displayValue: '2.5만회',
-      shortPeriod: '최근 30일',
-    },
-  ],
-  neutral: [
-    {
-      period: '90일 ~ 60일',
-      value: 50,
-      displayValue: '50%',
-      shortPeriod: '90일~60일',
-    },
-    {
-      period: '60일 ~ 30일',
-      value: 52,
-      displayValue: '52%',
-      shortPeriod: '60일~30일',
-    },
-    {
-      period: '최근 30일',
-      value: 51,
-      displayValue: '51%',
-      shortPeriod: '최근 30일',
-    },
-  ],
 };
 
 // 커스텀 도트 컴포넌트
@@ -153,14 +89,14 @@ const CustomXAxisTick = (props: any) => {
     </g>
   );
 };
-
+//TODO variant를 설정하는 기준 만들기
 export default function FlexibleChart({
   data,
-  variant = 'growth',
+  variant,
   className = '',
 }: FlexibleChartProps) {
   const theme = chartThemes[variant];
-  const chartData = data || sampleData[variant];
+  const chartData = data;
 
   return (
     <div className={`w-full h-full ${className}`}>

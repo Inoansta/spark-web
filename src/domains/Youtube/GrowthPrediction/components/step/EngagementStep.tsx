@@ -5,12 +5,15 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { Performance } from '@/domains/Youtube/StrengthWeakness/model/type';
 import { Badge } from '@/shared/components';
 import { Flex } from '@/shared/ui';
 import { Box, BoxContent, BoxHeader } from '../Box';
 
 export interface EngagementStepProps {
   onNext: () => void;
+  averageLikes: Performance;
+  averageComments: Performance;
 }
 
 interface EngagementData {
@@ -21,24 +24,28 @@ interface EngagementData {
 
 const columnHelper = createColumnHelper<EngagementData>();
 
-export default function EngagementStep({ onNext }: EngagementStepProps) {
+export default function EngagementStep({
+  onNext,
+  averageLikes,
+  averageComments,
+}: EngagementStepProps) {
   // Figma 디자인에 따른 참여도 데이터
   const engagementData: EngagementData[] = useMemo(
     () => [
       {
         period: '90일 ~ 60일',
-        likes: '❤️ 125회',
-        comments: '💬 80개',
+        likes: `❤️ ${averageLikes.days60to90}회`,
+        comments: `💬 ${averageComments.days30to60}개`,
       },
       {
         period: '60일 ~ 30일',
-        likes: '❤️ 1,250회',
-        comments: '💬 180개',
+        likes: `❤️ ${averageLikes.days30to60}`,
+        comments: `💬 ${averageComments.days30to60}`,
       },
       {
         period: '최근 30일',
-        likes: '❤️ 1.25만회',
-        comments: '💬 2.5천개',
+        likes: `❤️ ${averageLikes.recent30Days}회`,
+        comments: `💬 ${averageComments.recent30Days}개`,
       },
     ],
     [],
