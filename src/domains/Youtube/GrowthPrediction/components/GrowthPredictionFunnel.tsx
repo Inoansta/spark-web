@@ -2,6 +2,7 @@ import { useFunnel } from '@use-funnel/browser';
 import { QuerySuspenseBoundary } from '@/app/provider';
 import { BackIcon } from '@/assets/svg/nav/BackIcon';
 import { CloseIcon } from '@/assets/svg/nav/CloseIcon';
+import useMetaPerformanceQuery from '@/domains/Analysis/hooks/useMetaPerformance';
 import { HighlightText, NavigationHeader } from '@/shared/components';
 import { Flex } from '@/shared/ui';
 import PageBackground from '@/shared/ui/components/PageBackground';
@@ -87,16 +88,25 @@ export default function GrowthPredictionFunnel() {
 }
 
 function GrowthPredictionDataFetchingFunnel({ funnel }: { funnel: Funnel }) {
+  const { data } = useMetaPerformanceQuery();
+
   return (
     <funnel.Render
       SubscriberStep={({ history }) => (
         <SubscriberStep onNext={() => history.push('ChannelStep')} />
       )}
       ChannelStep={({ history }) => (
-        <ChannelStep onNext={() => history.push('EngagementStep')} />
+        <ChannelStep
+          onNext={() => history.push('EngagementStep')}
+          averageViews={data.result.averageViews}
+        />
       )}
       EngagementStep={() => (
-        <EngagementStep onNext={() => console.log('Engagement completed')} />
+        <EngagementStep
+          onNext={() => console.log('Engagement completed')}
+          averageLikes={data.result.averageLikes}
+          averageComments={data.result.averageComments}
+        />
       )}
     />
   );
