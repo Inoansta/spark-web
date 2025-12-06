@@ -1,15 +1,13 @@
+import { useLoaderData } from 'react-router';
 import ChannelLink from '@/assets/svg/ChannelLink.svg';
 import { FacebookIcon } from '@/assets/svg/FacebookIcon';
 import { YoutubeIcon } from '@/assets/svg/YoutubeIcon';
 import LocationMove from '@/domains/Login/components/LocationMove';
-import useGoogleAuth from '@/domains/Login/hooks/useGoogleAuth';
-import useMetaAuth from '@/domains/Login/hooks/useMetaAuth';
 import { Flex, Spacing, Text } from '@/shared/ui';
 import handleOpenNewTab from '@/shared/util/handleOpenNewTab';
 
 export default function Login() {
-  const google = useGoogleAuth();
-  const meta = useMetaAuth();
+  const { google, meta } = useLoaderData();
 
   const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const isWebView =
@@ -52,7 +50,7 @@ export default function Login() {
       <Spacing className="h-[76px]" />
 
       <Flex direction="column" gapY={'[10px]'}>
-        <LocationMove location={meta.data.metaAuthUrl}>
+        <LocationMove location={meta.metaAuthUrl}>
           <Flex
             align="center"
             className="bg-[#1877F2] px-[26px] py-3 rounded-[26px]"
@@ -63,7 +61,8 @@ export default function Login() {
             </button>
           </Flex>
         </LocationMove>
-        <LocationMove location={google.data.googleAuthUrl}>
+
+        <LocationMove location={google.googleAuthUrl}>
           <Flex
             align="center"
             className="bg-red1 px-[26px] py-3 rounded-[26px]"
