@@ -25,6 +25,7 @@ import {
   ProtectedLayout,
 } from '@/shared/ui';
 import { QuerySuspenseBoundary } from '../provider';
+import loginLoader from './loader/loginLoader';
 
 export default function RouterApp() {
   const router = createBrowserRouter([
@@ -39,7 +40,7 @@ export default function RouterApp() {
       element: <PageLayout />,
       children: [
         { path: '/onboarding', element: <OnBoarding /> },
-        { path: '/login', element: <Login /> },
+        { path: '/login', element: <Login />, loader: loginLoader },
         {
           element: <ProtectedLayout />,
           children: [
