@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { createBrowserRouter } from 'react-router';
+import { RouterProvider } from 'react-router/dom';
 import Analysis from '@/pages/Analysis';
 import Detail from '@/pages/Detail';
 import GrowthPredictionBefore from '@/pages/GrowthPredictionBefore';
@@ -25,74 +26,83 @@ import {
   ProtectedLayout,
 } from '@/shared/ui';
 import { QuerySuspenseBoundary } from '../provider';
+import loginLoader from './loader/loginLoader';
 
 export default function RouterApp() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<BottomNavigationLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/setting" element={<Setting />} />
-        </Route>
-        <Route element={<PageLayout />}>
-          <Route path="/onboarding" element={<OnBoarding />} />
-          <Route path="/login" element={<Login />} />
-          <Route element={<ProtectedLayout />}>
-            <Route path="/detail" element={<Detail />} />
-            <Route path="/instagram-detail" element={<InstagramDetail />} />
-            <Route
-              path="/user-info/:platform"
-              element={
+  const router = createBrowserRouter([
+    {
+      element: <BottomNavigationLayout />,
+      children: [
+        { path: '/', element: <Home /> },
+        { path: '/setting', element: <Setting /> },
+      ],
+    },
+    {
+      element: <PageLayout />,
+      children: [
+        { path: '/onboarding', element: <OnBoarding /> },
+        { path: '/login', element: <Login />, loader: loginLoader },
+        {
+          element: <ProtectedLayout />,
+          children: [
+            { path: '/detail', element: <Detail /> },
+            { path: '/instagram-detail', element: <InstagramDetail /> },
+            {
+              path: '/user-info/:platform',
+              element: (
                 <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>
                   <UserInfo />
                 </QuerySuspenseBoundary>
-              }
-            />
-            <Route path="/analysis/:platform" element={<Analysis />} />
-            <Route path="/popular" element={<Popular />} />
-            <Route path="/instagram-popular" element={<InstagramPopular />} />
-            <Route path="/strength-weakness" element={<StrengthWeakness />} />
-            <Route
-              path="/instagram-strength-weakness"
-              element={<InstagramStrengthWeakness />}
-            />
-            <Route
-              path="/growth-prediction-before"
-              element={<GrowthPredictionBefore />}
-            />
-            <Route
-              path="/instagram-growth-prediction"
-              element={<InstagramGrowthPrediction />}
-            />
-            <Route
-              path="/strategy"
-              element={
+              ),
+            },
+            { path: '/analysis/:platform', element: <Analysis /> },
+            { path: '/popular', element: <Popular /> },
+            { path: '/instagram-popular', element: <InstagramPopular /> },
+            { path: '/strength-weakness', element: <StrengthWeakness /> },
+            {
+              path: '/growth-prediction-before',
+              element: <GrowthPredictionBefore />,
+            },
+            { path: '/growth-prediction', element: <GrowthPrediction /> },
+            {
+              path: '/strategy',
+              element: (
                 <QuerySuspenseBoundary loadingFallback={<StrategyBefore />}>
                   <StrategyFigmaSection1 />
                 </QuerySuspenseBoundary>
-              }
-            />
-            <Route
-              path="/instagram-strategy"
-              element={
+              ),
+            },
+            {
+              path: '/instagram-strategy',
+              element: (
                 <QuerySuspenseBoundary loadingFallback={<StrategyBefore />}>
                   <InstagramStrategyFigmaSection1 />
                 </QuerySuspenseBoundary>
-              }
-            />
-            <Route
-              path="/strategy/:id"
-              element={
+              ),
+            },
+            {
+              path: '/strategy/:id',
+              element: (
                 <QuerySuspenseBoundary loadingFallback={<StrategyBefore />}>
                   <StrategyB />
                 </QuerySuspenseBoundary>
-              }
-            />
-          </Route>
-        </Route>
-        <Route path="/oauth/google" element={<Oauth />} />
-        <Route path="/oauth/meta" element={<OauthMeta />} />
-      </Routes>
-    </BrowserRouter>
-  );
+              ),
+            },
+          ],
+        },
+      ],
+    },
+    { path: '/oauth/google', element: <Oauth /> },
+    { path: '/oauth/meta', element: <OauthMeta /> },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
+
+//StrategyBefore
+//StrategyB - /strategy/:id
+//StrategyBefore - /instagram-strategy
+//InstagramStrategyFigmaSection1 - /strategy
+
+//Looading...
+//UserInfo - /user-info/:platform
