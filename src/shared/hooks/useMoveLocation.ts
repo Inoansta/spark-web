@@ -17,7 +17,10 @@ const _routeMap = {
   growthPredictionBefore: '/growth-prediction-before',
   growthPrediction: '/growth-prediction',
   strategy: '/strategy',
+  instagramGrowthPrediction: '/instagram-growth-prediction',
   instagramDetail: '/instagram-detail',
+  instagramStrengthWeakness: '/instagram-strength-weakness',
+  instagramStrategy: '/instagram-strategy',
 } as const;
 
 export interface RouteInfo {

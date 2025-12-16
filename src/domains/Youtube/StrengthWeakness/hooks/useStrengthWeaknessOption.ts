@@ -1,9 +1,9 @@
 import { useLayoutEffect } from 'react';
 import useStrategyStore from '@/app/store/useStrategyStore';
-import { Result } from '../model/type';
+import { InstaResult, Result } from '../model/type';
 
 interface useStrengthWeaknessOptionProps {
-  weaknesses: Result['weaknesses'];
+  weaknesses: Result['weaknesses'] | InstaResult['weaknesses'];
   isSuccess: boolean;
 }
 

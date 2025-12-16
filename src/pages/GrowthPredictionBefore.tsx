@@ -1,4 +1,4 @@
-import { VideoPlayer } from '@/domains/Youtube/GrowthPrediction';
+import { VideoPlayer } from '@/domains/Instagram/GrowthPrediction';
 
 export default function GrowthPredictionBefore() {
   return <VideoPlayer />;

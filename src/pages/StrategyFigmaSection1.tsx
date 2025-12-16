@@ -1,8 +1,8 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import useStrategyStore from '@/app/store/useStrategyStore';
 import { formatNumberWithCommas } from '@/domains/Home/lib/utils';
-import useGrowthPredictionQuery from '@/domains/Youtube/GrowthPrediction/hooks/useGrowthPredictionQuery';
-import transformStatsData from '@/domains/Youtube/GrowthPrediction/lib/transformGrowData';
+import useGrowthPredictionQuery from '@/domains/Instagram/GrowthPrediction/hooks/useGrowthPredictionQuery';
+import transformStatsData from '@/domains/Instagram/GrowthPrediction/lib/transformGrowData';
 import usePopularQuery from '@/domains/Youtube/Popular/hooks/usePopularQuery';
 import ActionButtonsRow from '@/domains/Youtube/Strategy/components/ActionButtonsRow';
 import AnalysisCard from '@/domains/Youtube/Strategy/components/AnalysisCard';
