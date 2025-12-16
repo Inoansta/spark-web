@@ -20,6 +20,7 @@ export default function SettingToast({
   const onLogOut = () => {
     sessionStorage.clear();
     setClosed();
+    window.location.reload();
     navigate();
   };
 

@@ -2,7 +2,9 @@ import { type ReactNode, useEffect, useState } from 'react';
 import useStrategyStore from '@/app/store/useStrategyStore';
 import { BackIcon } from '@/assets/svg/nav/BackIcon';
 import { CloseIcon } from '@/assets/svg/nav/CloseIcon';
+import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { NavigationHeader, NextPageFooter } from '@/shared/components';
+import { Storage } from '@/shared/lib';
 import { Flex } from '@/shared/ui';
 
 interface DelayProps {
@@ -26,6 +28,7 @@ function Delay({ delay = 7000, children }: DelayProps) {
 
 export default function DelayText() {
   const channelName = useStrategyStore((store) => store.channelName);
+  const connected = Storage.getLocalStorage(TOKEN.REFRESH);
 
   return (
     <Delay>
@@ -48,7 +51,9 @@ export default function DelayText() {
         </Flex>
       </div>
       <NextPageFooter
-        nextLocation={'/growth-prediction'}
+        nextLocation={
+          connected ? '/growth-prediction' : '/instagram-growth-prediction'
+        }
         text={'다음'}
         buttonType={'large-filled-button'}
       />

@@ -7,6 +7,7 @@ import {
 } from '@tanstack/react-table';
 import { Performance } from '@/domains/Youtube/StrengthWeakness/model/type';
 import { Badge } from '@/shared/components';
+import { useMoveLocation } from '@/shared/hooks';
 import { Flex } from '@/shared/ui';
 import { Box, BoxContent, BoxHeader } from '../Box';
 
@@ -30,6 +31,7 @@ export default function EngagementStep({
   averageComments,
 }: EngagementStepProps) {
   // Figma 디자인에 따른 참여도 데이터
+  const navigate = useMoveLocation('/instagram-strategy');
   const engagementData: EngagementData[] = useMemo(
     () => [
       {
@@ -165,7 +167,10 @@ export default function EngagementStep({
       {/* 하단 버튼 영역 */}
       <button
         className="w-full bg-[#333] text-white py-3 px-5 rounded-[10px] h-12"
-        onClick={onNext}
+        onClick={() => {
+          onNext();
+          navigate();
+        }}
       >
         다음
       </button>
