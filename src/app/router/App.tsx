@@ -1,12 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
 import Analysis from '@/pages/Analysis';
 import Detail from '@/pages/Detail';
-import GrowthPrediction from '@/pages/GrowthPrediction';
 import GrowthPredictionBefore from '@/pages/GrowthPredictionBefore';
 import Home from '@/pages/Home';
 import InstagramDetail from '@/pages/InstagramDetail';
 import InstagramStrategyFigmaSection1 from '@/pages/InstagramFigmaSection1';
+import InstagramGrowthPrediction from '@/pages/InstagramGrowthPrediction';
 import InstagramPopular from '@/pages/InstagramPopular';
+import InstagramStrengthWeakness from '@/pages/InstagramStrengthWeakness';
 import Login from '@/pages/Login';
 import Oauth from '@/pages/Oauth';
 import OauthMeta from '@/pages/OauthMeta';
@@ -35,14 +36,7 @@ export default function RouterApp() {
         </Route>
         <Route element={<PageLayout />}>
           <Route path="/onboarding" element={<OnBoarding />} />
-          <Route
-            path="/login"
-            element={
-              <QuerySuspenseBoundary loadingFallback={<>Loading...</>}>
-                <Login />
-              </QuerySuspenseBoundary>
-            }
-          />
+          <Route path="/login" element={<Login />} />
           <Route element={<ProtectedLayout />}>
             <Route path="/detail" element={<Detail />} />
             <Route path="/instagram-detail" element={<InstagramDetail />} />
@@ -59,10 +53,17 @@ export default function RouterApp() {
             <Route path="/instagram-popular" element={<InstagramPopular />} />
             <Route path="/strength-weakness" element={<StrengthWeakness />} />
             <Route
+              path="/instagram-strength-weakness"
+              element={<InstagramStrengthWeakness />}
+            />
+            <Route
               path="/growth-prediction-before"
               element={<GrowthPredictionBefore />}
             />
-            <Route path="/growth-prediction" element={<GrowthPrediction />} />
+            <Route
+              path="/instagram-growth-prediction"
+              element={<InstagramGrowthPrediction />}
+            />
             <Route
               path="/strategy"
               element={
