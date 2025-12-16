@@ -60,10 +60,17 @@ export default function RouterApp() {
             { path: '/instagram-popular', element: <InstagramPopular /> },
             { path: '/strength-weakness', element: <StrengthWeakness /> },
             {
+              path: '/instagram-strength-weakness',
+              element: <InstagramStrengthWeakness />,
+            },
+            {
               path: '/growth-prediction-before',
               element: <GrowthPredictionBefore />,
             },
-            { path: '/growth-prediction', element: <GrowthPrediction /> },
+            {
+              path: '/instagram-growth-prediction',
+              element: <InstagramGrowthPrediction />,
+            },
             {
               path: '/strategy',
               element: (
