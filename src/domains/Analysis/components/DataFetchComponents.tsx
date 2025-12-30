@@ -2,8 +2,8 @@ import { PropsWithChildren, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useMetaProfile } from '@/domains/Home/hooks';
 import useChannelProfile from '@/domains/Home/hooks/useChannelProfile';
-import useGrowthPredictionQuery from '@/domains/Instagram/GrowthPrediction/hooks/useGrowthPredictionQuery';
 import useMetaPopularQuery from '@/domains/Instagram/Popular/hooks/useMetaPopularQuery';
+import useYoutubePerformanceQuery from '@/domains/Youtube/GrowthPrediction/hooks/useYoutubePerformance';
 import usePopularQuery from '@/domains/Youtube/Popular/hooks/usePopularQuery';
 import useStrengthWeakStatsQuery from '@/domains/Youtube/StrengthWeakness/hooks/useStrengthWeakStatsQuery';
 import useMetaChannelStats from '../hooks/useMetaChannelStats';
@@ -102,12 +102,12 @@ export function IsFetching({ children, platform }: IsFetchingProps) {
   return isSuccess && children;
 }
 
-export function GrowthPrediectionFetch({
+export function YoutubePerformanceFetch({
   icon,
   title,
 }: Pick<ProcessStateItemProps, 'icon' | 'title'>) {
   const navigate = useNavigate();
-  const { isSuccess } = useGrowthPredictionQuery();
+  const { isSuccess } = useYoutubePerformanceQuery();
 
   useEffect(() => {
     if (isSuccess) {

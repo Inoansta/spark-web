@@ -1,6 +1,6 @@
 import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
-interface ChartDataPoint {
+export interface ChartDataPoint {
   period: string;
   value: number;
   displayValue: string;
@@ -11,27 +11,6 @@ interface RechartsSubscriberChartProps {
   data?: ChartDataPoint[];
   className?: string;
 }
-
-const defaultData: ChartDataPoint[] = [
-  {
-    period: '90일 ~ 60일',
-    value: 1.5,
-    displayValue: '1.5명',
-    shortPeriod: '90일~60일',
-  },
-  {
-    period: '60일 ~ 30일',
-    value: 3,
-    displayValue: '3명',
-    shortPeriod: '60일~30일',
-  },
-  {
-    period: '최근 30일',
-    value: 6,
-    displayValue: '6명',
-    shortPeriod: '최근 30일',
-  },
-];
 
 // 커스텀 도트 컴포넌트
 const CustomDot = (props: any) => {
@@ -83,7 +62,7 @@ const CustomXAxisTick = (props: any) => {
 };
 
 export default function RechartsSubscriberChart({
-  data = defaultData,
+  data,
 }: RechartsSubscriberChartProps) {
   return (
     <div className="w-full h-full">

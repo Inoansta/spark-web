@@ -5,9 +5,11 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
 import { Performance } from '@/domains/Youtube/StrengthWeakness/model/type';
 import { Badge } from '@/shared/components';
 import { useMoveLocation } from '@/shared/hooks';
+import { Storage } from '@/shared/lib';
 import { Flex } from '@/shared/ui';
 import { Box, BoxContent, BoxHeader } from '../Box';
 
@@ -31,7 +33,10 @@ export default function EngagementStep({
   averageComments,
 }: EngagementStepProps) {
   // Figma 디자인에 따른 참여도 데이터
-  const navigate = useMoveLocation('/instagram-strategy');
+  const connected = Storage.getLocalStorage(TOKEN.REFRESH);
+  const navigate = useMoveLocation(
+    connected ? '/strategy' : '/instagram-strategy',
+  );
   const engagementData: EngagementData[] = useMemo(
     () => [
       {

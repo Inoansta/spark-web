@@ -1,5 +1,5 @@
-import { GrowthPredictionFunnel } from '@/domains/Instagram/GrowthPrediction';
+import { InstagramGrowthPredictionFunnel } from '@/domains/Instagram/GrowthPrediction';
 
 export default function InstagramGrowthPrediction() {
-  return <GrowthPredictionFunnel />;
+  return <InstagramGrowthPredictionFunnel />;
 }

@@ -48,7 +48,7 @@ const stepTitle = {
   },
 };
 
-export default function GrowthPredictionFunnel() {
+export default function InstagramGrowthPredictionFunnel() {
   const funnel = useFunnel(options);
 
   return (
@@ -78,7 +78,7 @@ export default function GrowthPredictionFunnel() {
             <QuerySuspenseBoundary
               loadingFallback={<GrowthPredictionSkeleton />}
             >
-              <GrowthPredictionDataFetchingFunnel funnel={funnel} />
+              <InstagramGrowthPredictionDataFetchingFunnel funnel={funnel} />
             </QuerySuspenseBoundary>
           </div>
         </Flex>
@@ -87,13 +87,20 @@ export default function GrowthPredictionFunnel() {
   );
 }
 
-function GrowthPredictionDataFetchingFunnel({ funnel }: { funnel: Funnel }) {
+function InstagramGrowthPredictionDataFetchingFunnel({
+  funnel,
+}: {
+  funnel: Funnel;
+}) {
   const { data } = useMetaPerformanceQuery();
 
   return (
     <funnel.Render
       SubscriberStep={({ history }) => (
-        <SubscriberStep onNext={() => history.push('ChannelStep')} />
+        <SubscriberStep
+          onNext={() => history.push('ChannelStep')}
+          averageComments={data.result.averageComments}
+        />
       )}
       ChannelStep={({ history }) => (
         <ChannelStep
