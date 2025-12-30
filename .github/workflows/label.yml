@@ -3,15 +3,22 @@ name: Label
 on:
   issues:
     types: [opened, edited, milestoned]
-
-  pull_request_target:
+  pull_request_target: # 포크된 저장소의 PR에도 권한을 주기 위해 target 사용
     types: [opened, edited, synchronize]
+
+# 🔥 중요: 깃허브 기본 토큰에 권한을 명시적으로 부여합니다
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
 
 jobs:
   add-labels:
     runs-on: ubuntu-latest
-
     steps:
       - uses: fuxingloh/multi-labeler@v4
         with:
-          github-token: ${{ secrets.AUTO_ACTIONS }}
+          # 🔥 수정: 내 토큰 대신 기본 토큰 사용
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          config-path: .github/labeler.yml
+          config-repo: spark-front/spark-web
