@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router';
 import { RouterProvider } from 'react-router/dom';
 import Analysis from '@/pages/Analysis';
 import Detail from '@/pages/Detail';
+import GrowthPrediction from '@/pages/GrowthPrediction';
 import GrowthPredictionBefore from '@/pages/GrowthPredictionBefore';
 import Home from '@/pages/Home';
 import InstagramDetail from '@/pages/InstagramDetail';
@@ -66,6 +67,10 @@ export default function RouterApp() {
             {
               path: '/growth-prediction-before',
               element: <GrowthPredictionBefore />,
+            },
+            {
+              path: '/growth-prediction',
+              element: <GrowthPrediction />,
             },
             {
               path: '/instagram-growth-prediction',

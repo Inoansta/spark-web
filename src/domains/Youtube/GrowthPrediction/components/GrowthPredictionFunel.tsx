@@ -2,15 +2,15 @@ import { useFunnel } from '@use-funnel/browser';
 import { QuerySuspenseBoundary } from '@/app/provider';
 import { BackIcon } from '@/assets/svg/nav/BackIcon';
 import { CloseIcon } from '@/assets/svg/nav/CloseIcon';
-import useMetaPerformanceQuery from '@/domains/Analysis/hooks/useMetaPerformance';
+import ChannelStep from '@/domains/Instagram/GrowthPrediction/components/step/ChannelStep';
+import EngagementStep from '@/domains/Instagram/GrowthPrediction/components/step/EngagementStep';
+import SubscriberStep from '@/domains/Instagram/GrowthPrediction/components/step/SubscribeStep';
+import { useGrowthStep } from '@/domains/Instagram/GrowthPrediction/hooks/useGrowthStep';
+import GrowthPredictionSkeleton from '@/domains/Instagram/GrowthPrediction/skeleton/skeleton';
+import useYoutubePerformanceQuery from '@/domains/Youtube/GrowthPrediction/hooks/useYoutubePerformance';
 import { HighlightText, NavigationHeader } from '@/shared/components';
 import { Flex } from '@/shared/ui';
 import PageBackground from '@/shared/ui/components/PageBackground';
-import { useGrowthStep } from '../hooks/useGrowthStep';
-import GrowthPredictionSkeleton from '../skeleton/skeleton';
-import ChannelStep from './step/ChannelStep';
-import EngagementStep from './step/EngagementStep';
-import SubscriberStep from './step/SubscribeStep';
 // import PredictionViewStep from './step/PredictionViewStep';
 
 type StepName = 'SubscriberStep' | 'ChannelStep' | 'EngagementStep';
@@ -88,12 +88,15 @@ export default function GrowthPredictionFunnel() {
 }
 
 function GrowthPredictionDataFetchingFunnel({ funnel }: { funnel: Funnel }) {
-  const { data } = useMetaPerformanceQuery();
+  const { data } = useYoutubePerformanceQuery();
 
   return (
     <funnel.Render
       SubscriberStep={({ history }) => (
-        <SubscriberStep onNext={() => history.push('ChannelStep')} />
+        <SubscriberStep
+          onNext={() => history.push('ChannelStep')}
+          averageComments={data.result.averageComments}
+        />
       )}
       ChannelStep={({ history }) => (
         <ChannelStep
