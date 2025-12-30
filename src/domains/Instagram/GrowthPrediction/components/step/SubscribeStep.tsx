@@ -1,4 +1,5 @@
 import EyeIcon from '@/assets/svg/EyeIcon';
+import { Performance } from '@/domains/Youtube/StrengthWeakness/model/type';
 import { Badge } from '@/shared/components';
 import { Flex } from '@/shared/ui';
 import { Box, BoxContent, BoxHeader } from '../Box';
@@ -6,9 +7,36 @@ import RechartsSubscriberChart from '../RechartsSubscriberChart';
 
 export interface SubscriberStepProps {
   onNext: () => void;
+  averageComments: Performance;
 }
 
-export default function SubscriberStep({ onNext }: SubscriberStepProps) {
+export default function SubscriberStep({
+  onNext,
+  averageComments,
+}: SubscriberStepProps) {
+  const defaultData = [
+    {
+      period: '90일 ~ 60일',
+      value: averageComments.days60to90,
+      displayValue: `${averageComments.days60to90}명`,
+      shortPeriod: '90일~60일',
+      // TODO ShortPeriod 안보이네
+    },
+    {
+      period: '60일 ~ 30일',
+      value: averageComments.days30to60,
+      displayValue: `${averageComments.days30to60}명`,
+      shortPeriod: '60일~30일',
+    },
+    {
+      period: '최근 30일',
+      value: averageComments.recent30Days,
+      displayValue: `${averageComments.recent30Days}명`,
+      shortPeriod: '최근 30일',
+    },
+  ];
+  console.log(defaultData);
+
   return (
     <Flex
       direction="column"
@@ -28,7 +56,7 @@ export default function SubscriberStep({ onNext }: SubscriberStepProps) {
             </Flex>
           </BoxHeader>
           <BoxContent className="p-5 h-[300px] w-full">
-            <RechartsSubscriberChart />
+            <RechartsSubscriberChart data={defaultData} />
           </BoxContent>
         </Box>
 

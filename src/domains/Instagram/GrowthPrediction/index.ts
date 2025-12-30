@@ -1,2 +1,2 @@
-export { default as GrowthPredictionFunnel } from './components/GrowthPredictionFunnel';
+export { default as InstagramGrowthPredictionFunnel } from './components/InstagramGrowthPredictionFunnel';
 export { default as VideoPlayer } from './components/VideoPlayer';
