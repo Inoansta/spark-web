@@ -1,15 +1,13 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import useStrategyStore from '@/app/store/useStrategyStore';
 import { formatNumberWithCommas } from '@/domains/Home/lib/utils';
-import useGrowthPredictionQuery from '@/domains/Instagram/GrowthPrediction/hooks/useGrowthPredictionQuery';
-import transformStatsData from '@/domains/Instagram/GrowthPrediction/lib/transformGrowData';
+import PerformanceRow from '@/domains/Instagram/Strategy/components/PerformanceRow';
+import useYoutubePerformanceQuery from '@/domains/Youtube/GrowthPrediction/hooks/useYoutubePerformance';
 import usePopularQuery from '@/domains/Youtube/Popular/hooks/usePopularQuery';
 import ActionButtonsRow from '@/domains/Youtube/Strategy/components/ActionButtonsRow';
 import AnalysisCard from '@/domains/Youtube/Strategy/components/AnalysisCard';
 import ContentCard from '@/domains/Youtube/Strategy/components/ContentCard';
 import ContentHeader from '@/domains/Youtube/Strategy/components/ContentHeader';
-import HighlightBox from '@/domains/Youtube/Strategy/components/HighlightBox';
-import PredictionRow from '@/domains/Youtube/Strategy/components/PredictionRow';
 import StrategyStarGroup from '@/domains/Youtube/Strategy/components/StrategyStar';
 import UserInfoHeader from '@/domains/Youtube/Strategy/components/UserInfoHeader';
 import useGetStrategy from '@/domains/Youtube/Strategy/hooks/useGetStrategy';
@@ -24,13 +22,14 @@ export default function StrategyFigmaSection1() {
   const { data: strategyData } = useGetStrategy();
   const { data: popularData } = usePopularQuery();
   const { data: strengthWeaknessData } = useStrengthWeakStatsQuery();
-  const { data: growthPredictionData } = useGrowthPredictionQuery();
+  const { data: performanceQuery } = useYoutubePerformanceQuery();
 
+  const trimmedPerformanceQuery = performanceQuery.result;
   const { transformedData } = transformDataStrengthWeakness(
     strengthWeaknessData.result,
   );
 
-  const transformData = transformStatsData(strengthWeaknessData.result.stats);
+  // const transformData = transformStatsData(strengthWeaknessData.result.stats);
 
   // 3.애니메이션 에러 해결
   // 4.어느 특정 api는 어떤것을 먼저 부르고 불러야지 성공적으로 요청된다.
@@ -133,24 +132,17 @@ export default function StrategyFigmaSection1() {
         <Flex direction="column" gap={5}>
           <ContentHeader title={`${channelName}님의 성장 예측`} />
           <Flex direction="column" gap={2}>
-            <HighlightBox>3개월 후 성장 예측</HighlightBox>
-            <PredictionRow
-              label="예상 조회수"
-              value={`총 ${formatNumberWithCommas(
-                Math.floor(growthPredictionData.result.predictedViews),
-              )} 달성`}
-              sub={`매달 ${formatNumberWithCommas(
-                transformData.viewCount,
-              )}회 증가`}
+            <PerformanceRow
+              label="댓글수"
+              values={trimmedPerformanceQuery.averageComments}
             />
-            <PredictionRow
-              label="예상 구독자수"
-              value={`총 ${formatNumberWithCommas(
-                Math.floor(growthPredictionData.result.predictedNetSubscribers),
-              )} 달성`}
-              sub={`매달 ${formatNumberWithCommas(
-                transformData.netSubscribersCount,
-              )}명 증가`}
+            <PerformanceRow
+              label="좋아요수"
+              values={trimmedPerformanceQuery.averageLikes}
+            />
+            <PerformanceRow
+              label="조회수"
+              values={trimmedPerformanceQuery.averageViews}
             />
           </Flex>
         </Flex>
