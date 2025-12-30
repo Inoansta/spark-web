@@ -9,7 +9,6 @@ import { YoutubeIcon } from '@/assets/svg/logo/YoutubeIcon';
 import AnalysisState from '@/domains/Analysis/components/AnalysisState';
 import {
   ChannelProfileFetch,
-  GrowthPrediectionFetch,
   IsFetching,
   MetaChannelStatsFetch,
   MetaPerformanceFetch,
@@ -17,6 +16,7 @@ import {
   MetaTopContentsFetch,
   StrengthWeaknessFetch,
   TopVideosFetch,
+  YoutubePerformanceFetch,
 } from '@/domains/Analysis/components/DataFetchComponents';
 import ProcessStateItem from '@/domains/Analysis/components/ProcessStateItem';
 import { Flex, LottieAnimation, Text } from '@/shared/ui';
@@ -95,7 +95,7 @@ export default function Analysis() {
                 title="채널 성장 비법"
                 DataFetchComponent={
                   platform === 'y'
-                    ? GrowthPrediectionFetch
+                    ? YoutubePerformanceFetch
                     : MetaPerformanceFetch
                 }
               />
