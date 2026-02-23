@@ -29,7 +29,7 @@ function EmptyCard({
       <ChannelCommonCard
         header={
           <Flex justify="between" align="center">
-            <Text as="title" title="성장 비법이 궁금하다면" />
+            <Text as="title" title="채널을 연동하면 프로필이 보여요!" />
           </Flex>
         }
         bottom={

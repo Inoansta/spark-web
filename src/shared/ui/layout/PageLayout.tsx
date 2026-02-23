@@ -75,7 +75,8 @@ function CurrentLocation() {
     case '/popular':
     case '/strength-weakness':
     case '/strategy':
-    case '/instagram-strategy': {
+    case '/instagram-strategy':
+    case '/instagram-popular': {
       return (
         <NavigationHeader className={'p-5 fixed max-w-[450px] w-full'}>
           <NavigationHeader.LeftContent location="back">

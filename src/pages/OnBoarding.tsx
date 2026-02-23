@@ -22,7 +22,7 @@ const contents = [
         고민이 된다면
       </>
     ),
-    subTitle: '“ 조회수 변화가 미미해요 “',
+    subTitle: '“조회수 변화가 미미해요"',
     children: <img src={onboarding1_youtube} className={'max-h-[400px]'} />,
   },
   {
@@ -33,7 +33,7 @@ const contents = [
         분석하세요
       </>
     ),
-    subTitle: '“데이터를 이해하기 쉽게 분석했어요” “',
+    subTitle: '“데이터를 이해하기 쉽게 분석했어요”',
     children: (
       <LottieAnimation
         animationData={onBoarding2}
@@ -49,7 +49,7 @@ const contents = [
         받아 보세요
       </>
     ),
-    subTitle: '“ 간단하고 따라하기 쉬운 비법을 준비했어요 “',
+    subTitle: '“간단하고 따라하기 쉬운 비법을 준비했어요"',
     children: <img src={card1} className={'max-h-[360px]'} />,
   },
 ];

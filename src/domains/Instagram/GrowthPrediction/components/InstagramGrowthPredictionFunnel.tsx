@@ -35,8 +35,8 @@ const options = {
 
 const stepTitle = {
   SubscriberStep: {
-    title: '구독자수는 얼마나 늘었을까?',
-    highlight: '구독자수는',
+    title: '신규 팔로워수는 얼마나 늘었을까?',
+    highlight: '신규 팔로워수는',
   },
   ChannelStep: {
     title: '현재 내 채널의',

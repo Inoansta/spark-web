@@ -37,7 +37,7 @@ export default function SettingToast({
           <div className={'text-[18px] font-[700] leading-[26px] text-center'}>
             {location === 'home'
               ? '채널을 변경하시겠어요?'
-              : '계정삭제(Google 연동해제)'}
+              : '계정삭제(계정 연동해제)'}
           </div>
           <div
             className={
@@ -54,7 +54,7 @@ export default function SettingToast({
               </>
             ) : (
               <>
-                계정삭제하면, Google 연동이 해제되어 데이터가 삭제됩니다.
+                계정삭제하면, 계정 연동이 해제되어 데이터가 삭제됩니다.
                 <br />
                 계정삭제하시겠습니까?
               </>

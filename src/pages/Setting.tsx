@@ -10,7 +10,7 @@ const LIST_DATA = [
   {
     title: '앱 버전',
     description: '1.0.00',
-    location: '/',
+    location: '/setting',
   },
   {
     title: '공지사항',
@@ -131,7 +131,7 @@ export default function Setting() {
           className={`${accessToken ? 'block' : 'hidden'} py-[12px] px-[20px] text-[15px] font-[700] leading-[24px] text-[#5E6166]`}
           onClick={LogOut}
         >
-          계정삭제(Google 연동해제)
+          계정삭제(계정 연동해제)
         </div>
       </main>
       <SettingToast
