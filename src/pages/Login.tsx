@@ -69,7 +69,7 @@ export default function Login() {
             className="bg-gradient-to-r from-[#1C1C1E] to-[#4557FF] px-[26px] py-3 rounded-[26px]"
           >
             <button className="text-white w-full text-[15px] font-bold">
-              게스트로 로그인하기
+              게스트로 사용하기
             </button>
           </Flex>
         </div>
