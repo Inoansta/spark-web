@@ -1,13 +1,26 @@
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import ChannelLink from '@/assets/svg/ChannelLink.svg';
 import { FacebookIcon } from '@/assets/svg/FacebookIcon';
 import { YoutubeIcon } from '@/assets/svg/YoutubeIcon';
 import LocationMove from '@/domains/Login/components/LocationMove';
+import { TOKEN } from '@/domains/Login/hooks/useAuthToken';
+import { startWorker } from '@/mocks/startWorker';
+import { Storage } from '@/shared/lib';
 import { Flex, Spacing, Text } from '@/shared/ui';
 import handleOpenNewTab from '@/shared/util/handleOpenNewTab';
 
 export default function Login() {
   const { google, meta } = useLoaderData();
+  const navigate = useNavigate();
+
+  const handleGuestLogin = async () => {
+    await startWorker();
+
+    Storage.setLocalStorage(TOKEN.ACCESS, 'guest_access_token');
+    Storage.setLocalStorage(TOKEN.REFRESH, 'guest_refresh_token');
+
+    navigate('/');
+  };
 
   const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const isWebView =
@@ -50,6 +63,17 @@ export default function Login() {
       <Spacing className="h-[76px]" />
 
       <Flex direction="column" gapY={'[10px]'}>
+        <div onClick={handleGuestLogin} className="cursor-pointer">
+          <Flex
+            align="center"
+            className="bg-gradient-to-r from-[#1C1C1E] to-[#4557FF] px-[26px] py-3 rounded-[26px]"
+          >
+            <button className="text-white w-full text-[15px] font-bold">
+              게스트로 로그인하기
+            </button>
+          </Flex>
+        </div>
+
         <LocationMove location={meta.metaAuthUrl}>
           <Flex
             align="center"

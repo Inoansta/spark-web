@@ -12,11 +12,8 @@ async function deferRender() {
     return;
   }
 
-  const { worker } = await import('./mocks/browser');
-
-  // `worker.start()` returns a Promise that resolves
-  // once the Service Worker is up and ready to intercept requests.
-  return worker.start();
+  const { startWorker } = await import('./mocks/startWorker');
+  return startWorker();
 }
 
 deferRender().then(() =>
