@@ -46,8 +46,8 @@ export default function EngagementStep({
       },
       {
         period: '60일 ~ 30일',
-        likes: `❤️ ${averageLikes.days30to60}`,
-        comments: `💬 ${averageComments.days30to60}`,
+        likes: `❤️ ${averageLikes.days30to60}회`,
+        comments: `💬 ${averageComments.days30to60}개 `,
       },
       {
         period: '최근 30일',
