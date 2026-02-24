@@ -20,7 +20,7 @@ const LIST_DATA = [
   {
     title: '문의하기',
     location:
-      'https://triangular-trombone-8fb.notion.site/195ea985e0f280a5a13fdfadff1beac6?pvs=4',
+      'https://docs.google.com/forms/d/1zBvke2wuBOAhRg3xmuWk2lb-XDfvXibUroMuBhwZmxg/',
   },
   {
     title: '서비스 이용약관',
