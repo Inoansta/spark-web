@@ -307,6 +307,29 @@ export const handlers = [
       { status: 400 },
     );
   }),
+  http.get('/youtube/statistics/performance?channelId=', async () => {
+    await delay(200);
+    return HttpResponse.json({
+      result: {
+        averageComments: {
+          recent30Days: 18,
+          days30to60: 44,
+          days60to90: 32,
+        },
+        averageLikes: {
+          recent30Days: 831,
+          days30to60: 3049,
+          days60to90: 241,
+        },
+        averageViews: {
+          recent30Days: 20852,
+          days30to60: 57782,
+          days60to90: 11936,
+        },
+      },
+    });
+  }),
+
   http.get('/meta/top-contents', async () => {
     await delay(200);
     return HttpResponse.json({
